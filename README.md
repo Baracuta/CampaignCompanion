@@ -1,3 +1,33 @@
+# Details for My React Project
+
+The idea is to create a digital assistant for RPG Game-Masters that will allow them to easily and conveniently keep track of the most agile variables (AKA the moving pieces, or things that change the most) in their TTRPG campaign.
+
+## What this includes
+- A section for player-characters
+- A section for important non-player-characters
+- A section for important items they may have acquired/are yet to acquire
+- A built-in customizable calendar to track the in-game passage of time
+- A place to organize/keep track of maps
+
+## What this does NOT include
+- Tools for worldbuilding
+- A virtual-table-top (VTT)
+- A place for lorekeeping (Notes on the world itself)
+
+## How it should be used
+
+While the app is intended to provide the most value for Game-Masters running an ongoing campaign, it should also be useful for running one-shots as well. It should be work in such a way that the user has fast and easy access to what may become important at any given moment in their game.
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
