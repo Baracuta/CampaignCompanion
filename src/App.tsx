@@ -9,12 +9,7 @@ function App() {
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <img className="logo" src="src/assets/Emblem 1 3.png" alt="" />
       </div>
       <h1>The Campaign Companion</h1>
       <div className="card">
