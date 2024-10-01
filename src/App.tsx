@@ -8,6 +8,7 @@ function App() {
 
   return (
     <>
+      <div className="background-image"></div>
       <div>
         <img className="logo" src="src/assets/Emblem 1 3.png" alt="" />
       </div>
