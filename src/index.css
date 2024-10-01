@@ -32,11 +32,15 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-position: center;
+  background-size: auto;
+  background-image:url(assets/Anûm_ The Continent of Isceria v1.1.png);
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 4.2em;
   line-height: 1.1;
+  text-shadow: #fc0 1px 0 10px
 }
 
 button {
