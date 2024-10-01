@@ -11,7 +11,7 @@ function App() {
       <div>
         <img className="logo" src="src/assets/Emblem 1 3.png" alt="" />
       </div>
-      <h1>The Campaign Companion</h1>
+      <h1>Campaign Companion</h1>
       <div className="card">
         <button>New Campaign</button>
         <p>
