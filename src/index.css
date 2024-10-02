@@ -33,9 +33,8 @@ body {
   height: 100vh;
   width: 100vw;
   top:0;
-  padding-top:10%;
-
-  
+  padding: 10%;
+  vertical-align: middle;
 }
 
 .background-image{
@@ -86,6 +85,7 @@ h1 {
   font-size: 4.2em;
   line-height: 1.1;
   text-shadow: #fc0 1px 0 10px, black 1px 0 10px;
+  text-align:center;
 }
 
 button {
