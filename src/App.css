@@ -13,6 +13,7 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
+  filter: drop-shadow(0 0 2em rgba(255, 255, 255, 0.486));
 }
 .logo:hover {
   filter: drop-shadow(0 0 2em rgb(255, 237, 165));
