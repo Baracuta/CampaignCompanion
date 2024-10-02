@@ -52,7 +52,6 @@ body {
     top: 0;
     left: 0;
     animation: fade 15s ease-in-out infinite alternate;
-    z-index: 1;
     filter: brightness(75%);
   }
 
@@ -87,7 +86,6 @@ h1 {
   font-size: 4.2em;
   line-height: 1.1;
   text-shadow: #fc0 1px 0 10px, black 1px 0 10px;
-  z-index: 2;
 }
 
 button {
