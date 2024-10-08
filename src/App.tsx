@@ -16,9 +16,6 @@ function App() {
         <h1>Campaign Companion</h1>
         <div className="card">
           <button>New Campaign</button>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test HMR
-          </p>
         </div>
         <p className="read-the-docs">
          More to come later
