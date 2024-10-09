@@ -1,5 +1,4 @@
 import './App.css'
-import{Link, Navigate, BrowserRouter as Router,} from "react-router-dom";
 
 
 function App() {
@@ -23,7 +22,7 @@ function App() {
         </div>
 
       </div> 
-      
+
     </>
   )
 }
