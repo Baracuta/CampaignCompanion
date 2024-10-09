@@ -1,4 +1,6 @@
 import './App.css'
+import{Link, BrowserRouter as Router,} from "react-router-dom";
+
 
 function App() {
   return (
@@ -14,9 +16,11 @@ function App() {
         <div className="card">
           <button>New Campaign</button>
         </div>
-        <p className="read-the-docs">
-         More to come later
-        </p>
+        <Router>
+          <div>
+            <Link to="/pagetest"/>
+          </div>
+        </Router>
       </div> 
     </>
   )

@@ -4,7 +4,7 @@ import './index.css'
 import{createBrowserRouter, RouterProvider, BrowserRouter} from "react-router-dom";
 
 const testRouter=createBrowserRouter([{
-  path: "/",
+  path: "/pagetest",
 }
 ])
 
