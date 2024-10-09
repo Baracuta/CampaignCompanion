@@ -1,9 +1,6 @@
-import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
       <div className="background-image">
@@ -20,8 +17,7 @@ function App() {
         <p className="read-the-docs">
          More to come later
         </p>
-      </div>
-      
+      </div> 
     </>
   )
 }
