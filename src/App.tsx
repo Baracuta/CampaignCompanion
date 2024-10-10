@@ -1,5 +1,5 @@
 import './App.css'
-
+import splashBackground from './components/SplashBackground'
 
 function App() {
   return (
