@@ -5,7 +5,7 @@ function HomeButton(){
 
     return(
         <button onClick={()=>{navigate("/");}}>
-
+            Return to Splash Screen
         </button>
     )
 }
