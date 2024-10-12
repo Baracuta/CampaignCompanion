@@ -1,6 +1,6 @@
 
 //This is the slideshow background for the main splash screen.
-function splashBackground(){
+function SplashBackground(){
     return(
         <div className="background-image">
 
@@ -12,4 +12,4 @@ function splashBackground(){
     )
 }
 
-export default splashBackground
+export default SplashBackground
