@@ -2,7 +2,7 @@ import {useNavigate } from 'react-router-dom'
 import './App.css'
 import SplashBackground from './components/SplashBackground'
 
-
+//This is the actual application itself.
 function App() {
   const navigate=useNavigate();
 

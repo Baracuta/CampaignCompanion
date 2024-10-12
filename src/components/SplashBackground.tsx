@@ -1,5 +1,5 @@
 
-
+//This is the slideshow background for the main splash screen.
 function splashBackground(){
     return(
         <div className="background-image">

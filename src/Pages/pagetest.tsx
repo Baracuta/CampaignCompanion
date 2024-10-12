@@ -1,7 +1,7 @@
 import HomeButton from "../components/HomeButton"
 
-
-function testPage(){
+//This is a page used for testing purposes.
+function TestPage(){
     return((
         <div>
 
@@ -11,4 +11,4 @@ function testPage(){
     ))
 }
 
-export default testPage
+export default TestPage
