@@ -3,6 +3,7 @@ import App from './App.tsx'
 import './index.css'
 import TestPage from './Pages/TestingPage.tsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import CampaignList from './Pages/CampaignList.tsx'
 
 
 //All of the different available routes will be here, since there won't be too too many.
@@ -10,6 +11,10 @@ const router=createBrowserRouter([
     {
         path:"/",
         element:<App/>,
+    },
+    {
+        path:"/campaign-list",
+        element:<CampaignList/>
     },
     {
         path:"/new-campaign",
