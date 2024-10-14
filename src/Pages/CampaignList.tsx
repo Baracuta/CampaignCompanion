@@ -1,9 +1,18 @@
-
+import { useNavigate } from "react-router-dom"
+import HomeButton from "../components/HomeButton"
 
 
 function CampaignList(){
+    const navigate=useNavigate();
     return(
-        <div></div>
+        <main>
+
+            <div>
+                <HomeButton/>
+                <button onClick={()=>navigate("/campaign-page")}>Campaign List</button>
+            </div>
+
+        </main>
     )
 }
 

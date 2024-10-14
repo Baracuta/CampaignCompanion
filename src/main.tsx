@@ -4,6 +4,7 @@ import './index.css'
 import TestPage from './Pages/TestingPage.tsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import CampaignList from './Pages/CampaignList.tsx'
+import CampaignPage from './Pages/CampaignPage.tsx'
 
 
 //All of the different available routes will be here, since there won't be too too many.
@@ -19,6 +20,10 @@ const router=createBrowserRouter([
     {
         path:"/new-campaign",
         element:<TestPage/>
+    },
+    {
+        path:"/campaign-page",
+        element:<CampaignPage/>
     },
 ])
 
