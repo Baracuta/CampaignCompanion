@@ -1,5 +1,5 @@
 import HomeButton from "../components/HomeButton"
-import './Campaign.module.css'
+import '../CSS Modules/Campaign.Module.css'
 
 //This is going to be the default campaign dashboard. Hard-code the details for now as you get the UI figured out.
 

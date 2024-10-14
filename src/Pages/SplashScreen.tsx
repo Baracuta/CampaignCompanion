@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import SplashBackground from "../components/SplashBackground";
-import "../App.css"
+import "../CSS Modules/App.css"
 
 
 //This is the Splash Screen when the application starts.
