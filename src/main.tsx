@@ -1,8 +1,8 @@
 import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
-import TestPage from './Pages/TestingPage.tsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import './index.css'
+import App from './App.tsx'
+import TestPage from './Pages/TestingPage.tsx'
 import CampaignList from './Pages/CampaignList.tsx'
 import CampaignPage from './Pages/CampaignPage.tsx'
 
@@ -14,12 +14,12 @@ const router=createBrowserRouter([
         element:<App/>,
     },
     {
-        path:"/campaign-list",
-        element:<CampaignList/>
-    },
-    {
         path:"/new-campaign",
         element:<TestPage/>
+    },
+    {
+        path:"/campaign-list",
+        element:<CampaignList/>
     },
     {
         path:"/campaign-page",
