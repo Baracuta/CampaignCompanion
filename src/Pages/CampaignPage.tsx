@@ -6,7 +6,7 @@ import '../CSS Modules/Campaign.Module.css'
 function CampaignPage(){
     return(
         <main>
-            <div className="Topbar">Top Bar</div>
+            <div className="topbar">Top Bar</div>
             <div className="ContentBulk">
                 <div id="Sidebar">SideBar</div>
                 <div id="CardPanel">CardPanel
