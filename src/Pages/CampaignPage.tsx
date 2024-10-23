@@ -13,7 +13,7 @@ function CampaignPage(){
             <div className="RecentlyEditted">RecentlyEditted</div>
             <div className="ContentBulk">
                 <div id="Sidebar">SideBar</div>
-                <div id="CardPanel">CardPanel
+                <div id="CardPanel">
                     <div className="Card" id="Card1">Card</div>
                     <div className="Card" id="Card2">Card</div>
                     <div className="Card" id ="Card3">Card</div>

@@ -9,6 +9,7 @@ main{
     .topbar{
         background-color: red;
         display: flex;
+        justify-content: space-between;
         padding-left: 50px;
         width: 95vw;
         margin-top: 2vh;
@@ -44,9 +45,19 @@ main{
 
         #CardPanel{
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            justify-content: space-around;
             background-color: black;
-            width:5vw;
+            max-width: 90%;
+            width:90%;
+
+            .Card{
+                border: solid red;
+                background-color: blue;
+                max-width:50%;
+                width: 20vw;
+                
+            }
         }
 
         .Calendar{
