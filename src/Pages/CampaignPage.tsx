@@ -10,11 +10,11 @@ function CampaignPage(){
             <div className="ContentBulk">
                 <div id="Sidebar">SideBar</div>
                 <div id="CardPanel">CardPanel
-                    <div className="Card">Card</div>
-                    <div className="Card">Card</div>
-                    <div className="Card">Card</div>
+                    <div className="Card" id="Card1">Card</div>
+                    <div className="Card" id="Card2">Card</div>
+                    <div className="Card" id ="Card3">Card</div>
                 </div>
-                <div id="Calendar">Calendar</div>
+                <div className="Calendar">Calendar</div>
             </div>
             <div className="Bottombar">Bottombar</div>
             <HomeButton/>
