@@ -6,7 +6,11 @@ import '../CSS Modules/Campaign.Module.css'
 function CampaignPage(){
     return(
         <main>
-            <div className="topbar">Top Bar</div>
+
+            <div className="topbar">Top Bar
+                <HomeButton/>
+            </div>
+            <div className="RecentlyEditted">RecentlyEditted</div>
             <div className="ContentBulk">
                 <div id="Sidebar">SideBar</div>
                 <div id="CardPanel">CardPanel
@@ -17,7 +21,7 @@ function CampaignPage(){
                 <div className="Calendar">Calendar</div>
             </div>
             <div className="Bottombar">Bottombar</div>
-            <HomeButton/>
+
         </main>
 
 
