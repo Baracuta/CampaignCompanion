@@ -35,12 +35,14 @@ main{
         max-width: 95vw;
         margin-left: 50px;
         margin-right: 50px;
+        border-radius: 10px;
 
         #Sidebar{
             background-color: brown;
             display: flex;
             flex-direction: column;
             width: 5vw;
+            border-radius: 10px;
         }
 
         #CardPanel{
@@ -63,6 +65,7 @@ main{
         .Calendar{
             background-color: green;
             width: 5vw;
+            border-radius: 10px;
         }
     }
 
