@@ -18,7 +18,7 @@ function SplashScreen() {
           <h1>Campaign Companion</h1>
           <div className="card">
             
-            <button onClick={()=>{navigate("/new-campaign")}}>
+            <button onClick={()=>{navigate("/campaign-list")}}>
               New Campaign
               </button>
           </div>

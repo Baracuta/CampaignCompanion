@@ -9,9 +9,9 @@ function CampaignList(){
 
             <div>
                 <HomeButton/>
-                <button onClick={()=>navigate("/campaign/:id")}>Campaign List</button>
+                <button onClick={()=>navigate("/campaign/:id")}>Campaign Page</button>
             </div>
-
+            <div>This will be where the campaign creation form goes</div>
         </main>
     )
 }
