@@ -22,7 +22,7 @@ const router=createBrowserRouter([
         element:<CampaignList/>
     },
     {
-        path:"/campaign-page",
+        path:"/campaign/:id",
         element:<CampaignPage/>
     },
 ])

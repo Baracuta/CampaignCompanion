@@ -9,7 +9,7 @@ function CampaignList(){
 
             <div>
                 <HomeButton/>
-                <button onClick={()=>navigate("/campaign-page")}>Campaign List</button>
+                <button onClick={()=>navigate("/campaign/:id")}>Campaign List</button>
             </div>
 
         </main>
