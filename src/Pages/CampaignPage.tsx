@@ -1,4 +1,4 @@
-import HomeButton from "../components/HomeButton"
+import NavButton from "../components/NavButton"
 import '../CSS Modules/Campaign.Module.css'
 
 //This is going to be the default campaign dashboard. Hard-code the details for now as you get the UI figured out.
@@ -8,7 +8,7 @@ function CampaignPage(){
         <main>
 
             <div className="topbar">Top Bar
-                <HomeButton/>
+                <NavButton text="Return Home" destination="/"/>
             </div>
             <div className="RecentlyEditted">RecentlyEditted</div>
             <div className="ContentBulk">

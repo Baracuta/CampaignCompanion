@@ -1,15 +1,14 @@
-import { useNavigate } from "react-router-dom"
-import HomeButton from "../components/HomeButton"
+import NavButton from "../components/NavButton"
 
 //This is a page used for testing purposes.
 function TestPage(){
-    const navigate=useNavigate();
+
     return((
         <div>
 
             <h1>Testing!</h1>
-            <HomeButton/>
-            <button onClick={()=>navigate("/campaign-list")}>Campaign List</button>
+            <NavButton text="Go Home" destination="/"/>
+            <NavButton text="Campaign List" destination="/campaign-list"/>
         </div>
     ))
 }

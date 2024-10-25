@@ -1,11 +1,10 @@
-import { useNavigate } from "react-router-dom";
 import SplashBackground from "../components/SplashBackground";
 import "../CSS Modules/App.css"
+import NavButton from "../components/NavButton";
 
 
 //This is the Splash Screen when the application starts.
 function SplashScreen() {
-    const navigate=useNavigate();
   
     return (
       <>
@@ -18,9 +17,7 @@ function SplashScreen() {
           <h1>Campaign Companion</h1>
           <div className="card">
             
-            <button onClick={()=>{navigate("/campaign-list")}}>
-              New Campaign
-              </button>
+            <NavButton text="Create Campaign" destination="/campaign-list"/>
           </div>
   
         </div> 

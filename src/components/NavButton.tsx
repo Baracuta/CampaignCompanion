@@ -1,19 +1,19 @@
 import { useNavigate } from "react-router-dom";
 
-type NavigateButtonProps={
+type NavButtonProps={
     text:string;
     destination:string;
 }
 
 //A simple button to return the used to the splash screen. May have different functionality in the future.
-function NavigateButton(props:NavigateButtonProps){
+function NavButton(props:NavButtonProps){
     const navigate=useNavigate();
 
     return(
         <button onClick={()=>{navigate(props.destination);}}>
-            (props.text)
+            {props.text}
         </button>
     )
 }
 
-export default NavigateButton
+export default NavButton
