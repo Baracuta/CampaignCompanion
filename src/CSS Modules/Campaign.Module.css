@@ -1,76 +1,75 @@
 main{
-    background-color: gray;
+    background-color: grey;
     height: 100vh;
     width:100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
 
-    .topbar{
-        background-color: red;
+.topbar{
+    background-color: red;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 50px;
+    width: 95vw;
+    margin-top: 2vh;
+    margin-bottom: 10vh;
+}
+
+.RecentlyEditted{
+    background-color: rgb(87, 1, 95);
+    width:95vw;
+    height:25vh;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+.ContentBulk{
+    display: flex;
+    flex-direction: row;
+    flex: auto;
+    justify-content: space-between;
+    background-color: darkgoldenrod;
+    height: 100%;
+    width: 100%;
+    max-width: 95vw;
+    margin-left: 50px;
+    margin-right: 50px;
+    border-radius: 10px;
+
+    #Sidebar{
+        background-color: brown;
         display: flex;
-        justify-content: space-between;
-        padding-left: 50px;
-        width: 95vw;
-        margin-top: 2vh;
-        margin-bottom: 10vh;
+        flex-direction: column;
+        width: 5vw;
+        border-radius: 10px;
     }
 
-    .RecentlyEditted{
-        background-color: rgb(87, 1, 95);
-        width:95vw;
-        height:25vh;
-        margin-top: 2vh;
-        margin-bottom: 2vh;
-    }
-
-    .ContentBulk{
+    #CardPanel{
         display: flex;
         flex-direction: row;
-        flex: auto;
-        justify-content: space-between;
-        background-color: darkgoldenrod;
-        height: 100%;
-        width: 100%;
-        max-width: 95vw;
-        margin-left: 50px;
-        margin-right: 50px;
-        border-radius: 10px;
-
-        #Sidebar{
-            background-color: brown;
-            display: flex;
-            flex-direction: column;
-            width: 5vw;
-            border-radius: 10px;
-        }
-
-        #CardPanel{
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            background-color: black;
-            max-width: 90%;
-            width:90%;
-
-            .Card{
-                border: solid red;
-                background-color: blue;
-                max-width:50%;
-                width: 20vw;
-                
-            }
-        }
-
-        .Calendar{
-            background-color: green;
-            width: 5vw;
-            border-radius: 10px;
-        }
-    }
-
-    .bottombar{
+        justify-content: space-around;
         background-color: black;
+        max-width: 90%;
+        width:90%;
+
+        .Card{
+            border: solid red;
+            background-color: blue;
+            max-width:50%;
+            width: 20vw;
+            
+        }
     }
 
+    .Calendar{
+        background-color: green;
+        width: 5vw;
+        border-radius: 10px;
+    }
+}
+
+.bottombar{
+    background-color: black;
 }
