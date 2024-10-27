@@ -1,5 +1,5 @@
 import SplashBackground from "../components/SplashBackground";
-import "../CSS Modules/App.css"
+import "../css_modules/app.css"
 import NavButton from "../components/NavButton";
 
 
