@@ -7,7 +7,7 @@ main{
     align-items: center;
 }
 
-.topbar{
+.top-bar{
     background-color: red;
     display: flex;
     justify-content: space-between;
@@ -17,7 +17,7 @@ main{
     margin-bottom: 10vh;
 }
 
-.RecentlyEditted{
+.recently-editted{
     background-color: rgb(87, 1, 95);
     width:95vw;
     height:25vh;
@@ -25,7 +25,7 @@ main{
     margin-bottom: 2vh;
 }
 
-.ContentBulk{
+.content-bulk{
     display: flex;
     flex-direction: row;
     flex: auto;
@@ -38,7 +38,7 @@ main{
     margin-right: 50px;
     border-radius: 10px;
 
-    #Sidebar{
+    #side-bar{
         background-color: brown;
         display: flex;
         flex-direction: column;
@@ -46,7 +46,7 @@ main{
         border-radius: 10px;
     }
 
-    #CardPanel{
+    #card-panel{
         display: flex;
         flex-direction: row;
         justify-content: space-around;
@@ -54,7 +54,7 @@ main{
         max-width: 90%;
         width:90%;
 
-        .Card{
+        .card{
             border: solid red;
             background-color: blue;
             max-width:50%;
@@ -63,13 +63,13 @@ main{
         }
     }
 
-    .Calendar{
+    .calendar{
         background-color: green;
         width: 5vw;
         border-radius: 10px;
     }
 }
 
-.bottombar{
+.bottom-bar{
     background-color: black;
 }
