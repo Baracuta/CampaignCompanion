@@ -7,20 +7,20 @@ function CampaignPage(){
     return(
         <main>
 
-            <div className={styles.top-bar}>Top Bar
+            <div className={styles.top_bar}>Top Bar
                 <NavButton text="Return Home" destination="/"/>
             </div>
-            <div className="recently-editted">Recently Editted</div>
-            <div className="content-bulk">
-                <div id="side-bar">SideBar</div>
-                <div id="card-panel">
+            <div className={styles.recently_editted}>Recently Editted</div>
+            <div className={styles.content_bulk}>
+                <div className={styles.side_bar}>SideBar</div>
+                <div className={styles.card_panel}>
                     <div className="card" id="card1">Card</div>
                     <div className="card" id="card2">Card</div>
                     <div className="card" id="card3">Card</div>
                 </div>
                 <div className="calendar">Calendar</div>
             </div>
-            <div className="bottom-bar">Bottombar</div>
+            <div className={styles.bottom_bar}>Bottombar</div>
 
         </main>
 

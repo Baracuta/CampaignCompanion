@@ -7,7 +7,7 @@ main{
     align-items: center;
 
 
-    .top-bar{
+    .top_bar{
         background-color: red;
         display: flex;
         justify-content: space-between;
@@ -17,7 +17,7 @@ main{
         margin-bottom: 10vh;
     }
 
-    .recently-editted{
+    .recently_editted{
         background-color: rgb(87, 1, 95);
         width:95vw;
         height:25vh;
@@ -25,7 +25,7 @@ main{
         margin-bottom: 2vh;
     }
 
-    .content-bulk{
+    .content_bulk{
         display: flex;
         flex-direction: row;
         flex: auto;
@@ -38,7 +38,7 @@ main{
         margin-right: 50px;
         border-radius: 10px;
 
-        #side-bar{
+        .side_bar{
             background-color: brown;
             display: flex;
             flex-direction: column;
@@ -46,7 +46,7 @@ main{
             border-radius: 10px;
         }
 
-        #card-panel{
+        .card_panel{
             display: flex;
             flex-direction: row;
             justify-content: space-around;
@@ -70,7 +70,7 @@ main{
         }
     }
 
-    .bottom-bar{
+    .bottom_bar{
         background-color: black;
     }
 }
