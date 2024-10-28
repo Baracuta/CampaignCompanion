@@ -12,17 +12,17 @@ main{
         display: flex;
         justify-content: space-between;
         padding-left: 50px;
-        width: 95vw;
-        margin-top: 2vh;
-        margin-bottom: 10vh;
+        width: 95%;
+        margin-top: 20px;
+        margin-bottom: 10%;
     }
 
     .recently_editted{
         background-color: rgb(87, 1, 95);
-        width:95vw;
-        height:25vh;
-        margin-top: 2vh;
-        margin-bottom: 2vh;
+        width:95%;
+        height:25%;
+        margin-top: 2%;
+        margin-bottom: 2%;
     }
 
     .content_bulk{
@@ -33,7 +33,7 @@ main{
         background-color: darkgoldenrod;
         height: 100%;
         width: 100%;
-        max-width: 95vw;
+        max-width: 95%;
         margin-left: 50px;
         margin-right: 50px;
         border-radius: 10px;
@@ -42,7 +42,7 @@ main{
             background-color: brown;
             display: flex;
             flex-direction: column;
-            width: 5vw;
+            width: 5%;
             border-radius: 10px;
         }
 
@@ -58,19 +58,21 @@ main{
                 border: solid red;
                 background-color: blue;
                 max-width:50%;
-                width: 20vw;
+                width: 20%;
                 
             }
         }
 
         .calendar{
             background-color: green;
-            width: 5vw;
+            width: 5%;
             border-radius: 10px;
         }
     }
 
     .bottom_bar{
         background-color: black;
+        margin-bottom:20px;
+        margin-top:20px;
     }
 }
