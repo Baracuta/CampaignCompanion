@@ -10,7 +10,8 @@ function CampaignForm(){
                 <NavButton text="Home" destination="/"/>
                 <NavButton text="Campaign Page" destination="/campaign/:id"/>
             </div>
-            <div>This will be where the campaign creation form goes</div>
+
+
         </main>
     )
 }

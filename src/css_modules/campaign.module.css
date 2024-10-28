@@ -35,6 +35,7 @@ main{
         display: flex;
         flex-direction: row;
         flex: auto;
+        flex-wrap: wrap;
         justify-content: space-between;
         background-color: darkgoldenrod;
         height: 100%;
@@ -48,7 +49,9 @@ main{
             background-color: brown;
             display: flex;
             flex-direction: column;
+            min-width: fit-content;
             width: 5%;
+            max-width: none;
             border-radius: 10px;
         }
 
@@ -57,21 +60,25 @@ main{
             flex-direction: row;
             justify-content: space-around;
             background-color: black;
-            max-width: 90%;
+            min-width: fit-content;
             width:90%;
+            max-width: 90%;
 
             .card{
                 border: solid red;
                 background-color: blue;
-                max-width:50%;
+                min-width:10%;
                 width: 20%;
+                max-width:50%;
                 
             }
         }
 
         .calendar{
             background-color: green;
+            min-width: fit-content;
             width: 5%;
+            max-width: none;
             border-radius: 10px;
         }
     }
