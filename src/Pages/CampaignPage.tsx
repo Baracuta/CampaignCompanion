@@ -8,7 +8,7 @@ function CampaignPage(){
         <main>
 
             <div className={styles.top_bar}>Top Bar
-                <NavButton text="Go Back" destination="/campaign-list"/>
+                <NavButton text="Go Back" destination="/campaign-form"/>
             </div>
             <div className={styles.recently_editted}>Recently Editted</div>
             <div className={styles.content_bulk}>

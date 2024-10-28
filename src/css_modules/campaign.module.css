@@ -21,8 +21,12 @@ main{
 
     .recently_editted{
         background-color: rgb(87, 1, 95);
+        min-width: fit-content;
         width:95%;
+        max-width: auto;
+        min-height: fit-content;
         height:25%;
+        max-height: auto;
         margin-top: 2%;
         margin-bottom: 2%;
     }
@@ -36,8 +40,8 @@ main{
         height: 100%;
         width: 100%;
         max-width: 95%;
-        margin-left: 50px;
-        margin-right: 50px;
+        margin-left: 100px;
+        margin-right: 100px;
         border-radius: 10px;
 
         .side_bar{

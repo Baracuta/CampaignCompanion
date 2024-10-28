@@ -1,7 +1,7 @@
 import NavButton from "../components/NavButton"
 
-//This page will list out all of the user's created campaigns
-function CampaignList(){
+//This page is for the campaign creation form
+function CampaignForm(){
 
     return(
         <main>
@@ -15,4 +15,4 @@ function CampaignList(){
     )
 }
 
-export default CampaignList
+export default CampaignForm

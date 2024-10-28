@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './css_modules/index.css'
 import App from './App.tsx'
 import TestPage from './Pages/TestingPage.tsx'
-import CampaignList from './Pages/CampaignList.tsx'
+import CampaignForm from './Pages/CampaignForm.tsx'
 import CampaignPage from './Pages/CampaignPage.tsx'
 
 
@@ -18,8 +18,8 @@ const router=createBrowserRouter([
         element:<TestPage/>
     },
     {
-        path:"/campaign-list",
-        element:<CampaignList/>
+        path:"/campaign-form",
+        element:<CampaignForm/>
     },
     {
         path:"/campaign/:id",
