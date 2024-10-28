@@ -12,9 +12,11 @@ main{
         display: flex;
         justify-content: space-between;
         padding-left: 50px;
+        min-width: 80%;
         width: 95%;
+        max-width: 95%;
         margin-top: 20px;
-        margin-bottom: 10%;
+        margin-bottom: 20px;
     }
 
     .recently_editted{
