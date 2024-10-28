@@ -14,9 +14,9 @@ function CampaignPage(){
             <div className={styles.content_bulk}>
                 <div className={styles.side_bar}>SideBar</div>
                 <div className={styles.card_panel}>
-                    <div className={styles.card} id="card1">Non-Player Characters</div>
-                    <div className={styles.card} id="card2">Locations</div>
-                    <div className={styles.card} id="card3">Items</div>
+                    <div className={styles.card}>Non-Player Characters</div>
+                    <div className={styles.card}>Locations</div>
+                    <div className={styles.card}>Items</div>
                 </div>
                 <div className={styles.calendar}>Calendar</div>
             </div>
