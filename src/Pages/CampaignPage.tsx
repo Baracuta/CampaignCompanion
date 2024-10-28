@@ -14,11 +14,11 @@ function CampaignPage(){
             <div className={styles.content_bulk}>
                 <div className={styles.side_bar}>SideBar</div>
                 <div className={styles.card_panel}>
-                    <div className="card" id="card1">Card</div>
-                    <div className="card" id="card2">Card</div>
-                    <div className="card" id="card3">Card</div>
+                    <div className={styles.card} id="card1">Card</div>
+                    <div className={styles.card} id="card2">Card</div>
+                    <div className={styles.card} id="card3">Card</div>
                 </div>
-                <div className="calendar">Calendar</div>
+                <div className={styles.calendar}>Calendar</div>
             </div>
             <div className={styles.bottom_bar}>Bottombar</div>
 
