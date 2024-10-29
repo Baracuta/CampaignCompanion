@@ -5,7 +5,7 @@ import styles from '../css_modules/campaign.module.css'
 
 function CampaignPage(){
     return(
-        <main>
+        <main className={styles.main}>
 
             <div className={styles.top_bar}>Top Bar
                 <NavButton text="Go Back" destination="/campaign-form"/>
