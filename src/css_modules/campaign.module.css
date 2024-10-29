@@ -17,6 +17,10 @@ main{
         max-width: 95%;
         margin-top: 20px;
         margin-bottom: 20px;
+
+        img{
+            size: fit-content;
+        }
     }
 
     .recently_editted{

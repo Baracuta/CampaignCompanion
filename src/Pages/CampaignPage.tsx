@@ -24,7 +24,7 @@ function CampaignPage(){
         <main className={styles.main}>
 
             <div className={styles.top_bar}>
-                <img src="src/assets/dice-twenty-faces-twenty.png" alt="" />
+                <img src="src/assets/dice-twenty-faces-twenty.png"/>
                 <h1>{campaign.name}</h1>
                 <NavButton text="Go Back" destination="/campaign-form"/>
             </div>
