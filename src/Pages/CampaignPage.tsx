@@ -11,7 +11,7 @@ function CampaignPage(){
     const id=params.id;
 
     const campaign: Campaign={
-        id:"1234",
+        id:1234,
         name:"Ben's test campaign",
         game: "D&D"
     }
@@ -23,7 +23,9 @@ function CampaignPage(){
     return(
         <main className={styles.main}>
 
-            <div className={styles.top_bar}>Top Bar
+            <div className={styles.top_bar}>
+                <img src="src/assets/dice-twenty-faces-twenty.png" alt="" />
+                <h1>{campaign.name}</h1>
                 <NavButton text="Go Back" destination="/campaign-form"/>
             </div>
             <div className={styles.recently_editted}>Recently Editted</div>
