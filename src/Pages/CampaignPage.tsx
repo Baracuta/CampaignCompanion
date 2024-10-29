@@ -1,9 +1,25 @@
 import NavButton from "../components/NavButton"
 import styles from '../css_modules/campaign.module.css'
+import { useParams } from "react-router-dom";
+import { Campaign } from "../components/Campaign";
 
 //This is going to be the default campaign dashboard. Hard-code the details for now as you get the UI figured out.
 
 function CampaignPage(){
+    const params=useParams();
+
+    const id=params.id;
+
+    const campaign: Campaign={
+        id:"1234",
+        name:"Ben's test campaign",
+        game: "D&D"
+    }
+
+
+
+
+
     return(
         <main className={styles.main}>
 
