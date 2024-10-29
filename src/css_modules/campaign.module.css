@@ -19,7 +19,8 @@ main{
         margin-bottom: 20px;
 
         img{
-            size: fit-content;
+            height: 100px;
+            width: 100px;
         }
     }
 

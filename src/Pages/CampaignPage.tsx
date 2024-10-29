@@ -24,9 +24,11 @@ function CampaignPage(){
         <main className={styles.main}>
 
             <div className={styles.top_bar}>
-                <img src="src/assets/dice-twenty-faces-twenty.png"/>
+
+                <img src="src\assets\Emblem 1 3.png"/>
                 <h1>{campaign.name}</h1>
                 <NavButton text="Go Back" destination="/campaign-form"/>
+
             </div>
             <div className={styles.recently_editted}>Recently Editted</div>
             <div className={styles.content_bulk}>
