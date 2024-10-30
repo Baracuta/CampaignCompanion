@@ -9,7 +9,6 @@ function CampaignForm(){
 
             <div>
                 <NavButton text="Home" destination="/"/>
-                <NavButton text="Campaign Page" destination="/campaign/:id"/>
             </div>
 
             <div className={styles.form_body}>
@@ -25,6 +24,8 @@ function CampaignForm(){
                     <p>Please write a short description</p>
                     <input type="text" />
                 </div>
+                <NavButton text="Campaign Page" destination="/campaign/:id"/>
+
             </div>
 
 
