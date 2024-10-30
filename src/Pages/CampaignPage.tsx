@@ -11,7 +11,7 @@ function CampaignPage(){
     const id=params.id;
 
     const campaign: Campaign={
-        id:1234,
+        id:"1234",
         name:"Ben's test campaign",
         game: "D&D"
     }

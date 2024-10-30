@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 
 export type Campaign={
-    id:number;
+    id:string;
     name:string;
     game?:string;
     players?:number;

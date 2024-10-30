@@ -1,8 +1,11 @@
 import NavButton from "../components/NavButton"
 import styles from "../css_modules/form.module.css"
+import { useState } from "react";
+import { Campaign } from "../types/Campaign"
 
 //This page is for the campaign creation form
 function CampaignForm(){
+    const [campaign, setCampaign]=useState<Partial<Campaign>>({});
 
     return(
         <main>
@@ -15,7 +18,13 @@ function CampaignForm(){
 
                 <div id={styles.section1}>
                     <p>What game system does this campaign use?</p>
-                    <input type="text" />
+                    <input
+                    type="text"
+                    value={campaign.name ??""}
+                    onChange={(e)=>{
+                        const name=e.target.value;
+                        setCampaign({...campaign,name});
+                    }} />
                 </div>
 
                 <div id={styles.section2}>
@@ -28,7 +37,7 @@ function CampaignForm(){
                     <input/>
                 </div>
 
-                <button onClick={console.log}>Create Campaign</button>
+                <button onClick={console.log(campaign.name)}>Create Campaign</button>
 
                 <NavButton text="Campaign Page" destination="/campaign/:id"/>
 
