@@ -1,4 +1,4 @@
-import SplashScreen from './Pages/SplashScreen'
+import SplashScreen from './pages/SplashScreen'
 
 //This is the actual application itself.
 function App() {
