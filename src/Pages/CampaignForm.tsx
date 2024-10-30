@@ -1,7 +1,7 @@
-import NavButton from "../components/NavButton"
-import styles from "../css_modules/form.module.css"
+import NavButton from "../components/NavButton";
+import styles from "../css_modules/form.module.css";
 import { useState } from "react";
-import { Campaign } from "../types/Campaign"
+import { Campaign } from "../types/Campaign";
 
 //This page is for the campaign creation form
 function CampaignForm(){
