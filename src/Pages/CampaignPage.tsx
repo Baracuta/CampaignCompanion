@@ -1,7 +1,7 @@
 import NavButton from "../components/NavButton"
 import styles from '../css_modules/campaign.module.css'
 import { useParams } from "react-router-dom";
-import { Campaign } from "../components/Campaign";
+import { Campaign } from "../types/Campaign";
 
 //This is going to be the default campaign dashboard. Hard-code the details for now as you get the UI figured out.
 

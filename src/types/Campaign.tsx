@@ -4,6 +4,7 @@ export type Campaign={
     id:number;
     name:string;
     game?:string;
+    players?:number;
 }
 
 

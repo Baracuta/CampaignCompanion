@@ -24,12 +24,14 @@
 
     #section1{
         input{
-            
+            width: 90%;
         }
     }
 
     #section2{
+        
         input{
+            width: 90%;
 
         }
     }
@@ -38,6 +40,8 @@
     #section3{
         input{
             background-color: blue;
+            width: 90%;
+            text-align:t;
         }
     }
 }

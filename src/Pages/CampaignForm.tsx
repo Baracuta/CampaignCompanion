@@ -24,9 +24,12 @@ function CampaignForm(){
                 </div>
 
                 <div id={styles.section3}>
-                    <p>Please write a short description</p>
-                    <input type="text" />
+                    <p>How many players are in this campaign?</p>
+                    <input/>
                 </div>
+
+                <button>Create Campaign</button>
+
                 <NavButton text="Campaign Page" destination="/campaign/:id"/>
 
             </div>
