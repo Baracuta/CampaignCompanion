@@ -37,7 +37,7 @@ function CampaignForm(){
                     <input/>
                 </div>
 
-                <button onClick={console.log(campaign.name)}>Create Campaign</button>
+                <button onClick={console.log}>Create Campaign</button>
 
                 <NavButton text="Campaign Page" destination="/campaign/:id"/>
 
