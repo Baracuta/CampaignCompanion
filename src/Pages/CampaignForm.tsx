@@ -7,6 +7,19 @@ import { Campaign } from "../types/Campaign";
 function CampaignForm(){
     const [campaign, setCampaign]=useState<Partial<Campaign>>({});
 
+    const [id, setId]=useState("0");
+    const [name, setName]=useState("Test Campaign");
+    const [game, setGame]=useState("Pathfinder");
+    const [players, setPlayers]=useState("0")
+
+    const campaignTest: Campaign={
+        id:(id),
+        name:(name),
+        game:(game)
+    }
+    
+
+
     return(
         <main>
 
@@ -18,23 +31,31 @@ function CampaignForm(){
 
                 <div id={styles.section1}>
                     <p>What game system does this campaign use?</p>
+
                     <input
                     type="text"
-                    value={campaign.name ??""}
-                    onChange={(e)=>{
-                        const name=e.target.value;
-                        setCampaign({...campaign,name});
-                    }} />
+                    value={game}
+                    onChange={e => setGame(e.target.value)}
+                    />
+
                 </div>
 
                 <div id={styles.section2}>
                     <p>What would you like to name this campaign?</p>
-                    <input type="text" />
+                    <input
+                    type="text"
+                    value={name}
+                    onChange={e => setName(e.target.value)}
+                    />
+                    <p>{name}</p>
                 </div>
 
                 <div id={styles.section3}>
                     <p>How many players are in this campaign?</p>
-                    <input/>
+                    <input
+                    type="text"
+                    value={players}
+                    onChange={e => setPlayers(e.target.value)}/>
                 </div>
 
                 <button onClick={console.log}>Create Campaign</button>
