@@ -10,7 +10,7 @@ function CampaignForm(){
     const [id, setId]=useState("0");
     const [name, setName]=useState("Test Campaign");
     const [game, setGame]=useState("Pathfinder");
-    const [players, setPlayers]=useState("0")
+    const [players, setPlayers]=useState("0");
 
     const campaignTest: Campaign={
         id:(id),
