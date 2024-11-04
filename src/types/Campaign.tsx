@@ -1,4 +1,3 @@
-import { useParams } from "react-router-dom";
 
 export type Campaign={
     id:string;
