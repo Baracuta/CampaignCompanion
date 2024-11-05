@@ -14,6 +14,8 @@ function CampaignForm(){
 
             <div>
                 <NavButton text="Home" destination="/"/>
+                <NavButton text="Campaign Page" destination="/campaign/:id"/>
+
             </div>
 
             <div className={styles.form_body}>
@@ -66,8 +68,6 @@ function CampaignForm(){
                 </div>
 
                 <button onClick={console.log}>Create Campaign</button>
-
-                <NavButton text="Campaign Page" destination="/campaign/:id"/>
 
             </div>
 
