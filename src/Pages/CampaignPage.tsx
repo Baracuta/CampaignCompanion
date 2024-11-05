@@ -9,13 +9,6 @@ import CampaignForm from "./CampaignForm";
 function CampaignPage(){
 
 
-    const campaign: Campaign={
-        id:"1234",
-        name:"Ben's test campaign",
-        game: "D&D"
-    }
-
-
 
 
 
