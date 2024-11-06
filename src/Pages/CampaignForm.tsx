@@ -6,7 +6,7 @@ import { Campaign } from "../types/Campaign";
 //This page is for the campaign creation form
 function CampaignForm(){
     const [campaign, setCampaign]=useState<Partial<Campaign>>({});
-    
+
 
 
     return(

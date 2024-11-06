@@ -1,6 +1,7 @@
 import NavButton from "../components/NavButton"
 import styles from '../css_modules/campaign.module.css'
 import Card from "../components/Card"
+import CampaignForm from "./CampaignForm"
 
 
 //This is going to be the default campaign dashboard. Hard-code the details for now as you get the UI figured out.
@@ -15,7 +16,7 @@ function CampaignPage(){
 
                 <img src="src\assets\Emblem 1 3.png"/>
 
-                <h1>Ben's Campaign</h1>
+                <h1></h1>
 
                 <NavButton text="Go Back" destination="/campaign-form"/>
 
