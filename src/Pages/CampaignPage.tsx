@@ -7,9 +7,6 @@ import styles from '../css_modules/campaign.module.css'
 function CampaignPage(){
 
 
-
-
-
     return(
         <main className={styles.main}>
 
