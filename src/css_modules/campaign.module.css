@@ -5,13 +5,14 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-left: 20px;
+    padding-right:20px;
 
 
     .top_bar{
         background-color: red;
         display: flex;
         justify-content: space-between;
-        padding-left: 50px;
         min-width: 80%;
         width: 95%;
         max-width: 95%;
@@ -19,12 +20,12 @@ main{
         margin-bottom: 20px;
 
         img{
-            height: 100px;
-            width: 100px;
+            height: 200px;
+            width: 200px;
         }
     }
 
-    .recently_editted{
+    .tool_bar{
         background-color: rgb(87, 1, 95);
         min-width: fit-content;
         width:95%;
@@ -36,56 +37,24 @@ main{
         margin-bottom: 2%;
     }
 
-    .content_bulk{
+    .card_panel{
         display: flex;
         flex-direction: row;
-        flex: auto;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        background-color: darkgoldenrod;
-        height: 100%;
-        width: 100%;
+        justify-content: space-around;
+        background-color: black;
+        min-width: fit-content;
+        width:95%;
         max-width: 95%;
-        margin-left: 100px;
-        margin-right: 100px;
-        border-radius: 10px;
+        height: 500px;
 
-        .side_bar{
-            background-color: brown;
-            display: flex;
-            flex-direction: column;
-            min-width: fit-content;
-            width: 5%;
-            max-width: none;
-            border-radius: 10px;
+        .card{
+            border: solid red;
+            min-width:10%;
+            width: 20%;
+            max-width:50%;
+                    
         }
 
-        .card_panel{
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            background-color: black;
-            min-width: fit-content;
-            width:90%;
-            max-width: 90%;
-
-            .card{
-                border: solid red;
-                background-color: blue;
-                min-width:10%;
-                width: 20%;
-                max-width:50%;
-                
-            }
-        }
-
-        .calendar{
-            background-color: green;
-            min-width: fit-content;
-            width: 5%;
-            max-width: none;
-            border-radius: 10px;
-        }
     }
 
     .bottom_bar{
