@@ -11,7 +11,7 @@ function Card(props:CardProps){
     return(
 
         <div className={props.className}>
-            <img src={props.background}/>
+            <img src={props.background} alt=""/>
             {props.name}
         </div>
 

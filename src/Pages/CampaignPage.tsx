@@ -1,7 +1,6 @@
 import NavButton from "../components/NavButton"
 import styles from '../css_modules/campaign.module.css'
 import Card from "../components/Card"
-import CampaignForm from "./CampaignForm"
 
 
 //This is going to be the default campaign dashboard. Hard-code the details for now as you get the UI figured out.
@@ -22,7 +21,7 @@ function CampaignPage(){
 
             </div>
 
-            <div className={styles.tool_bar}>Recently Editted</div>
+            <div className={styles.tool_bar}>Tool Bar</div>
 
             <div className={styles.card_panel}>
 
@@ -30,7 +29,7 @@ function CampaignPage(){
 
                 <Card className={styles.card} name="another one"/>
                 
-                <Card className={styles.card} name="hello ery noice" background={"src/assets/0x8vuwfue9391.webp"}/>
+                <Card className={styles.card} name="hello ery noice" background={"src/assets/Tavern.jpg"}/>
                 
             </div>
             

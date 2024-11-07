@@ -1,5 +1,6 @@
 body{
     background-color: blue;
+    min-width: 360px;
 }
 
 main{
@@ -56,6 +57,7 @@ main{
             min-width:10%;
             width: 20%;
             max-width:50%;
+            background-image:url(this.background);
 
         }
 
