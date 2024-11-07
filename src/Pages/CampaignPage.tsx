@@ -16,7 +16,7 @@ function CampaignPage(){
 
                 <img src="src\assets\Emblem 1 3.png"/>
 
-                <h1></h1>
+                <h2>Name goes here</h2>
 
                 <NavButton text="Go Back" destination="/campaign-form"/>
 
