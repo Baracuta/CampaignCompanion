@@ -1,12 +1,8 @@
-body{
-    background-color: blue;
-    min-width: 360px;
-}
-
 main{
     background-color: gray;
     height: 100vh;
-    width: 90vw;
+    min-width: 360px;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -57,7 +53,7 @@ main{
             min-width:10%;
             width: 20%;
             max-width:50%;
-            background-image:url(this.background);
+            background-color: brown;
 
         }
 
