@@ -57,10 +57,10 @@ function CampaignForm(){
                     <p>How many players are in this campaign?</p>
 
                     <input
-                    type="text"
+                    type="number"
                     value={campaign.players}
                     onChange={e => {
-                        const players=e.target.value;
+                        const players=Number(e.target.value);
                         setCampaign({...campaign, players});
                     }}
                     />

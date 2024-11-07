@@ -13,7 +13,7 @@ function CampaignPage(){
 
             <div className={styles.top_bar}>
 
-                <img src="src\assets\Emblem 1 3.png"/>
+                <img src="/src\assets\Emblem 1 3.png"/>
 
                 <h2>Name goes here</h2>
 
