@@ -49,7 +49,7 @@ main{
         height: 500px;
 
         .card{
-            border: solid red;
+            border: solid blue;
             min-width:10%;
             width: 20%;
             max-width:50%;
