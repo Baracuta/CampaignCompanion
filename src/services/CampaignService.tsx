@@ -13,3 +13,12 @@ export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
 
     return campaign;
 }
+
+export const getCampaign = async (id: string): Promise<Campaign> =>{
+    return {
+        id,
+        name: "ServiceTest"
+    }
+}
+
+//export consts for getCampaigns and for updateCampaign
