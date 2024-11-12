@@ -21,4 +21,4 @@ export const getCampaign = async (id: string): Promise<Campaign> =>{
     }
 }
 
-//export consts for getCampaigns and for updateCampaign
+//export consts for getCampaigns and for updateCampaign to be made later
