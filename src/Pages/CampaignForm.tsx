@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Campaign } from "../types/Campaign";
 import { useNavigate } from "react-router-dom";
 import { createCampaign } from "../services/CampaignService";
+import { Autocomplete } from "@mui/material";
 
 //This page is for the campaign creation form
 function CampaignForm(){
@@ -30,7 +31,7 @@ function CampaignForm(){
                     <p>What game system does this campaign use?</p>
 
                     <input
-                    type="text"
+                    type="string"
                     value={campaign.game}
                     onChange={e => {
                         const game=e.target.value;
