@@ -30,7 +30,7 @@ function CampaignPage(){
 
                 <img src={`${ASSETS_PATH}/Emblem 1 3.png`}/>
 
-                <h2>Name goes here</h2>
+                <h2>{campaign?.name}</h2>
 
                 <NavButton text="Go Back" destination="/campaign-form"/>
 
