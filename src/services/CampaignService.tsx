@@ -17,7 +17,7 @@ export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
 export const getCampaign = async (id: string): Promise<Campaign> =>{
     return {
         id,
-        name:"Service Test"
+        name:"Service Name"
     }
 }
 

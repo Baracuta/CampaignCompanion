@@ -74,10 +74,19 @@ function CampaignForm(){
 
                 </div>
 
+                <input
+                    type="string"
+                    value={campaign.id}
+                    onChange={e => {
+                        const id=e.target.value;
+                        setCampaign({...campaign, id});
+                    }}
+                />
+
                 <button onClick={async () =>{
                     setSaving(true);
                     const savedCampaign=await createCampaign(campaign as Campaign);
-                    navigate('/campaign/${savedCampaign.id}');
+                    navigate(`/campaign/${savedCampaign.id}`);
                 }}>Create Campaign</button>
 
             </div>
