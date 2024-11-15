@@ -36,7 +36,10 @@ function CampaignPage(){
                 </div>
 
                 <div className={styles.dashboard_menu}>
-                    Dropdown menu probably
+                    <button></button>
+                    <button></button>
+                    <button></button>
+                    <button></button>
                 </div>
 
             </div>
