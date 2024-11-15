@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './css_modules/index.css'
 import App from './App.tsx'
 import TestPage from './pages/TestingPage.tsx'
+import CampaignSelect from './pages/CampaignSelect.tsx'
 import CampaignForm from './pages/CampaignForm.tsx'
 import CampaignPage from './pages/CampaignPage.tsx'
 import CampaignNPCs from './pages/CampaignNPCs.tsx'
@@ -23,6 +24,10 @@ const router=createBrowserRouter([
     {
         path:"/campaign-form",
         element:<CampaignForm/>
+    },
+    {
+        path:"/campaign-select",
+        element:<CampaignSelect/>
     },
     {
         path:"/campaign/:id",
