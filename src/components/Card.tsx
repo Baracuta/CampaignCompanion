@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 type CardProps={
     name:string;
     id?:string;
-    background?:string;
+    background?:any;
     className?:string;
     cardLink:string;
 }
@@ -14,9 +14,8 @@ function Card(props:CardProps){
     return(
 
         <div className={props.className}
+        style={{backgroundImage:(props.background)}}
         onClick={()=>{navigate(props.cardLink);}}>
-        
-            <img src={props.background} alt=""/>
             {props.name}
         </div>
 

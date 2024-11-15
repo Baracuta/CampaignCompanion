@@ -49,11 +49,11 @@ function CampaignPage(){
                 
                 </Card>                
 
-                <Card className={styles.card} name="Locations" cardLink={`/campaign/${campaign?.id}/Locations`}>
+                <Card className={styles.card} name="Locations" cardLink={`/campaign/${campaign?.id}/Locations`} background={`${ASSETS_PATH}/Tavern.jpg`}>
                     
                 </Card>
                 
-                <Card className={styles.card} name="Items" cardLink={`/campaign/${campaign?.id}/Items`} background={"src/assets/Tavern.jpg"}>
+                <Card className={styles.card} name="Items" cardLink={`/campaign/${campaign?.id}/Items`}>
 
                 </Card>
 
