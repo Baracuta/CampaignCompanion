@@ -1,4 +1,3 @@
-import { dividerClasses } from "@mui/material";
 import { Campaign } from "../types/Campaign";
 
 export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
