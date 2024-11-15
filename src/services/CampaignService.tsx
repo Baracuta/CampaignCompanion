@@ -1,3 +1,4 @@
+import { dividerClasses } from "@mui/material";
 import { Campaign } from "../types/Campaign";
 
 export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
@@ -22,3 +23,13 @@ export const getCampaign = async (id: string): Promise<Campaign> =>{
 }
 
 //export consts for getCampaigns and for updateCampaign to be made later
+
+export const getCampaigns = async (index:number)=>{
+    const allCampaignsString = localStorage.getItem("campaigns");
+    const allCampaigns = allCampaignsString == null ? [] : JSON.parse(allCampaignsString);
+
+
+    for (var i=0; i<allCampaigns.length; i++)
+        (console.log(index))
+
+}
