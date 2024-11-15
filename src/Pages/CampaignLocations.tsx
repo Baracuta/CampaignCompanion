@@ -1,4 +1,4 @@
-
+import NavButton from "../components/NavButton"
 
 
 
@@ -6,7 +6,9 @@ function CampaignLocations(){
 
     return(
         
-        <div>CampaignLocations</div>
+        <div>CampaignLocations
+            <NavButton text="Go Back" destination="/campaign/:id"/>
+        </div>
 
     )
 }

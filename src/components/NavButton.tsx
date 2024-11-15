@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 type NavButtonProps={
-    text:string;
+    text?:string;
     destination:string;
 }
 
