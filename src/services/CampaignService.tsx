@@ -23,7 +23,7 @@ export const getCampaign = async (id: string): Promise<Campaign> =>{
 
 //export consts for getCampaigns and for updateCampaign to be made later
 
-export const getCampaigns =  (n:number)=>{
+export const getCampaigns =  ()=>{
     const allCampaignsString = localStorage.getItem("campaigns");
     const allCampaigns = allCampaignsString == null ? [] : JSON.parse(allCampaignsString);
 

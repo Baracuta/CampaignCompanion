@@ -1,4 +1,5 @@
 import NavButton from "../components/NavButton"
+import { getCampaigns } from "../services/CampaignService"
 
 
 
@@ -12,6 +13,7 @@ function CampaignSelect(){
 
             <NavButton text="Return to Splash Screen" destination="/"/>
 
+            <button onClick={getCampaigns}/>
         </main>
     )
 }
