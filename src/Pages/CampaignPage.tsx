@@ -40,15 +40,19 @@ function CampaignPage(){
 
             <div className={styles.card_panel}>
 
-                <Card className={styles.card} name="Locations">
+                <Card className={styles.card} name="Non-Player Characters">
                     Placeholder for eventListener, ditto for all Cards
                 </Card>                
 
-                <Card className={styles.card} name="another one">
+                <Card className={styles.card} name="Locations">
                     
                 </Card>
                 
-                <Card className={styles.card} name="hello ery noice" background={"src/assets/Tavern.jpg"}>
+                <Card className={styles.card} name="Items" background={"src/assets/Tavern.jpg"}>
+
+                </Card>
+
+                <Card className={styles.card} name="Player Characters">
 
                 </Card>
                 
