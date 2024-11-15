@@ -1,5 +1,7 @@
 main{
-    background-color: gray;
+    background-image: url(../assets/CastleInField.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 100vh;
     min-width: 360px;
     width: 100vw;
@@ -32,7 +34,7 @@ main{
         width:95%;
         max-width: auto;
         min-height: fit-content;
-        height:25%;
+        height:15%;
         max-height: auto;
         margin-top: 2%;
         margin-bottom: 2%;
@@ -42,19 +44,22 @@ main{
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-        background-color: black;
         min-width: fit-content;
         width:95%;
         max-width: 95%;
         height: 500px;
 
         .card{
-            border: solid red;
+            border: solid black;
+            border-radius: 25px;
             min-width:10%;
             width: 20%;
             max-width:50%;
-            background-color: brown;
+            background-color: rgba(0, 0, 0, 0.5);
 
+            font-weight: bolder;
+            font-size: larger;
+            
         }
 
     }

@@ -32,8 +32,6 @@ function CampaignPage(){
 
                 <h2>{campaign?.name}</h2>
 
-                <NavButton text="Go Back" destination="/campaign-form"/>
-
             </div>
 
             <div className={styles.tool_bar}>Tool Bar</div>
@@ -41,7 +39,7 @@ function CampaignPage(){
             <div className={styles.card_panel}>
 
                 <Card className={styles.card} name="Non-Player Characters">
-                    Placeholder for eventListener, ditto for all Cards
+                
                 </Card>                
 
                 <Card className={styles.card} name="Locations">
@@ -58,7 +56,9 @@ function CampaignPage(){
                 
             </div>
             
-            <div className={styles.bottom_bar}>Bottombar</div>
+            <div className={styles.bottom_bar}>
+                <NavButton text="Go Back" destination="/campaign-form"/>
+                </div>
 
         </main>
 
