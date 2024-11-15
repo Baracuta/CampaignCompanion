@@ -33,7 +33,7 @@
         img{
             border: solid black;
             border-radius: 75px;
-            background-color: rgba(255, 255, 255, 0.5);
+            background-color: rgba(255, 255, 255, 0.15);
 
             height: 120px;
             width: 120px;
@@ -54,7 +54,7 @@
         .dashboard_menu{
             border: solid black;
             border-radius: 15px;
-            background-color: rgba(255, 255, 255, 0.5);
+            background-color: rgba(255, 255, 255, 0.15);
 
             height: 120px;
             width: 120px;
