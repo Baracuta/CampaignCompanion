@@ -12,15 +12,6 @@ function CampaignSelect(){
 
             <NavButton text="Return to Splash Screen" destination="/"/>
 
-            
-
-
-
-
-
-
-
-
         </main>
     )
 }
