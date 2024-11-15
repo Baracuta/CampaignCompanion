@@ -10,7 +10,9 @@ main{
     align-items: center;
 
     .top_bar{
-        background-color: red;
+        border: solid black;
+        border-radius: 25px;
+        background-color: rgba(0, 0, 0, 0.5);
         display: flex;
         justify-content: space-between;
         min-width: 80%;
@@ -23,13 +25,19 @@ main{
         margin-bottom: 20px;
 
         img{
+            border: solid black;
+            border-radius: 75px;
             height: 100px;
             width: 100px;
+            background-color: rgba(255, 255, 255, 0.5);
+
         }
     }
 
     .tool_bar{
-        background-color: rgb(87, 1, 95);
+        border: solid black;
+        border-radius: 25px;
+        background-color: rgba(0, 0, 0, 0.5);
         min-width: fit-content;
         width:95%;
         max-width: auto;
@@ -58,14 +66,13 @@ main{
             background-color: rgba(0, 0, 0, 0.5);
 
             font-weight: bolder;
-            font-size: larger;
+            font-size:xx-large;
             
         }
 
     }
 
     .bottom_bar{
-        background-color: black;
         margin-bottom:20px;
         margin-top:20px;
     }
