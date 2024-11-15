@@ -5,7 +5,10 @@ import App from './App.tsx'
 import TestPage from './pages/TestingPage.tsx'
 import CampaignForm from './pages/CampaignForm.tsx'
 import CampaignPage from './pages/CampaignPage.tsx'
-
+import CampaignNPCs from './pages/CampaignNPCs.tsx'
+import CampaignLocations from './pages/CampaignLocations.tsx'
+import CampaignItems from './pages/CampaignItems.tsx'
+import CampaignPlayers from './pages/CampaignPlayers.tsx'
 
 //All of the different available routes will be here, since there won't be too too many.
 const router=createBrowserRouter([
@@ -24,6 +27,22 @@ const router=createBrowserRouter([
     {
         path:"/campaign/:id",
         element:<CampaignPage/>
+    },
+    {
+        path:"/campaign/:id/NPCs",
+        element:<CampaignNPCs/>
+    },
+    {
+        path:"/campaign/:id/Locations",
+        element:<CampaignLocations/>
+    },
+    {
+        path:"/campaign/:id/Items",
+        element:<CampaignItems/>
+    },
+    {
+        path:"/campaign/:id/PlayerCharacters",
+        element:<CampaignPlayers/>
     },
 ])
 
