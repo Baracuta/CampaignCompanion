@@ -47,8 +47,8 @@ function CampaignForm(){
                     freeSolo
                     options={gameOptions}
                     value={campaign.game}
-                    onChange={(event, value)=>{
-                        const game=event.target.value;
+                    onChange={e=>{
+                        const game=e.target.value;
                         setCampaign({...campaign, game})
                     }}
                     renderInput={(params)=><TextField{...params} label="Game System"/>}
