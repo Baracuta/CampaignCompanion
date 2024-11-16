@@ -38,6 +38,17 @@ function CampaignNPCs(){
             <div className={styles.card_panel}>
 
             <Card className={styles.card} name="Card 1" cardLink=""/>
+            <Card className={styles.card} name="Card 2" cardLink=""/>
+            <Card className={styles.card} name="Card 3" cardLink=""/>
+            <Card className={styles.card} name="Card 4" cardLink=""/>
+            <Card className={styles.card} name="Card 5" cardLink=""/>
+            <Card className={styles.card} name="Card 6" cardLink=""/>
+            <Card className={styles.card} name="Card 7" cardLink=""/>
+            <Card className={styles.card} name="Card 8" cardLink=""/>
+            <Card className={styles.card} name="Card 9" cardLink=""/>
+            <Card className={styles.card} name="Card 10" cardLink=""/>
+            <Card className={styles.card} name="Card 11" cardLink=""/>
+            <Card className={styles.card} name="Card 12" cardLink=""/>
             </div>
 
         </main>
