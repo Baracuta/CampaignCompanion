@@ -14,6 +14,7 @@ export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
     return campaign;
 }
 
+//
 export const getCampaign = async (id: string,name?:string): Promise<Campaign> =>{
     return {
         id,
@@ -24,6 +25,8 @@ export const getCampaign = async (id: string,name?:string): Promise<Campaign> =>
 
 //export consts for getCampaigns and for updateCampaign to be made later
 
+//Nonfunctional getCampaigns. Basically, I'm trying to use a for loop to track a variable that counts the total number of campaigns in local storage.
+//This is so that, in the future, I may use this counter to make a display page from which a user may select to edit a pre-existing campaign.
 export const getCampaigns =  ()=>{
     const allCampaignsString = localStorage.getItem("campaigns");
     const allCampaigns = allCampaignsString == null ? [] : JSON.parse(allCampaignsString);
