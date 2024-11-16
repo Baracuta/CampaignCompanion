@@ -14,10 +14,11 @@ export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
     return campaign;
 }
 
-export const getCampaign = async (id: string): Promise<Campaign> =>{
+export const getCampaign = async (id: string,name?:string): Promise<Campaign> =>{
     return {
         id,
-        name:"Pain"
+        name,
+        
     }
 }
 
