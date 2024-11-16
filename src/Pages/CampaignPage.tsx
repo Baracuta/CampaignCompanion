@@ -83,3 +83,8 @@ function CampaignPage(){
 }
 
 export default CampaignPage
+
+//Extra notes and stuff below
+
+//1. All card tool bars should include the 3 cards most recently accessed/editted, a searchbar for cards based on card name, and a means of unlocking/locking card position so that they can be re-ordered.
+//2. Dashboard tool bar should have a spot to save links to specific cards as a way of quickly accessing them. For example, if the user knows their players will be going into a certain town next session, they can save that town's important NPCs into the tool bar.

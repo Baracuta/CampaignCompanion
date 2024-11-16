@@ -33,7 +33,7 @@ function CampaignNPCs(){
             </div>
 
             <div className={styles.card_panel}>
-                
+
             </div>
 
         </main>
