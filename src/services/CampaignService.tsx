@@ -33,7 +33,7 @@ export const getCampaigns =  ()=>{
 
     var n=0
     for (var i=0; i<allCampaigns.length; i++){
-        n=n++}
+        n=n+1}
         console.log(n)
 
 
