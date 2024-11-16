@@ -31,7 +31,7 @@ function CampaignNPCs(){
                 </div>
 
                 <div className={styles.tool_bar}>
-
+                Tool Bar
                 </div>
             </div>
 
