@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Campaign } from "../types/Campaign";
 import { useNavigate } from "react-router-dom";
 import { createCampaign } from "../services/CampaignService";
-import { Autocomplete } from "@mui/material";
+import { Autocomplete, TextField } from "@mui/material";
 
 //This page is for the campaign creation form
 function CampaignForm(){
@@ -13,6 +13,7 @@ function CampaignForm(){
     const [saving, setSaving]=useState(false);
     const navigate = useNavigate();
 
+    const gameOptions=[`D&D 1e`,`AD&D`,`D&D 3e`,`D&D 3.5e`,`D&D 4e`,`D&D 5e`]
 
 
     return(
@@ -39,6 +40,19 @@ function CampaignForm(){
                     }}
                     />
 
+                </div>
+
+                <div>
+                    <Autocomplete
+                    freeSolo
+                    options={gameOptions}
+                    value={campaign.game}
+                    onChange={(event, value)=>{
+                        const game=event.target.value;
+                        setCampaign({...campaign, game})
+                    }}
+                    renderInput={(params)=><TextField{...params} label="Game System"/>}
+                    />
                 </div>
 
                 <div id={styles.section2}>

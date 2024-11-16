@@ -23,6 +23,8 @@ function CampaignPage(){
 
     console.log(campaign);
 
+
+
     return(
         <main className={styles.main}>
 
