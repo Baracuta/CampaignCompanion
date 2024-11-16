@@ -1,3 +1,4 @@
+import styles from '../css_modules/card.module.css'
 import { Campaign } from "../types/Campaign";
 import { useParams } from "react-router-dom";
 import { useState,useEffect } from "react";
@@ -23,9 +24,21 @@ function CampaignItems(){
 
     return(
         
-        <div>CampaignItems
-            <NavButton text="Go Back" destination={`/campaign/${campaign?.id}`}/>
-        </div>
+        <main className={styles.main}>
+
+            <div className={styles.top_bar}>Campaign Items
+                <NavButton text="Go Back" destination={`/campaign/${campaign?.id}`}/>
+            </div>
+
+            <div className={styles.tool_bar}>
+
+            </div>
+
+            <div className={styles.card_panel}>
+                
+            </div>
+
+        </main>
 
     )
 }
