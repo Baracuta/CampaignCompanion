@@ -6,10 +6,17 @@
     min-width: 360px;
     width: 100vw;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
 }
 
+.bars{
+    background-color: blue;
+    min-width: 50%;
+    min-height: 100%;
+
+    
+}
 
 .top_bar{
     border: solid black;
@@ -59,6 +66,7 @@
 }
 
 .card_panel{
+    background-color: red;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -66,4 +74,23 @@
     width:95%;
     max-width: 95%;
     height: 500px;
+
+    .card{
+        border: solid black;
+        border-radius: 25px;
+        background-color: rgba(0, 0, 0, 0.5);
+        min-width:10%;
+        width: 20%;
+        max-width:50%;
+
+        font-weight: bolder;
+        font-size:xx-large;
+    
+    }
+    .card:hover{
+        border-color: #fc0;
+        cursor:pointer;
+        text-shadow: #fc0 1px 0 5px, white 1px 0 10px;
+    }
+
 }

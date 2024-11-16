@@ -15,8 +15,11 @@ function Card(props:CardProps){
 
         <div className={props.className}
         style={{background:(props.background)}}
+
         onClick={()=>{navigate(props.cardLink);}}>
+            
             {props.name}
+            
         </div>
 
     );
