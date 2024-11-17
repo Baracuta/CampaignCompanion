@@ -118,9 +118,11 @@ and (max-width: 1023px){
     
         background-repeat: no-repeat;
         background-size: cover;
+        
         height: 100vh;
         min-width: 360px;
         width: 100vw;
+
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -177,12 +179,14 @@ and (max-width: 1023px){
         border: solid black;
         border-radius: 25px;
         background-color: rgba(0, 0, 0, 0.5);
+
         min-width: fit-content;
         width:90%;
         max-width: auto;
         min-height: fit-content;
         height:10%;
         max-height: 10%;
+
         margin-top: 2%;
         margin-bottom: 2%;
     }
@@ -211,6 +215,8 @@ and (max-width: 1023px){
             border: solid black;
             border-radius: 25px;
             background-color: rgba(0, 0, 0, 0.5);
+
+            scroll-snap-align:center;
     
             min-width:15%;
             width: 20%;
