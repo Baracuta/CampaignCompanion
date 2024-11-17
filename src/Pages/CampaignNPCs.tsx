@@ -26,13 +26,24 @@ function CampaignNPCs(){
         <main className={styles.main}>
 
             <div className={styles.bars}>
+
                 <div className={styles.top_bar}>CampaignNPCs
                     <NavButton text="Go Back" destination={`/campaign/${campaign?.id}`}/>
                 </div>
 
                 <div className={styles.tool_bar}>
-                Tool Bar
+
+                    <div className={styles.recent_edits}>
+                        <h4>Recent Edits:</h4>
+                    </div>
+
+                    <div className={styles.search_bar}>
+                        <h4>Search Bar:</h4>
+                    </div>
+
+
                 </div>
+
             </div>
 
             <div className={styles.card_panel}>
