@@ -47,14 +47,14 @@ function CampaignPage(){
             </div>
 
 
-            <div className={styles.tool_bar}>Tool Bar
+            <div className={styles.tool_bar}>
 
-                <div className={styles.quick_access}>Quick Access
-
+                <div className={styles.quick_access}>
+                    <h4>Quick Access:</h4>
                 </div>
 
-                <div className={styles.recent_edits}>Recent Edits
-
+                <div className={styles.recent_edits}>
+                    <h4>Recent Edits:</h4>
                 </div>
 
             </div>
