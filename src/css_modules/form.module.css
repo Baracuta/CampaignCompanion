@@ -16,15 +16,15 @@
     border: solid black;
     background-color:black;
 
-    input{
-        height: 50px;
-        background-color: rgb(34, 34, 34);
-        text-align:center;
-    }
 
     #section1{
-        input{
-            width: 90%;
+        width: 90%;
+        
+        .autocomplete{
+            height: 50px;
+            background-color: rgb(255, 255, 255);
+            text-align:center;
+            color: red;
         }
     }
 

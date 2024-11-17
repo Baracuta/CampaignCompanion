@@ -31,31 +31,22 @@ function CampaignForm(){
 
                     <p>What game system does this campaign use?</p>
 
-                    <input
-                    type="string"
-                    value={campaign.game}
-                    onChange={e => {
-                        const game=e.target.value;
-                        setCampaign({...campaign, game});
-                    }}
-                    />
-
-                </div>
-
-                <div>
-
                     <Autocomplete
+                    className={styles.Autocomplete}
                     freeSolo
                     options={gameOptions}
                     value={campaign.game}
                     onChange={(e,value)=>{
-                        const game=e.target.value;
+                        const game=value ?? undefined;
                         setCampaign({...campaign, game})
                     }}
                     renderInput={(params)=><TextField{...params} label="Game System"/>}
                     />
+
                     
+
                 </div>
+
 
                 <div id={styles.section2}>
 
