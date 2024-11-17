@@ -117,8 +117,7 @@
                 width:40%;
                 max-width: 50%;
 
-                margin-top: 5px;
-                margin-bottom: 5px;
+                margin: 5px;
             }
 
             .recent_edits{
@@ -132,8 +131,7 @@
                 width:40%;
                 max-width: 50%;
 
-                margin-top: 5px;
-                margin-bottom: 5px;
+                margin: 5px;
             }
         }
 
@@ -272,14 +270,43 @@
             border: solid black;
             border-radius: 25px;
             background-color: rgba(0, 0, 0, 0.5);
+
             min-width: fit-content;
             width:90%;
             max-width: auto;
             min-height: fit-content;
             height:10%;
             max-height: 10%;
-            margin-top: 2%;
-            margin-bottom: 2%;
+
+            margin: 5px;
+
+            .quick_access{
+                
+
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                min-width: none;
+                width:40%;
+                max-width: 50%;
+
+                margin: 5px;
+            }
+
+            .recent_edits{
+                
+
+                display: flex;
+                flex-direction: row;
+                align-items:center;
+
+                min-width: none;
+                width:40%;
+                max-width: 50%;
+
+                margin: 5px;
+            }
         }
 
         .card_panel{
