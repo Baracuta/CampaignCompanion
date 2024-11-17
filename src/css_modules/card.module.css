@@ -118,7 +118,7 @@ and (max-width: 1023px){
     
         background-repeat: no-repeat;
         background-size: cover;
-        
+
         height: 100vh;
         min-width: 360px;
         width: 100vw;
@@ -213,13 +213,13 @@ and (max-width: 1023px){
     
         .card{
             border: solid black;
-            border-radius: 25px;
+            border-radius: 5px;
             background-color: rgba(0, 0, 0, 0.5);
 
             scroll-snap-align:center;
     
-            min-width:15%;
-            width: 20%;
+            min-width:25%;
+            width: 25%;
             max-width:50%;
             min-height:25%;
             height:25%;
@@ -228,6 +228,12 @@ and (max-width: 1023px){
             font-size:xx-large;
     
             margin: 5px;
+
+            p{
+                font-size: medium;
+                text-wrap:stable;
+                color: white;
+            }
         
         }
         .card:hover{

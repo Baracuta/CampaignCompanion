@@ -18,7 +18,7 @@ function Card(props:CardProps){
 
         onClick={()=>{navigate(props.cardLink);}}>
             
-            {props.name}
+            <p>{props.name}</p>
             
         </div>
 
