@@ -46,7 +46,19 @@ function CampaignPage(){
 
             </div>
 
-            <div className={styles.tool_bar}>Tool Bar</div>
+
+            <div className={styles.tool_bar}>Tool Bar
+
+                <div className={styles.quick_access}>Quick Access
+
+                </div>
+
+                <div className={styles.recent_edits}>Recent Edits
+
+                </div>
+
+            </div>
+
 
             <div className={styles.card_panel}>
 
