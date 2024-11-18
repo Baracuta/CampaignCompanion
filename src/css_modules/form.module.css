@@ -15,7 +15,8 @@
 }
 
 .form_body{
-    border: solid black;
+    border: solid;
+    border-color: rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     background-color: rgba(255, 255, 255, .15);
     
@@ -27,6 +28,8 @@
 
     margin-top:20px;
     margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
 
     min-height: fit-content;
     height: 80%;
