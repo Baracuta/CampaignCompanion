@@ -1,12 +1,13 @@
+import { ASSETS_PATH } from "../constants/assets_path"
 
 //This is the slideshow background for the main splash screen.
 function SplashBackground(){
     return(
         <div className="background-image">
 
-         <img src="src/assets/Anûm_ The Continent of Isceria v1.1.png" alt="" />
-         <img src="src/assets/0x8vuwfue9391.webp" alt="" />
-         <img src="src/assets/Worldmap.jpg" alt="" />
+         <img src={`${ASSETS_PATH}/Anûm_ The Continent of Isceria 1.2.jpg`} alt="" />
+         <img src={`${ASSETS_PATH}/0x8vuwfue9391.webp`} alt="" />
+         <img src={`${ASSETS_PATH}/Worldmap.jpg`} alt="" />
 
         </div>
     )
