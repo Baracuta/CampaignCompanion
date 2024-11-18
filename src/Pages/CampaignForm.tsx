@@ -17,7 +17,7 @@ function CampaignForm(){
 
 
     return(
-        <main>
+        <main className={styles.main}>
 
             <div>
                 <NavButton text="Home" destination="/"/>
