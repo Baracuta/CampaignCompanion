@@ -1,7 +1,7 @@
 .main{
     background-image:url(../assets/table_and_parchment.png);
     background-position: center;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     background-color: black;
     
@@ -31,36 +31,65 @@
     height: 80%;
     max-height: none;
     min-width: fit-content;
-    width: 20%;
     max-width: none;
 
-    #section1{
-        width: 90%;
-        
-        .autocomplete{
-            height: 50px;
-            background-color: rgb(255, 255, 255);
-            text-align:center;
-            color: red;
-        }
+    
 
+    h3{
+        color: black;
+    }
+
+    #section1{
+        align-self: center;
+        justify-items: center;
+
+        width: 90%;
+       
+        :global(.MuiAutocomplete-root){
+            width: 80%;
+            height: 50px;
+
+            border-color: rgba(0, 0, 0, 0.25);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
         
     }
 
     #section2{
-        
-        input{
-            width: 90%;
+        align-self: center;
 
+        width:90%;
+
+        input{
+            width: 80%;
+            height: 50px;
+
+            border-color: rgba(0, 0, 0, 0.25);
+            background-color: rgba(255, 255, 255, 0.15);
+
+            color: black;
+            text-align: center;
+            font-size: large;
         }
+        
     }
 
 
     #section3{
+        align-self: center;
+
+        width:90%;
+
         input{
-            background-color: blue;
-            width: 90%;
-            text-align:t;
+            width: 80%;
+            height: 50px;
+
+            border-color: rgba(0, 0, 0, 0.25);
+            background-color: rgba(255, 255, 255, 0.15);
+
+            color: black;
+            text-align:center;
+            font-size: large;
         }
     }
 }

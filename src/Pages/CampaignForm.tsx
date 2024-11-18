@@ -13,7 +13,10 @@ function CampaignForm(){
     const [saving, setSaving]=useState(false);
     const navigate = useNavigate();
 
-    const gameOptions=[`D&D 1e`,`AD&D`,`D&D 3e`,`D&D 3.5e`,`D&D 4e`,`D&D 5e`]
+    const gameOptions=[`D&D 1e`,`AD&D`,`D&D 3e`,`D&D 3.5e`,`D&D 4e`,`D&D 5e`,
+        `Pathfinder 1e`,`Pathfinder 2e`,`Starfinder`,
+        `Call of Cthulu`,`Pulp Cthulu`,
+    ]
 
 
     return(
@@ -29,7 +32,7 @@ function CampaignForm(){
 
                 <div id={styles.section1}>
 
-                    <p>What game system does this campaign use?</p>
+                    <h3>What game system does this campaign use?</h3>
 
                     <Autocomplete
                     className={styles.Autocomplete}
@@ -50,7 +53,7 @@ function CampaignForm(){
 
                 <div id={styles.section2}>
 
-                    <p>What would you like to name this campaign?</p>
+                    <h3>What would you like to name this campaign?</h3>
 
                     <input
                     type="text"
@@ -61,13 +64,11 @@ function CampaignForm(){
                     }}
                     />
 
-                    <p>{campaign.name}</p>
-
                 </div>
 
                 <div id={styles.section3}>
 
-                    <p>How many players are in this campaign?</p>
+                    <h3>How many players are in this campaign?</h3>
 
                     <input
                     type="number"
