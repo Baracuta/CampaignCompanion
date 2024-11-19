@@ -34,14 +34,12 @@ function CampaignPage(){
 
                 <div className={styles.title_box}>
                     <h2>{campaign?.name}</h2>
-                    <h3>Will be campaign.game</h3>
+                    <h3>campaign.game</h3>
                 </div>
 
                 <div className={styles.dashboard_menu}>
                     <button></button>
-                    <button></button>
-                    <button></button>
-                    <button></button>
+                    
                 </div>
 
             </div>
