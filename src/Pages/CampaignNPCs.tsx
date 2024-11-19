@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { useState,useEffect } from "react";
 import { getCampaign } from "../services/CampaignService";
 import NavButton from "../components/NavButton";
+import { ASSETS_PATH } from '../constants/assets_path';
 
 
 
@@ -27,7 +28,15 @@ function CampaignNPCs(){
 
             <div className={styles.bars}>
 
-                <div className={styles.top_bar}>CampaignNPCs
+                <div className={styles.top_bar}>
+
+                    <img src={`${ASSETS_PATH}/Emblem 1 3.png`}/>
+
+                    <div className={styles.title_box}>
+                        <h2>{campaign?.name}</h2>
+                        <h3>Non-Player Characters</h3>
+                    </div>
+
                     <NavButton text="Go Back" destination={`/campaign/${campaign?.id}`}/>
                 </div>
 
