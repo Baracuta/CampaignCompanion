@@ -25,7 +25,7 @@ function CampaignItems(){
 
     return(
         
-        <main className={styles.main} style={{backgroundImage:`url(${(ASSETS_PATH)}/Tavern.jpg)`}}>
+        <main className={styles.main} style={{backgroundImage:`url(${(ASSETS_PATH)}/fantasy_loot.webp)`}}>
 
             <div className={styles.bars}>
 

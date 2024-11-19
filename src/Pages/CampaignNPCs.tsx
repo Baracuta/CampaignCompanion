@@ -24,7 +24,7 @@ function CampaignNPCs(){
 
 
     return(
-        <main className={styles.main} style={{backgroundImage:`url(${(ASSETS_PATH)}/Tavern.jpg)`}}>
+        <main className={styles.main} style={{backgroundImage:`url(${(ASSETS_PATH)}/fantasy_npcs.jpg)`}}>
 
             <div className={styles.bars}>
 

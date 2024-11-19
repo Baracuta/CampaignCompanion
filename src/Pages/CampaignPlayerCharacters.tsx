@@ -25,7 +25,7 @@ function CampaignPlayerCharacters(){
 
     return(
         
-        <main className={styles.main} style={{backgroundImage:`url(${(ASSETS_PATH)}/Tavern.jpg)`}}>
+        <main className={styles.main} style={{backgroundImage:`url(${(ASSETS_PATH)}/player_characters.jpg)`}}>
 
             <div className={styles.bars}>
 

@@ -24,7 +24,7 @@ function CampaignLocations(){
 
 
     return(
-        <main className={styles.main} style={{backgroundImage:`url(${(ASSETS_PATH)}/Tavern.jpg)`}}>
+        <main className={styles.main} style={{backgroundImage:`url(${(ASSETS_PATH)}/fantasy_location.jpeg)`}}>
 
             <div className={styles.bars}>
 
