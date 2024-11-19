@@ -31,8 +31,11 @@ body {
   top: 50%;
   width: 500px;
   height: 800px;
+
   margin-left:-250px;
   margin-top:-350px;
+
+
 }
 
 .background-image{
@@ -80,7 +83,7 @@ body {
 }
 
 h1 {
-  font-size: 4.2em;
+  font-size: 4.0em;
   line-height: 1.1;
   text-shadow: #fc0 1px 0 10px, black 1px 0 10px;
   text-align:center;
@@ -97,6 +100,7 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #FC0;
 }
