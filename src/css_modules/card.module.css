@@ -22,6 +22,34 @@
         min-width: 50%;
         height: 100%;
     
+        .big_card_panel{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            min-width: fit-content;
+            width:95%;
+            max-width: 95%;
+            height: 500px;
+            
+
+            .big_card{
+                border: solid black;
+                border-radius: 25px;
+                background-color: rgba(0, 0, 0, 0.5);
+                min-width:10%;
+                width: 20%;
+                max-width:50%;
+
+                font-weight: bolder;
+                font-size:xx-large;
+            
+            }
+            .big_card:hover{
+                border-color: #fc0;
+                cursor:pointer;
+                text-shadow: #fc0 1px 0 5px, white 1px 0 10px;
+            }
+        }
         
     }
     
@@ -182,6 +210,10 @@ and (max-width: 1023px){
         min-width: 50%;
         width: 100%;
         height: 40%;
+
+        .big_card_panel{
+            display: none;
+        }
     
         
     }
@@ -231,8 +263,7 @@ and (max-width: 1023px){
         height:10%;
         max-height: 10%;
 
-        margin-top: 2%;
-        margin-bottom: 2%;
+        margin-bottom: 10%;
 
         .recent_edits{
                 

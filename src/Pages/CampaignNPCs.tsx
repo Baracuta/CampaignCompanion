@@ -53,6 +53,26 @@ function CampaignNPCs(){
 
                 </div>
 
+                <div className={styles.big_card_panel}>
+
+                <Card className={styles.big_card} name="Non-Player Characters" cardLink={`/campaign/${campaign?.id}/NPCs`}>
+                
+                </Card>                
+
+                <Card className={styles.big_card} name="Locations" cardLink={`/campaign/${campaign?.id}/Locations`} background={`${ASSETS_PATH}/Emblem 1 3.png`}>
+                    
+                </Card>
+                
+                <Card className={styles.big_card} name="Items" cardLink={`/campaign/${campaign?.id}/Items`}>
+
+                </Card>
+
+                <Card className={styles.big_card} name="Player Characters" cardLink={`/campaign/${campaign?.id}/PlayerCharacters`}>
+
+                </Card>
+                
+            </div>
+
             </div>
 
             <div className={styles.card_panel}>
