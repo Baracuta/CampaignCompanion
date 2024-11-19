@@ -292,8 +292,8 @@ and (max-width: 1023px){
     }
     
     .card_panel{
-        border-top: solid black;
-        border-top-width: 2px;
+        border-top:solid rgba(0,0,0,0.5);
+        border-top-width: 4px;
 
         display: flex;
         flex-direction: row;
@@ -302,7 +302,7 @@ and (max-width: 1023px){
         justify-content: center;
     
         min-width: 50%;
-        width:90%;
+        width:75%;
         height: 60%;
         max-height:100%;
 
@@ -315,7 +315,7 @@ and (max-width: 1023px){
     
     
         .card{
-            border: solid black;
+            border: black;
             border-radius: 5px;
             background-color: rgba(0, 0, 0, 0.5);
 
