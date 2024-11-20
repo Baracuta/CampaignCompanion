@@ -8,16 +8,18 @@ function CampaignSelect(){
 
     return(
 
-        <main>
+        <main className={styles.main}>
+
             <div>
                 Campaign Selection Screen
             </div>
 
             <NavButton text="Return to Splash Screen" destination="/"/>
 
-            <button onClick={getCampaigns}/>
+            <button onClick={getCampaigns}>Get Campaigns</button>
+
         </main>
-        
+
     )
 }
 
