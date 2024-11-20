@@ -35,6 +35,10 @@ export const getCampaigns =  ()=>{
     for (var i=0; i<allCampaigns.length; i++){
         n=n+1}
         console.log(n)
+        
+    return(
+        n
+    )
 
 
 }

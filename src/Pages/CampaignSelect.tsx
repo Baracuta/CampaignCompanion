@@ -6,7 +6,6 @@ import { getCampaigns } from "../services/CampaignService"
 
 
 function CampaignSelect(){
-    let n=getCampaigns
 
     return(
 
