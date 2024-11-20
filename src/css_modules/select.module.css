@@ -7,10 +7,70 @@
         height: 100vh;
         min-width: 360px;
         width: 100vw;
-        
+
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+    .top_bar{
+        border: solid black;
+        border-radius: 25px;
+        background-color: rgba(0, 0, 0, 0.5);
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        align-content:center;
+        flex-grow:0,0,0;
+
+        min-width: 80%;
+        width: 95%;
+        max-width: 95%;
+        min-height: fit-content;
+        height: 100px;
+        max-height:20%;
+
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .card_panel{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+
+        min-width: fit-content;
+        width:95%;
+        max-width: 95%;
+        height: 500px;
+
+        border: solid black;
+        border-radius: 10px;
+
+        padding: 5px;
+        
+
+        .card{
+            border: solid black;
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, 0.5);
+
+            min-width:10%;
+            width: 20%;
+            max-width:50%;
+            height:fit-content;
+
+            font-weight: bolder;
+            font-size:xx-large;
+
+            
+        
+        }
+        .card:hover{
+            border-color: #fc0;
+            cursor:pointer;
+            text-shadow: #fc0 1px 0 5px, white 1px 0 10px;
+        }
     }
 
 }
