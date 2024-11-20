@@ -1,3 +1,4 @@
+import styles from '../css_modules/select.module.css'
 import NavButton from "../components/NavButton"
 import { getCampaigns } from "../services/CampaignService"
 
@@ -6,6 +7,7 @@ import { getCampaigns } from "../services/CampaignService"
 function CampaignSelect(){
 
     return(
+
         <main>
             <div>
                 Campaign Selection Screen
@@ -15,6 +17,7 @@ function CampaignSelect(){
 
             <button onClick={getCampaigns}/>
         </main>
+        
     )
 }
 
