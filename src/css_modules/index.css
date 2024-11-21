@@ -11,6 +11,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  overflow: hidden;
 }
 
 body {
@@ -22,6 +24,8 @@ body {
   min-width: 100vw;
   min-height: 100vh;
   position: relative;
+
+  overflow: hidden;
 }
 
 .splash-items{
@@ -30,12 +34,12 @@ body {
   left: 50%;
   top: 50%;
   width: 500px;
-  height: 800px;
+  height: fit-content;
 
   margin-left:-250px;
   margin-top:-350px;
 
-
+  overflow: hidden;
 }
 
 .background-image{
@@ -122,17 +126,4 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #f1dd82;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }
