@@ -12,7 +12,6 @@ function CampaignSelect(){
         <main className={styles.main}>
 
             <div className={styles.top_bar}>
-                Campaign Selection Screen
 
                 <NavButton text="Return to Splash Screen" destination="/"/>
 
