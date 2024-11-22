@@ -12,7 +12,7 @@ function CampaignList(){
         let item=list[i]
         console.log(item.name)
 
-        return(createElement('h3',null,item.name))
+        // return(createElement('h3',null,item.name))
     };
 };
 
