@@ -2,6 +2,7 @@ import styles from '../css_modules/select.module.css'
 import NavButton from "../components/NavButton"
 import Card from '../components/Card'
 import { getCampaigns } from "../services/CampaignService"
+import CampaignList from '../components/CampaignList'
 
 
 
@@ -16,6 +17,7 @@ function CampaignSelect(){
                 <NavButton text="Return to Splash Screen" destination="/"/>
 
                 <button onClick={getCampaigns}>Get Campaigns</button>
+                <button onClick={CampaignList}>CampaignList</button>
 
                 
 
