@@ -25,6 +25,7 @@ function CampaignSelect(){
 
             <div className={styles.card_panel}>
                 <Card className={styles.card} name="Campaign 1" cardLink='/campaign/:id'/>
+                <CampaignList/>
             </div>
             
 
