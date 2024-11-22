@@ -11,9 +11,7 @@ function CampaignList(){
         let item=list[i]
         console.log(item.name)
 
-        return(createElement('h1',null,item.name),
-        '.Welcome!'
-        )
+        return(createElement('h3',null,item.name))
     };
 };
 
