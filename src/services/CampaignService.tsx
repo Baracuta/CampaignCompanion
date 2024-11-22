@@ -23,8 +23,8 @@ export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
 
 //
 export const getCampaign = async (id: string): Promise<Campaign> =>{
-    const allCampaigns=getCampaigns;
-    const result=allCampaigns.filter((campaign: Campaign)=>campaign.id===id)
+    const allCampaigns=(getCampaigns as unknown as Array<Campaign>);
+    const result=allCampaigns.find((campaign: Campaign)=>campaign.id===id)
 
     console.log(result)
     return {
@@ -33,16 +33,10 @@ export const getCampaign = async (id: string): Promise<Campaign> =>{
     }
 }
 
-//export consts for getCampaigns and for updateCampaign to be made later
 
-//
-export const getCampaigns =  (campaignArray:Array<Campaign>)=>{
+export const getCampaigns = ()=>{
     const allCampaignsString = localStorage.getItem("campaigns");
     const allCampaigns = allCampaignsString == null ? [] : JSON.parse(allCampaignsString) as Campaign[];
 
-    let n=allCampaigns.length;
-    console.log(n);
-
-    return campaignArray;
-
+    return allCampaigns;
 }
