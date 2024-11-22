@@ -23,12 +23,18 @@ export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
 
 //
 export const getCampaign = async (id: string): Promise<Campaign> =>{
+    return{
+        id
+    }
+}
+
+export const findCampaign= async (campaign:Campaign):Promise<Campaign>=>{
     const allCampaigns=(getCampaigns as unknown as Array<Campaign>);
     const result=allCampaigns.find((campaign: Campaign)=>campaign.id===id)
 
     console.log(result)
     return {
-        id,
+        id
         
     }
 }
