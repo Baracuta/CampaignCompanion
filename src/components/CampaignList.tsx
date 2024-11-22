@@ -6,16 +6,16 @@ import { useState,useEffect, createElement } from "react";
 
 function CampaignList(){
     const list=getCampaigns()
-    
+    const [campaign,setCampaign]=useState<Campaign>();
 
-    console.log(list)
 
-    for (let index = 0; index < list.length; index++) {
-        console.log("hi")
-        createElement(
-            `div`,
-            "Huh"
-        )
+    for (let i = 0; i < list.length; i++) {
+        let item=list[i]
+        console.log(item.name)
+        // createElement(
+        //     `div`,
+        //     "Huh"
+        // )
     }
 }
 
