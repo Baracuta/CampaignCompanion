@@ -15,10 +15,9 @@ export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
 }
 
 //
-export const getCampaign = async (id: string,name?:string): Promise<Campaign> =>{
+export const getCampaign = async (id: string): Promise<Campaign> =>{
     return {
         id,
-        name,
         
     }
 }
@@ -29,16 +28,11 @@ export const getCampaign = async (id: string,name?:string): Promise<Campaign> =>
 //This is so that, in the future, I may use this counter to make a display page from which a user may select to edit a pre-existing campaign.
 export const getCampaigns =  ()=>{
     const allCampaignsString = localStorage.getItem("campaigns");
-    const allCampaigns = allCampaignsString == null ? [] : JSON.parse(allCampaignsString);
+    const allCampaigns = allCampaignsString == null ? [] : JSON.parse(allCampaignsString) as Campaign[];
 
-    var n=0
-    for (var i=0; i<allCampaigns.length; i++){
-        n=n+1}
-        console.log(n)
-        
-    return(
-        n
-    )
+    let n=allCampaigns.length;
+
+    console.log(n)
 
 
 }
