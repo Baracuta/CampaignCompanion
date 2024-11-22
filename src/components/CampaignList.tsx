@@ -6,6 +6,7 @@ import { useState,useEffect, createElement } from "react";
 
 function CampaignList(){
     const list=getCampaigns();
+    const divs=null;
 
     for (let i = 0; i < list.length; i++) {
         let item=list[i]
