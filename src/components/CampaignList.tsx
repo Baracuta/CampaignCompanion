@@ -5,18 +5,18 @@ import { useState,useEffect } from "react";
 //The component that creates a div for each campaign in the array of getCampaigns
 
 function CampaignList(){
-    var list=getCampaigns
+    const list=getCampaigns()
 
     console.log(list)
 
     for (let index = 0; index < list.length; index++) {
-        const [campaign, setCampaign] = useState<Campaign>();
+        // const [campaign, setCampaign] = useState<Campaign>();
 
-        useEffect(()=>{
-            getCampaign (id as string).then((campaign)=>{
-                setCampaign(campaign);
-            })
-        }, [id]);
+        // useEffect(()=>{
+        //     getCampaign (list.findid as string)).then((campaign)=>{
+        //         setCampaign(campaign);
+        //     })
+        // }, [id]);
         return(
 
         )
