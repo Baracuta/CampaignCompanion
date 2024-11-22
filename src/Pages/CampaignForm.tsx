@@ -57,10 +57,10 @@ function CampaignForm(){
 
                     <input
                     type="text"
-                    value={campaign.id}
+                    value={campaign.name}
                     onChange={e => {
-                        const id=e.target.value;
-                        setCampaign({...campaign, id});
+                        const name=e.target.value;
+                        setCampaign({...campaign, name});
                     }}
                     />
 

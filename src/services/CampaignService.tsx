@@ -1,6 +1,13 @@
 import { Campaign } from "../types/Campaign";
+import { v4 as uuid } from "uuid";
+
 
 export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
+    campaign={
+        ...campaign,
+        id:uuid()
+    };
+
     const allCampaignsString = localStorage.getItem("campaigns");
     const allCampaigns = allCampaignsString == null ? [] : JSON.parse(allCampaignsString);
 
