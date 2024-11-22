@@ -1,7 +1,7 @@
 import { Campaign } from "../types/Campaign";
 import { v4 as uuid } from "uuid";
 
-
+//Used in the CampaignForm to create a new campaign using the information given in the form.
 export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
     campaign={
         ...campaign,
@@ -23,6 +23,10 @@ export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
 
 //
 export const getCampaign = async (id: string): Promise<Campaign> =>{
+    const allCampaigns=getCampaigns;
+    const result=allCampaigns.filter((campaign: Campaign)=>campaign.id===id)
+
+    console.log(result)
     return {
         id,
         
@@ -31,15 +35,14 @@ export const getCampaign = async (id: string): Promise<Campaign> =>{
 
 //export consts for getCampaigns and for updateCampaign to be made later
 
-//Nonfunctional getCampaigns. Basically, I'm trying to use a for loop to track a variable that counts the total number of campaigns in local storage.
-//This is so that, in the future, I may use this counter to make a display page from which a user may select to edit a pre-existing campaign.
-export const getCampaigns =  ()=>{
+//
+export const getCampaigns =  (campaignArray:Array<Campaign>)=>{
     const allCampaignsString = localStorage.getItem("campaigns");
     const allCampaigns = allCampaignsString == null ? [] : JSON.parse(allCampaignsString) as Campaign[];
 
     let n=allCampaigns.length;
+    console.log(n);
 
-    console.log(n)
-
+    return campaignArray;
 
 }

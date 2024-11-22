@@ -17,7 +17,7 @@ function SplashScreen() {
           <h1>Campaign Companion</h1>
           <div className="options">
             <NavButton text="Create New Campaign" destination="/campaign-form"/>
-            <NavButton text="Edit Existing Campaign" destination="/campaign-select"/>
+            <NavButton text="Load Existing Campaign" destination="/campaign-select"/>
           </div>
   
         </div> 
