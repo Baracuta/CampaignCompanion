@@ -11,8 +11,12 @@ function CampaignList(){
     for (let i = 0; i < list.length; i++) {
         let item=list[i]
         console.log(item.name)
-
-        // return(createElement('h3',null,item.name))
+        const test=createElement(`h3`,null,item.name)
+        return(
+            test)
+        // let newBox=document.createElement("div");
+        //     newBox.className="critterBox";
+        // document.appendChild(newBox);
     };
 };
 
