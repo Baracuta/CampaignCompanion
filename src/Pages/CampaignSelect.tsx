@@ -1,6 +1,5 @@
 import styles from '../css_modules/select.module.css'
 import NavButton from "../components/NavButton"
-import Card from '../components/Card'
 import { getCampaigns } from "../services/CampaignService"
 import CampaignList from '../components/CampaignList'
 
@@ -24,7 +23,6 @@ function CampaignSelect(){
             </div>
 
             <div className={styles.card_panel}>
-                <Card className={styles.card} name="Campaign 1" cardLink='/campaign/:id'/>
                 <CampaignList/>
             </div>
             
