@@ -9,16 +9,13 @@ import styles from '../css_modules/select.module.css'
 function CampaignList(){
     const list=getCampaigns();
     const divs=list.map((datum)=>
-    <Card className={styles.card} name={datum.name} cardLink=""></Card>);
+    <Card
+    className={styles.card}
+    name={datum.name}
+    cardLink={`/campaign/${datum.id}`}>
+    </Card>);
 
-    // for (let i = 0; i < list.length; i++) {
-    //     let item=list[i]
-    //     console.log(item.name)
-    //     const test=createElement(`h3`,null,item.name)
-    //     divs.appendChild(test);
-    //     return(
-    //         test)
-    // };
+
     return divs
 };
 
