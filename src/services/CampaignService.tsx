@@ -39,7 +39,6 @@ export const findCampaign= async (campaign:Campaign):Promise<Campaign>=>{
     }
 }
 
-
 export const getCampaigns = ()=>{
     const allCampaignsString = localStorage.getItem("campaigns");
     const allCampaigns = allCampaignsString == null ? [] : JSON.parse(allCampaignsString) as Campaign[];
