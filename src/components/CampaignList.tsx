@@ -1,4 +1,5 @@
 import { getCampaigns} from "../services/CampaignService";
+import Card from "./Card";
 
 //The component that creates a div for each campaign in the array of getCampaigns
 
@@ -6,7 +7,8 @@ import { getCampaigns} from "../services/CampaignService";
 //other stuff inside of it.
 function CampaignList(){
     const list=getCampaigns();
-    const divs=list.map((datum, index)=> <div key={index}>{datum.name}</div>);
+    const divs=list.map((datum, index)=>
+    <Card  name={datum.name} cardLink=""></Card>);
 
     // for (let i = 0; i < list.length; i++) {
     //     let item=list[i]

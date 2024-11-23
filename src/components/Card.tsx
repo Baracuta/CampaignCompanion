@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 type CardProps={
-    name:string;
+    name?:string;
     id?:string;
     background?:string;
     className?:string;
