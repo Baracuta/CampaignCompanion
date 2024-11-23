@@ -79,7 +79,7 @@ function CampaignPage(){
             </div>
             
             <div className={styles.bottom_bar}>
-                <NavButton text="Go Back" destination="/campaign-form"/>
+                <NavButton text="Go Back" destination="/campaign-select"/>
                 </div>
 
         </main>
