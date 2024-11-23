@@ -1,5 +1,6 @@
 import { getCampaigns} from "../services/CampaignService";
 import Card from "./Card";
+import styles from '../css_modules/select.module.css'
 
 //The component that creates a div for each campaign in the array of getCampaigns
 
@@ -7,8 +8,8 @@ import Card from "./Card";
 //other stuff inside of it.
 function CampaignList(){
     const list=getCampaigns();
-    const divs=list.map((datum, index)=>
-    <Card  name={datum.name} cardLink=""></Card>);
+    const divs=list.map((datum)=>
+    <Card className={styles.card} name={datum.name} cardLink=""></Card>);
 
     // for (let i = 0; i < list.length; i++) {
     //     let item=list[i]
