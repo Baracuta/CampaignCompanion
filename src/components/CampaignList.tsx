@@ -8,12 +8,13 @@ import { useState,useEffect, createElement } from "react";
 //other stuff inside of it.
 function CampaignList(){
     const list=getCampaigns();
-    const divs=null;
+    var divs=createElement(`div`)
 
     for (let i = 0; i < list.length; i++) {
         let item=list[i]
         console.log(item.name)
         const test=createElement(`h3`,null,item.name)
+        divs.appendChild(test);
         return(
             test)
     };
