@@ -49,30 +49,6 @@
         border: solid black;
         border-radius: 10px;
 
-        
-        
-
-        .card{
-            border: solid black;
-            border-radius: 5px;
-            background-color: rgba(0, 0, 0, 0.5);
-
-            min-width:15%;
-            width: 20%;
-            max-width:25%;
-            height:fit-content;
-
-            font-weight: bolder;
-            font-size:fit-content;
-
-            
-        
-        }
-        .card:hover{
-            border-color: #fc0;
-            cursor:pointer;
-            text-shadow: #fc0 1px 0 5px, white 1px 0 10px;
-        }
     }
 
 }

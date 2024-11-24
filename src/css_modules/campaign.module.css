@@ -122,19 +122,6 @@
                 margin: 5px;
             }
 
-            .recent_edits{
-                
-
-                display: flex;
-                flex-direction: row;
-                align-items:center;
-
-                min-width: none;
-                width:40%;
-                max-width: 50%;
-
-                margin: 5px;
-            }
         }
 
         .card_panel{
@@ -147,23 +134,7 @@
             height: 500px;
             
 
-            .card{
-                border: solid black;
-                border-radius: 25px;
-                background-color: rgba(0, 0, 0, 0.5);
-                min-width:10%;
-                width: 20%;
-                max-width:50%;
-
-                font-weight: bolder;
-                font-size:xx-large;
-
-            }
-            .card:hover{
-                border-color: #fc0;
-                cursor:pointer;
-                text-shadow: #fc0 1px 0 5px, white 1px 0 10px;
-            }
+            
         }
 
         .bottom_bar{
@@ -295,20 +266,6 @@
 
                 margin: 5px;
             }
-
-            .recent_edits{
-                
-
-                display: flex;
-                flex-direction: row;
-                align-items:center;
-
-                min-width: none;
-                width:40%;
-                max-width: 50%;
-
-                margin: 5px;
-            }
         }
 
         .card_panel{
@@ -328,30 +285,6 @@
             scroll-margin:0px;
             scroll-behavior: smooth;
             
-
-            .card{
-                border: solid black;
-                border-radius: 25px;
-                background-color: rgba(0, 0, 0, 0.5);
-
-                scroll-snap-align: center;
-
-                
-                min-width:250px;
-                width: 250px;
-                height:95%;
-
-                font-weight: bolder;
-                font-size:xx-large;
-                
-                margin-left: 20px;
-                margin-right:20px;
-            }
-            .card:hover{
-                border-color: #fc0;
-                cursor:pointer;
-                text-shadow: #fc0 1px 0 5px, white 1px 0 10px;
-            }
         }
 
         .bottom_bar{

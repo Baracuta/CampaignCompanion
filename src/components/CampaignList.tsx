@@ -10,7 +10,6 @@ function CampaignList(){
     const list=getCampaigns();
     const divs=list.map((datum)=>
     <Card
-    className={styles.card}
     name={datum.name}
     cardLink={`/campaign/${datum.id}`}>
     </Card>);

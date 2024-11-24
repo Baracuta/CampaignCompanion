@@ -1,0 +1,32 @@
+@media screen and (min-width:1024px) {
+    .recent_edits{
+                
+
+        display: flex;
+        flex-direction: row;
+        align-items:center;
+
+        min-width: none;
+        width:40%;
+        max-width: 50%;
+
+        margin: 5px;
+    }
+}
+
+@media screen and (min-width:360px)
+and (max-width: 1023px){
+    .recent_edits{
+                
+
+        display: flex;
+        flex-direction: row;
+        align-items:center;
+
+        min-width: none;
+        width:40%;
+        max-width: 50%;
+
+        margin: 5px;
+    }
+}

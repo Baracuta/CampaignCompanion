@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { Campaign } from "../types/Campaign";
 import { getCampaign } from "../services/CampaignService";
 import { ASSETS_PATH } from "../constants/assets_path";
+import RecentEdits from "../components/RecentEdits";
 
 
 //This is going to be the default campaign dashboard. Hard-code the details for now as you get the UI figured out.
@@ -51,9 +52,7 @@ function CampaignPage(){
                     <h4>Quick Access:</h4>
                 </div>
 
-                <div className={styles.recent_edits}>
-                    <h4>Recent Edits:</h4>
-                </div>
+                <RecentEdits/>
 
             </div>
 
@@ -61,19 +60,15 @@ function CampaignPage(){
             <div className={styles.card_panel}>
 
                 <Card name="Non-Player Characters" cardLink={`/campaign/${campaign?.id}/NPCs`}>
-                
                 </Card>                
 
                 <Card name="Locations" cardLink={`/campaign/${campaign?.id}/Locations`}>
-                    
                 </Card>
                 
                 <Card name="Items" cardLink={`/campaign/${campaign?.id}/Items`}>
-
                 </Card>
 
                 <Card name="Player Characters" cardLink={`/campaign/${campaign?.id}/PlayerCharacters`}>
-
                 </Card>
                 
             </div>
