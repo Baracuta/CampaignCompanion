@@ -103,30 +103,6 @@
             margin: 5px;
         }
     }
-    
-    .card_panel{
-        border-top:solid rgba(0,0,0,0.5);
-        border-width: 4px;
-        border-bottom:solid rgba(0,0,0,0.5);
-        border-radius:10%;
-    
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-content: flex-start;
-        justify-content: center;
-    
-        min-width: 50%;
-        width:80%;
-        max-width: 95%;
-        height: 95%;
-
-        margin-bottom: 15px;
-
-        overflow-y: scroll;
-    
-    
-    }
 }
 
 @media screen and (min-width:360px)
@@ -222,33 +198,5 @@ and (max-width: 1023px){
 
             margin: 5px;
         }
-    }
-    
-    .card_panel{
-        border-top:solid rgba(0,0,0,0.5);
-        border-width: 4px;
-        border-bottom:solid rgba(0,0,0,0.5);
-        border-radius:10%;
-
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-content: flex-start;
-        justify-content: center;
-    
-        min-width: 50%;
-        width:75%;
-        height: 60%;
-        max-height:100%;
-
-        margin-bottom: 15px;
-        
-        overflow-y: auto;
-        scroll-snap-type:mandatory;
-        scroll-padding: 0px;
-        scroll-margin: 0px;
-    
-    
-    
     }
 }
