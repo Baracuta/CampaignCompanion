@@ -1,4 +1,4 @@
-import styles from '../css_modules/card.module.css'
+import styles from '../css_modules/cardpage.module.css'
 import { Campaign } from "../types/Campaign";
 import { useParams } from "react-router-dom";
 import { useState,useEffect } from "react";
@@ -58,22 +58,8 @@ function CampaignLocations(){
 
             <div className={styles.card_panel}>
 
-            <Card className={styles.card} name="Card 1" cardLink=""/>
-            <Card className={styles.card} name="Card 2" cardLink=""/>
-            <Card className={styles.card} name="Card 3" cardLink=""/>
-            <Card className={styles.card} name="Card 4" cardLink=""/>
-            <Card className={styles.card} name="Card 5" cardLink=""/>
-            <Card className={styles.card} name="Card 6" cardLink=""/>
-            <Card className={styles.card} name="Card 7" cardLink=""/>
-            <Card className={styles.card} name="Card 8" cardLink=""/>
-            <Card className={styles.card} name="Card 9" cardLink=""/>
-            <Card className={styles.card} name="Card 10" cardLink=""/>
-            <Card className={styles.card} name="Card 11" cardLink=""/>
-            <Card className={styles.card} name="Card 12" cardLink=""/>
-            <Card className={styles.card} name="Card 13" cardLink=""/>
-            <Card className={styles.card} name="Card 14" cardLink=""/>
-            <Card className={styles.card} name="Card 15" cardLink=""/>
-            <Card className={styles.card} name="Card 16" cardLink=""/>
+            <Card  name="Card 1" cardLink=""/>
+
             </div>
 
         </main>
