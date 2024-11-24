@@ -1,0 +1,58 @@
+@media screen and (min-width:1024px){
+    .card{
+        border: solid black;
+        border-radius: 25px;
+        background-color: rgba(0, 0, 0, 0.5);
+
+        min-width:15%;
+        width: 20%;
+        max-width:50%;
+        min-height:25%;
+        height:25%;
+
+        font-weight: bolder;
+        font-size:xx-large;
+
+        margin: 5px;
+
+    }
+    .card:hover{
+        border-color: #fc0;
+        cursor:pointer;
+        text-shadow: #fc0 1px 0 5px, white 1px 0 10px;
+    }
+}
+
+@media screen and (min-width:360px)
+and (max-width: 1023px){
+    .card{
+        border: black;
+        border-radius: 5px;
+        background-color: rgba(0, 0, 0, 0.5);
+
+        scroll-snap-align:center;
+
+        min-width:25%;
+        width: 25%;
+        max-width:50%;
+        min-height:25%;
+        height:25%;
+
+        font-weight: bolder;
+        font-size:xx-large;
+
+        margin: 5px;
+
+        p{
+            font-size: medium;
+            text-wrap:stable;
+            color: white;
+        }
+    
+    }
+    .card:hover{
+        border-color: #fc0;
+        cursor:pointer;
+        text-shadow: #fc0 1px 0 5px, white 1px 0 10px;
+    }
+}
