@@ -5,7 +5,7 @@ type CardProps={
     name?:string;
     id?:string;
     background?:string;
-    cardType?:"bigCard"|"smallCard"|"campaignCard";
+    cardType?:`bigCard`|`smallCard`|`campaignCard`;
     cardLink:string;
 }
 
@@ -14,7 +14,7 @@ function Card(props:CardProps){
 
     return(
 
-        <div className={styles.cardType}
+        <div className={styles.card}
         style={{background:(props.background)}}
 
         onClick={()=>{navigate(props.cardLink);}}>
@@ -24,7 +24,6 @@ function Card(props:CardProps){
         </div>
 
     );
-
 }
 
 export default Card
