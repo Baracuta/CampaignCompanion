@@ -6,6 +6,7 @@ import { getCampaign } from "../services/CampaignService";
 import NavButton from "../components/NavButton";
 import Card from '../components/Card';
 import { ASSETS_PATH } from '../constants/assets_path';
+import RecentEdits from '../components/RecentEdits';
 
 
 function CampaignPlayerCharacters(){
@@ -42,9 +43,7 @@ function CampaignPlayerCharacters(){
 
                 <div className={styles.tool_bar}>
 
-                    <div className={styles.recent_edits}>
-                        <h4>Recent Edits:</h4>
-                    </div>
+                    <RecentEdits/>
 
                     <div className={styles.search_bar}>
                         <h4>Search Bar:</h4>
