@@ -60,19 +60,19 @@ function CampaignPage(){
 
             <div className={styles.card_panel}>
 
-                <Card className={styles.card} name="Non-Player Characters" cardLink={`/campaign/${campaign?.id}/NPCs`}>
+                <Card name="Non-Player Characters" cardLink={`/campaign/${campaign?.id}/NPCs`}>
                 
                 </Card>                
 
-                <Card className={styles.card} name="Locations" cardLink={`/campaign/${campaign?.id}/Locations`} background={`${ASSETS_PATH}/Emblem 1 3.png`}>
+                <Card name="Locations" cardLink={`/campaign/${campaign?.id}/Locations`}>
                     
                 </Card>
                 
-                <Card className={styles.card} name="Items" cardLink={`/campaign/${campaign?.id}/Items`}>
+                <Card name="Items" cardLink={`/campaign/${campaign?.id}/Items`}>
 
                 </Card>
 
-                <Card className={styles.card} name="Player Characters" cardLink={`/campaign/${campaign?.id}/PlayerCharacters`}>
+                <Card name="Player Characters" cardLink={`/campaign/${campaign?.id}/PlayerCharacters`}>
 
                 </Card>
                 
