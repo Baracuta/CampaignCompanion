@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
+import styles from '../css_modules/card.module.css'
 
 type CardProps={
     name?:string;
     id?:string;
     background?:string;
-    className?:string;
+    cardType?:"bigCard"|"smallCard"|"campaignCard";
     cardLink:string;
 }
 
@@ -13,7 +14,7 @@ function Card(props:CardProps){
 
     return(
 
-        <div className={props.className}
+        <div className={styles.cardType}
         style={{background:(props.background)}}
 
         onClick={()=>{navigate(props.cardLink);}}>
