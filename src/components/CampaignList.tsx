@@ -1,6 +1,5 @@
 import { getCampaigns} from "../services/CampaignService";
 import Card from "./Card";
-import styles from '../css_modules/select.module.css'
 
 //The component that creates a div for each campaign in the array of getCampaigns
 
