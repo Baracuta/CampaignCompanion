@@ -11,7 +11,7 @@ function TopBar(props:TopBarProps){
     return(
         <div className={styles.top_bar}>
 
-                <img src={`${ASSETS_PATH}/Emblem 1 3.png`}/>
+                <img src={props?.image}/>
 
                 <div className={styles.title_box}>
                     <h2>{props?.campaignName}</h2>
@@ -26,3 +26,5 @@ function TopBar(props:TopBarProps){
             </div>
     )
 }
+
+export default TopBar
