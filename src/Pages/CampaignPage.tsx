@@ -7,6 +7,7 @@ import { Campaign } from "../types/Campaign";
 import { getCampaign } from "../services/CampaignService";
 import { ASSETS_PATH } from "../constants/assets_path";
 import RecentEdits from "../components/RecentEdits";
+import TopBar from "../components/TopBar";
 
 
 //This is going to be the default campaign dashboard. Hard-code the details for now as you get the UI figured out.
@@ -29,21 +30,7 @@ function CampaignPage(){
     return(
         <main className={styles.main}>
 
-            <div className={styles.top_bar}>
-
-                <img src={`${ASSETS_PATH}/Emblem 1 3.png`}/>
-
-                <div className={styles.title_box}>
-                    <h2>{campaign?.name}</h2>
-                    <h3>{campaign?.game}</h3>
-                </div>
-
-                <div className={styles.dashboard_menu}>
-                    <button></button>
-                    
-                </div>
-
-            </div>
+            <TopBar name={campaign?.name} game={campaign?.game} image={`${ASSETS_PATH}/Emblem 1 3.png`}/>
 
 
             <div className={styles.tool_bar}>

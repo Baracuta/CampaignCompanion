@@ -12,7 +12,7 @@ function TestPage(){
     return(
          
         <div>
-            <TopBar image={`${ASSETS_PATH}/Emblem 1 3.png`}/>
+            <TopBar name="Tater Tots" game="Huh" image={`${ASSETS_PATH}/Emblem 1 3.png`}/>
 
             <h1>Testing!</h1>
             <NavButton text="Go Home" destination="/"/>
