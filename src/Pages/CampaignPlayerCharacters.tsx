@@ -3,7 +3,7 @@ import { Campaign } from "../types/Campaign";
 import { useParams } from "react-router-dom";
 import { useState,useEffect } from "react";
 import { getCampaign } from "../services/CampaignService";
-import NavButton from "../components/NavButton";
+import TopBar from '../components/TopBar';
 import Card from '../components/Card';
 import { ASSETS_PATH } from '../constants/assets_path';
 import CardPanel from '../components/CardPanel';
@@ -31,16 +31,8 @@ function CampaignPlayerCharacters(){
 
             <div className={styles.bars}>
 
-                <div className={styles.top_bar}>
+                <TopBar name='Player Characters' image={`${ASSETS_PATH}/Emblem 1 3.png`} buttonNav={`/campaign/${campaign?.id}`}/>
 
-                    <img src={`${ASSETS_PATH}/Emblem 1 3.png`}/>
-
-                    <div className={styles.title_box}>
-                        <h3>Player Characters</h3>
-                    </div>
-
-                    <NavButton text="Go Back" destination={`/campaign/${campaign?.id}`}/>
-                </div>
 
                 <ToolBar/>
 

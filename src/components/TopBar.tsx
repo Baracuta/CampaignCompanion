@@ -1,9 +1,11 @@
 import styles from '../css_modules/topbar.module.css'
+import NavButton from './NavButton';
 
 type TopBarProps={
     name?:string;
     game?:string;
     image?:string;
+    buttonNav:string;
 }
 
 function TopBar(props:TopBarProps){
@@ -19,7 +21,7 @@ function TopBar(props:TopBarProps){
                 </div>
 
                 <div className={styles.dashboard_menu}>
-                    <button></button>
+                    <NavButton text="Go Back" destination={props.buttonNav}/>
                     
                 </div>
 

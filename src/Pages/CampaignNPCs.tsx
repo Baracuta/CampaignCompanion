@@ -8,6 +8,7 @@ import NavButton from "../components/NavButton";
 import { ASSETS_PATH } from '../constants/assets_path';
 import CardPanel from '../components/CardPanel';
 import ToolBar from '../components/ToolBar';
+import TopBar from '../components/TopBar';
 
 
 
@@ -30,16 +31,7 @@ function CampaignNPCs(){
 
             <div className={styles.bars}>
 
-                <div className={styles.top_bar}>
-
-                    <img src={`${ASSETS_PATH}/Emblem 1 3.png`}/>
-
-                    <div className={styles.title_box}>
-                        <h3>Non-Player Characters</h3>
-                    </div>
-
-                    <NavButton text="Go Back" destination={`/campaign/${campaign?.id}`}/>
-                </div>
+                <TopBar name='Non-Player Characters' image={`${ASSETS_PATH}/Emblem 1 3.png`} buttonNav={`/campaign/${campaign?.id}`}/>
 
                 <ToolBar/>
 
