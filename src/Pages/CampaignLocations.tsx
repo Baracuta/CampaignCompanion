@@ -6,8 +6,8 @@ import { getCampaign } from "../services/CampaignService";
 import NavButton from "../components/NavButton";
 import Card from '../components/Card';
 import { ASSETS_PATH } from '../constants/assets_path';
-import RecentEdits from '../components/RecentEdits';
 import CardPanel from '../components/CardPanel';
+import ToolBar from '../components/ToolBar';
 
 
 function CampaignLocations(){
@@ -41,16 +41,7 @@ function CampaignLocations(){
                     <NavButton text="Go Back" destination={`/campaign/${campaign?.id}`}/>
                 </div>
 
-                <div className={styles.tool_bar}>
-
-                    <RecentEdits/>
-
-                    <div className={styles.search_bar}>
-                        <h4>Search Bar:</h4>
-                    </div>
-
-
-                </div>
+                <ToolBar/>
 
                 
 

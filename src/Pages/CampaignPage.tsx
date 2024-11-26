@@ -6,8 +6,8 @@ import { useParams } from "react-router-dom";
 import { Campaign } from "../types/Campaign";
 import { getCampaign } from "../services/CampaignService";
 import { ASSETS_PATH } from "../constants/assets_path";
-import RecentEdits from "../components/RecentEdits";
 import TopBar from "../components/TopBar";
+import ToolBar from "../components/ToolBar";
 
 
 //This is going to be the default campaign dashboard. Hard-code the details for now as you get the UI figured out.
@@ -33,15 +33,7 @@ function CampaignPage(){
             <TopBar name={campaign?.name} game={campaign?.game} image={`${ASSETS_PATH}/Emblem 1 3.png`}/>
 
 
-            <div className={styles.tool_bar}>
-
-                <div className={styles.quick_access}>
-                    <h4>Quick Access:</h4>
-                </div>
-
-                <RecentEdits/>
-
-            </div>
+            <ToolBar/>
 
 
             <div className={styles.card_panel}>
