@@ -36,7 +36,8 @@ export const findCampaign= async (id:string):Promise<Campaign>=>{
     console.log(result)
     return {
         id,
-        name:(result?.name)
+        name:(result?.name),
+        game:(result?.game)
     }
 }
 
