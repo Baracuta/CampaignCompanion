@@ -1,5 +1,6 @@
 import { Campaign } from "../types/Campaign";
 import { v4 as uuid } from "uuid";
+import { NPC } from "../types/NPC";
 
 //Used in the CampaignForm to create a new campaign using the information given in the form.
 export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
@@ -43,4 +44,26 @@ export const getCampaigns = ()=>{
     const allCampaigns = allCampaignsString == null ? [] : JSON.parse(allCampaignsString) as Campaign[];
 
     return allCampaigns;
+}
+
+
+//NPC Section
+
+export const createNPC = async (npc: NPC): Promise<NPC> => {
+    npc={
+        ...npc,
+        id:uuid()
+    };
+
+    const allNPCsString = localStorage.getItem("npcs");
+    const allNPCs = allNPCsString == null ? [] : JSON.parse(allNPCsString);
+
+    const newNPCs = [
+        ...allNPCs,
+        npc
+    ];
+
+    localStorage.setItem("npcs", JSON.stringify(newNPCs));
+
+    return npc;
 }
