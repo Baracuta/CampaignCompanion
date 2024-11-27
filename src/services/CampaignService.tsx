@@ -41,7 +41,7 @@ export const findCampaign= async (id:string):Promise<Campaign>=>{
         game:(result?.game)
     }
 }
-
+//Needed in order for campaignList and findCampaign to work correctly.
 export const getCampaigns = ()=>{
     const allCampaignsString = localStorage.getItem("campaigns");
     const allCampaigns = allCampaignsString == null ? [] : JSON.parse(allCampaignsString) as Campaign[];
