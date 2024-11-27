@@ -1,6 +1,5 @@
 import styles from '../css_modules/cardpage.module.css'
 import { Campaign } from "../types/Campaign";
-import Card from '../components/Card';
 import { useParams } from "react-router-dom";
 import { useState,useEffect } from "react";
 import { getCampaign } from "../services/CampaignService";
