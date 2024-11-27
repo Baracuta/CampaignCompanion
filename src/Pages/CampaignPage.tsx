@@ -30,7 +30,7 @@ function CampaignPage(){
     return(
         <main className={styles.main}>
 
-            <TopBar name={campaign?.name} game={campaign?.game} image={`${ASSETS_PATH}/Emblem 1 3.png`}/>
+            <TopBar name={campaign?.name} game={campaign?.game} buttonNav="/campaign-select" image={`${ASSETS_PATH}/Emblem 1 3.png`}/>
 
 
             <ToolBar/>
