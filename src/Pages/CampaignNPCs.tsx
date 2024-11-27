@@ -8,6 +8,7 @@ import { ASSETS_PATH } from '../constants/assets_path';
 import CardPanel from '../components/CardPanel';
 import ToolBar from '../components/ToolBar';
 import TopBar from '../components/TopBar';
+import AddNPC from '../components/AddNPC';
 
 
 
@@ -39,6 +40,7 @@ function CampaignNPCs(){
             </div>
 
             <CardPanel>
+                <AddNPC/>
                 <Card name="Card 1" cardLink=""/>
                 
             </CardPanel>

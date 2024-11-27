@@ -1,0 +1,8 @@
+.add_npc{
+
+    border: solid black;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    display: flex;
+    flex-direction: column;
+}
