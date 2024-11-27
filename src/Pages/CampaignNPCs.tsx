@@ -7,7 +7,7 @@ import { ASSETS_PATH } from '../constants/assets_path';
 import CardPanel from '../components/CardPanel';
 import ToolBar from '../components/ToolBar';
 import TopBar from '../components/TopBar';
-import AddNPC from '../components/AddThing';
+import AddThing from '../components/AddThing';
 import NPCList from '../components/NPCList';
 
 
@@ -40,7 +40,7 @@ function CampaignNPCs(){
             </div>
 
             <CardPanel>
-                <AddThing formLink=/>
+                <AddThing formLink={`/campaign/${campaign?.id}/NPCs/new`}/>
                 <NPCList/>
                 
             </CardPanel>
