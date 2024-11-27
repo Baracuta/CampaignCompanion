@@ -9,3 +9,9 @@
     width:10%;
     height:10%;
 }
+.add_thing:hover{
+    border-color: #fc0;
+    cursor:pointer;
+    text-shadow: #fc0 1px 0 5px, white 1px 0 10px;
+    opacity: 50%;
+}
