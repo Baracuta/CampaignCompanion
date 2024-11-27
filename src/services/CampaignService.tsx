@@ -74,3 +74,14 @@ export const getNPCs = ()=>{
 
     return allNPCs;
 }
+
+export const findNPC= async (id:string):Promise<NPC>=>{
+    const allNPCs=getNPCs();
+    const result=allNPCs.find((npc)=>npc.id===id)
+
+    console.log(result)
+    return {
+        id,
+        name:(result?.name)
+    }
+}
