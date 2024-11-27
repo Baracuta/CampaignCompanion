@@ -9,6 +9,7 @@ import CardPanel from '../components/CardPanel';
 import ToolBar from '../components/ToolBar';
 import TopBar from '../components/TopBar';
 import AddNPC from '../components/AddNPC';
+import NPCList from '../components/NPCList';
 
 
 
@@ -41,7 +42,7 @@ function CampaignNPCs(){
 
             <CardPanel>
                 <AddNPC/>
-                <Card name="Card 1" cardLink=""/>
+                <NPCList/>
                 
             </CardPanel>
 

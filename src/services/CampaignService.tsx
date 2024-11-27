@@ -67,3 +67,10 @@ export const createNPC = async (npc: NPC): Promise<NPC> => {
 
     return npc;
 }
+
+export const getNPCs = ()=>{
+    const allNPCsString = localStorage.getItem("npcs");
+    const allNPCs = allNPCsString == null ? [] : JSON.parse(allNPCsString) as NPC[];
+
+    return allNPCs;
+}
