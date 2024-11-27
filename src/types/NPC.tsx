@@ -1,6 +1,6 @@
 
 export type NPC={
     id:string;
-    name:string;
+    name?:string;
     description?:string;
 }

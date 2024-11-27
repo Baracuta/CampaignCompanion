@@ -35,7 +35,8 @@ export const findCampaign= async (id:string):Promise<Campaign>=>{
 
     console.log(result)
     return {
-        id
+        id,
+        name:(result?.name)
     }
 }
 

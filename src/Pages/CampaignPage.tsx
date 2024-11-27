@@ -4,7 +4,7 @@ import Card from "../components/Card"
 import { useState,useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Campaign } from "../types/Campaign";
-import { getCampaign } from "../services/CampaignService";
+import { findCampaign, getCampaign } from "../services/CampaignService";
 import { ASSETS_PATH } from "../constants/assets_path";
 import TopBar from "../components/TopBar";
 import ToolBar from "../components/ToolBar";
@@ -18,7 +18,7 @@ function CampaignPage(){
     const [campaign, setCampaign] = useState<Campaign>();
 
     useEffect(()=>{
-        getCampaign (id as string).then((campaign)=>{
+        findCampaign (id as string).then((campaign)=>{
             setCampaign(campaign);
         })
     }, [id]);
