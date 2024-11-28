@@ -18,7 +18,7 @@ function CampaignPage(){
     const [campaign, setCampaign] = useState<Campaign>();
 
     useEffect(()=>{
-        findCampaign (id as string).then((campaign)=>{
+        getCampaign (id as string).then((campaign)=>{
             setCampaign(campaign);
         })
     }, [id]);
