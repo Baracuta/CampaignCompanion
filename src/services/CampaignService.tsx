@@ -24,9 +24,11 @@ export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
 
 //
 export const getCampaign = async (id: string): Promise<Campaign> =>{
-    return{
-        id
-    }
+    const allCampaigns=getCampaigns();
+    const campaign=allCampaigns.find((campaign)=>campaign.id===id)
+    return(
+        campaign as Campaign
+    )
 }
 
 //Basically just a superior getCampaign at this point. Will have to ask Adam.
@@ -40,6 +42,8 @@ export const findCampaign= async (id:string):Promise<Campaign>=>{
         name:(result?.name),
         game:(result?.game)
     }
+        
+    
 }
 //Needed in order for campaignList and findCampaign to work correctly.
 export const getCampaigns = ()=>{
