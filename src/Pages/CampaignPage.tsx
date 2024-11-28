@@ -32,9 +32,7 @@ function CampaignPage(){
 
             <TopBar name={campaign?.name} game={campaign?.game} buttonNav="/campaign-select" image={`${ASSETS_PATH}/Emblem 1 3.png`}/>
 
-
             <ToolBar/>
-
 
             <div className={styles.card_panel}>
 
@@ -54,7 +52,7 @@ function CampaignPage(){
             
             <div className={styles.bottom_bar}>
                 <NavButton text="Go Back" destination="/campaign-select"/>
-                </div>
+            </div>
 
         </main>
 
