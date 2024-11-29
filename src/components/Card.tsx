@@ -12,9 +12,14 @@ type CardProps={
 function Card(props:CardProps){
     const navigate=useNavigate();
 
+    let divClass=(props.cardType)
+    if (props.cardType !=null){
+        divClass=${divClass} ${styles[props.cardType]};
+    }
+
     return(
 
-        <div className={styles.card}
+        <div className={divClass}
         style={{background:(props.background)}}
 
         onClick={()=>{navigate(props.cardLink);}}>
