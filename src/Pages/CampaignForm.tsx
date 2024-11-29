@@ -38,7 +38,7 @@ function CampaignForm(){
                     className={styles.Autocomplete}
                     freeSolo
                     options={gameOptions}
-                    value={campaign.game}
+                    value={campaign.game ?? ""}
                     onChange={(e,value)=>{
                         const game=value ?? undefined;
                         setCampaign({...campaign, game})
@@ -57,7 +57,7 @@ function CampaignForm(){
 
                     <input
                     type="text"
-                    value={campaign.name}
+                    value={campaign.name ?? ""}
                     onChange={e => {
                         const name=e.target.value;
                         setCampaign({...campaign, name});
