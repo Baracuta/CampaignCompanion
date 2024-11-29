@@ -1,9 +1,9 @@
 import NavButton from "../components/NavButton"
-import { findCampaign } from "../services/CampaignService"
 import { useState } from "react"
 import { Campaign } from "../types/Campaign"
 import TopBar from "../components/TopBar"
 import { ASSETS_PATH } from "../constants/assets_path"
+import { getCampaign } from "../services/CampaignService"
 
 //This is a page used for testing purposes.
 function TestPage(){
@@ -12,7 +12,7 @@ function TestPage(){
     return(
          
         <div>
-            <TopBar name="Tater Tots" game="Huh" image={`${ASSETS_PATH}/Emblem 1 3.png`}/>
+            <TopBar buttonNav="" name="Tater Tots" game="Huh" image={`${ASSETS_PATH}/Emblem 1 3.png`}/>
 
             <h1>Testing!</h1>
             <NavButton text="Go Home" destination="/"/>
@@ -23,7 +23,7 @@ function TestPage(){
             value={campaign.id}
             onChange={e=> {
                 const id=e.target.value;
-                findCampaign(id)
+                getCampaign(id)
             }}></input>
         </div>
     )

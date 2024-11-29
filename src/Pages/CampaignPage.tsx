@@ -4,7 +4,7 @@ import Card from "../components/Card"
 import { useState,useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Campaign } from "../types/Campaign";
-import { findCampaign, getCampaign } from "../services/CampaignService";
+import { getCampaign } from "../services/CampaignService";
 import { ASSETS_PATH } from "../constants/assets_path";
 import TopBar from "../components/TopBar";
 import ToolBar from "../components/ToolBar";
