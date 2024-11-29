@@ -78,7 +78,7 @@ function AddThing(props: ThingProps) {
           <Button onClick={async () => {
                 const savedNPC = await createNPC(npc as NPC);
                 handleClose;
-              }} type="submit">Add NPC</Button>
+              }} type="button">Add NPC</Button>
         </DialogActions>
       </Dialog>
     </Fragment>
