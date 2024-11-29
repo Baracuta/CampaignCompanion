@@ -12,9 +12,9 @@ type CardProps={
 function Card(props:CardProps){
     const navigate=useNavigate();
 
-    let divClass=(props.cardType)
+    let divClass=(styles.card)
     if (props.cardType !=null){
-        divClass=${divClass} ${styles[props.cardType]};
+        divClass=`${divClass} ${styles[props.cardType]}`;
     }
 
     return(
