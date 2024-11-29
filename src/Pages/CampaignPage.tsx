@@ -36,16 +36,16 @@ function CampaignPage(){
 
             <div className={styles.card_panel}>
 
-                <Card name="Non-Player Characters" cardLink={`/campaign/${campaign?.id}/NPCs`}>
+                <Card name="Non-Player Characters" cardType="bigCard" cardLink={`/campaign/${campaign?.id}/NPCs`}>
                 </Card>                
 
-                <Card name="Locations" cardLink={`/campaign/${campaign?.id}/Locations`}>
+                <Card name="Locations" cardType="bigCard" cardLink={`/campaign/${campaign?.id}/Locations`}>
                 </Card>
                 
-                <Card name="Items" cardLink={`/campaign/${campaign?.id}/Items`}>
+                <Card name="Items" cardType="bigCard" cardLink={`/campaign/${campaign?.id}/Items`}>
                 </Card>
 
-                <Card name="Player Characters" cardLink={`/campaign/${campaign?.id}/PlayerCharacters`}>
+                <Card name="Player Characters" cardType="bigCard" cardLink={`/campaign/${campaign?.id}/PlayerCharacters`}>
                 </Card>
                 
             </div>

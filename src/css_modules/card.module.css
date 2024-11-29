@@ -15,6 +15,9 @@
 
         margin: 5px;
 
+        &.bigCard{
+            height:100%;
+        }
     }
     .card:hover{
         border-color: #fc0;

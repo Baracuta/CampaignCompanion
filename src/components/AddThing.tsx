@@ -5,8 +5,7 @@ import {
   DialogContent,
   DialogActions,
 } from "@mui/material";
-import React, { useEffect } from "react";
-import { ASSETS_PATH } from "../constants/assets_path";
+import { useEffect } from "react";
 import styles from "../css_modules/addthing.module.css";
 import { Fragment, useState } from "react";
 import { useParams } from "react-router-dom";
