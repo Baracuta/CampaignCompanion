@@ -31,20 +31,6 @@ export const getCampaign = async (id: string): Promise<Campaign> =>{
     )
 }
 
-//Basically just a superior getCampaign at this point. Will have to ask Adam.
-export const findCampaign= async (id:string):Promise<Campaign>=>{
-    const allCampaigns=getCampaigns();
-    const result=allCampaigns.find((campaign)=>campaign.id===id)
-
-    console.log(result)
-    return {
-        id,
-        name:(result?.name),
-        game:(result?.game)
-    }
-        
-    
-}
 //Needed in order for campaignList and findCampaign to work correctly.
 export const getCampaigns = ()=>{
     const allCampaignsString = localStorage.getItem("campaigns");
