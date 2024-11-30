@@ -35,8 +35,6 @@ function CampaignNPCs(){
 
                 <ToolBar/>
 
-                
-
             </div>
 
             <CardPanel>
@@ -51,7 +49,3 @@ function CampaignNPCs(){
 
 export default CampaignNPCs
 
-//Additional Notes:
-//For desktop version, the bottom-left quadrant of the screen has space to
-//add the main card panel from the campaign dashboard, for easy swapping between
-//card categories. Not enough space to implement this on mobile.
