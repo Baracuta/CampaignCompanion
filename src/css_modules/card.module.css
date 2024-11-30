@@ -27,6 +27,10 @@
         &.campaignCard{
             border-radius: 15px;
         }
+        &:global(.MuiButtonBase-root){
+            border-color: black;
+            background-color: pink;
+        }
     }
     .card:hover{
         border-color: #fc0;
