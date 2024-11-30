@@ -40,22 +40,7 @@ function CampaignItems(){
             </div>
 
             <CardPanel>
-                <Card name="Card 1" cardLink=""/>
-                <Card name="Card 2" cardLink=""/>
-                <Card name="Card 3" cardLink=""/>
-                <Card name="Card 4" cardLink=""/>
-                <Card name="Card 5" cardLink=""/>
-                <Card name="Card 6" cardLink=""/>
-                <Card name="Card 7" cardLink=""/>
-                <Card name="Card 8" cardLink=""/>
-                <Card name="Card 9" cardLink=""/>
-                <Card name="Card 10" cardLink=""/>
-                <Card name="Card 11" cardLink=""/>
-                <Card name="Card 12" cardLink=""/>
-                <Card name="Card 13" cardLink=""/>
-                <Card name="Card 14" cardLink=""/>
-                <Card name="Card 15" cardLink=""/>
-                <Card name="Card 16" cardLink=""/>
+                
             </CardPanel>
 
         </main>
