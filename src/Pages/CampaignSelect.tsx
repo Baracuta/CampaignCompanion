@@ -15,11 +15,6 @@ function CampaignSelect(){
 
                 <NavButton text="Return to Splash Screen" destination="/"/>
 
-                <button onClick={getCampaigns}>Get Campaigns</button>
-                <button onClick={CampaignList}>CampaignList</button>
-
-                
-
             </div>
 
             <div className={styles.card_panel}>
