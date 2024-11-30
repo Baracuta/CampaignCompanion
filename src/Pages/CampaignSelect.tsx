@@ -1,6 +1,5 @@
 import styles from '../css_modules/select.module.css'
 import NavButton from "../components/NavButton"
-import { getCampaigns } from "../services/CampaignService"
 import CampaignList from '../components/CampaignList'
 
 

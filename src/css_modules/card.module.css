@@ -15,11 +15,16 @@
 
         margin: 5px;
 
+        text-align: center;
+        overflow:hidden;
+        text-overflow:ellipsis;
+
         &.bigCard{
             height:100%;
+            background-color: rgba(0, 0, 0, 0.5);
         }
         &.campaignCard{
-            
+            border-radius: 15px;
         }
     }
     .card:hover{
@@ -53,6 +58,18 @@ and (max-width: 1023px){
             font-size: medium;
             text-wrap:stable;
             color: white;
+        }
+        &.bigCard{
+            height:95%;
+            min-width:250px;
+            width:250px;
+
+            background-color: rgba(0, 0, 0, 0.5);
+
+            scroll-snap-align: center;
+        }
+        &.campaignCard{
+            border-radius: 15px;
         }
     
     }
