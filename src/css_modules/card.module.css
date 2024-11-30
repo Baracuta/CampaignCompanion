@@ -18,6 +18,7 @@
         text-align: center;
         overflow:hidden;
         text-overflow:ellipsis;
+        
 
         &.bigCard{
             height:100%;
@@ -53,6 +54,10 @@ and (max-width: 1023px){
         font-size:xx-large;
 
         margin: 5px;
+
+        text-align: center;
+        overflow:hidden;
+        text-overflow:ellipsis;
 
         p{
             font-size: medium;

@@ -1,6 +1,7 @@
 import styles from '../css_modules/select.module.css'
 import NavButton from "../components/NavButton"
 import CampaignList from '../components/CampaignList'
+import CardPanel from '../components/CardPanel'
 
 
 
@@ -16,9 +17,9 @@ function CampaignSelect(){
 
             </div>
 
-            <div className={styles.card_panel}>
+            <CardPanel>
                 <CampaignList/>
-            </div>
+            </CardPanel>
             
 
         </main>
