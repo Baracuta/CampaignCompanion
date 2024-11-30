@@ -1,7 +1,8 @@
 import styles from '../css_modules/select.module.css'
-import NavButton from "../components/NavButton"
+import { ASSETS_PATH } from '../constants/assets_path'
 import CampaignList from '../components/CampaignList'
 import CardPanel from '../components/CardPanel'
+import TopBar from '../components/TopBar'
 
 
 
@@ -11,11 +12,7 @@ function CampaignSelect(){
 
         <main className={styles.main}>
 
-            <div className={styles.top_bar}>
-
-                <NavButton text="Return to Splash Screen" destination="/"/>
-
-            </div>
+            <TopBar name='Campaign Selection' buttonNav='/' image={`${ASSETS_PATH}/Emblem 1 3.png`}/>
 
             <CardPanel>
                 <CampaignList/>
