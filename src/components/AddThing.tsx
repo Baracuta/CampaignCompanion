@@ -6,7 +6,7 @@ import {
   DialogActions,
 } from "@mui/material";
 import { useEffect } from "react";
-import styles from "../css_modules/addthing.module.css";
+import styles from "../css_modules/card.module.css";
 import { Fragment, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getCampaign, createNPC } from "../services/CampaignService";
@@ -43,7 +43,7 @@ function AddThing(props: ThingProps) {
 
   return (
     <Fragment>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button className={styles.card} variant="outlined" onClick={handleClickOpen}>
         Add NPC
       </Button>
       <Dialog open={open} onClose={handleClose}>
