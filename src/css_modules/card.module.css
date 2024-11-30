@@ -18,6 +18,9 @@
         &.bigCard{
             height:100%;
         }
+        &.campaignCard{
+            
+        }
     }
     .card:hover{
         border-color: #fc0;
