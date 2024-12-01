@@ -47,7 +47,7 @@ export const createNPC = async (npc: NPC): Promise<NPC> => {
         ...npc,
         id:uuid()
     };
-
+//Instead of finding the npcs list, it should use getCampaign to find the current campaign and its npc list, and then append that.
     const allNPCsString = localStorage.getItem("npcs");
     const allNPCs = allNPCsString == null ? [] : JSON.parse(allNPCsString);
 
