@@ -49,10 +49,10 @@ export const createNPC = async (npc: NPC): Promise<NPC> => {
         ...npc,
         id:uuid()
     };
-//Instead of finding the npcs list, it should use getCampaign to find the current campaign and its npc list, and then append that.
+
     const {id}=useParams();
 
-    const [campaign, setCampaign] = useState<Campaign>();
+    const [campaign, setCampaign] = useState<Partial<Campaign>>({});
 
     useEffect(()=>{
         getCampaign (id as string).then((campaign)=>{
@@ -60,23 +60,33 @@ export const createNPC = async (npc: NPC): Promise<NPC> => {
         })
     }, [id]);
 
-    const currentNPCs=campaign?.npcs ?? undefined;
+    const currentNPCs=campaign?.npcs as Array<NPC>;
 
-    const newNPCs = [
+    const npcs=[
         ...currentNPCs,
         npc
-    ];
+    ]
 
-    setCampaign({...campaign, newNPCs});;
+    setCampaign({...campaign, npcs});
 
+    console.log(campaign.npcs)
     return npc;
 }
 
 export const getNPCs = ()=>{
-    const allNPCsString = localStorage.getItem("npcs");
-    const allNPCs = allNPCsString == null ? [] : JSON.parse(allNPCsString) as NPC[];
+    const {id}=useParams();
 
-    return allNPCs;
+    const [campaign, setCampaign] = useState<Partial<Campaign>>({});
+
+    useEffect(()=>{
+        getCampaign (id as string).then((campaign)=>{
+            setCampaign(campaign);
+        })
+    }, [id]);
+
+    const allNPCs=campaign?.npcs as Array<NPC>;
+
+    return allNPCs ?? [];
 }
 
 export const findNPC= async (id:string):Promise<NPC>=>{
