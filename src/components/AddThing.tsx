@@ -76,7 +76,7 @@ function AddThing(props: ThingProps) {
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
           <Button onClick={async () => {
-                const savedNPC = await createNPC(npc as NPC);
+                const savedNPC = await createNPC(npc as NPC, (id as string));
                 handleClose;
               }} type="button">Add NPC</Button>
         </DialogActions>

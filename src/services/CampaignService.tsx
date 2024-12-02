@@ -2,7 +2,6 @@ import { Campaign } from "../types/Campaign";
 import { v4 as uuid } from "uuid";
 import { NPC } from "../types/NPC";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 
 //Used in the CampaignForm to create a new campaign using the information given in the form.
 export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
@@ -44,13 +43,11 @@ export const getCampaigns = ()=>{
 
 //NPC Section
 
-export const createNPC = async (npc: NPC): Promise<NPC> => {
+export const createNPC = async (npc: NPC,id:string): Promise<NPC> => {
     npc={
         ...npc,
         id:uuid()
     };
-
-    const {id}=useParams();
 
     const [campaign, setCampaign] = useState<Partial<Campaign>>({});
 
@@ -73,29 +70,22 @@ export const createNPC = async (npc: NPC): Promise<NPC> => {
     return npc;
 }
 
-export const getNPCs = ()=>{
-    const {id}=useParams();
+export const getNPCs = async (id:string): Promise<Array<NPC>>=>{
 
-    const [campaign, setCampaign] = useState<Partial<Campaign>>({});
+    const campaign=await getCampaign(id)
 
-    useEffect(()=>{
-        getCampaign (id as string).then((campaign)=>{
-            setCampaign(campaign);
-        })
-    }, [id]);
-
-    const allNPCs=campaign?.npcs as Array<NPC>;
+    const allNPCs=campaign.npcs;
 
     return allNPCs ?? [];
 }
 
-export const findNPC= async (id:string):Promise<NPC>=>{
-    const allNPCs=getNPCs();
-    const result=allNPCs.find((npc)=>npc.id===id)
+// export const findNPC= async (id:string):Promise<NPC>=>{
+//     const allNPCs=getNPCs();
+//     const result=allNPCs.find((npc)=>npc.id===id)
 
-    console.log(result)
-    return {
-        id,
-        name:(result?.name)
-    }
-}
+//     console.log(result)
+//     return {
+//         id,
+//         name:(result?.name)
+//     }
+// }
