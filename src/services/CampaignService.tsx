@@ -1,6 +1,8 @@
 import { Campaign } from "../types/Campaign";
 import { v4 as uuid } from "uuid";
 import { NPC } from "../types/NPC";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 //Used in the CampaignForm to create a new campaign using the information given in the form.
 export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
@@ -48,15 +50,24 @@ export const createNPC = async (npc: NPC): Promise<NPC> => {
         id:uuid()
     };
 //Instead of finding the npcs list, it should use getCampaign to find the current campaign and its npc list, and then append that.
-    const allNPCsString = localStorage.getItem("npcs");
-    const allNPCs = allNPCsString == null ? [] : JSON.parse(allNPCsString);
+    const {id}=useParams();
+
+    const [campaign, setCampaign] = useState<Campaign>();
+
+    useEffect(()=>{
+        getCampaign (id as string).then((campaign)=>{
+            setCampaign(campaign);
+        })
+    }, [id]);
+
+    const currentNPCs=campaign?.npcs ?? undefined;
 
     const newNPCs = [
-        ...allNPCs,
+        ...currentNPCs,
         npc
     ];
 
-    localStorage.setItem("npcs", JSON.stringify(newNPCs));
+    setCampaign({...campaign, newNPCs});;
 
     return npc;
 }
