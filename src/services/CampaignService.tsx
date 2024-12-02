@@ -42,12 +42,16 @@ export const getCampaigns = ()=>{
 
 //NPC Section
 
+//Take the npc as a new object of npc type
+//get npc array of current campaign (getNPCs)
+//make new array consisting of previous npcs array + the new npc
+//set the new array as the array of NPCs for the current campaign
 export const createNPC = async (npc: NPC): Promise<NPC> => {
     npc={
         ...npc,
         id:uuid()
     };
-//Instead of finding the npcs list, it should use getCampaign to find the current campaign and its npc list, and then append that.
+
     const allNPCsString = localStorage.getItem("npcs");
     const allNPCs = allNPCsString == null ? [] : JSON.parse(allNPCsString);
 
@@ -61,6 +65,8 @@ export const createNPC = async (npc: NPC): Promise<NPC> => {
     return npc;
 }
 
+//get current campaign
+//return the .npcs of the current campaign
 export const getNPCs = ()=>{
     const allNPCsString = localStorage.getItem("npcs");
     const allNPCs = allNPCsString == null ? [] : JSON.parse(allNPCsString) as NPC[];
