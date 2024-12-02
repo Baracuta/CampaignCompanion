@@ -2,8 +2,8 @@ import Card from "./Card";
 import { getNPCs } from "../services/CampaignService";
 
 
-function NPCList(){
-    const list=getNPCs();
+const NPCList =async(id:string)=>{
+    const list=await getNPCs(id);
 
     const divs=list.map((datum)=>
 

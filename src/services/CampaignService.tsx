@@ -1,6 +1,7 @@
 import { Campaign } from "../types/Campaign";
 import { v4 as uuid } from "uuid";
 import { NPC } from "../types/NPC";
+import { useState, useEffect } from "react";
 
 //Used in the CampaignForm to create a new campaign using the information given in the form.
 export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
@@ -46,41 +47,56 @@ export const getCampaigns = ()=>{
 //get npc array of current campaign (getNPCs)
 //make new array consisting of previous npcs array + the new npc
 //set the new array as the array of NPCs for the current campaign
-export const createNPC = async (npc: NPC): Promise<NPC> => {
+export const createNPC = async (npc: NPC, id:string): Promise<NPC> => {
+    const [campaign, setCampaign] = useState<Partial<Campaign>>();
+
+    useEffect(()=>{
+        getCampaign (id as string).then((campaign)=>{
+            setCampaign(campaign);
+        })
+    }, [id]);
+
     npc={
         ...npc,
         id:uuid()
     };
+    const currentNPCS=getNPCs(id)
+    const newNPC=[npc]
 
-    const allNPCsString = localStorage.getItem("npcs");
-    const allNPCs = allNPCsString == null ? [] : JSON.parse(allNPCsString);
+    const npcs=(await currentNPCS).concat(newNPC)
 
-    const newNPCs = [
-        ...allNPCs,
-        npc
-    ];
+    setCampaign({...campaign, npcs})
+    // const allNPCsString = localStorage.getItem("npcs");
+    // const allNPCs = allNPCsString == null ? [] : JSON.parse(allNPCsString);
 
-    localStorage.setItem("npcs", JSON.stringify(newNPCs));
+    // const newNPCs = [
+    //     ...allNPCs,
+    //     npc
+    // ];
+
+    // localStorage.setItem("npcs", JSON.stringify(newNPCs));
 
     return npc;
 }
 
 //get current campaign
 //return the .npcs of the current campaign
-export const getNPCs = ()=>{
-    const allNPCsString = localStorage.getItem("npcs");
-    const allNPCs = allNPCsString == null ? [] : JSON.parse(allNPCsString) as NPC[];
+export const getNPCs = async (id:string)=>{
+    const campaign =await getCampaign(id);
+    const campaignNPCs=campaign.npcs as Array<NPC>;
+    // const allNPCsString = localStorage.getItem("npcs");
+    // const allNPCs = allNPCsString == null ? [] : JSON.parse(allNPCsString) as NPC[];
 
-    return allNPCs;
+    return campaignNPCs;
 }
 
-export const findNPC= async (id:string):Promise<NPC>=>{
-    const allNPCs=getNPCs();
-    const result=allNPCs.find((npc)=>npc.id===id)
+// export const findNPC= async (id:string):Promise<NPC>=>{
+//     const allNPCs=getNPCs();
+//     const result=allNPCs.find((npc)=>npc.id===id)
 
-    console.log(result)
-    return {
-        id,
-        name:(result?.name)
-    }
-}
+//     console.log(result)
+//     return {
+//         id,
+//         name:(result?.name)
+//     }
+// }
