@@ -54,7 +54,7 @@ function AddThing(props: ThingProps) {
 
             <input
               type="text"
-              value={npc.name}
+              value={npc.name ?? ""}
               onChange={(e) => {
                 const name = e.target.value;
                 setNpc({ ...npc, name });
@@ -64,7 +64,7 @@ function AddThing(props: ThingProps) {
             <h3> Describe this NPC</h3>
 
             <textarea
-              value={npc.description}
+              value={npc.description ?? ""}
               onChange={(e) => {
                 const description = e.target.value;
                 setNpc({ ...npc, description });
