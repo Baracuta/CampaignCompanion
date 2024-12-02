@@ -5,12 +5,9 @@ import {
   DialogContent,
   DialogActions,
 } from "@mui/material";
-import { useEffect } from "react";
 import styles from "../css_modules/card.module.css";
 import { Fragment, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getCampaign, createNPC } from "../services/CampaignService";
-import { Campaign } from "../types/Campaign";
+import { createNPC } from "../services/CampaignService";
 import { NPC } from "../types/NPC";
 
 type ThingProps = {
@@ -19,17 +16,7 @@ type ThingProps = {
 
 //Set it up to have a similar style to a card, but with unique properties
 function AddThing(props: ThingProps) {
-    const [npc, setNpc]=useState<Partial<NPC>>({})
-
-    const {id}=useParams();
-
-    const [campaign, setCampaign] = useState<Campaign>();
-
-    useEffect(()=>{
-        getCampaign (id as string).then((campaign)=>{
-            setCampaign(campaign);
-        })
-    }, [id]);
+  const [npc, setNpc]=useState<Partial<NPC>>({})
 
   const [open, setOpen] = useState(false);
 
