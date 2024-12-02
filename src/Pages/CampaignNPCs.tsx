@@ -38,7 +38,7 @@ function CampaignNPCs(){
             </div>
 
             <CardPanel>
-                <AddThing formLink={`/campaign/${campaign?.id}/NPCs/new`}/>
+                <AddThing/>
                 <NPCList/>
                 
             </CardPanel>
