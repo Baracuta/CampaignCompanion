@@ -66,6 +66,8 @@ export const createNPC = async (npc: NPC, id:string): Promise<NPC> => {
     const npcs=(await currentNPCS).concat(newNPC)
 
     setCampaign({...campaign, npcs})
+
+    console.log(campaign?.npcs)
     // const allNPCsString = localStorage.getItem("npcs");
     // const allNPCs = allNPCsString == null ? [] : JSON.parse(allNPCsString);
 
