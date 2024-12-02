@@ -1,7 +1,6 @@
 import { Campaign } from "../types/Campaign";
 import { v4 as uuid } from "uuid";
 import { NPC } from "../types/NPC";
-import { useEffect, useState } from "react";
 
 //Used in the CampaignForm to create a new campaign using the information given in the form.
 export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
@@ -43,49 +42,39 @@ export const getCampaigns = ()=>{
 
 //NPC Section
 
-export const createNPC = async (npc: NPC,id:string): Promise<NPC> => {
+export const createNPC = async (npc: NPC): Promise<NPC> => {
     npc={
         ...npc,
         id:uuid()
     };
+//Instead of finding the npcs list, it should use getCampaign to find the current campaign and its npc list, and then append that.
+    const allNPCsString = localStorage.getItem("npcs");
+    const allNPCs = allNPCsString == null ? [] : JSON.parse(allNPCsString);
 
-    const [campaign, setCampaign] = useState<Partial<Campaign>>({});
-
-    useEffect(()=>{
-        getCampaign (id as string).then((campaign)=>{
-            setCampaign(campaign);
-        })
-    }, [id]);
-
-    const currentNPCs=campaign?.npcs as Array<NPC>;
-
-    const npcs=[
-        ...currentNPCs,
+    const newNPCs = [
+        ...allNPCs,
         npc
-    ]
+    ];
 
-    setCampaign({...campaign, npcs});
+    localStorage.setItem("npcs", JSON.stringify(newNPCs));
 
-    console.log(campaign.npcs)
     return npc;
 }
 
-export const getNPCs = async (id:string): Promise<Array<NPC>>=>{
+export const getNPCs = ()=>{
+    const allNPCsString = localStorage.getItem("npcs");
+    const allNPCs = allNPCsString == null ? [] : JSON.parse(allNPCsString) as NPC[];
 
-    const campaign=await getCampaign(id)
-
-    const allNPCs=campaign.npcs;
-
-    return allNPCs ?? [];
+    return allNPCs;
 }
 
-// export const findNPC= async (id:string):Promise<NPC>=>{
-//     const allNPCs=getNPCs();
-//     const result=allNPCs.find((npc)=>npc.id===id)
+export const findNPC= async (id:string):Promise<NPC>=>{
+    const allNPCs=getNPCs();
+    const result=allNPCs.find((npc)=>npc.id===id)
 
-//     console.log(result)
-//     return {
-//         id,
-//         name:(result?.name)
-//     }
-// }
+    console.log(result)
+    return {
+        id,
+        name:(result?.name)
+    }
+}
