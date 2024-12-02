@@ -82,7 +82,7 @@ export const createNPC = async (npc: NPC, id:string): Promise<NPC> => {
 //get current campaign
 //return the .npcs of the current campaign
 export const getNPCs = async (id:string)=>{
-    const campaign =await getCampaign(id);
+    const campaign = await getCampaign(id);
     const campaignNPCs=campaign.npcs as Array<NPC>;
     // const allNPCsString = localStorage.getItem("npcs");
     // const allNPCs = allNPCsString == null ? [] : JSON.parse(allNPCsString) as NPC[];

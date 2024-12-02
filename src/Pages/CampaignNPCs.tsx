@@ -39,7 +39,7 @@ function CampaignNPCs(){
 
             <CardPanel>
                 <AddThing/>
-                <NPCList/>
+                <NPCList list={id as string}/>
                 
             </CardPanel>
 

@@ -2,8 +2,12 @@ import Card from "./Card";
 import { getNPCs } from "../services/CampaignService";
 
 
-const NPCList =async(id:string)=>{
-    const list=await getNPCs(id);
+type listProps={
+    list?:string;
+}
+
+function NPCList (props:listProps){
+    const list=getNPCs(props.list as string);
 
     const divs=list.map((datum)=>
 
@@ -12,7 +16,7 @@ const NPCList =async(id:string)=>{
     cardLink={``}>
     </Card>);
 
-    return divs
+    return (divs)
 };
 
 export default NPCList
