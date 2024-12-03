@@ -25,14 +25,14 @@ export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
 //
 export const getCampaign = async (id: string): Promise<Campaign> =>{
     const allCampaigns=getCampaigns();
-    const campaign=allCampaigns.find((campaign)=>campaign.id===id)
+    const campaign=(await allCampaigns).find((campaign)=>campaign.id===id)
     return(
         campaign as Campaign
     )
 }
 
 //Needed in order for campaignList and findCampaign to work correctly.
-export const getCampaigns = ()=>{
+export const getCampaigns = async ():Promise<Array<Campaign>>=>{
     const allCampaignsString = localStorage.getItem("campaigns");
     const allCampaigns = allCampaignsString == null ? [] : JSON.parse(allCampaignsString) as Campaign[];
 
@@ -44,7 +44,7 @@ export const saveCampaign = async (campaign:Campaign): Promise<Campaign> =>{
     const savedCampaign=campaign;
 
     const savingCampaign = [
-        ...allCampaigns,
+        ...await allCampaigns,
         savedCampaign
     ];
 
@@ -71,7 +71,7 @@ export const createNPC = async (npc: NPC, id:string): Promise<NPC> => {
     const currentNPCS=getNPCs(campaign)
     const newNPC=[npc]
 
-    const npcs=currentNPCS.concat(newNPC)
+    const npcs=(await currentNPCS).concat(newNPC)
 
     campaign.npcs = npcs
 
@@ -93,9 +93,9 @@ export const createNPC = async (npc: NPC, id:string): Promise<NPC> => {
 
 //get current campaign
 //return the .npcs of the current campaign
-export const getNPCs =  (id:string)=>{
-    const campaign =  getCampaign(id)
-    const campaignNPCs=campaign.npcs as Array<NPC>;
+export const getNPCs = async (campaignId:string): Promise<Array<NPC>>=>{
+    const campaign =  getCampaign(campaignId)
+    const campaignNPCs=(await campaign).npcs as Array<NPC>;
     return campaignNPCs;
 }
 
