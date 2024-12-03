@@ -9,7 +9,6 @@ type listProps={
 }
 
 function NPCList (props:listProps){
-    const list= getNPCs(props.campaignId);
 
     const [npcs, setNPCs] = useState<Array<NPC>>();
 
@@ -17,7 +16,7 @@ function NPCList (props:listProps){
         getNPCs(props.campaignId).then((npcs)=>{
             setNPCs(npcs);
         })
-    }, [npcs])
+    }, [props.campaignId])
 
     const divs=npcs.map((datum)=>
 
