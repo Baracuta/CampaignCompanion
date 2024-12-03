@@ -9,7 +9,7 @@ export type Campaign={
     name?:string;
     game?:string;
     players?:number;
-    npcs:Array<NPC>;
+    npcs?:Array<NPC>;
     locations?:Array<Location>;
     items?:Array<Item>;
     playerCharacters?:Array<PlayerCharacter>;
