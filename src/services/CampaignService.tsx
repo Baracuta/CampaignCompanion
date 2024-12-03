@@ -68,7 +68,7 @@ export const createNPC = async (npc: NPC, id:string): Promise<NPC> => {
         id:uuid()
     };
 
-    const currentNPCS=getNPCs(campaign)
+    const currentNPCS=getNPCs(id)
     const newNPC=[npc]
 
     const npcs=(await currentNPCS).concat(newNPC)

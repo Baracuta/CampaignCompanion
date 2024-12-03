@@ -3,11 +3,11 @@ import { getNPCs } from "../services/CampaignService";
 
 
 type listProps={
-    list:string;
+    campaignId:string;
 }
 
 function NPCList (props:listProps){
-    const list=getNPCs(props.list);
+    const list=getNPCs(props.campaignId);
 
     const divs=list.map((datum)=>
 
