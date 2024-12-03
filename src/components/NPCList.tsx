@@ -18,7 +18,7 @@ function NPCList (props:listProps){
         })
     }, [props.campaignId])
 
-    const divs=npcs.map((datum)=>
+    const divs=((npcs as Array<NPC>) ?? []).map((datum)=>
 
     <Card
     name={datum.name}
