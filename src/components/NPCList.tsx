@@ -1,10 +1,9 @@
 import Card from "./Card";
 import { getNPCs } from "../services/CampaignService";
-import { Campaign } from "../types/Campaign";
 
 
 type listProps={
-    list:Campaign;
+    list:string;
 }
 
 function NPCList (props:listProps){

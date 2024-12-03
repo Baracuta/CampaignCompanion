@@ -1,7 +1,6 @@
 import { Campaign } from "../types/Campaign";
 import { v4 as uuid } from "uuid";
 import { NPC } from "../types/NPC";
-import { useState, useEffect } from "react";
 
 //Used in the CampaignForm to create a new campaign using the information given in the form.
 export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
@@ -94,7 +93,8 @@ export const createNPC = async (npc: NPC, id:string): Promise<NPC> => {
 
 //get current campaign
 //return the .npcs of the current campaign
-export const getNPCs = (campaign:Campaign)=>{
+export const getNPCs =  (id:string)=>{
+    const campaign =  getCampaign(id)
     const campaignNPCs=campaign.npcs as Array<NPC>;
     return campaignNPCs;
 }
