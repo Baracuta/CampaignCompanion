@@ -8,7 +8,7 @@ import CardPanel from '../components/CardPanel';
 import ToolBar from '../components/ToolBar';
 import TopBar from '../components/TopBar';
 import AddThing from '../components/AddThing';
-// import NPCList from '../components/NPCList';
+import NPCList from '../components/NPCList';
 
 
 
@@ -39,7 +39,7 @@ function CampaignNPCs(){
 
             <CardPanel>
                 <AddThing/>
-                {/* <NPCList list={id as string}/> */}
+                <NPCList list={campaign as Campaign}/>
                 
             </CardPanel>
 

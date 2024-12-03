@@ -68,11 +68,15 @@ export const createNPC = async (npc: NPC, id:string): Promise<NPC> => {
         ...npc,
         id:uuid()
     };
+
     const currentNPCS=getNPCs(campaign)
     const newNPC=[npc]
 
-    const npcs=(await currentNPCS).concat(newNPC)
+    const npcs=currentNPCS.concat(newNPC)
 
+    campaign.npcs = npcs
+
+    saveCampaign(campaign)
 
     console.log(campaign?.npcs)
     // const allNPCsString = localStorage.getItem("npcs");
@@ -92,19 +96,9 @@ export const createNPC = async (npc: NPC, id:string): Promise<NPC> => {
 //return the .npcs of the current campaign
 export const getNPCs = (campaign:Campaign)=>{
     const campaignNPCs=campaign.npcs as Array<NPC>;
-    // const allNPCsString = localStorage.getItem("npcs");
-    // const allNPCs = allNPCsString == null ? [] : JSON.parse(allNPCsString) as NPC[];
-
     return campaignNPCs;
 }
 
-// export const findNPC= async (id:string):Promise<NPC>=>{
-//     const allNPCs=getNPCs();
-//     const result=allNPCs.find((npc)=>npc.id===id)
+export const updateNPCs = ()=>{
 
-//     console.log(result)
-//     return {
-//         id,
-//         name:(result?.name)
-//     }
-// }
+}

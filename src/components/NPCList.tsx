@@ -1,22 +1,23 @@
 import Card from "./Card";
 import { getNPCs } from "../services/CampaignService";
+import { Campaign } from "../types/Campaign";
 
 
-// type listProps={
-//     list?:string;
-// }
+type listProps={
+    list:Campaign;
+}
 
-// function NPCList (props:listProps){
-//     const list=getNPCs(props.list as string);
+function NPCList (props:listProps){
+    const list=getNPCs(props.list);
 
-//     const divs=list.map((datum)=>
+    const divs=list.map((datum)=>
 
-//     <Card
-//     name={datum.name}
-//     cardLink={``}>
-//     </Card>);
+    <Card
+    name={datum.name}
+    cardLink={``}>
+    </Card>);
 
-//     return (divs)
-// };
+    return (divs)
+};
 
-// export default NPCList
+export default NPCList
