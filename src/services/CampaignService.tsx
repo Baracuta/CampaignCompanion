@@ -48,13 +48,7 @@ export const getCampaigns = ()=>{
 //make new array consisting of previous npcs array + the new npc
 //set the new array as the array of NPCs for the current campaign
 export const createNPC = async (npc: NPC, id:string): Promise<NPC> => {
-    const [campaign, setCampaign] = useState<Partial<Campaign>>();
-
-    useEffect(()=>{
-        getCampaign (id as string).then((campaign)=>{
-            setCampaign(campaign);
-        })
-    }, [id]);
+    
 
     npc={
         ...npc,
@@ -65,7 +59,6 @@ export const createNPC = async (npc: NPC, id:string): Promise<NPC> => {
 
     const npcs=(await currentNPCS).concat(newNPC)
 
-    setCampaign({...campaign, npcs})
 
     console.log(campaign?.npcs)
     // const allNPCsString = localStorage.getItem("npcs");
