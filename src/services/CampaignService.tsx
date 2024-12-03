@@ -39,9 +39,9 @@ export const getCampaigns = async ():Promise<Array<Campaign>>=>{
     return allCampaigns;
 }
 
-export const saveCampaign = async (campaign:Campaign): Promise<Campaign> =>{
+export const saveCampaign = async (campaignId:string): Promise<Campaign> =>{
     const allCampaigns=getCampaigns();
-    const savedCampaign=campaign;
+    const savedCampaign=getCampaign(campaignId);
 
     const savingCampaign = [
         ...await allCampaigns,
@@ -75,7 +75,7 @@ export const createNPC = async (npc: NPC, id:string): Promise<NPC> => {
 
     campaign.npcs = npcs
 
-    saveCampaign(campaign)
+    saveCampaign(id)
 
     console.log(campaign?.npcs)
     // const allNPCsString = localStorage.getItem("npcs");
@@ -94,9 +94,8 @@ export const createNPC = async (npc: NPC, id:string): Promise<NPC> => {
 //get current campaign
 //return the .npcs of the current campaign
 export const getNPCs = async (campaignId:string): Promise<Array<NPC>>=>{
-    const campaign =  getCampaign(campaignId)
-    const campaignNPCs=(await campaign).npcs as Array<NPC>;
-    return campaignNPCs;
+    const campaign =  await getCampaign(campaignId)
+    return  campaign.npcs ?? [];
 }
 
 export const updateNPCs = ()=>{
