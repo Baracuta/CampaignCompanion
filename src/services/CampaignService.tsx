@@ -40,6 +40,20 @@ export const getCampaigns = ()=>{
     return allCampaigns;
 }
 
+export const saveCampaign = async (campaign:Campaign): Promise<Campaign> =>{
+    const allCampaigns=getCampaigns();
+    const savedCampaign=campaign;
+
+    const savingCampaign = [
+        ...allCampaigns,
+        savedCampaign
+    ];
+
+    localStorage.setItem("campaigns", JSON.stringify(savingCampaign));
+
+    return(savedCampaign)
+
+}
 
 //NPC Section
 
@@ -48,13 +62,13 @@ export const getCampaigns = ()=>{
 //make new array consisting of previous npcs array + the new npc
 //set the new array as the array of NPCs for the current campaign
 export const createNPC = async (npc: NPC, id:string): Promise<NPC> => {
-    
+    const campaign = await getCampaign(id)
 
     npc={
         ...npc,
         id:uuid()
     };
-    const currentNPCS=getNPCs(id)
+    const currentNPCS=getNPCs(campaign)
     const newNPC=[npc]
 
     const npcs=(await currentNPCS).concat(newNPC)
@@ -76,8 +90,7 @@ export const createNPC = async (npc: NPC, id:string): Promise<NPC> => {
 
 //get current campaign
 //return the .npcs of the current campaign
-export const getNPCs = async (id:string)=>{
-    const campaign = await getCampaign(id);
+export const getNPCs = (campaign:Campaign)=>{
     const campaignNPCs=campaign.npcs as Array<NPC>;
     // const allNPCsString = localStorage.getItem("npcs");
     // const allNPCs = allNPCsString == null ? [] : JSON.parse(allNPCsString) as NPC[];
