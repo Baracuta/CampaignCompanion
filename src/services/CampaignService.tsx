@@ -95,7 +95,7 @@ export const createNPC = async (npc: NPC, id:string): Promise<NPC> => {
 //return the .npcs of the current campaign
 export const getNPCs = async (campaignId:string): Promise<Array<NPC>>=>{
     const campaign =  await getCampaign(campaignId)
-    return  campaign.npcs??[];
+    return  campaign.npcs as Array<NPC>;
 }
 
 export const updateNPCs = ()=>{
