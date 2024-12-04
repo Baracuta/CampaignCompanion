@@ -8,13 +8,12 @@ import { NPC } from "../types/NPC";
 
 //Used in the CampaignForm to create a new campaign using the information given in the form.
 export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
+    const allCampaigns = await getCampaigns();
+
     campaign={
         ...campaign,
         id:uuid()
     };
-
-    const allCampaignsString = localStorage.getItem("campaigns");
-    const allCampaigns = allCampaignsString == null ? [] : JSON.parse(allCampaignsString);
 
     const newCampaigns = [
         ...allCampaigns,
@@ -41,17 +40,15 @@ export const deleteCampaign = async (id:string): Promise<Array<Campaign>> =>{
 
 //
 export const getCampaign = async (id: string): Promise<Campaign> =>{
-    const allCampaigns=getCampaigns();
+    const allCampaigns= await getCampaigns();
+    const campaign=allCampaigns.find((campaign)=>campaign.id===id);
 
-    const campaign=(await allCampaigns).find((campaign)=>campaign.id===id)
-
-    return campaign as Campaign
+    return campaign as Campaign;
 }
 
 //Needed in order for campaignList and findCampaign to work correctly.
 export const getCampaigns = async ():Promise<Array<Campaign>>=>{
     const allCampaignsString = localStorage.getItem("campaigns");
-
     const allCampaigns = allCampaignsString == null ? [] : JSON.parse(allCampaignsString) as Campaign[];
 
     return allCampaigns;
@@ -70,13 +67,13 @@ export const updateCampaign = async (campaignId:string): Promise<Campaign> =>{
 
     localStorage.setItem("campaigns", JSON.stringify(savingCampaign));
 
-    return(savedCampaign)
+    return savedCampaign;
 }
 
 //This is used to update the grand list of campaigns after a specific campaign has been updated
 export const updateCampaigns = async (updatedCampaigns:Array<Campaign>): Promise<Array<Campaign>> =>{
     localStorage.setItem("campaigns", JSON.stringify(updatedCampaigns));
-    return updatedCampaigns
+    return updatedCampaigns;
 }
 
 
