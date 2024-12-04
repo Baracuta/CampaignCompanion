@@ -28,7 +28,15 @@ export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
 
 //
 export const deleteCampaign = async (id:string): Promise<Array<Campaign>> =>{
+    const campaign= await getCampaign(id);
 
+    const allCampaigns = await getCampaigns();
+
+    const updatedCampaigns = allCampaigns.filter((Campaign) => Campaign.id != campaign.id);
+
+    updateCampaigns(updatedCampaigns)
+    
+    return updatedCampaigns
 }
 
 //
@@ -37,9 +45,7 @@ export const getCampaign = async (id: string): Promise<Campaign> =>{
 
     const campaign=(await allCampaigns).find((campaign)=>campaign.id===id)
 
-    return(
-        campaign as Campaign
-    )
+    return campaign as Campaign
 }
 
 //Needed in order for campaignList and findCampaign to work correctly.
@@ -68,7 +74,7 @@ export const updateCampaign = async (campaignId:string): Promise<Campaign> =>{
 }
 
 //
-export const updateCampaigns = async (): Promise<Array<Campaign>> =>{
+export const updateCampaigns = async (updatedCampaigns:Array<Campaign>): Promise<Array<Campaign>> =>{
 
 }
 
@@ -84,10 +90,11 @@ export const createNPC = async (npc: NPC, id:string): Promise<NPC> => {
         id:uuid()
     };
 
-    const currentNPCS=getNPCs(id)
-    const newNPC=[npc]
+    const allNPCS= await getNPCs(id)
 
-    const newNPCs=(await currentNPCS).concat(newNPC)
+    const newNPCs=[
+        ...allNPCS,
+        npc]
 
     updateNPCs(newNPCs,campaign)
 
