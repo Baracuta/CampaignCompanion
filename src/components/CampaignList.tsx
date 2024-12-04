@@ -10,8 +10,8 @@ function CampaignList(){
     const [campaigns, setCampaigns] = useState<Array<Campaign>>();
 
     useEffect(()=>{
-        getCampaigns().then((npcs)=>{
-            setCampaigns(npcs);
+        getCampaigns().then((campaigns)=>{
+            setCampaigns(campaigns);
         })
     })
 
