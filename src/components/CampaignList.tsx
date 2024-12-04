@@ -13,7 +13,7 @@ function CampaignList(){
         getCampaigns().then((campaigns)=>{
             setCampaigns(campaigns);
         })
-    })
+    },[])
 
     const divs=((campaigns as Array<Campaign>) ?? []).map((datum)=>
     
