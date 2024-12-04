@@ -61,7 +61,7 @@ export const saveCampaign = async (campaignId:string): Promise<Campaign> =>{
 //NPC Section
 
 //What this should do is create a new NPC, combine it with the NPC array of a campaign, then use an updateNPCs method to update/save that array in the campaign.
-export const createNPC = async (npc: NPC, id:string): Promise<Array<NPC>> => {
+export const createNPC = async (npc: NPC, id:string): Promise<NPC> => {
     const campaign = await getCampaign(id)
 
     npc={
@@ -74,11 +74,11 @@ export const createNPC = async (npc: NPC, id:string): Promise<Array<NPC>> => {
 
     const newNPCs=(await currentNPCS).concat(newNPC)
 
-    saveCampaign(id)
+    updateNPCs(newNPCs,campaign)
 
     console.log(campaign?.npcs)
 
-    return newNPCs;
+    return npc;
 }
 
 //This is needed for both the NPCList component as well as the createNPC method above.
@@ -87,8 +87,8 @@ export const getNPCs = async (campaignId:string): Promise<Array<NPC>>=>{
     return  campaign.npcs as Array<NPC>;
 }
 
-export const updateNPCs = async (newNPCs:Array<NPC>): Promise<Array<NPC>>=>{
-    
+export const updateNPCs = async (newNPCs:Array<NPC>,campaign:Campaign): Promise<Array<NPC>>=>{
 
 
+    updateCampaign
 }
