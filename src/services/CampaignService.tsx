@@ -28,14 +28,14 @@ export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
 
 //
 export const deleteCampaign = async (id:string): Promise<Array<Campaign>> =>{
-    const campaign= await getCampaign(id);
-
     const allCampaigns = await getCampaigns();
 
-    const updatedCampaigns = allCampaigns.filter((Campaign) => Campaign.id != campaign.id);
+    const campaign= await getCampaign(id);
+
+    const updatedCampaigns = allCampaigns.filter((item) => item.id != campaign.id);
 
     updateCampaigns(updatedCampaigns)
-    
+
     return updatedCampaigns
 }
 
@@ -57,10 +57,11 @@ export const getCampaigns = async ():Promise<Array<Campaign>>=>{
     return allCampaigns;
 }
 
+//Should be used after updating a campaign's props, like name, players, or any of the entity arrays.
 export const updateCampaign = async (campaignId:string): Promise<Campaign> =>{
     const allCampaigns=getCampaigns();
 
-    const savedCampaign=getCampaign(campaignId);
+    const savedCampaign= await getCampaign(campaignId);
 
     const savingCampaign = [
         ...await allCampaigns,
@@ -73,9 +74,10 @@ export const updateCampaign = async (campaignId:string): Promise<Campaign> =>{
 
 }
 
-//
+//This is used to update the grand list of campaigns after a specific campaign has been updated
 export const updateCampaigns = async (updatedCampaigns:Array<Campaign>): Promise<Array<Campaign>> =>{
-
+    localStorage.setItem("campaigns", JSON.stringify(updatedCampaigns));
+    return updatedCampaigns
 }
 
 
