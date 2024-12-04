@@ -57,7 +57,7 @@ export const getCampaigns = async ():Promise<Array<Campaign>>=>{
     return allCampaigns;
 }
 
-//Should be used after updating a campaign's props, like name, players, or any of the entity arrays.
+//Should be used after updating a campaign's props, like name, players, or any of the entity arrays. Also, totally nonfunctional as of 04/12/2024. Need to delve into its guts from scratch.
 export const updateCampaign = async (campaignId:string): Promise<Campaign> =>{
     const allCampaigns=getCampaigns();
 
@@ -71,7 +71,6 @@ export const updateCampaign = async (campaignId:string): Promise<Campaign> =>{
     localStorage.setItem("campaigns", JSON.stringify(savingCampaign));
 
     return(savedCampaign)
-
 }
 
 //This is used to update the grand list of campaigns after a specific campaign has been updated
@@ -128,5 +127,5 @@ export const updateNPC = async (npc:NPC): Promise<Array<NPC>> => {
 export const updateNPCs = async (newNPCs:Array<NPC>,campaign:Campaign): Promise<Array<NPC>> => {
 
 
-    updateCampaign
+    updateCampaign()
 }
