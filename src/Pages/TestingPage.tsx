@@ -3,7 +3,7 @@ import { useState } from "react"
 import { Campaign } from "../types/Campaign"
 import TopBar from "../components/TopBar"
 import { ASSETS_PATH } from "../constants/assets_path"
-import { getCampaign } from "../services/CampaignService"
+import { deleteCampaign, getCampaign } from "../services/CampaignService"
 
 //This is a page used for testing purposes.
 function TestPage(){
@@ -23,8 +23,9 @@ function TestPage(){
             value={campaign.id}
             onChange={e=> {
                 const id=e.target.value;
-                getCampaign(id)
+                deleteCampaign(id)
             }}></input>
+
         </div>
     )
 }

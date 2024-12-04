@@ -19,7 +19,7 @@ const router=createBrowserRouter([
         element:<App/>,
     },
     {
-        path:"/new-campaign",
+        path:"/test-page",
         element:<TestPage/>
     },
     {
