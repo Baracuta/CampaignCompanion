@@ -25,7 +25,9 @@ export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
 //
 export const getCampaign = async (id: string): Promise<Campaign> =>{
     const allCampaigns=getCampaigns();
+
     const campaign=(await allCampaigns).find((campaign)=>campaign.id===id)
+
     return(
         campaign as Campaign
     )
@@ -34,6 +36,7 @@ export const getCampaign = async (id: string): Promise<Campaign> =>{
 //Needed in order for campaignList and findCampaign to work correctly.
 export const getCampaigns = async ():Promise<Array<Campaign>>=>{
     const allCampaignsString = localStorage.getItem("campaigns");
+
     const allCampaigns = allCampaignsString == null ? [] : JSON.parse(allCampaignsString) as Campaign[];
 
     return allCampaigns;
@@ -41,6 +44,7 @@ export const getCampaigns = async ():Promise<Array<Campaign>>=>{
 
 export const saveCampaign = async (campaignId:string): Promise<Campaign> =>{
     const allCampaigns=getCampaigns();
+
     const savedCampaign=getCampaign(campaignId);
 
     const savingCampaign = [
@@ -56,10 +60,7 @@ export const saveCampaign = async (campaignId:string): Promise<Campaign> =>{
 
 //NPC Section
 
-//Take the npc as a new object of npc type
-//get npc array of current campaign (getNPCs)
-//make new array consisting of previous npcs array + the new npc
-//set the new array as the array of NPCs for the current campaign
+//What this should do is create a new NPC, combine it with the NPC array of a campaign, then use an updateNPCs method to update/save that array in the campaign.
 export const createNPC = async (npc: NPC, id:string): Promise<NPC> => {
     const campaign = await getCampaign(id)
 
@@ -73,31 +74,21 @@ export const createNPC = async (npc: NPC, id:string): Promise<NPC> => {
 
     const npcs=(await currentNPCS).concat(newNPC)
 
-    campaign.npcs = npcs
-
     saveCampaign(id)
 
     console.log(campaign?.npcs)
-    // const allNPCsString = localStorage.getItem("npcs");
-    // const allNPCs = allNPCsString == null ? [] : JSON.parse(allNPCsString);
 
-    // const newNPCs = [
-    //     ...allNPCs,
-    //     npc
-    // ];
-
-    // localStorage.setItem("npcs", JSON.stringify(newNPCs));
-
-    return npc;
+    return npcs;
 }
 
-//get current campaign
-//return the .npcs of the current campaign
+//This is needed for both the NPCList component as well as the createNPC method above.
 export const getNPCs = async (campaignId:string): Promise<Array<NPC>>=>{
     const campaign =  await getCampaign(campaignId)
     return  campaign.npcs as Array<NPC>;
 }
 
-export const updateNPCs = ()=>{
+export const updateNPCs = async (campaign:Campaign): Promise<Array<NPC>>=>{
+
+
 
 }
