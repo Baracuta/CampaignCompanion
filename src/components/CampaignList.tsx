@@ -16,7 +16,7 @@ function CampaignList(){
     })
 
     const divs=((campaigns as Array<Campaign>) ?? []).map((datum)=>
-
+    
     <Card
     name={datum.name}
     cardType="campaignCard"
@@ -24,7 +24,7 @@ function CampaignList(){
     key={datum.id}>
     </Card>);
 
-
+    console.log(divs)
     return divs
 };
 
