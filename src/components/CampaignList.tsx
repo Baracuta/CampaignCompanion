@@ -20,7 +20,8 @@ function CampaignList(){
     <Card
     name={datum.name}
     cardType="campaignCard"
-    cardLink={`/campaign/${datum.id}`}>
+    cardLink={`/campaign/${datum.id}`}
+    key={datum.id}>
     </Card>);
 
 

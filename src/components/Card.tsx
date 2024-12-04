@@ -7,6 +7,7 @@ type CardProps={
     background?:string;
     cardType?:`bigCard`|`smallCard`|`campaignCard`;
     cardLink:string;
+    key?:string;
 }
 
 function Card(props:CardProps){
