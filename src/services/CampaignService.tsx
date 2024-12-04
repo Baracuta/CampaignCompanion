@@ -2,6 +2,10 @@ import { Campaign } from "../types/Campaign";
 import { v4 as uuid } from "uuid";
 import { NPC } from "../types/NPC";
 
+//Every single "entity" should have the following: create, delete, get, getPlural(getCampaigns, getNPCs...), update, updatePlural
+
+//Campaign Section
+
 //Used in the CampaignForm to create a new campaign using the information given in the form.
 export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
     campaign={
@@ -20,6 +24,11 @@ export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
     localStorage.setItem("campaigns", JSON.stringify(newCampaigns));
 
     return campaign;
+}
+
+//
+export const deleteCampaign = async (id:string): Promise<Array<Campaign>> =>{
+
 }
 
 //
@@ -42,7 +51,7 @@ export const getCampaigns = async ():Promise<Array<Campaign>>=>{
     return allCampaigns;
 }
 
-export const saveCampaign = async (campaignId:string): Promise<Campaign> =>{
+export const updateCampaign = async (campaignId:string): Promise<Campaign> =>{
     const allCampaigns=getCampaigns();
 
     const savedCampaign=getCampaign(campaignId);
@@ -58,12 +67,18 @@ export const saveCampaign = async (campaignId:string): Promise<Campaign> =>{
 
 }
 
+//
+export const updateCampaigns = async (): Promise<Array<Campaign>> =>{
+
+}
+
+
 //NPC Section
 
 //What this should do is create a new NPC, combine it with the NPC array of a campaign, then use an updateNPCs method to update/save that array in the campaign.
 export const createNPC = async (npc: NPC, id:string): Promise<NPC> => {
     const campaign = await getCampaign(id)
-
+    console.log(campaign.npcs)
     npc={
         ...npc,
         id:uuid()
@@ -76,9 +91,17 @@ export const createNPC = async (npc: NPC, id:string): Promise<NPC> => {
 
     updateNPCs(newNPCs,campaign)
 
-    console.log(campaign?.npcs)
-
     return npc;
+}
+
+//
+export const deleteNPC = async (npc: NPC, id:string): Promise<Array<NPC>> => {
+
+}
+
+//
+export const getNPC = async (id:string): Promise<NPC> => {
+
 }
 
 //This is needed for both the NPCList component as well as the createNPC method above.
@@ -87,7 +110,13 @@ export const getNPCs = async (campaignId:string): Promise<Array<NPC>>=>{
     return  campaign.npcs as Array<NPC>;
 }
 
-export const updateNPCs = async (newNPCs:Array<NPC>,campaign:Campaign): Promise<Array<NPC>>=>{
+//
+export const updateNPC = async (npc:NPC): Promise<Array<NPC>> => {
+
+}
+
+//
+export const updateNPCs = async (newNPCs:Array<NPC>,campaign:Campaign): Promise<Array<NPC>> => {
 
 
     updateCampaign
