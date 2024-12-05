@@ -21,7 +21,7 @@ function CampaignNPCs(){
         getCampaign (id as string).then((campaign)=>{
             setCampaign(campaign);
         })
-    }, [id]);
+    },[id]);
 
     console.log(campaign);
 
