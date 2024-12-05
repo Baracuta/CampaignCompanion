@@ -55,20 +55,21 @@ export const getCampaigns = async ():Promise<Array<Campaign>>=>{
     return allCampaigns;
 }
 
-//Should be used after updating a campaign's props, like name, players, or any of the entity arrays. Also, totally nonfunctional as of 04/12/2024. Need to delve into its guts from scratch.
-export const updateCampaign = async (campaignId:string, thing:Array<any>): Promise<Campaign> =>{
-    const allCampaigns= await getCampaigns();
+//Should be functional now. Takes a campaign and saves it in a const, then finds and deletes the old one, then puts the new one back and updates the array.
+export const updateCampaign = async (campaign:Campaign): Promise<Campaign> =>{
 
-    const savedCampaign= await getCampaign(campaignId);
+    const updatedCampaign = campaign;
 
-    const savingCampaign = [
-        ...allCampaigns,
-        savedCampaign
+    const removedOld = await deleteCampaign(campaign.id);
+
+    const addingUpdated = [
+        ...removedOld,
+        updatedCampaign
     ];
 
-    localStorage.setItem("campaigns", JSON.stringify(savingCampaign));
+    updateCampaigns(addingUpdated);
 
-    return savedCampaign;
+    return updatedCampaign;
 }
 
 //This is used to update the grand list of campaigns after a specific campaign has been updated
