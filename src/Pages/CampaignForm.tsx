@@ -20,12 +20,11 @@ function CampaignForm(){
 
     
     let check = true
-    if (campaign.game=undefined,campaign.name=undefined,campaign.players=undefined){
+    if (campaign.game=="" || campaign.name=="" || campaign.players==undefined){
         check = true}
     else{
-        check = false}
+        check = false};
     
-
     return(
         <main className={styles.main}>
 
