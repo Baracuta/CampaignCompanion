@@ -1,6 +1,7 @@
 import { Campaign } from "../types/Campaign";
 import { v4 as uuid } from "uuid";
 import { NPC } from "../types/NPC";
+import { Location } from "../types/Location";
 
 //Every single "entity" should have the following: create, delete, get, getPlural(getCampaigns, getNPCs...), update, updatePlural
 
@@ -55,13 +56,13 @@ export const getCampaigns = async ():Promise<Array<Campaign>>=>{
 }
 
 //Should be used after updating a campaign's props, like name, players, or any of the entity arrays. Also, totally nonfunctional as of 04/12/2024. Need to delve into its guts from scratch.
-export const updateCampaign = async (campaignId:string): Promise<Campaign> =>{
-    const allCampaigns=getCampaigns();
+export const updateCampaign = async (campaignId:string, thing:Array<any>): Promise<Campaign> =>{
+    const allCampaigns= await getCampaigns();
 
     const savedCampaign= await getCampaign(campaignId);
 
     const savingCampaign = [
-        ...await allCampaigns,
+        ...allCampaigns,
         savedCampaign
     ];
 
@@ -80,15 +81,15 @@ export const updateCampaigns = async (updatedCampaigns:Array<Campaign>): Promise
 //NPC Section
 
 //What this should do is create a new NPC, combine it with the NPC array of a campaign, then use an updateNPCs method to update/save that array in the campaign.
-export const createNPC = async (npc: NPC, id:string): Promise<NPC> => {
-    const campaign = await getCampaign(id)
+export const createNPC = async (npc: NPC, campaignId:string): Promise<NPC> => {
+    const campaign = await getCampaign(campaignId)
     console.log(campaign.npcs)
     npc={
         ...npc,
         id:uuid()
     };
 
-    const allNPCS= await getNPCs(id)
+    const allNPCS= await getNPCs(campaignId)
 
     const newNPCs=[
         ...allNPCS,
