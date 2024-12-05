@@ -10,8 +10,12 @@ import { Fragment, useState } from "react";
 import { createNPC } from "../services/CampaignService";
 import { NPC } from "../types/NPC";
 
+type thingProps={
+  campaignId:string;
+}
+
 //Set it up to have a similar style to a card, but with unique properties
-function AddThing() {
+function AddThing(props:thingProps) {
   const [npc, setNpc]=useState<Partial<NPC>>({})
 
   const [open, setOpen] = useState(false);
@@ -59,7 +63,7 @@ function AddThing() {
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
           <Button onClick={async () => {
-                await createNPC(npc as NPC);
+                await createNPC(npc as NPC,props.campaignId);
                 handleClose;
               }} type="button">Add NPC</Button>
         </DialogActions>
