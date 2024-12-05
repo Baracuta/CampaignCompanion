@@ -21,7 +21,7 @@ export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
         campaign
     ];
 
-    localStorage.setItem("campaigns", JSON.stringify(newCampaigns));
+    updateCampaigns(newCampaigns);
 
     return campaign;
 }
@@ -72,7 +72,7 @@ export const updateCampaign = async (campaign:Campaign): Promise<Campaign> =>{
     return updatedCampaign;
 }
 
-//This is used to update the grand list of campaigns after a specific campaign has been updated
+//This is used to update the grand list of campaigns after a specific campaign has been updated or a new one has been created.
 export const updateCampaigns = async (updatedCampaigns:Array<Campaign>): Promise<Array<Campaign>> =>{
     localStorage.setItem("campaigns", JSON.stringify(updatedCampaigns));
     return updatedCampaigns;
@@ -84,7 +84,7 @@ export const updateCampaigns = async (updatedCampaigns:Array<Campaign>): Promise
 //What this should do is create a new NPC, combine it with the NPC array of a campaign, then use an updateNPCs method to update/save that array in the campaign.
 export const createNPC = async (npc: NPC, campaignId:string): Promise<NPC> => {
     const campaign = await getCampaign(campaignId)
-    console.log(campaign.npcs)
+    
     npc={
         ...npc,
         id:uuid()
@@ -94,7 +94,8 @@ export const createNPC = async (npc: NPC, campaignId:string): Promise<NPC> => {
 
     const newNPCs=[
         ...allNPCS,
-        npc]
+        npc
+    ];
 
     updateNPCs(newNPCs,campaign)
 
@@ -124,7 +125,9 @@ export const updateNPC = async (npc:NPC): Promise<Array<NPC>> => {
 
 //
 export const updateNPCs = async (newNPCs:Array<NPC>,campaign:Campaign): Promise<Array<NPC>> => {
+    campaign.npcs=newNPCs;
 
+    updateCampaign(campaign)
 
-    updateCampaign()
+    return campaign.npcs
 }
