@@ -18,12 +18,14 @@ function CampaignForm(){
         `Call of Cthulu`,`Pulp Cthulu`,
     ]
 
-    
-    let check = true
-    if (campaign.game=="" || campaign.name=="" || campaign.players==undefined){
-        check = true}
-    else{
-        check = false};
+    function validate(){
+        let check = true
+        if (campaign.game=="" || campaign.name=="" || campaign.players==undefined){
+            check = true}
+        else{
+            check = false};
+        return check
+    }
     
     return(
         <main className={styles.main}>
@@ -88,7 +90,7 @@ function CampaignForm(){
 
                 </div>
 
-                <button disabled={check} onClick={async () =>{
+                <button disabled={validate()} onClick={async () =>{
                     setSaving(true);
                     const savedCampaign=await createCampaign(campaign as Campaign);
                     navigate(`/campaign/${savedCampaign.id}`);
