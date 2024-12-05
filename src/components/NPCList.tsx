@@ -13,7 +13,7 @@ function NPCList (props:listProps){
     const [npcs, setNPCs] = useState<Array<NPC>>();
 
     useEffect(()=>{
-        getNPCs(props.campaignId).then((npcs)=>{
+        getNPCs(props.campaignId as string).then((npcs)=>{
             setNPCs(npcs);
         })
     }, [props.campaignId])

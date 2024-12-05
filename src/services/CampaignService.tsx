@@ -114,8 +114,10 @@ export const getNPC = async (id:string): Promise<NPC> => {
 
 //This is needed for both the NPCList component as well as the createNPC method above.
 export const getNPCs = async (campaignId:string): Promise<Array<NPC>>=>{
-    const campaign =  await getCampaign(campaignId)
-    return  campaign.npcs as Array<NPC>;
+    const campaign =  await getCampaign(campaignId);
+
+    const npcs = campaign.npcs;
+    return  npcs as Array<NPC>;
 }
 
 //
