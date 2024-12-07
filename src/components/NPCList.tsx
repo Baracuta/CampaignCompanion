@@ -22,7 +22,8 @@ function NPCList (props:listProps){
 
     <Card
     name={datum.name}
-    cardLink={``}>
+    cardLink={``}
+    key={datum.id}>
     </Card>);
 
     return (divs)
