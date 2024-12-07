@@ -1,13 +1,11 @@
 import NavButton from "../components/NavButton"
 import styles from '../css_modules/campaign.module.css'
-import Card from "../components/Card"
-import { useState,useEffect } from "react";
+import Card from "../components/Card";
 import { useParams } from "react-router-dom";
-import { Campaign } from "../types/Campaign";
-import { getCampaign } from "../services/CampaignService";
 import { ASSETS_PATH } from "../constants/assets_path";
 import TopBar from "../components/TopBar";
 import ToolBar from "../components/ToolBar";
+import { useCampaign } from "../hooks/useCampaign";
 
 
 //This is going to be the default campaign dashboard. Hard-code the details for now as you get the UI figured out.
@@ -15,13 +13,7 @@ import ToolBar from "../components/ToolBar";
 function CampaignPage(){
     const {id}=useParams();
 
-    const [campaign, setCampaign] = useState<Campaign>();
-
-    useEffect(()=>{
-        getCampaign (id as string).then((campaign)=>{
-            setCampaign(campaign);
-        })
-    }, [id]);
+    const campaign = useCampaign(id as string);
 
     console.log(campaign);
 
