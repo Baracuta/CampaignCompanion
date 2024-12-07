@@ -22,7 +22,7 @@ function CampaignNPCs(){
         getCampaign (id as string).then((campaign)=>{
             setCampaign(campaign);
         })
-    },[id, campaign?.npcs]);
+    },[id]);
 
     console.log(campaign);
 
