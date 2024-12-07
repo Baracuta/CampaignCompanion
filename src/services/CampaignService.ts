@@ -16,10 +16,10 @@ export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
   campaign = {
     ...campaign,
     id: uuid(),
-    npcs:[],
-    locations:[],
-    items:[],
-    playerCharacters:[]
+    npcs: [],
+    locations: [],
+    items: [],
+    playerCharacters: [],
   };
 
   const newCampaigns = [...allCampaigns, campaign];
@@ -105,24 +105,28 @@ export const createNPC = async (npc: NPC, campaignId: string): Promise<NPC> => {
 };
 
 //Should be good
-export const deleteNPC = async (campaignId:string,npcId: string): Promise<Array<NPC>> => {
-  const campaign= await getCampaign(campaignId);
+export const deleteNPC = async (
+  campaignId: string,
+  npcId: string
+): Promise<Array<NPC>> => {
+  const campaign = await getCampaign(campaignId);
   const npcList = await getNPCs(campaignId);
-  const npc= await getNPC(campaignId,npcId);
+  const npc = await getNPC(campaignId, npcId);
 
-  const updatedNpcs = npcList.filter(
-    (item) => item.id != npc.id
-  );
+  const updatedNpcs = npcList.filter((item) => item.id != npc.id);
 
   updateNPCs(updatedNpcs, campaign);
 
-  return updatedNpcs
+  return updatedNpcs;
 };
 
 //Should be good
-export const getNPC = async (campaignId:string, npcId:string): Promise<NPC> => {
-  const npcList= await getNPCs(campaignId);
-  const findNpc= npcList.find((npc) => npc.id === npcId);
+export const getNPC = async (
+  campaignId: string,
+  npcId: string
+): Promise<NPC> => {
+  const npcList = await getNPCs(campaignId);
+  const findNpc = npcList.find((npc) => npc.id === npcId);
 
   return findNpc as NPC;
 };
@@ -136,15 +140,15 @@ export const getNPCs = async (campaignId: string): Promise<Array<NPC>> => {
 };
 
 //Probably good, but could possibly be made more efficient
-export const updateNPC = async (campaignId:string,npc:NPC): Promise<NPC> => {
+export const updateNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
   const campaign = await getCampaign(campaignId);
-  const updatedNpc= npc;
+  const updatedNpc = npc;
 
-  const removedOld = await deleteNPC(campaign.id,npc.id);
+  const removedOld = await deleteNPC(campaign.id, npc.id);
 
   const addingUpdated = [...removedOld, updatedNpc];
 
-  updateNPCs(addingUpdated,campaign);
+  updateNPCs(addingUpdated, campaign);
 
   return updatedNpc;
 };
