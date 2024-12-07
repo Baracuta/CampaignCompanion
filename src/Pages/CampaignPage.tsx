@@ -1,5 +1,5 @@
-import NavButton from "../components/NavButton"
-import styles from '../css_modules/campaign.module.css'
+import NavButton from "../components/NavButton";
+import styles from "../css_modules/campaign.module.css";
 import Card from "../components/Card";
 import { useParams } from "react-router-dom";
 import { ASSETS_PATH } from "../constants/assets_path";
@@ -7,58 +7,60 @@ import TopBar from "../components/TopBar";
 import ToolBar from "../components/ToolBar";
 import { useCampaign } from "../hooks/useCampaign";
 
-
 //This is going to be the default campaign dashboard. Hard-code the details for now as you get the UI figured out.
 
-function CampaignPage(){
-    const {id}=useParams();
+function CampaignPage() {
+  const { id } = useParams();
 
-    const campaign = useCampaign(id as string);
+  const campaign = useCampaign(id as string);
 
-    console.log(campaign);
+  console.log(campaign);
 
+  return (
+    <main className={styles.main}>
+      <TopBar
+        name={campaign?.name}
+        game={campaign?.game}
+        buttonNav="/campaign-select"
+        image={`${ASSETS_PATH}/Emblem 1 3.png`}
+      />
 
+      <ToolBar />
 
-    return(
-        <main className={styles.main}>
+      <div className={styles.card_panel}>
+        <Card
+          name="Non-Player Characters"
+          cardType="bigCard"
+          cardLink={`/campaign/${campaign?.id}/NPCs`}
+        ></Card>
 
-            <TopBar name={campaign?.name} game={campaign?.game} buttonNav="/campaign-select" image={`${ASSETS_PATH}/Emblem 1 3.png`}/>
+        <Card
+          name="Locations"
+          cardType="bigCard"
+          cardLink={`/campaign/${campaign?.id}/Locations`}
+        ></Card>
 
-            <ToolBar/>
+        <Card
+          name="Items"
+          cardType="bigCard"
+          cardLink={`/campaign/${campaign?.id}/Items`}
+        ></Card>
 
-            <div className={styles.card_panel}>
+        <Card
+          name="Player Characters"
+          cardType="bigCard"
+          cardLink={`/campaign/${campaign?.id}/PlayerCharacters`}
+        ></Card>
+      </div>
 
-                <Card name="Non-Player Characters" cardType="bigCard" cardLink={`/campaign/${campaign?.id}/NPCs`}>
-                </Card>                
-
-                <Card name="Locations" cardType="bigCard" cardLink={`/campaign/${campaign?.id}/Locations`}>
-                </Card>
-                
-                <Card name="Items" cardType="bigCard" cardLink={`/campaign/${campaign?.id}/Items`}>
-                </Card>
-
-                <Card name="Player Characters" cardType="bigCard" cardLink={`/campaign/${campaign?.id}/PlayerCharacters`}>
-                </Card>
-                
-            </div>
-            
-            <div className={styles.bottom_bar}>
-                <NavButton text="Go Back" destination="/campaign-select"/>
-            </div>
-
-        </main>
-
-
-
-
-
-
-
-
-    )
+      <div className={styles.bottom_bar}>
+        <NavButton text="Go Back" destination="/campaign-select" />
+      </div>
+    </main>
+  );
 }
 
-export default CampaignPage
+export default CampaignPage;
 
 //Extra notes and stuff below
 
