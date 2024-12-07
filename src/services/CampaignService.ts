@@ -135,8 +135,19 @@ export const getNPCs = async (campaignId: string): Promise<Array<NPC>> => {
   return npcs as Array<NPC>;
 };
 
-//Not good
-export const updateNPC = async (npc: NPC): Promise<Array<NPC>> => {};
+//Probably good, but could possibly be made more efficient
+export const updateNPC = async (campaignId:string,npc:NPC): Promise<NPC> => {
+  const campaign = await getCampaign(campaignId);
+  const updatedNpc= npc;
+
+  const removedOld = await deleteNPC(campaign.id,npc.id);
+
+  const addingUpdated = [...removedOld, updatedNpc];
+
+  updateNPCs(addingUpdated,campaign);
+
+  return updatedNpc;
+};
 
 //Good
 export const updateNPCs = async (
