@@ -20,7 +20,7 @@ function CampaignForm(){
 
     function validate(){
         let check = true
-        if (campaign.game=="" || campaign.name=="" || campaign.players==undefined){
+        if (campaign.game=="" || campaign.name=="" || campaign.players==0){
             check = true}
         else{
             check = false};
@@ -80,7 +80,7 @@ function CampaignForm(){
 
                     <input
                     type="number"
-                    value={campaign.players}
+                    value={campaign.players ?? 0}
                     onChange={e => {
                         const players=Number(e.target.value);
                         setCampaign({...campaign, players});
