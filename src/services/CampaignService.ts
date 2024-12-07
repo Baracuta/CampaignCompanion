@@ -104,9 +104,19 @@ export const createNPC = async (npc: NPC, campaignId: string): Promise<NPC> => {
   return npc;
 };
 
-//Not good
-export const deleteNPC = async (npc: NPC,id: string): Promise<Array<NPC>> => {
+//Should be good
+export const deleteNPC = async (campaignId:string,npcId: string): Promise<Array<NPC>> => {
+  const campaign= await getCampaign(campaignId);
+  const npcList = await getNPCs(campaignId);
+  const npc= await getNPC(campaignId,npcId);
 
+  const updatedNpcs = npcList.filter(
+    (item) => item.id != npc.id
+  );
+
+  updateNPCs(updatedNpcs, campaign);
+
+  return updatedNpcs
 };
 
 //Should be good
