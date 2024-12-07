@@ -109,9 +109,12 @@ export const deleteNPC = async (npc: NPC,id: string): Promise<Array<NPC>> => {
 
 };
 
-//Not good
-export const getNPC = async (id: string): Promise<NPC> => {
+//Should be good
+export const getNPC = async (campaignId:string, npcId:string): Promise<NPC> => {
+  const npcList= await getNPCs(campaignId);
+  const findNpc= npcList.find((npc) => npc.id === npcId);
 
+  return findNpc as NPC;
 };
 
 //Good
