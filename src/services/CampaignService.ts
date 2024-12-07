@@ -2,12 +2,14 @@ import { Campaign } from "../types/Campaign";
 import { v4 as uuid } from "uuid";
 import { NPC } from "../types/NPC";
 import { Location } from "../types/Location";
+import { Item } from "../types/Item";
+import { PlayerCharacter } from "../types/PlayerCharacter";
 
 //Every single "entity" should have the following: create, delete, get, getPlural(getCampaigns, getNPCs...), update, updatePlural
 
 //Campaign Section
 
-//Used in the CampaignForm to create a new campaign using the information given in the form.
+//Good
 export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
   const allCampaigns = await getCampaigns();
 
@@ -27,7 +29,7 @@ export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
   return campaign;
 };
 
-//
+//Good
 export const deleteCampaign = async (id: string): Promise<Array<Campaign>> => {
   const allCampaigns = await getCampaigns();
 
@@ -42,7 +44,7 @@ export const deleteCampaign = async (id: string): Promise<Array<Campaign>> => {
   return updatedCampaigns;
 };
 
-//
+//Good
 export const getCampaign = async (id: string): Promise<Campaign> => {
   const allCampaigns = await getCampaigns();
   const campaign = allCampaigns.find((campaign) => campaign.id === id);
@@ -50,7 +52,7 @@ export const getCampaign = async (id: string): Promise<Campaign> => {
   return campaign as Campaign;
 };
 
-//Needed in order for campaignList and findCampaign to work correctly.
+//Good
 export const getCampaigns = async (): Promise<Array<Campaign>> => {
   const allCampaignsString = localStorage.getItem("campaigns");
   const allCampaigns =
@@ -61,7 +63,7 @@ export const getCampaigns = async (): Promise<Array<Campaign>> => {
   return allCampaigns;
 };
 
-//Should be functional now. Takes a campaign and saves it in a const, then finds and deletes the old one, then puts the new one back and updates the array.
+//Good
 export const updateCampaign = async (campaign: Campaign): Promise<Campaign> => {
   const updatedCampaign = campaign;
 
@@ -74,7 +76,7 @@ export const updateCampaign = async (campaign: Campaign): Promise<Campaign> => {
   return updatedCampaign;
 };
 
-//This is used to update the grand list of campaigns after a specific campaign has been updated or a new one has been created.
+//Good
 export const updateCampaigns = async (
   updatedCampaigns: Array<Campaign>
 ): Promise<Array<Campaign>> => {
@@ -84,7 +86,7 @@ export const updateCampaigns = async (
 
 //NPC Section
 
-//What this should do is create a new NPC, combine it with the NPC array of a campaign, then use an updateNPCs method to update/save that array in the campaign.
+//Good
 export const createNPC = async (npc: NPC, campaignId: string): Promise<NPC> => {
   const campaign = await getCampaign(campaignId);
 
@@ -102,16 +104,17 @@ export const createNPC = async (npc: NPC, campaignId: string): Promise<NPC> => {
   return npc;
 };
 
-//
-export const deleteNPC = async (
-  npc: NPC,
-  id: string
-): Promise<Array<NPC>> => {};
+//Not good
+export const deleteNPC = async (npc: NPC,id: string): Promise<Array<NPC>> => {
 
-//
-export const getNPC = async (id: string): Promise<NPC> => {};
+};
 
-//This is needed for both the NPCList component as well as the createNPC method above.
+//Not good
+export const getNPC = async (id: string): Promise<NPC> => {
+
+};
+
+//Good
 export const getNPCs = async (campaignId: string): Promise<Array<NPC>> => {
   const campaign = await getCampaign(campaignId);
 
@@ -119,10 +122,10 @@ export const getNPCs = async (campaignId: string): Promise<Array<NPC>> => {
   return npcs as Array<NPC>;
 };
 
-//
+//Not good
 export const updateNPC = async (npc: NPC): Promise<Array<NPC>> => {};
 
-//
+//Good
 export const updateNPCs = async (
   newNPCs: Array<NPC>,
   campaign: Campaign
