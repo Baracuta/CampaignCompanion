@@ -245,3 +245,84 @@ export const updateLocations = async (
 
   return campaign.locations;
 };
+
+//Item Section
+
+//Good
+export const createItem = async (item: Item, campaignId: string): Promise<Item> => {
+  const campaign = await getCampaign(campaignId);
+
+  item = {
+    ...item,
+    id: uuid(),
+  };
+
+  const allItems = await getItems(campaignId);
+
+  const newItems = [...allItems, item];
+
+  updateItems(newItems, campaign);
+
+  return item;
+};
+
+//Should be good
+export const deleteItem = async (
+  campaignId: string,
+  itemId: string
+): Promise<Array<Item>> => {
+  const campaign = await getCampaign(campaignId);
+  const itemList = await getItems(campaignId);
+  const item = await getItem(campaignId, itemId);
+
+  const updatedItems = itemList.filter((datum) => datum.id != item.id);
+
+  updateItems(updatedItems, campaign);
+
+  return updatedItems;
+};
+
+//Should be good
+export const getItem = async (
+  campaignId: string,
+  itemId: string
+): Promise<Item> => {
+  const itemList = await getItems(campaignId);
+  const finditem = itemList.find((item) => item.id === itemId);
+
+  return finditem as Item;
+};
+
+//Good
+export const getItems = async (campaignId: string): Promise<Array<Item>> => {
+  const campaign = await getCampaign(campaignId);
+
+  const items = campaign.items;
+  return items as Array<Item>;
+};
+
+//Probably good, but could possibly be made more efficient
+export const updateItem = async (campaignId: string, item: Item): Promise<Item> => {
+  const campaign = await getCampaign(campaignId);
+  const updatedItem = item;
+
+  const removedOld = await deleteItem(campaign.id, item.id);
+
+  const addingUpdated = [...removedOld, updatedItem];
+
+  updateItems(addingUpdated, campaign);
+
+  return updatedItem;
+};
+
+//Good
+export const updateItems = async (
+  newItems: Array<Item>,
+  campaign: Campaign
+): Promise<Array<Item>> => {
+  campaign.items = newItems;
+
+  updateCampaign(campaign);
+
+  return campaign.items;
+};
