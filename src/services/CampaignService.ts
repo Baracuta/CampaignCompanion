@@ -84,6 +84,7 @@ export const updateCampaigns = async (
   return updatedCampaigns;
 };
 
+
 //NPC Section
 
 //Good
@@ -164,6 +165,7 @@ export const updateNPCs = async (
 
   return campaign.npcs;
 };
+
 
 //Location Section
 
@@ -246,6 +248,7 @@ export const updateLocations = async (
   return campaign.locations;
 };
 
+
 //Item Section
 
 //Good
@@ -325,4 +328,86 @@ export const updateItems = async (
   updateCampaign(campaign);
 
   return campaign.items;
+};
+
+
+//PC Section
+
+//Good
+export const createPC = async (pc: PlayerCharacter, campaignId: string): Promise<PlayerCharacter> => {
+  const campaign = await getCampaign(campaignId);
+
+  pc = {
+    ...pc,
+    id: uuid(),
+  };
+
+  const allPCs = await getPCs(campaignId);
+
+  const newPCs = [...allPCs, pc];
+
+  updatePCs(newPCs, campaign);
+
+  return pc;
+};
+
+//Should be good
+export const deletePC = async (
+  campaignId: string,
+  pcId: string
+): Promise<Array<PlayerCharacter>> => {
+  const campaign = await getCampaign(campaignId);
+  const pcList = await getPCs(campaignId);
+  const pc = await getPC(campaignId, pcId);
+
+  const updatedPCs = pcList.filter((datum) => datum.id != pc.id);
+
+  updatePCs(updatedPCs, campaign);
+
+  return updatedPCs;
+};
+
+//Should be good
+export const getPC = async (
+  campaignId: string,
+  pcId: string
+): Promise<PlayerCharacter> => {
+  const pcList = await getPCs(campaignId);
+  const findPC = pcList.find((datum) => datum.id === pcId);
+
+  return findPC as PlayerCharacter;
+};
+
+//Good
+export const getPCs = async (campaignId: string): Promise<Array<PlayerCharacter>> => {
+  const campaign = await getCampaign(campaignId);
+
+  const pcs = campaign.playerCharacters;
+  return pcs as Array<PlayerCharacter>;
+};
+
+//Probably good, but could possibly be made more efficient
+export const updatePC = async (campaignId: string, pc: PlayerCharacter): Promise<PlayerCharacter> => {
+  const campaign = await getCampaign(campaignId);
+  const updatedPC = pc;
+
+  const removedOld = await deletePC(campaign.id, pc.id);
+
+  const addingUpdated = [...removedOld, updatedPC];
+
+  updatePCs(addingUpdated, campaign);
+
+  return updatedPC;
+};
+
+//Good
+export const updatePCs = async (
+  newPCs: Array<PlayerCharacter>,
+  campaign: Campaign
+): Promise<Array<PlayerCharacter>> => {
+  campaign.playerCharacters = newPCs;
+
+  updateCampaign(campaign);
+
+  return campaign.playerCharacters;
 };
