@@ -164,3 +164,84 @@ export const updateNPCs = async (
 
   return campaign.npcs;
 };
+
+//Location Section
+
+//Good
+export const createLocation = async (location: Location, campaignId: string): Promise<Location> => {
+  const campaign = await getCampaign(campaignId);
+
+  location = {
+    ...location,
+    id: uuid(),
+  };
+
+  const allLocations = await getLocations(campaignId);
+
+  const newLocations = [...allLocations, location];
+
+  updateLocations(newLocations, campaign);
+
+  return location;
+};
+
+//Should be good
+export const deleteLocation = async (
+  campaignId: string,
+  locationId: string
+): Promise<Array<Location>> => {
+  const campaign = await getCampaign(campaignId);
+  const locationList = await getLocations(campaignId);
+  const location = await getLocation(campaignId, locationId);
+
+  const updatedLocations = locationList.filter((item) => item.id != location.id);
+
+  updateLocations(updatedLocations, campaign);
+
+  return updatedLocations;
+};
+
+//Should be good
+export const getLocation = async (
+  campaignId: string,
+  locationId: string
+): Promise<Location> => {
+  const locationList = await getLocations(campaignId);
+  const findlocation = locationList.find((location) => location.id === locationId);
+
+  return findlocation as Location;
+};
+
+//Good
+export const getLocations = async (campaignId: string): Promise<Array<Location>> => {
+  const campaign = await getCampaign(campaignId);
+
+  const locations = campaign.locations;
+  return locations as Array<Location>;
+};
+
+//Probably good, but could possibly be made more efficient
+export const updateLocation = async (campaignId: string, location: Location): Promise<Location> => {
+  const campaign = await getCampaign(campaignId);
+  const updatedLocation = location;
+
+  const removedOld = await deleteLocation(campaign.id, location.id);
+
+  const addingUpdated = [...removedOld, updatedLocation];
+
+  updateLocations(addingUpdated, campaign);
+
+  return updatedLocation;
+};
+
+//Good
+export const updateLocations = async (
+  newlocations: Array<Location>,
+  campaign: Campaign
+): Promise<Array<Location>> => {
+  campaign.locations = newlocations;
+
+  updateCampaign(campaign);
+
+  return campaign.locations;
+};
