@@ -47,7 +47,7 @@ export const deleteCampaign = async (id: string): Promise<Array<Campaign>> => {
 //Good
 export const getCampaign = async (id: string): Promise<Campaign> => {
   const allCampaigns = await getCampaigns();
-  const campaign = allCampaigns.find((campaign) => campaign.id === id);
+  const campaign = allCampaigns.find((datum) => datum.id === id);
 
   return campaign as Campaign;
 };
@@ -113,7 +113,7 @@ export const deleteNPC = async (
   const npcList = await getNPCs(campaignId);
   const npc = await getNPC(campaignId, npcId);
 
-  const updatedNpcs = npcList.filter((item) => item.id != npc.id);
+  const updatedNpcs = npcList.filter((datum) => datum.id != npc.id);
 
   updateNPCs(updatedNpcs, campaign);
 
@@ -126,7 +126,7 @@ export const getNPC = async (
   npcId: string
 ): Promise<NPC> => {
   const npcList = await getNPCs(campaignId);
-  const findNpc = npcList.find((npc) => npc.id === npcId);
+  const findNpc = npcList.find((datum) => datum.id === npcId);
 
   return findNpc as NPC;
 };
@@ -194,7 +194,7 @@ export const deleteLocation = async (
   const locationList = await getLocations(campaignId);
   const location = await getLocation(campaignId, locationId);
 
-  const updatedLocations = locationList.filter((item) => item.id != location.id);
+  const updatedLocations = locationList.filter((datum) => datum.id != location.id);
 
   updateLocations(updatedLocations, campaign);
 
@@ -207,7 +207,7 @@ export const getLocation = async (
   locationId: string
 ): Promise<Location> => {
   const locationList = await getLocations(campaignId);
-  const findlocation = locationList.find((location) => location.id === locationId);
+  const findlocation = locationList.find((datum) => datum.id === locationId);
 
   return findlocation as Location;
 };
@@ -288,7 +288,7 @@ export const getItem = async (
   itemId: string
 ): Promise<Item> => {
   const itemList = await getItems(campaignId);
-  const finditem = itemList.find((item) => item.id === itemId);
+  const finditem = itemList.find((datum) => datum.id === itemId);
 
   return finditem as Item;
 };
