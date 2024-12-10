@@ -6,6 +6,7 @@ import CardPanel from "../components/CardPanel";
 import ToolBar from "../components/ToolBar";
 import { useCampaign } from "../hooks/useCampaign";
 import ThingList from "../components/ThingList";
+import AddPC from "../components/AddPC";
 
 function CampaignPlayerCharacters() {
   const { id } = useParams();
@@ -30,6 +31,7 @@ function CampaignPlayerCharacters() {
       </div>
 
       <CardPanel>
+        <AddPC campaignId={id as string}/>
         <ThingList things={campaign?.playerCharacters}/>
       </CardPanel>
     </main>
