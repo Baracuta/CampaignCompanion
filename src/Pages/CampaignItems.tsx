@@ -6,6 +6,7 @@ import CardPanel from "../components/CardPanel";
 import ToolBar from "../components/ToolBar";
 import { useCampaign } from "../hooks/useCampaign";
 import ThingList from "../components/ThingList";
+import AddItem from "../components/AddItem";
 
 function CampaignItems() {
   const { id } = useParams();
@@ -30,7 +31,8 @@ function CampaignItems() {
       </div>
 
       <CardPanel>
-        <ThingList things={campaign.items}/>
+        <AddItem campaignId={id as string}/>
+        <ThingList things={campaign?.items}/>
       </CardPanel>
     </main>
   );

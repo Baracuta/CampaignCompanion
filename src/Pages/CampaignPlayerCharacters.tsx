@@ -30,7 +30,7 @@ function CampaignPlayerCharacters() {
       </div>
 
       <CardPanel>
-        <ThingList things={campaign.playerCharacters}/>
+        <ThingList things={campaign?.playerCharacters}/>
       </CardPanel>
     </main>
   );

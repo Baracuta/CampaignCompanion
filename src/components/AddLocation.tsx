@@ -15,7 +15,7 @@ import { Location } from "../types/Location";
   };
   
   //Set it up to have a similar style to a card, but with unique properties
-  function AddThing(props: thingProps) {
+  function AddLocation(props: thingProps) {
     const [location, setLocation] = useState<Partial<Location>>({});
   
     const [open, setOpen] = useState(false);
@@ -79,5 +79,5 @@ import { Location } from "../types/Location";
     );
   }
   
-  export default AddThing;
+  export default AddLocation;
   
