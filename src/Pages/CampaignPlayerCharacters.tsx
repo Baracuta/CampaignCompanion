@@ -5,6 +5,7 @@ import { ASSETS_PATH } from "../constants/assets_path";
 import CardPanel from "../components/CardPanel";
 import ToolBar from "../components/ToolBar";
 import { useCampaign } from "../hooks/useCampaign";
+import ThingList from "../components/ThingList";
 
 function CampaignPlayerCharacters() {
   const { id } = useParams();
@@ -28,7 +29,9 @@ function CampaignPlayerCharacters() {
         <ToolBar />
       </div>
 
-      <CardPanel></CardPanel>
+      <CardPanel>
+        <ThingList things={campaign.playerCharacters}/>
+      </CardPanel>
     </main>
   );
 }
