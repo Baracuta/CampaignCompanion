@@ -68,9 +68,8 @@ function AddThing(props: thingProps) {
           <Button
             onClick={async () => {
               await createNPC(npc as NPC, props.campaignId);
-              handleClose;
+              handleClose();
             }}
-            type="button"
           >
             Add NPC
           </Button>
