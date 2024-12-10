@@ -5,6 +5,8 @@ import { ASSETS_PATH } from "../constants/assets_path";
 import CardPanel from "../components/CardPanel";
 import ToolBar from "../components/ToolBar";
 import { useCampaign } from "../hooks/useCampaign";
+import AddLocation from "../components/AddLocation";
+import LocationList from "../components/LocationList";
 
 function CampaignLocations() {
   const { id } = useParams();
@@ -28,7 +30,10 @@ function CampaignLocations() {
         <ToolBar />
       </div>
 
-      <CardPanel></CardPanel>
+      <CardPanel>
+        <AddLocation campaignId={id as string}/>
+        <LocationList locations={campaign?.locations}/>
+      </CardPanel>
     </main>
   );
 }
