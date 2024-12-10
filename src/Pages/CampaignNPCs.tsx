@@ -5,9 +5,9 @@ import CardPanel from "../components/CardPanel";
 import ToolBar from "../components/ToolBar";
 import TopBar from "../components/TopBar";
 import AddThing from "../components/AddThing";
-import NPCList from "../components/NPCList";
 import { NPC } from "../types/NPC";
 import { useCampaign } from "../hooks/useCampaign";
+import ThingList from "../components/ThingList";
 
 function CampaignNPCs() {
   const { id } = useParams();
@@ -33,7 +33,7 @@ function CampaignNPCs() {
 
       <CardPanel>
         <AddThing campaignId={id as string} />
-        <NPCList npcs={campaign?.npcs as Array<NPC>} />
+        <ThingList npcs={campaign?.npcs as Array<NPC>} />
       </CardPanel>
     </main>
   );

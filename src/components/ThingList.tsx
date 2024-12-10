@@ -1,8 +1,7 @@
 import Card from "./Card";
-import { NPC } from "../types/NPC";
 
 type listProps = {
-  npcs?: Array<NPC>;
+  npcs?: Array<any>;
 };
 
 function NPCList(props: listProps) {
