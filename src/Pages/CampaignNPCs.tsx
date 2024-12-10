@@ -33,7 +33,7 @@ function CampaignNPCs() {
 
       <CardPanel>
         <AddThing campaignId={id as string} />
-        <ThingList npcs={campaign?.npcs as Array<NPC>} />
+        <ThingList things={campaign?.npcs as Array<NPC>} />
       </CardPanel>
     </main>
   );
