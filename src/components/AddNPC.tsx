@@ -15,7 +15,7 @@ type thingProps = {
 };
 
 //Set it up to have a similar style to a card, but with unique properties
-function AddThing(props: thingProps) {
+function AddNPC(props: thingProps) {
   const [npc, setNpc] = useState<Partial<NPC>>({});
 
   const [open, setOpen] = useState(false);
@@ -79,4 +79,4 @@ function AddThing(props: thingProps) {
   );
 }
 
-export default AddThing;
+export default AddNPC;
