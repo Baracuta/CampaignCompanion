@@ -29,7 +29,7 @@ function CampaignForm() {
 
   function validate() {
     let check = true;
-    if (campaign.game == "" || campaign.name == "" || campaign.players == 0) {
+    if (campaign.game == "" || campaign.name == undefined || campaign.players == 0) {
       check = true;
     } else {
       check = false;
