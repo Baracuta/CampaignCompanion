@@ -9,7 +9,7 @@ import { PlayerCharacter } from "../types/PlayerCharacter";
 
 //Campaign Section
 
-//Good
+//Used in CampaignForm to generate a new campaign
 export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
   const allCampaigns = await getCampaigns();
 
@@ -29,7 +29,7 @@ export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
   return campaign;
 };
 
-//Good
+//Currently does not have a place to call it outside of test-page. Will alter this in the future.
 export const deleteCampaign = async (id: string): Promise<Array<Campaign>> => {
   const allCampaigns = await getCampaigns();
 
@@ -44,7 +44,7 @@ export const deleteCampaign = async (id: string): Promise<Array<Campaign>> => {
   return updatedCampaigns;
 };
 
-//Good
+//Used in the useCampaign hook, which itself is used anywhere where the campaign needs to be set.
 export const getCampaign = async (id: string): Promise<Campaign> => {
   const allCampaigns = await getCampaigns();
   const campaign = allCampaigns.find((datum) => datum.id === id);
@@ -52,7 +52,7 @@ export const getCampaign = async (id: string): Promise<Campaign> => {
   return campaign as Campaign;
 };
 
-//Good
+//Used in the getCampaign method, as well as in the useCampaigns hook, which is used in the CampaignList component.
 export const getCampaigns = async (): Promise<Array<Campaign>> => {
   const allCampaignsString = localStorage.getItem("campaigns");
   const allCampaigns =
@@ -63,7 +63,7 @@ export const getCampaigns = async (): Promise<Array<Campaign>> => {
   return allCampaigns;
 };
 
-//Good
+//Used anytime that something within a Campaign is changed or updated so that the new information can be saved.
 export const updateCampaign = async (campaign: Campaign): Promise<Campaign> => {
   const updatedCampaign = campaign;
 
@@ -76,7 +76,7 @@ export const updateCampaign = async (campaign: Campaign): Promise<Campaign> => {
   return updatedCampaign;
 };
 
-//Good
+//After a campaign has been updated with new information, this will update the total list of all campaigns.
 export const updateCampaigns = async (
   updatedCampaigns: Array<Campaign>
 ): Promise<Array<Campaign>> => {
@@ -87,7 +87,7 @@ export const updateCampaigns = async (
 
 //NPC Section
 
-//Good
+//Used in the AddNPC component to save a new NPC object to a campaign.
 export const createNPC = async (npc: NPC, campaignId: string): Promise<NPC> => {
   const campaign = await getCampaign(campaignId);
 
@@ -105,7 +105,7 @@ export const createNPC = async (npc: NPC, campaignId: string): Promise<NPC> => {
   return npc;
 };
 
-//Should be good
+//Functional, but no way for a user to currently use this. Will rectify in the future.
 export const deleteNPC = async (
   campaignId: string,
   npcId: string
@@ -121,7 +121,7 @@ export const deleteNPC = async (
   return updatedNpcs;
 };
 
-//Should be good
+//Acquires an NPC. Necessary for updating an NPC's props.
 export const getNPC = async (
   campaignId: string,
   npcId: string
@@ -132,7 +132,7 @@ export const getNPC = async (
   return findNpc as NPC;
 };
 
-//Good
+//Used in getNPC, as well as in the ThingList component.
 export const getNPCs = async (campaignId: string): Promise<Array<NPC>> => {
   const campaign = await getCampaign(campaignId);
 
@@ -140,7 +140,7 @@ export const getNPCs = async (campaignId: string): Promise<Array<NPC>> => {
   return npcs as Array<NPC>;
 };
 
-//Probably good, but could possibly be made more efficient
+//Uncertain if this works because I haven't had a way to test it yet, but it will be necessary anytime an NPC's props are updated.
 export const updateNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
   const campaign = await getCampaign(campaignId);
   const updatedNpc = npc;
@@ -154,7 +154,7 @@ export const updateNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
   return updatedNpc;
 };
 
-//Good
+//Used to update the list of NPCs within a campaign.
 export const updateNPCs = async (
   newNPCs: Array<NPC>,
   campaign: Campaign
@@ -169,7 +169,7 @@ export const updateNPCs = async (
 
 //Location Section
 
-//Good
+//
 export const createLocation = async (location: Location, campaignId: string): Promise<Location> => {
   const campaign = await getCampaign(campaignId);
 
@@ -187,7 +187,7 @@ export const createLocation = async (location: Location, campaignId: string): Pr
   return location;
 };
 
-//Should be good
+//
 export const deleteLocation = async (
   campaignId: string,
   locationId: string
@@ -203,7 +203,7 @@ export const deleteLocation = async (
   return updatedLocations;
 };
 
-//Should be good
+//
 export const getLocation = async (
   campaignId: string,
   locationId: string
@@ -214,7 +214,7 @@ export const getLocation = async (
   return findlocation as Location;
 };
 
-//Good
+//
 export const getLocations = async (campaignId: string): Promise<Array<Location>> => {
   const campaign = await getCampaign(campaignId);
 
@@ -222,7 +222,7 @@ export const getLocations = async (campaignId: string): Promise<Array<Location>>
   return locations as Array<Location>;
 };
 
-//Probably good, but could possibly be made more efficient
+//
 export const updateLocation = async (campaignId: string, location: Location): Promise<Location> => {
   const campaign = await getCampaign(campaignId);
   const updatedLocation = location;
@@ -236,7 +236,7 @@ export const updateLocation = async (campaignId: string, location: Location): Pr
   return updatedLocation;
 };
 
-//Good
+//
 export const updateLocations = async (
   newlocations: Array<Location>,
   campaign: Campaign
@@ -251,7 +251,7 @@ export const updateLocations = async (
 
 //Item Section
 
-//Good
+//
 export const createItem = async (item: Item, campaignId: string): Promise<Item> => {
   const campaign = await getCampaign(campaignId);
 
@@ -269,7 +269,7 @@ export const createItem = async (item: Item, campaignId: string): Promise<Item> 
   return item;
 };
 
-//Should be good
+//
 export const deleteItem = async (
   campaignId: string,
   itemId: string
@@ -285,7 +285,7 @@ export const deleteItem = async (
   return updatedItems;
 };
 
-//Should be good
+//
 export const getItem = async (
   campaignId: string,
   itemId: string
@@ -296,7 +296,7 @@ export const getItem = async (
   return finditem as Item;
 };
 
-//Good
+//
 export const getItems = async (campaignId: string): Promise<Array<Item>> => {
   const campaign = await getCampaign(campaignId);
 
@@ -304,7 +304,7 @@ export const getItems = async (campaignId: string): Promise<Array<Item>> => {
   return items as Array<Item>;
 };
 
-//Probably good, but could possibly be made more efficient
+//
 export const updateItem = async (campaignId: string, item: Item): Promise<Item> => {
   const campaign = await getCampaign(campaignId);
   const updatedItem = item;
@@ -318,7 +318,7 @@ export const updateItem = async (campaignId: string, item: Item): Promise<Item> 
   return updatedItem;
 };
 
-//Good
+//
 export const updateItems = async (
   newItems: Array<Item>,
   campaign: Campaign
@@ -333,7 +333,7 @@ export const updateItems = async (
 
 //PC Section
 
-//Good
+//
 export const createPC = async (pc: PlayerCharacter, campaignId: string): Promise<PlayerCharacter> => {
   const campaign = await getCampaign(campaignId);
 
@@ -351,7 +351,7 @@ export const createPC = async (pc: PlayerCharacter, campaignId: string): Promise
   return pc;
 };
 
-//Should be good
+//
 export const deletePC = async (
   campaignId: string,
   pcId: string
@@ -367,7 +367,7 @@ export const deletePC = async (
   return updatedPCs;
 };
 
-//Should be good
+//
 export const getPC = async (
   campaignId: string,
   pcId: string
@@ -378,7 +378,7 @@ export const getPC = async (
   return findPC as PlayerCharacter;
 };
 
-//Good
+//
 export const getPCs = async (campaignId: string): Promise<Array<PlayerCharacter>> => {
   const campaign = await getCampaign(campaignId);
 
@@ -386,7 +386,7 @@ export const getPCs = async (campaignId: string): Promise<Array<PlayerCharacter>
   return pcs as Array<PlayerCharacter>;
 };
 
-//Probably good, but could possibly be made more efficient
+//
 export const updatePC = async (campaignId: string, pc: PlayerCharacter): Promise<PlayerCharacter> => {
   const campaign = await getCampaign(campaignId);
   const updatedPC = pc;
@@ -400,7 +400,7 @@ export const updatePC = async (campaignId: string, pc: PlayerCharacter): Promise
   return updatedPC;
 };
 
-//Good
+//
 export const updatePCs = async (
   newPCs: Array<PlayerCharacter>,
   campaign: Campaign
