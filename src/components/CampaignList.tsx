@@ -1,18 +1,11 @@
-import { useEffect, useState } from "react";
-import { getCampaigns } from "../services/CampaignService";
 import { Campaign } from "../types/Campaign";
 import Card from "./Card";
+import { useCampaigns } from "../hooks/useCampaigns";
 
 //The component that creates a div for each campaign in the array of getCampaigns
 
 function CampaignList() {
-  const [campaigns, setCampaigns] = useState<Array<Campaign>>();
-
-  useEffect(() => {
-    getCampaigns().then((campaigns) => {
-      setCampaigns(campaigns);
-    });
-  }, []);
+  const campaigns = useCampaigns()
 
   const divs = ((campaigns as Array<Campaign>) ?? []).map((datum) => (
     <Card
