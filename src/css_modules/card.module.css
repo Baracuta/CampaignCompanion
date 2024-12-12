@@ -11,15 +11,14 @@
         min-height:25%;
         height:25%;
 
-        font-weight: bolder;
-        font-size:xx-large;
+        font-size:20px;
+        font-weight: bold;
 
         margin: 5px;
 
-        text-align: center;
         overflow:hidden;
         text-overflow:ellipsis;
-        
+
 
         &.bigCard{
             height:100%;
@@ -39,7 +38,8 @@
             background-color: rgba(75, 75, 75, 0.5);
 
             color: white;
-            font-size: larger;
+
+            font-size: 20px;
             font-weight: bold;
         }
     }
