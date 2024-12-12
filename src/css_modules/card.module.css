@@ -91,6 +91,19 @@ and (max-width: 1023px){
         &.campaignCard{
             border-radius: 5px;
         }
+
+        &:global(.MuiButtonBase-root){
+            border-color: black;
+            border-width: 1px;
+            border-radius: 5px;
+
+            margin:5px;
+
+            background-color: rgba(75, 75, 75, 0.5);
+
+            color: white;
+            font-size: medium;
+        }
     
     }
     .card:hover{
