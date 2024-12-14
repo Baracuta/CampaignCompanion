@@ -4,4 +4,5 @@ export type NPC={
     name?:string;
     description?:string;
     notes?:string;
+    image?:string;
 }

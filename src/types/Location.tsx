@@ -4,4 +4,5 @@ export type Location={
     name?:string;
     description?:string;
     notes?:string;
+    maps?:string;
 }
