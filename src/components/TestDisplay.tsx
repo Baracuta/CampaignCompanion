@@ -26,8 +26,8 @@ export default function TestDisplay(props:DisplayProps) {
   const id = open ? 'simple-popover' : undefined;
 
   return (
-    <div>
-      <Button className={styles.card} aria-describedby={id} variant="contained" onClick={handleClick}>
+    <div className={styles.card}>
+      <Button aria-describedby={id} variant="contained" onClick={handleClick}>
         <p>{props.name}</p>
       </Button>
 
