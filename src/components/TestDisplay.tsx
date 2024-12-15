@@ -32,13 +32,14 @@ export default function TestDisplay() {
         anchorEl={anchorEl}
         onClose={handleClose}
         anchorOrigin={{
-          vertical: 'bottom',
+          vertical: 'top',
           horizontal: 'left',
         }}
       >
         <p>Heyayaya</p>
+        <button onClick={handleClose}/>
         <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
-        
+
       </Popover>
     </div>
   );
