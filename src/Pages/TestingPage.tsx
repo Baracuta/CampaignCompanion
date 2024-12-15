@@ -4,6 +4,7 @@ import { Campaign } from "../types/Campaign"
 import TopBar from "../components/TopBar"
 import { ASSETS_PATH } from "../constants/assets_path"
 import { deleteCampaign, deleteNPC, getCampaign } from "../services/CampaignService"
+import TestDisplay from "../components/TestDisplay"
 
 //This is a page used for testing purposes.
 function TestPage(){
@@ -33,6 +34,7 @@ function TestPage(){
                 const id=e.target.value;
                 deleteNPC(campaign.id,id)
             }}></input> */}
+            <TestDisplay/>
         </div>
     )
 }

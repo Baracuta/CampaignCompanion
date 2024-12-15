@@ -25,6 +25,7 @@ export default function TestDisplay() {
       <Button aria-describedby={id} variant="contained" onClick={handleClick}>
         Open Popover
       </Button>
+
       <Popover
         id={id}
         open={open}
@@ -35,7 +36,9 @@ export default function TestDisplay() {
           horizontal: 'left',
         }}
       >
+        <p>Heyayaya</p>
         <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+        
       </Popover>
     </div>
   );
