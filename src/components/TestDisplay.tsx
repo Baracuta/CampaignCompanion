@@ -32,7 +32,7 @@ export default function TestDisplay(props: DisplayProps) {
       </Button>
 
       <Popover
-        className={styles.display}
+        className={styles.popover}
         anchorReference="anchorPosition"
         anchorPosition={{ top: 100, left: 100 }}
         id={id}

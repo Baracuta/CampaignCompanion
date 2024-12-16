@@ -26,9 +26,13 @@
         &.npc{
             
         }
-        .display{
-            background-color:rgba(75, 75, 75, 0.5);
-        }
+    }
+    .popover{
+        background-color:rgba(75, 75, 75, 0.5);
+
+    }
+    :global(.MuiPopover-paper){
+        background-color: black;
     }
 }
 
