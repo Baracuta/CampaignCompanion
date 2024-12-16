@@ -1,27 +1,66 @@
 @media screen and (min-width:1024px){
-    .display{
+    .card{
         border: solid black;
         border-radius: 25px;
         border-width: 2px;
         background-color: rgba(75, 75, 75, 0.5);
 
-        display: none;
+        min-width:15%;
+        width: 18%;
+        max-width:50%;
+        min-height:25%;
+        height:25%;
+
+        font-size:25px;
+        font-weight: bold;
+
+        margin: 5px;
+
+        overflow:hidden;
+        text-overflow:ellipsis;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
 
         &.npc{
-
+            
+        }
+        .display{
+            background-color:rgba(75, 75, 75, 0.5);
         }
     }
 }
 
 @media screen and (min-width:360px)
 and (max-width: 1023px){
-    .display{
+    .card{
         border: black;
         border-radius: 5px;
         background-color: rgba(75, 75, 75, 0.5);
 
+        scroll-snap-align:center;
+
+        min-width:25%;
+        width: 25%;
+        max-width:50%;
+        min-height:25%;
+        height:25%;
+
+        font-weight: bolder;
+        font-size:xx-large;
+
+        margin: 5px;
+
+        text-align: center;
+        overflow:hidden;
+        text-overflow:ellipsis;
+
         &.npc{
 
+        }
+        .display{
+            background-color:rgba(75, 75, 75, 0.5);
         }
     }
 }
