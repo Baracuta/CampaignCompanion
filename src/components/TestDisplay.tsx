@@ -48,7 +48,7 @@ export default function TestDisplay(props: DisplayProps) {
         <h1>{props.name}</h1>
         <h3>{props.description}</h3>
 
-        <textarea />
+        <textarea/>
 
         <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
       </Popover>
