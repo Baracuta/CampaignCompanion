@@ -32,7 +32,12 @@
 
     }
     :global(.MuiPaper-root){
-        background-color: blue !important;
+        border: solid black;
+        border-radius:25px;
+        border-width:2px;
+        background-color: rgba(75, 75, 75, 0.5) !important;
+
+        min-width:500px !important;
     }
 }
 
