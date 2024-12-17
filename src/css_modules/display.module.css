@@ -44,20 +44,24 @@
         background-color:rgba(75, 75, 75, 0.5);
         width: 100vw;
         height: 100vh;
+        display: flex;
+        align-items: center;
 
     }
     :global(.MuiPaper-root){
-        border: solid black;
+        border: solid rgb(100, 100, 100);
         border-radius:25px;
         border-width:2px;
         background-color: rgba(0, 0, 0, 1) !important;
 
-        width:60% !important;
+        width:55% !important;
         height: 90% !important;
 
         margin-left: 20% !important;
         margin-right: 20% !important;
         margin-top:5px !important;
+        padding-left: 20px;
+        padding-right:20px;
 
         color: aliceblue !important;
 
@@ -66,8 +70,6 @@
             font-family: 'Times New Roman', Times, serif;
 
             padding: 5px;
-            margin-left: 20px;
-            margin-right:20px;
 
             width: 40%;
             height: 50%;
