@@ -26,6 +26,19 @@
         &.npc{
             
         }
+        button{
+            background:none;
+            height: 100%;
+            font-size: large;
+            border-radius:25px;
+        }
+    }
+    .card:hover{
+        border-color: #fc0;
+        cursor:pointer;
+        p{
+            text-shadow: #fc0 1px 0 5px, white 1px 0 10px;
+        }
     }
     .popover{
         background-color:rgba(75, 75, 75, 0.5);
@@ -37,12 +50,14 @@
         border: solid black;
         border-radius:25px;
         border-width:2px;
-        background-color: rgba(75, 75, 75, 0.5) !important;
+        background-color: rgba(0, 0, 0, 0.2) !important;
 
         width:60% !important;
+        height: 90% !important;
 
         margin-left: 20% !important;
         margin-right: 20% !important;
+        margin-top:5px !important;
     }
 }
 
