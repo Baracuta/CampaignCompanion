@@ -34,7 +34,7 @@ export default function TestDisplay(props: DisplayProps) {
       <Popover
         className={styles.popover}
         anchorReference="anchorPosition"
-        anchorPosition={{ top: 100, left: 100 }}
+        anchorPosition={{ top: 0, left: 0 }}
         id={id}
         open={open}
         anchorEl={anchorEl}
