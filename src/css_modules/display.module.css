@@ -31,8 +31,8 @@
         background-color:rgba(75, 75, 75, 0.5);
 
     }
-    :global(.MuiPopover-paper){
-        background-color: black;
+    :global(.MuiPaper-root){
+        background-color: blue !important;
     }
 }
 
