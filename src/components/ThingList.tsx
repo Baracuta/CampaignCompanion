@@ -7,7 +7,7 @@ type listProps = {
 function NPCList(props: listProps) {
   const divs = (props.things ?? []).map((datum) => (
     // <Card name={datum.name} cardLink={``} key={datum.id}></Card>
-    <TestDisplay name={datum.name} description={datum.description} thing={datum}/>
+    <TestDisplay thing={datum}/>
   ));
 
   return divs;
