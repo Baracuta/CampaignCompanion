@@ -52,7 +52,7 @@ import { Location } from "../types/Location";
                 }}
               />
   
-              <h3> Describe this NPC</h3>
+              <h3> Describe this Location</h3>
   
               <textarea
                 value={location.description ?? ""}

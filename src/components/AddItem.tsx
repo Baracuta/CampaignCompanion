@@ -39,10 +39,10 @@ function AddItem(props: thingProps) {
         Add item
       </Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Add a New item to this Campaign</DialogTitle>
+        <DialogTitle>Add a New Item to this Campaign</DialogTitle>
         <DialogContent>
           <div className={styles.add_npc}>
-            <h3> Name this item</h3>
+            <h3> Name this Item</h3>
 
             <input
               type="text"
@@ -53,7 +53,7 @@ function AddItem(props: thingProps) {
               }}
             />
 
-            <h3> Describe this item</h3>
+            <h3> Describe this Item</h3>
 
             <textarea
               value={item.description ?? ""}
