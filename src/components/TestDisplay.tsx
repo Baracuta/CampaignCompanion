@@ -6,12 +6,17 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { useState } from "react";
 import styles from "../css_modules/display.module.css";
+import { NPC } from "../types/NPC";
+import { Location } from "../types/Location";
+import { Item } from "../types/Item";
+import { PlayerCharacter } from "../types/PlayerCharacter";
 
 type DisplayProps = {
   name?: string;
   description?: string;
   notes?: string;
   image?: string;
+  thing:NPC|Location|Item|PlayerCharacter;
 };
 
 export default function TestDisplay(props: DisplayProps) {
@@ -28,7 +33,7 @@ export default function TestDisplay(props: DisplayProps) {
   return (
     <div className={styles.card}>
       <Button aria-describedby={id} variant="contained" onClick={handleClick}>
-        <p>{props.name}</p>
+        <p>{props.thing.name}</p>
       </Button>
 
       <Popover
@@ -44,10 +49,15 @@ export default function TestDisplay(props: DisplayProps) {
           horizontal: "left",
         }}
       >
-        <button onClick={handleClose} />
-        <h1>{props.name}</h1>
-        <h3>{props.description}</h3>
-
+        <div className={styles.button_panel}>
+          
+          <button onClick={handleClose}>Close</button>
+        </div>
+        
+        <div className={styles.top}>
+          <h2>{props.thing.name}</h2>
+          <h3>{props.thing.description}</h3>
+        </div>
         <textarea/>
 
         <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
