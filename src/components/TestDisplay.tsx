@@ -11,6 +11,7 @@ import { Location } from "../types/Location";
 import { Item } from "../types/Item";
 import { PlayerCharacter } from "../types/PlayerCharacter";
 import { Campaign } from "../types/Campaign";
+import { deleteNPC } from "../services/CampaignService";
 
 type DisplayProps = {
   name?: string;
@@ -32,6 +33,8 @@ export default function TestDisplay(props: DisplayProps) {
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
 
+  const handleDelete=(event: React.MouseEvent<HTMLButtonElement>)=>{deleteNPC(props.campaign.id,props.thing.id)}
+
   return (
     <div className={styles.card}>
       <Button aria-describedby={id} variant="contained" onClick={handleClick}>
@@ -52,7 +55,7 @@ export default function TestDisplay(props: DisplayProps) {
         }}
       >
         <div className={styles.button_panel}>
-          
+          <button onClick={handleDelete}>Delete</button>
           <button onClick={handleClose}>Close</button>
         </div>
         
