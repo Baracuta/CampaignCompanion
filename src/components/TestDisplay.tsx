@@ -18,8 +18,8 @@ type DisplayProps = {
   description?: string;
   notes?: string;
   image?: string;
-  thing:NPC|Location|Item|PlayerCharacter;
-  campaign:Campaign;
+  thing: NPC | Location | Item | PlayerCharacter;
+  campaign: Campaign;
 };
 
 export default function TestDisplay(props: DisplayProps) {
@@ -33,7 +33,9 @@ export default function TestDisplay(props: DisplayProps) {
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
 
-  const handleDelete=(event: React.MouseEvent<HTMLButtonElement>)=>{deleteNPC(props.campaign.id,props.thing.id)}
+  const handleDelete = (event: React.MouseEvent<HTMLButtonElement>) => {
+    deleteNPC(props.campaign.id, props.thing.id);
+  };
 
   return (
     <div className={styles.card}>
@@ -58,12 +60,12 @@ export default function TestDisplay(props: DisplayProps) {
           <button onClick={handleDelete}>Delete</button>
           <button onClick={handleClose}>Close</button>
         </div>
-        
+
         <div className={styles.top}>
           <h2>{props.thing.name}</h2>
           <h3>{props.thing.description}</h3>
         </div>
-        <textarea/>
+        <textarea />
 
         <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
       </Popover>
