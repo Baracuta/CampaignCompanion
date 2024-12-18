@@ -10,6 +10,8 @@ import { NPC } from "../types/NPC";
 import { Location } from "../types/Location";
 import { Item } from "../types/Item";
 import { PlayerCharacter } from "../types/PlayerCharacter";
+import { Campaign } from "../types/Campaign";
+import { deleteNPC } from "../services/CampaignService";
 
 type DisplayProps = {
   name?: string;
@@ -17,6 +19,7 @@ type DisplayProps = {
   notes?: string;
   image?: string;
   thing:NPC|Location|Item|PlayerCharacter;
+  campaign:Campaign;
 };
 
 export default function TestDisplay(props: DisplayProps) {

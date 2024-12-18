@@ -32,7 +32,7 @@ function CampaignLocations() {
 
       <CardPanel>
         <AddLocation campaignId={id as string}/>
-        <ThingList things={campaign?.locations}/>
+        <ThingList things={campaign?.locations as unknown as Array<Location>} campaign={campaign}/>
       </CardPanel>
     </main>
   );

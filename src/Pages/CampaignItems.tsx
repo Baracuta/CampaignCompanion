@@ -7,6 +7,7 @@ import ToolBar from "../components/ToolBar";
 import { useCampaign } from "../hooks/useCampaign";
 import ThingList from "../components/ThingList";
 import AddItem from "../components/AddItem";
+import { Item } from "../types/Item";
 
 function CampaignItems() {
   const { id } = useParams();
@@ -32,7 +33,7 @@ function CampaignItems() {
 
       <CardPanel>
         <AddItem campaignId={id as string}/>
-        <ThingList things={campaign?.items}/>
+        <ThingList things={campaign?.items as Array<Item>} campaign={campaign}/>
       </CardPanel>
     </main>
   );

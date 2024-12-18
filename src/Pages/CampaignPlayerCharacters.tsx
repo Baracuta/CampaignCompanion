@@ -7,6 +7,7 @@ import ToolBar from "../components/ToolBar";
 import { useCampaign } from "../hooks/useCampaign";
 import ThingList from "../components/ThingList";
 import AddPC from "../components/AddPC";
+import { PlayerCharacter } from "../types/PlayerCharacter";
 
 function CampaignPlayerCharacters() {
   const { id } = useParams();
@@ -32,7 +33,7 @@ function CampaignPlayerCharacters() {
 
       <CardPanel>
         <AddPC campaignId={id as string}/>
-        <ThingList things={campaign?.playerCharacters}/>
+        <ThingList things={campaign?.playerCharacters as Array<PlayerCharacter>} campaign={campaign}/>
       </CardPanel>
     </main>
   );
