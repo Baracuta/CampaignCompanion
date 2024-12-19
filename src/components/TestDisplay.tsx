@@ -2,7 +2,6 @@
 // make these instead of Cards.
 
 import Popover from "@mui/material/Popover";
-import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { useState } from "react";
 import styles from "../css_modules/display.module.css";

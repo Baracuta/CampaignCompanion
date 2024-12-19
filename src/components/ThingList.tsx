@@ -9,7 +9,7 @@ type listProps = {
 function NPCList(props: listProps) {
   const divs = (props.things ?? []).map((datum) => (
     // <Card name={datum.name} cardLink={``} key={datum.id}></Card>
-    <TestDisplay thing={datum} campaign={props.campaign}/>
+    <TestDisplay thing={datum} campaign={props.campaign} key={datum.id}/>
   ));
 
   return divs;
