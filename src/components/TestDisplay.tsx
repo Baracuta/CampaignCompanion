@@ -34,7 +34,6 @@ export default function TestDisplay(props: DisplayProps) {
   const id = open ? "simple-popover" : undefined;
 
   const handleDelete = (event: React.MouseEvent<HTMLButtonElement>) => {
-    if (props.thing == NPC){}
     deleteNPC(props.campaign.id, props.thing.id);
   };
 
