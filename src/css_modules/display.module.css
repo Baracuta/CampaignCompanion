@@ -54,6 +54,9 @@
         border-width:2px;
         background-color: rgba(0, 0, 0, 1) !important;
 
+        display:flex;
+        flex-direction: column;
+
         width:55% !important;
         height: 90% !important;
 
@@ -64,6 +67,13 @@
         padding-right:20px;
 
         color: aliceblue !important;
+
+        .button_panel{
+            display: flex;
+            flex-direction: row;
+            justify-content: right;
+            
+        }
 
         textarea{
             font-size: larger;
