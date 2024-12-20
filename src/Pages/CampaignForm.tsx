@@ -8,7 +8,7 @@ import { Autocomplete, TextField } from "@mui/material";
 
 //This page is for the campaign creation form
 function CampaignForm() {
-  const [campaign, setCampaign] = useState<Partial<Campaign>>({});
+  const [campaign, setCampaign] = useState<Partial<Campaign>>({players:1});
   //This will just let me control things when the page is in the process of saving information. For progress wheels, etc
   const [saving, setSaving] = useState(false);
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ function CampaignForm() {
 
   function validate() {
     let check = true;
-    if (campaign.game == "" || campaign.name == undefined || campaign.players == 0) {
+    if (campaign.game == "" || campaign.name == undefined || campaign.players == null) {
       check = true;
     } else {
       check = false;
@@ -81,7 +81,7 @@ function CampaignForm() {
 
           <input
             type="number"
-            value={campaign.players ?? 0}
+            value={campaign.players}
             onChange={(e) => {
               const players = Number(e.target.value);
               setCampaign({ ...campaign, players });
