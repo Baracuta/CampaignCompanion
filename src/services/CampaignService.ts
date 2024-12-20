@@ -24,7 +24,7 @@ export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
 
   const newCampaigns = [...allCampaigns, campaign];
 
-  updateCampaigns(newCampaigns);
+  await updateCampaigns(newCampaigns);
 
   return campaign;
 };
@@ -39,7 +39,7 @@ export const deleteCampaign = async (id: string): Promise<Array<Campaign>> => {
     (item) => item.id != campaign.id
   );
 
-  updateCampaigns(updatedCampaigns);
+  await updateCampaigns(updatedCampaigns);
 
   return updatedCampaigns;
 };
@@ -71,7 +71,7 @@ export const updateCampaign = async (campaign: Campaign): Promise<Campaign> => {
 
   const addingUpdated = [...removedOld, updatedCampaign];
 
-  updateCampaigns(addingUpdated);
+  await updateCampaigns(addingUpdated);
 
   return updatedCampaign;
 };
@@ -100,7 +100,7 @@ export const createNPC = async (npc: NPC, campaignId: string): Promise<NPC> => {
 
   const newNPCs = [...allNPCS, npc];
 
-  updateNPCs(newNPCs, campaign);
+  await updateNPCs(newNPCs, campaign);
 
   return npc;
 };
@@ -116,7 +116,7 @@ export const deleteNPC = async (
 
   const updatedNpcs = npcList.filter((datum) => datum.id != npc.id);
 
-  updateNPCs(updatedNpcs, campaign);
+  await updateNPCs(updatedNpcs, campaign);
 
   return updatedNpcs;
 };
@@ -149,7 +149,7 @@ export const updateNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
 
   const addingUpdated = [...removedOld, updatedNpc];
 
-  updateNPCs(addingUpdated, campaign);
+  await updateNPCs(addingUpdated, campaign);
 
   return updatedNpc;
 };
@@ -161,7 +161,7 @@ export const updateNPCs = async (
 ): Promise<Array<NPC>> => {
   campaign.npcs = newNPCs;
 
-  updateCampaign(campaign);
+  await updateCampaign(campaign);
 
   return campaign.npcs;
 };
@@ -182,7 +182,7 @@ export const createLocation = async (location: Location, campaignId: string): Pr
 
   const newLocations = [...allLocations, location];
 
-  updateLocations(newLocations, campaign);
+  await updateLocations(newLocations, campaign);
 
   return location;
 };
@@ -198,7 +198,7 @@ export const deleteLocation = async (
 
   const updatedLocations = locationList.filter((datum) => datum.id != location.id);
 
-  updateLocations(updatedLocations, campaign);
+  await updateLocations(updatedLocations, campaign);
 
   return updatedLocations;
 };
@@ -231,7 +231,7 @@ export const updateLocation = async (campaignId: string, location: Location): Pr
 
   const addingUpdated = [...removedOld, updatedLocation];
 
-  updateLocations(addingUpdated, campaign);
+  await updateLocations(addingUpdated, campaign);
 
   return updatedLocation;
 };
@@ -243,7 +243,7 @@ export const updateLocations = async (
 ): Promise<Array<Location>> => {
   campaign.locations = newlocations;
 
-  updateCampaign(campaign);
+  await updateCampaign(campaign);
 
   return campaign.locations;
 };
@@ -264,7 +264,7 @@ export const createItem = async (item: Item, campaignId: string): Promise<Item> 
 
   const newItems = [...allItems, item];
 
-  updateItems(newItems, campaign);
+  await updateItems(newItems, campaign);
 
   return item;
 };
@@ -280,7 +280,7 @@ export const deleteItem = async (
 
   const updatedItems = itemList.filter((datum) => datum.id != item.id);
 
-  updateItems(updatedItems, campaign);
+  await updateItems(updatedItems, campaign);
 
   return updatedItems;
 };
@@ -313,7 +313,7 @@ export const updateItem = async (campaignId: string, item: Item): Promise<Item> 
 
   const addingUpdated = [...removedOld, updatedItem];
 
-  updateItems(addingUpdated, campaign);
+  await updateItems(addingUpdated, campaign);
 
   return updatedItem;
 };
@@ -325,7 +325,7 @@ export const updateItems = async (
 ): Promise<Array<Item>> => {
   campaign.items = newItems;
 
-  updateCampaign(campaign);
+  await updateCampaign(campaign);
 
   return campaign.items;
 };
@@ -346,7 +346,7 @@ export const createPC = async (pc: PlayerCharacter, campaignId: string): Promise
 
   const newPCs = [...allPCs, pc];
 
-  updatePCs(newPCs, campaign);
+  await updatePCs(newPCs, campaign);
 
   return pc;
 };
@@ -362,7 +362,7 @@ export const deletePC = async (
 
   const updatedPCs = pcList.filter((datum) => datum.id != pc.id);
 
-  updatePCs(updatedPCs, campaign);
+  await updatePCs(updatedPCs, campaign);
 
   return updatedPCs;
 };
@@ -395,7 +395,7 @@ export const updatePC = async (campaignId: string, pc: PlayerCharacter): Promise
 
   const addingUpdated = [...removedOld, updatedPC];
 
-  updatePCs(addingUpdated, campaign);
+  await updatePCs(addingUpdated, campaign);
 
   return updatedPC;
 };
@@ -407,7 +407,7 @@ export const updatePCs = async (
 ): Promise<Array<PlayerCharacter>> => {
   campaign.playerCharacters = newPCs;
 
-  updateCampaign(campaign);
+  await updateCampaign(campaign);
 
   return campaign.playerCharacters;
 };
