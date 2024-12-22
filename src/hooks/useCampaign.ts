@@ -13,3 +13,23 @@ export const useCampaign = (id: string) => {
 
   return campaign as Campaign;
 };
+
+export const useCampaign2 = (id: string) => {
+  const [campaign, setCampaign] = useState<Campaign>();
+
+  useEffect(() => {
+    getCampaign(id as string).then((campaign) => {
+      setCampaign(campaign);
+    });
+  }, [id]);
+
+  return (
+    function refreshCampaign() => {
+      useEffect(() => {
+        getCampaign(id as string).then((campaign) => {
+          setCampaign(campaign);
+        });
+      }, [id]);
+    }
+  )
+};
