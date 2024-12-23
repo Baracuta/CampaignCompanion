@@ -24,12 +24,14 @@ export const useCampaign2 = (id: string) => {
   }, [id]);
 
   return (
+    theCampaign: campaign as Campaign,
+    
     function refreshCampaign() = {
       useEffect(() => {
         getCampaign(id as string).then((campaign) => {
           setCampaign(campaign);
         });
-      }, [id]);
+      }, []);
     }
   )
 };
