@@ -24,7 +24,7 @@ export const useCampaign2 = (id: string) => {
   }, [id]);
 
   return (
-    function refreshCampaign() => {
+    function refreshCampaign() = {
       useEffect(() => {
         getCampaign(id as string).then((campaign) => {
           setCampaign(campaign);
