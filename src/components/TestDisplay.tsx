@@ -65,6 +65,10 @@ export default function TestDisplay(props: DisplayProps) {
           <h3>{props.thing.description}</h3>
         </div>
         <textarea />
+        {props.thing.type === "NPC" &&(
+          <NPCDetails npc={props.thing as NPC} />
+        )}
+        
 
       </Popover>
     </div>
