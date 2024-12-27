@@ -70,6 +70,7 @@ function AddPC(props: thingProps) {
             onClick={async () => {
               await createPC(pc as PlayerCharacter, props.campaignId);
               handleClose();
+              refreshCampaign();
             }}
           >
             Add Player Character
