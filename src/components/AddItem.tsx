@@ -70,6 +70,7 @@ function AddItem(props: thingProps) {
             onClick={async () => {
               await createItem(item as Item, props.campaignId);
               handleClose();
+              refreshCampaign();
             }}
           >
             Add item
