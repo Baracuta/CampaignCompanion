@@ -69,6 +69,7 @@ import { Location } from "../types/Location";
               onClick={async () => {
                 await createLocation(location as Location, props.campaignId);
                 handleClose();
+                refreshCampaign();
               }}
             >
               Add Location
