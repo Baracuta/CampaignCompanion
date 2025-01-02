@@ -1,5 +1,6 @@
+import { Entity } from "./Entity";
 
-export type NPC={
+export interface NPC extends Entity{
     id:string;
     name?:string;
     description?:string;
