@@ -1,5 +1,6 @@
+import { Entity } from "./Entity";
 
-export type Location={
+export interface Location extends Entity{
     id:string;
     name?:string;
     description?:string;
