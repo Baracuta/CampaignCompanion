@@ -1,5 +1,6 @@
+import { Entity } from "./Entity";
 
-export type Item={
+export interface Item extends Entity{
     id:string;
     name?:string;
     description?:string;
