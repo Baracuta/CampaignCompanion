@@ -1,5 +1,6 @@
+import { Entity } from "./Entity";
 
-export type PlayerCharacter={
+export interface PlayerCharacter extends Entity{
     id:string;
     name?:string;
     description?:string;
