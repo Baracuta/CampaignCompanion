@@ -23,7 +23,7 @@ export const useCampaign2 = (id: string) => {
     });
   }, [id]);
 
-  return (
+  return {
     theCampaign: campaign as Campaign,
     
     function refreshCampaign(campaignId:string){
@@ -33,5 +33,5 @@ export const useCampaign2 = (id: string) => {
         });
       }, []);
     }
-  )
+  }
 };
