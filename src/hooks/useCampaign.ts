@@ -12,7 +12,7 @@ export const useCampaign = (id: string) => {
   }, [id]);
 
   return {
-    campaign: campaign as Campaign,
+    campaign:campaign as Campaign,
 
     refreshCampaign(campaignId: string) {
       getCampaign(campaignId).then((campaign) => {
