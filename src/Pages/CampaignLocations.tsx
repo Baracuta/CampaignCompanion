@@ -11,7 +11,7 @@ import ThingList from "../components/ThingList";
 function CampaignLocations() {
   const { id } = useParams();
 
-  const campaign = useCampaign(id as string);
+  const campaign = useCampaign(id as string).campaign;
 
   console.log(campaign);
 

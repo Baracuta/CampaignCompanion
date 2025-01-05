@@ -12,7 +12,7 @@ import { PlayerCharacter } from "../types/PlayerCharacter";
 function CampaignPlayerCharacters() {
   const { id } = useParams();
 
-  const campaign = useCampaign(id as string);
+  const campaign = useCampaign(id as string).campaign;
 
   console.log(campaign);
 
