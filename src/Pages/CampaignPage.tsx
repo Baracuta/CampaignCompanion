@@ -7,8 +7,6 @@ import TopBar from "../components/TopBar";
 import ToolBar from "../components/ToolBar";
 import { useCampaign } from "../hooks/useCampaign";
 
-//This is going to be the default campaign dashboard. Hard-code the details for now as you get the UI figured out.
-
 function CampaignPage() {
   const { id } = useParams();
 

@@ -16,6 +16,7 @@ function CampaignNPCs() {
 
   console.log(campaign);
 
+
   return (
     <main
       className={styles.main}
@@ -32,7 +33,7 @@ function CampaignNPCs() {
       </div>
 
       <CardPanel>
-        <AddNPC campaignId={id as string} />
+        <AddNPC campaignId={id as string}/>
         <ThingList things={campaign?.npcs as Array<NPC>} campaign={campaign}/>
       </CardPanel>
     </main>
