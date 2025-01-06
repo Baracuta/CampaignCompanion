@@ -12,7 +12,7 @@ import { NPC } from "../types/NPC";
 
 type thingProps = {
   campaignId: string;
-  addThing:(npc:NPC, id:string)=> Promise<void>;
+  addThing:(npc:NPC, id:string)=> Promise<NPC>;
 };
 
 //Set it up to have a similar style to a card, but with unique properties

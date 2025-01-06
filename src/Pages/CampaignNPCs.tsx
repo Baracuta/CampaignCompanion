@@ -8,6 +8,7 @@ import AddNPC from "../components/AddNPC";
 import { NPC } from "../types/NPC";
 import { useCampaign } from "../hooks/useCampaign";
 import ThingList from "../components/ThingList";
+import { createNPC } from "../services/CampaignService";
 
 function CampaignNPCs() {
   const { id } = useParams();
@@ -33,7 +34,7 @@ function CampaignNPCs() {
       </div>
 
       <CardPanel>
-        <AddNPC campaignId={id as string}/>
+        <AddNPC campaignId={id as string} addThing={createNPC}/>
         <ThingList things={campaign?.npcs as Array<NPC>} campaign={campaign}/>
       </CardPanel>
     </main>
