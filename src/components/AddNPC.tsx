@@ -12,6 +12,7 @@ import { NPC } from "../types/NPC";
 
 type thingProps = {
   campaignId: string;
+  addThing:(npc:NPC, id:string)=> Promise<void>;
 };
 
 //Set it up to have a similar style to a card, but with unique properties
@@ -67,7 +68,7 @@ function AddNPC(props: thingProps) {
           <Button onClick={handleClose}>Cancel</Button>
           <Button
             onClick={async () => {
-              await createNPC(npc as NPC, props.campaignId);
+              props.addThing(npc as NPC, props.campaignId);
               handleClose();
             }}
           >
