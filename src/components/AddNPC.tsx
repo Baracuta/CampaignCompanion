@@ -7,7 +7,6 @@ import {
 } from "@mui/material";
 import styles from "../css_modules/card.module.css";
 import { Fragment, useState } from "react";
-import { createNPC } from "../services/CampaignService";
 import { NPC } from "../types/NPC";
 
 type thingProps = {
@@ -67,7 +66,7 @@ function AddNPC(props: thingProps) {
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
           <Button
-            onClick={async () => {
+            onClick={() => {
               props.addThing(npc as NPC, props.campaignId);
               handleClose();
             }}
