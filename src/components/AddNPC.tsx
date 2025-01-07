@@ -12,6 +12,7 @@ import { NPC } from "../types/NPC";
 type thingProps = {
   campaignId: string;
   addThing:(npc:NPC, id:string)=> Promise<NPC>;
+  refresh:()=> Promise<void>;
 };
 
 //Set it up to have a similar style to a card, but with unique properties
@@ -69,6 +70,7 @@ function AddNPC(props: thingProps) {
             onClick={() => {
               props.addThing(npc as NPC, props.campaignId);
               handleClose();
+              props.refresh();
             }}
           >
             Add NPC
