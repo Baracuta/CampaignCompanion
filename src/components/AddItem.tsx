@@ -7,12 +7,11 @@ import {
 } from "@mui/material";
 import styles from "../css_modules/card.module.css";
 import { Fragment, useState } from "react";
-import { createItem } from "../services/CampaignService";
 import { Item } from "../types/Item";
-
 
 type thingProps = {
   campaignId: string;
+  addThing: (item: Item, id: string) => Promise<Item>;
 };
 
 //Set it up to have a similar style to a card, but with unique properties
@@ -67,10 +66,9 @@ function AddItem(props: thingProps) {
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
           <Button
-            onClick={async () => {
-              await createItem(item as Item, props.campaignId);
+            onClick={() => {
+              props.addThing(item as Item, props.campaignId);
               handleClose();
-              refreshCampaign();
             }}
           >
             Add item
