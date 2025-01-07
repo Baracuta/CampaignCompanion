@@ -7,12 +7,11 @@ import {
 } from "@mui/material";
 import styles from "../css_modules/card.module.css";
 import { Fragment, useState } from "react";
-import { createPC } from "../services/CampaignService";
 import { PlayerCharacter } from "../types/PlayerCharacter";
-
 
 type thingProps = {
   campaignId: string;
+  addThing: (pc: PlayerCharacter, id: string) => Promise<PlayerCharacter>;
 };
 
 //Set it up to have a similar style to a card, but with unique properties
@@ -67,10 +66,9 @@ function AddPC(props: thingProps) {
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
           <Button
-            onClick={async () => {
-              await createPC(pc as PlayerCharacter, props.campaignId);
+            onClick={() => {
+              props.addThing(pc as PlayerCharacter, props.campaignId);
               handleClose();
-              refreshCampaign();
             }}
           >
             Add Player Character
