@@ -17,7 +17,6 @@ function CampaignNPCs() {
 
   console.log(campaign);
 
-
   return (
     <main
       className={styles.main}
@@ -34,10 +33,11 @@ function CampaignNPCs() {
       </div>
 
       <CardPanel>
-        <AddNPC campaignId={id as string} addThing={createNPC}/>
-        <ThingList things={campaign?.npcs as Array<NPC>} campaign={campaign}/>
-        <button onClick={() => {
-          useCampaign(campaign.id).refreshCampaign(campaign.id);
+        <AddNPC campaignId={id as string} addThing={createNPC} />
+        <ThingList things={campaign?.npcs as Array<NPC>} campaign={campaign} />
+        <button
+          onClick={() => {
+            useCampaign(campaign.id).refreshCampaign(campaign.id);
           }}
         />
       </CardPanel>
