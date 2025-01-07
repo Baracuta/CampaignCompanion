@@ -8,6 +8,7 @@ import { useCampaign } from "../hooks/useCampaign";
 import ThingList from "../components/ThingList";
 import AddItem from "../components/AddItem";
 import { Item } from "../types/Item";
+import { createItem } from "../services/CampaignService";
 
 function CampaignItems() {
   const { id } = useParams();
@@ -32,7 +33,7 @@ function CampaignItems() {
       </div>
 
       <CardPanel>
-        <AddItem campaignId={id as string}/>
+        <AddItem campaignId={id as string} addThing={createItem}/>
         <ThingList things={campaign?.items as Array<Item>} campaign={campaign}/>
       </CardPanel>
     </main>

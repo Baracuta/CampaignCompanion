@@ -7,6 +7,7 @@ import ToolBar from "../components/ToolBar";
 import { useCampaign } from "../hooks/useCampaign";
 import AddLocation from "../components/AddLocation";
 import ThingList from "../components/ThingList";
+import { createLocation } from "../services/CampaignService";
 
 function CampaignLocations() {
   const { id } = useParams();
@@ -31,7 +32,7 @@ function CampaignLocations() {
       </div>
 
       <CardPanel>
-        <AddLocation campaignId={id as string}/>
+        <AddLocation campaignId={id as string} addThing={createLocation}/>
         <ThingList things={campaign?.locations as unknown as Array<Location>} campaign={campaign}/>
       </CardPanel>
     </main>
