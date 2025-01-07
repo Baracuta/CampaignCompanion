@@ -15,7 +15,9 @@ function CampaignNPCs() {
 
   const campaign = useCampaign(id as string).campaign;
 
-  const refreshCampaign = async()=>{ useCampaign(id as string).refreshCampaign(id as string)};
+  const refreshCampaign = async () => {
+    useCampaign(id as string).refreshCampaign(id as string);
+  };
 
   console.log(campaign);
 
@@ -35,7 +37,11 @@ function CampaignNPCs() {
       </div>
 
       <CardPanel>
-        <AddNPC campaignId={id as string} addThing={createNPC} refresh={refreshCampaign}/>
+        <AddNPC
+          campaignId={id as string}
+          addThing={createNPC}
+          refresh={refreshCampaign}
+        />
         <ThingList things={campaign?.npcs as Array<NPC>} campaign={campaign} />
       </CardPanel>
     </main>
