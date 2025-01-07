@@ -36,6 +36,10 @@ function CampaignNPCs() {
       <CardPanel>
         <AddNPC campaignId={id as string} addThing={createNPC}/>
         <ThingList things={campaign?.npcs as Array<NPC>} campaign={campaign}/>
+        <button onClick={() => {
+          useCampaign(campaign.id).refreshCampaign(campaign.id);
+          }}
+        />
       </CardPanel>
     </main>
   );
