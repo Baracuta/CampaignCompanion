@@ -2,8 +2,8 @@ import { Entity } from "./Entity";
 
 export interface Item extends Entity{
     id:string;
+    type:"Item";
     name?:string;
     description?:string;
-    type?:string;
     effect?:string;
 }
