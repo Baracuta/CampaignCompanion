@@ -11,6 +11,7 @@ import { Item } from "../types/Item";
 import { PlayerCharacter } from "../types/PlayerCharacter";
 import { Campaign } from "../types/Campaign";
 import { deleteNPC } from "../services/CampaignService";
+import NPCDetails from "./DetailsNPC";
 
 type DisplayProps = {
   name?: string;
