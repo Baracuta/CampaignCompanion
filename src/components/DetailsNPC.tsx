@@ -9,13 +9,13 @@ type NPCProps = {
 
 function NPCDetails (props:NPCProps){
     return(
-        <main>
+        <div>
             <div className={styles.top}>
-            <h2>{props.npc.name}</h2>
-            <h3>{props.npc.description}</h3>
+                <h2>{props.npc.name}</h2>
+                <h3>{props.npc.description}</h3>
             </div>
             <textarea />
-        </main>
+        </div>
     )
 }
 

@@ -1,5 +1,3 @@
-//This is meant to be a test for the Popover component, if we had thingLists
-// make these instead of Cards.
 
 import Popover from "@mui/material/Popover";
 import Button from "@mui/material/Button";
