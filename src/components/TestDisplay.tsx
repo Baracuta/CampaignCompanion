@@ -1,4 +1,3 @@
-
 import Popover from "@mui/material/Popover";
 import Button from "@mui/material/Button";
 import { useState } from "react";
@@ -67,20 +66,16 @@ export default function TestDisplay(props: DisplayProps) {
           <h3>{props.thing.description}</h3>
         </div>
         <textarea />
-        {props.thing.type === "NPC" &&(
-          <NPCDetails npc={props.thing as NPC} />
-        )}
-        {props.thing.type === "Location" &&(
+        {props.thing.type === "NPC" && <NPCDetails npc={props.thing as NPC} />}
+        {props.thing.type === "Location" && (
           <LocationDetails location={props.thing as Location} />
         )}
-        {props.thing.type === "Item" &&(
+        {props.thing.type === "Item" && (
           <ItemDetails item={props.thing as Item} />
         )}
-        {props.thing.type === "PlayerCharacter" &&(
+        {props.thing.type === "PlayerCharacter" && (
           <PlayerCharacterDetails pc={props.thing as PlayerCharacter} />
         )}
-        
-
       </Popover>
     </div>
   );
