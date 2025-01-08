@@ -10,6 +10,9 @@ import { PlayerCharacter } from "../types/PlayerCharacter";
 import { Campaign } from "../types/Campaign";
 import { deleteNPC } from "../services/CampaignService";
 import NPCDetails from "./DetailsNPC";
+import LocationDetails from "./DetailsLocation";
+import ItemDetails from "./DetailsItem";
+import PlayerCharacterDetails from "./DetailsPlayerCharacter";
 
 type DisplayProps = {
   name?: string;
@@ -66,6 +69,15 @@ export default function TestDisplay(props: DisplayProps) {
         <textarea />
         {props.thing.type === "NPC" &&(
           <NPCDetails npc={props.thing as NPC} />
+        )}
+        {props.thing.type === "Location" &&(
+          <LocationDetails location={props.thing as Location} />
+        )}
+        {props.thing.type === "Item" &&(
+          <ItemDetails item={props.thing as Item} />
+        )}
+        {props.thing.type === "PlayerCharacter" &&(
+          <PlayerCharacterDetails pc={props.thing as PlayerCharacter} />
         )}
         
 
