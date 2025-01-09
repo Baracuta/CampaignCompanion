@@ -49,3 +49,8 @@ function CampaignNPCs() {
 }
 
 export default CampaignNPCs;
+
+//Questions for meeting:
+// How to get refresh working right? Where to put it?
+// Conditionals -should- be working, but aren't. Type errors?
+// 
