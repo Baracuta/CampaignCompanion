@@ -13,11 +13,9 @@ import { createNPC } from "../services/CampaignService";
 function CampaignNPCs() {
   const { id } = useParams();
 
-  const campaign = useCampaign(id as string).campaign;
+  const {campaign,refreshCampaign} = useCampaign(id as string);
 
-  const refreshCampaign = async () => {
-    useCampaign(id as string).refreshCampaign(id as string);
-  };
+  
 
   console.log(campaign);
 
@@ -49,8 +47,3 @@ function CampaignNPCs() {
 }
 
 export default CampaignNPCs;
-
-//Questions for meeting:
-// How to get refresh working right? Where to put it?
-// Conditionals -should- be working, but aren't. Type errors?
-// 

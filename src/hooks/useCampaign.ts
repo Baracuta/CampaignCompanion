@@ -14,8 +14,8 @@ export const useCampaign = (id: string) => {
   return {
     campaign: campaign as Campaign,
 
-    refreshCampaign:(campaignId: string) => {
-      getCampaign(campaignId).then((campaign) => {
+    refreshCampaign:() => {
+      return getCampaign(id).then((campaign) => {
         setCampaign(campaign);
       });
     },
