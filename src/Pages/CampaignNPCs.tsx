@@ -8,7 +8,7 @@ import AddNPC from "../components/AddNPC";
 import { NPC } from "../types/NPC";
 import { useCampaign } from "../hooks/useCampaign";
 import ThingList from "../components/ThingList";
-import { createNPC } from "../services/CampaignService";
+import { createNPC, deleteNPC } from "../services/CampaignService";
 
 function CampaignNPCs() {
   const { id } = useParams();
@@ -38,9 +38,12 @@ function CampaignNPCs() {
         <AddNPC
           campaignId={id as string}
           addThing={createNPC}
-          refresh={refreshCampaign}
         />
-        <ThingList things={campaign?.npcs as Array<NPC>} campaign={campaign} />
+        <ThingList
+          things={campaign?.npcs as Array<NPC>}
+          campaign={campaign}
+          deleteThing={deleteNPC}
+          />
       </CardPanel>
     </main>
   );

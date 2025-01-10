@@ -7,7 +7,6 @@ import { Location } from "../types/Location";
 import { Item } from "../types/Item";
 import { PlayerCharacter } from "../types/PlayerCharacter";
 import { Campaign } from "../types/Campaign";
-import { deleteNPC } from "../services/CampaignService";
 import NPCDetails from "./DetailsNPC";
 import LocationDetails from "./DetailsLocation";
 import ItemDetails from "./DetailsItem";
@@ -20,6 +19,7 @@ type DisplayProps = {
   image?: string;
   thing: NPC | Location | Item | PlayerCharacter;
   campaign: Campaign;
+  delete:(campaign:string,thing:string) => Promise<void>;
 };
 
 export default function TestDisplay(props: DisplayProps) {
@@ -33,8 +33,8 @@ export default function TestDisplay(props: DisplayProps) {
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
 
-  const handleDelete = (event: React.MouseEvent<HTMLButtonElement>) => {
-    deleteNPC(props.campaign.id, props.thing.id);
+  const handleDelete = () => {
+    props.delete(props.campaign.id, props.thing.id);
   };
 
   return (
