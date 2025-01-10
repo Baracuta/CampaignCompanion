@@ -37,12 +37,20 @@ function CampaignNPCs() {
       <CardPanel>
         <AddNPC
           campaignId={id as string}
-          addThing={createNPC}
+          addThing={async (npc:NPC, id: string) => {
+            await createNPC(npc, id);
+            await refreshCampaign();
+            return npc;
+          }}
         />
         <ThingList
           things={campaign?.npcs as Array<NPC>}
           campaign={campaign}
-          deleteThing={deleteNPC}
+          deleteThing={async (id: string, npc:string) => {
+            await deleteNPC(id,npc);
+            await refreshCampaign();
+            return Array<NPC>;  
+          }}
           />
       </CardPanel>
     </main>

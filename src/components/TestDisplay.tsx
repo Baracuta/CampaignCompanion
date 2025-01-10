@@ -19,7 +19,7 @@ type DisplayProps = {
   image?: string;
   thing: NPC | Location | Item | PlayerCharacter;
   campaign: Campaign;
-  delete:(campaign:string,thing:string) => Promise<void>;
+  delete:(campaign:string,thing:string) => Promise<unknown>;
 };
 
 export default function TestDisplay(props: DisplayProps) {
