@@ -13,7 +13,7 @@ import { createItem } from "../services/CampaignService";
 function CampaignItems() {
   const { id } = useParams();
 
-  const campaign = useCampaign(id as string).campaign;
+  const {campaign,refreshCampaign} = useCampaign(id as string);
 
   console.log(campaign);
 
@@ -33,7 +33,14 @@ function CampaignItems() {
       </div>
 
       <CardPanel>
-        <AddItem campaignId={id as string} addThing={createItem}/>
+        <AddItem
+          campaignId={id as string}
+          addThing={async (item:Item,id:string) => {
+            await createItem(item,id);
+            await refreshCampaign();
+            return item;
+          }}
+        />
         <ThingList things={campaign?.items as Array<Item>} campaign={campaign}/>
       </CardPanel>
     </main>
