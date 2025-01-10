@@ -94,6 +94,7 @@ export const createNPC = async (npc: NPC, campaignId: string): Promise<NPC> => {
   npc = {
     ...npc,
     id: uuid(),
+    type:"NPC",
   };
 
   const allNPCS = await getNPCs(campaignId);
@@ -176,6 +177,7 @@ export const createLocation = async (location: Location, campaignId: string): Pr
   location = {
     ...location,
     id: uuid(),
+    type:"Location",
   };
 
   const allLocations = await getLocations(campaignId);
@@ -258,6 +260,7 @@ export const createItem = async (item: Item, campaignId: string): Promise<Item> 
   item = {
     ...item,
     id: uuid(),
+    type:"Item",
   };
 
   const allItems = await getItems(campaignId);
@@ -340,6 +343,7 @@ export const createPC = async (pc: PlayerCharacter, campaignId: string): Promise
   pc = {
     ...pc,
     id: uuid(),
+    type:"PlayerCharacter",
   };
 
   const allPCs = await getPCs(campaignId);
