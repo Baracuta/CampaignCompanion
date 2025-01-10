@@ -8,7 +8,7 @@ import { useCampaign } from "../hooks/useCampaign";
 import ThingList from "../components/ThingList";
 import AddItem from "../components/AddItem";
 import { Item } from "../types/Item";
-import { createItem } from "../services/CampaignService";
+import { createItem, deleteItem } from "../services/CampaignService";
 
 function CampaignItems() {
   const { id } = useParams();
@@ -41,7 +41,15 @@ function CampaignItems() {
             return item;
           }}
         />
-        <ThingList things={campaign?.items as Array<Item>} campaign={campaign}/>
+        <ThingList
+          things={campaign?.items as Array<Item>}
+          campaign={campaign}
+          deleteThing={async (id:string,item:string) => {
+            await deleteItem(id,item);
+            await refreshCampaign();
+            return Array<Item>;
+          }}
+        />
       </CardPanel>
     </main>
   );
