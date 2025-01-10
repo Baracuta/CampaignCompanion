@@ -8,12 +8,12 @@ import { useCampaign } from "../hooks/useCampaign";
 import ThingList from "../components/ThingList";
 import AddPC from "../components/AddPC";
 import { PlayerCharacter } from "../types/PlayerCharacter";
-import { createPC } from "../services/CampaignService";
+import { createPC, deletePC } from "../services/CampaignService";
 
 function CampaignPlayerCharacters() {
   const { id } = useParams();
 
-  const campaign = useCampaign(id as string).campaign;
+  const {campaign,refreshCampaign} = useCampaign(id as string);
 
   console.log(campaign);
 
@@ -33,8 +33,23 @@ function CampaignPlayerCharacters() {
       </div>
 
       <CardPanel>
-        <AddPC campaignId={id as string} addThing={createPC}/>
-        <ThingList things={campaign?.playerCharacters as Array<PlayerCharacter>} campaign={campaign}/>
+        <AddPC
+          campaignId={id as string}
+          addThing={async (pc:PlayerCharacter, id:string) => {
+            await createPC(pc,id);
+            await refreshCampaign();
+            return pc
+          }}
+        />
+        <ThingList
+          things={campaign?.playerCharacters as Array<PlayerCharacter>}
+          campaign={campaign}
+          deleteThing={async (id:string,pc:string) => {
+            await deletePC(id,pc);
+            await refreshCampaign();
+            return Array<PlayerCharacter>
+          }}
+        />
       </CardPanel>
     </main>
   );
