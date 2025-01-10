@@ -7,12 +7,13 @@ import ToolBar from "../components/ToolBar";
 import { useCampaign } from "../hooks/useCampaign";
 import AddLocation from "../components/AddLocation";
 import ThingList from "../components/ThingList";
-import { createLocation } from "../services/CampaignService";
+import { createLocation, deleteLocation } from "../services/CampaignService";
+import { Location } from "../types/Location";
 
 function CampaignLocations() {
   const { id } = useParams();
 
-  const campaign = useCampaign(id as string).campaign;
+  const {campaign,refreshCampaign} = useCampaign(id as string);
 
   console.log(campaign);
 
@@ -32,8 +33,23 @@ function CampaignLocations() {
       </div>
 
       <CardPanel>
-        <AddLocation campaignId={id as string} addThing={createLocation}/>
-        <ThingList things={campaign?.locations as unknown as Array<Location>} campaign={campaign}/>
+        <AddLocation
+          campaignId={id as string}
+          addThing={async (location:Location, id: string) => {
+            await createLocation(location, id);
+            await refreshCampaign();
+            return location;
+          }}
+        />
+        <ThingList
+          things={campaign?.locations as unknown as Array<Location>}
+          campaign={campaign}
+          deleteThing={async (id: string, location:string) => {
+            await deleteLocation(id,location);
+            await refreshCampaign();
+            return Array<Location>;  
+          }}
+        />
       </CardPanel>
     </main>
   );

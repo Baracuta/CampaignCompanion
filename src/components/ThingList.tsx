@@ -6,7 +6,7 @@ import { PlayerCharacter } from "../types/PlayerCharacter";
 import TestDisplay from "./TestDisplay";
 
 type listProps = {
-  things: Array<NPC|Location|Item|PlayerCharacter>;
+  things: Array<NPC | Location | Item | PlayerCharacter>;
   campaign: Campaign;
   deleteThing:(campaign:string,thing:string) => Promise<unknown>;
 };
