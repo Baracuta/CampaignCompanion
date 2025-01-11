@@ -46,6 +46,7 @@
     #section1{
         align-self: center;
         justify-items: center;
+        justify-content: center;
 
         width: 90%;
        
