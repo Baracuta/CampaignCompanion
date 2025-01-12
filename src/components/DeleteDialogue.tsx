@@ -1,4 +1,3 @@
-import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
@@ -27,9 +26,9 @@ export default function AlertDialog(props: DeleteProps) {
 
   return (
     <React.Fragment>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <button onClick={handleClickOpen}>
         Delete
-      </Button>
+      </button>
       <Dialog
         open={open}
         onClose={handleClose}
@@ -40,10 +39,10 @@ export default function AlertDialog(props: DeleteProps) {
           {"Are you sure you wish to delete this?"}
         </DialogTitle>
         <DialogActions>
-          <Button onClick={handleClose}>No</Button>
-          <Button onClick={handleDelete} autoFocus>
+          <button onClick={handleClose}>No</button>
+          <button onClick={handleDelete} autoFocus>
             Yes
-          </Button>
+          </button>
         </DialogActions>
       </Dialog>
     </React.Fragment>
