@@ -15,10 +15,6 @@ function CampaignNPCs() {
 
   const {campaign,refreshCampaign} = useCampaign(id as string);
 
-  
-
-  console.log(campaign);
-
   return (
     <main
       className={styles.main}
