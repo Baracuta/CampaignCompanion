@@ -11,6 +11,7 @@ import NPCDetails from "./DetailsNPC";
 import LocationDetails from "./DetailsLocation";
 import ItemDetails from "./DetailsItem";
 import PlayerCharacterDetails from "./DetailsPlayerCharacter";
+import DeleteDialogue from "./DeleteDialogue";
 
 type DisplayProps = {
   name?: string;
@@ -33,10 +34,6 @@ export default function TestDisplay(props: DisplayProps) {
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
 
-  const handleDelete = () => {
-    props.delete(props.campaign.id, props.thing.id);
-  };
-
   return (
     <div className={styles.card}>
       <Button aria-describedby={id} variant="contained" onClick={handleClick}>
@@ -57,15 +54,14 @@ export default function TestDisplay(props: DisplayProps) {
         }}
       >
         <div className={styles.button_panel}>
-          <button onClick={handleDelete}>Delete</button>
+          <DeleteDialogue
+            delete={props.delete}
+            thingID={props.thing.id}
+            campaignID={props.campaign.id}
+          />
           <button onClick={handleClose}>Close</button>
         </div>
 
-        <div className={styles.top}>
-          <h2>{props.thing.name}</h2>
-          <h3>{props.thing.description}</h3>
-        </div>
-        <textarea />
         {props.thing.type === "NPC" && (
           <NPCDetails npc={props.thing as NPC} />
         )}
