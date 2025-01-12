@@ -10,7 +10,7 @@ import { Autocomplete, TextField } from "@mui/material";
 function CampaignForm() {
   const [campaign, setCampaign] = useState<Partial<Campaign>>({players:1});
   //This will just let me control things when the page is in the process of saving information. For progress wheels, etc
-  const [saving, setSaving] = useState(false);
+  // const [saving, setSaving] = useState(false);
   const navigate = useNavigate();
 
   const gameOptions = [
@@ -94,7 +94,7 @@ function CampaignForm() {
         <button
           disabled={validate()}
           onClick={async () => {
-            setSaving(true);
+            // setSaving(true);
             const savedCampaign = await createCampaign(campaign as Campaign);
             navigate(`/campaign/${savedCampaign.id}`);
           }}
