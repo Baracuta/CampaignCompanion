@@ -64,15 +64,15 @@ function AddNPC(props: thingProps) {
           </div>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button
+          <button onClick={handleClose}>Cancel</button>
+          <button
             onClick={() => {
               props.addThing(npc as NPC, props.campaignId);
               handleClose();
             }}
           >
             Add NPC
-          </Button>
+          </button>
         </DialogActions>
       </Dialog>
     </Fragment>
