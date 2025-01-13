@@ -21,5 +21,5 @@ function LocationDetails (props:LocationProps){
         </div>
     )
 }
-
+//The placeholder div will be a spot where maps/images can be uploaded in a gallery for viewing convenience
 export default LocationDetails;
