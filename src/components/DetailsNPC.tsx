@@ -14,7 +14,10 @@ function NPCDetails (props:NPCProps){
                 <h2>{props.npc.name}</h2>
                 <h3>{props.npc.description}</h3>
             </div>
-            <textarea />
+            <div className={styles.bottom}>
+                <textarea/>
+                <img/>
+            </div>
         </div>
     )
 }
