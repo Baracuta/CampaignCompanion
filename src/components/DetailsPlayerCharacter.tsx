@@ -14,7 +14,12 @@ function PlayerCharacterDetails (props:PCProps){
                 <h2>{props.pc.name}</h2>
                 <h3>{props.pc.description}</h3>
             </div>
-            <textarea />
+            <div className={styles.bottom}>
+                <h5>{props.pc.playerName}</h5>
+                <h5>{props.pc.class}</h5>
+                <h5>{props.pc.level}</h5>
+                <textarea/>
+            </div>
         </div>
     )
 }
