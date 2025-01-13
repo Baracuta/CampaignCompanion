@@ -14,7 +14,10 @@ function LocationDetails (props:LocationProps){
                 <h2>{props.location.name}</h2>
                 <h3>{props.location.description}</h3>
             </div>
-            <textarea />
+            <div className={styles.bottom}>
+                <textarea/>
+                <div className={styles.placeholder}/>
+            </div>
         </div>
     )
 }
