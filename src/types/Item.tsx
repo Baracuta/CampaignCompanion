@@ -6,4 +6,5 @@ export interface Item extends Entity{
     name?:string;
     description?:string;
     effect?:string;
+    category?:string;
 }

@@ -15,7 +15,8 @@ function ItemDetails (props:ItemProps){
                 <h3>{props.item.description}</h3>
             </div>
             <div className={styles.bottom}>
-                <h5>{props.item.effect}</h5>
+                <h5>Category:{props.item.category}</h5>
+                <h5>Effect:{props.item.effect}</h5>
                 <textarea/>
             </div>
         </div>
