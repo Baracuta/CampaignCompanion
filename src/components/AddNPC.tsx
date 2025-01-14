@@ -13,6 +13,7 @@ type thingProps = {
   campaignId: string;
   npc?: NPC;
   addThing:(npc:NPC, id:string)=> Promise<NPC>;
+  editThing:(id:string, npc:NPC) => Promise<NPC>;
 };
 
 //Set it up to have a similar style to a card, but with unique properties

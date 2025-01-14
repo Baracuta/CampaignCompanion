@@ -41,6 +41,11 @@ function CampaignNPCs() {
             await refreshCampaign();
             return npc;
           }}
+          editThing={async (id:string, npc:NPC) => {
+            await updateNPC(id,npc);
+            await refreshCampaign();
+            return npc;
+          }}
         />
         <ThingList
           things={campaign?.npcs as Array<NPC>}
