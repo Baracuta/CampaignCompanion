@@ -60,7 +60,7 @@ export default function TestDisplay(props: DisplayProps) {
           <AddNPC
             campaignId={id as string}
             addThing={props.edit}
-            npc={props.thing}
+            editNpc={props.thing}
           />
         )}
           <DeleteDialogue
