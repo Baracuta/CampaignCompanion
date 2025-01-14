@@ -21,6 +21,7 @@ type DisplayProps = {
   thing: NPC | Location | Item | PlayerCharacter;
   campaign: Campaign;
   delete:(campaign:string,thing:string) => Promise<unknown>;
+  edit:(campaign:string, thing: NPC | Location | Item | PlayerCharacter) => Promise<NPC|Location|Item|PlayerCharacter>;
 };
 
 export default function TestDisplay(props: DisplayProps) {
@@ -31,6 +32,9 @@ export default function TestDisplay(props: DisplayProps) {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const handleEdit = () => {
+    props.edit(props.campaign.id, props.thing)
+  }
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
 
@@ -54,6 +58,7 @@ export default function TestDisplay(props: DisplayProps) {
         }}
       >
         <div className={styles.button_panel}>
+          <button onClick={handleEdit}>Edit</button>
           <DeleteDialogue
             delete={props.delete}
             thingID={props.thing.id}

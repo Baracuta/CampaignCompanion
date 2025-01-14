@@ -8,7 +8,7 @@ import AddNPC from "../components/AddNPC";
 import { NPC } from "../types/NPC";
 import { useCampaign } from "../hooks/useCampaign";
 import ThingList from "../components/ThingList";
-import { createNPC, deleteNPC } from "../services/CampaignService";
+import { createNPC, deleteNPC, updateNPC } from "../services/CampaignService";
 
 function CampaignNPCs() {
   const { id } = useParams();
@@ -46,6 +46,10 @@ function CampaignNPCs() {
             await deleteNPC(id,npc);
             await refreshCampaign();
             return Array<NPC>;  
+          }}
+          updateThing={async (id: string, thing:NPC) => {
+            await updateNPC(id,thing);
+            await refreshCampaign();
           }}
           />
       </CardPanel>

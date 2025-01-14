@@ -29,7 +29,7 @@ function AddNPC(props: thingProps) {
     setOpen(false);
   };
 
-  const editMode = props.npc !=null;
+  const editMode = props.npc != null;
 
   return (
     <Fragment>
@@ -38,13 +38,13 @@ function AddNPC(props: thingProps) {
         variant="outlined"
         onClick={handleClickOpen}
       >
-        Add NPC
+        {editMode ? "Edit NPC" : "Add NPC"}
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Add a New NPC to this Campaign</DialogTitle>
         <DialogContent>
           <div className={styles.add_npc}>
-            <h3> Name this NPC</h3>
+            <h3>{editMode ? "Rename this NPC" : "Name this NPC"}</h3>
 
             <input
               type="text"
@@ -62,6 +62,16 @@ function AddNPC(props: thingProps) {
               onChange={(e) => {
                 const description = e.target.value;
                 setNpc({ ...npc, description });
+              }}
+            />
+
+            <h3> Add Notes for this NPC </h3>
+
+            <textarea
+              value={npc.notes ?? ""}
+              onChange={(e) => {
+                const notes = e.target.value;
+                setNpc({ ...npc, notes });
               }}
             />
           </div>

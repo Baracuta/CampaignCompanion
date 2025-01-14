@@ -15,7 +15,7 @@ function NPCDetails (props:NPCProps){
                 <h3>{props.npc.description}</h3>
             </div>
             <div className={styles.bottom}>
-                <textarea/>
+                <textarea>{props.npc.notes}</textarea>
                 <img/>
             </div>
         </div>

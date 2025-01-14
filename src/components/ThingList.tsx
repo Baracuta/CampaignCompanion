@@ -9,6 +9,7 @@ type listProps = {
   things: Array<NPC | Location | Item | PlayerCharacter>;
   campaign: Campaign;
   deleteThing:(campaign:string,thing:string) => Promise<unknown>;
+  updateThing:(campaign:string, thing: NPC | Location | Item | PlayerCharacter) => Promise<NPC|Location|Item|PlayerCharacter>;
 };
 
 function NPCList(props: listProps) {
@@ -18,6 +19,7 @@ function NPCList(props: listProps) {
       campaign={props.campaign}
       key={datum.id}
       delete={props.deleteThing}
+      edit={props.updateThing}
     />
   ));
 
