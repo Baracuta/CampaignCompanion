@@ -36,13 +36,8 @@ function CampaignNPCs() {
       <CardPanel>
         <AddNPC
           campaignId={id as string}
-          addThing={async (npc:NPC, id: string) => {
-            await createNPC(npc, id);
-            await refreshCampaign();
-            return npc;
-          }}
-          editThing={async (id:string, npc:NPC) => {
-            await updateNPC(id,npc);
+          addThing={async (id: string, npc:NPC) => {
+            await createNPC(id,npc);
             await refreshCampaign();
             return npc;
           }}

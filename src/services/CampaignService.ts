@@ -88,7 +88,7 @@ export const updateCampaigns = async (
 //NPC Section
 
 //Used in the AddNPC component to save a new NPC object to a campaign.
-export const createNPC = async (npc: NPC, campaignId: string): Promise<NPC> => {
+export const createNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
   const campaign = await getCampaign(campaignId);
 
   npc = {

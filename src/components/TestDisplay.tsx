@@ -12,6 +12,7 @@ import LocationDetails from "./DetailsLocation";
 import ItemDetails from "./DetailsItem";
 import PlayerCharacterDetails from "./DetailsPlayerCharacter";
 import DeleteDialogue from "./DeleteDialogue";
+import AddNPC from "./AddNPC";
 
 type DisplayProps = {
   name?: string;
@@ -32,9 +33,6 @@ export default function TestDisplay(props: DisplayProps) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const handleEdit = () => {
-    props.edit(props.campaign.id, props.thing)
-  }
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
 
@@ -58,7 +56,13 @@ export default function TestDisplay(props: DisplayProps) {
         }}
       >
         <div className={styles.button_panel}>
-          <button onClick={handleEdit}>Edit</button>
+        {props.thing.type === "NPC" && (
+          <AddNPC
+            campaignId={id as string}
+            addThing={props.edit}
+            npc={props.thing}
+          />
+        )}
           <DeleteDialogue
             delete={props.delete}
             thingID={props.thing.id}
