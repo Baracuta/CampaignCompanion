@@ -30,6 +30,9 @@ function AddNPC(props: thingProps) {
   };
 
   const editMode = props.npc != null;
+  if (editMode) {setNpc({...props.npc})
+    
+  }
 
   return (
     <Fragment>
