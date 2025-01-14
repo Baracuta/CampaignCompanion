@@ -11,6 +11,7 @@ import { NPC } from "../types/NPC";
 
 type thingProps = {
   campaignId: string;
+  npc?: NPC;
   addThing:(npc:NPC, id:string)=> Promise<NPC>;
 };
 
@@ -27,6 +28,8 @@ function AddNPC(props: thingProps) {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const editMode = props.npc !=null;
 
   return (
     <Fragment>
