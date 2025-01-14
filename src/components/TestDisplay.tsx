@@ -21,7 +21,7 @@ type DisplayProps = {
   thing: NPC | Location | Item | PlayerCharacter;
   campaign: Campaign;
   delete:(campaign:string,thing:string) => Promise<unknown>;
-  edit:(campaign:string, thing: NPC | Location | Item | PlayerCharacter) => Promise<NPC|Location|Item|PlayerCharacter>;
+  edit:(campaign:string, thing:NPC|Location|Item|PlayerCharacter) => Promise<unknown>;
 };
 
 export default function TestDisplay(props: DisplayProps) {
