@@ -31,6 +31,8 @@ function AddNPC(props: thingProps) {
 
   const editMode = props.editNpc != null;
 
+  if (editMode) {setNpc({...props.editNpc})}
+
   return (
     <Fragment>
       <Button
@@ -41,7 +43,9 @@ function AddNPC(props: thingProps) {
         {editMode ? "Edit NPC" : "Add NPC"}
       </Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Add a New NPC to this Campaign</DialogTitle>
+        <DialogTitle>
+          {editMode ? "Edit this NPC" : "Add a New NPC to this Campaign"}
+        </DialogTitle>
         <DialogContent>
           <div className={styles.add_npc}>
             <h3>{editMode ? "Rename this NPC" : "Name this NPC"}</h3>
