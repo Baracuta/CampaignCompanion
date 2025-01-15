@@ -83,6 +83,18 @@
             padding: 5px;
 
             width: 45%;
+            height: 200px;
+        }
+
+        .notes{
+            border: solid rgb(100, 100, 100);
+            background-color: rgba(75, 75, 75, 1) ;
+            font-size: larger;
+            font-family: 'Times New Roman', Times, serif;
+
+            padding: 5px;
+
+            width: 45%;
             height: 500px;
         }
     }
