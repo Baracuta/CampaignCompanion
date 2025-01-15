@@ -112,9 +112,6 @@ and (max-width: 1023px){
         overflow:hidden;
         text-overflow:ellipsis;
 
-        &.npc{
-
-        }
         .display{
             background-color:rgba(75, 75, 75, 0.5);
         }

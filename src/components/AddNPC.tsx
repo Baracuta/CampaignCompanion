@@ -55,7 +55,7 @@ function AddNPC(props: thingProps) {
               }}
             />
 
-            <h3> Describe this NPC</h3>
+            <h3>{editMode ? "Edit Description" : "Describe this NPC"}</h3>
 
             <textarea
               value={npc.description ?? ""}
@@ -65,7 +65,7 @@ function AddNPC(props: thingProps) {
               }}
             />
 
-            <h3> Add Notes for this NPC </h3>
+            <h3>{editMode ? "Edit Notes" : "Add Notes"}</h3>
 
             <textarea
               value={npc.notes ?? ""}
@@ -84,7 +84,7 @@ function AddNPC(props: thingProps) {
               handleClose();
             }}
           >
-            Add NPC
+            {editMode ? "Confirm" : "Add NPC"}
           </button>
         </DialogActions>
       </Dialog>
