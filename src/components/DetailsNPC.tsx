@@ -15,7 +15,7 @@ function NPCDetails (props:NPCProps){
                 <h3>{props.npc.description}</h3>
             </div>
             <div className={styles.bottom}>
-                <p className={styles.notes}>{props.npc.notes}</p>
+                <pre className={styles.notes}>{props.npc.notes}</pre>
                 <img/>
             </div>
         </div>
