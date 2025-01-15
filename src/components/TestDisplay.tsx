@@ -58,7 +58,7 @@ export default function TestDisplay(props: DisplayProps) {
         <div className={styles.button_panel}>
         {props.thing.type === "NPC" && (
           <AddNPC
-            campaignId={id as string}
+            campaignId={props.campaign.id as string}
             addThing={props.edit}
             editNpc={props.thing}
           />

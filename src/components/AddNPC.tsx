@@ -17,7 +17,7 @@ type thingProps = {
 
 //Set it up to have a similar style to a card, but with unique properties
 function AddNPC(props: thingProps) {
-  const [npc, setNpc] = useState<Partial<NPC>>({});
+  const [npc, setNpc] = useState<Partial<NPC>>(props.editNpc ?? {});
 
   const [open, setOpen] = useState(false);
 
@@ -30,8 +30,6 @@ function AddNPC(props: thingProps) {
   };
 
   const editMode = props.editNpc != null;
-
-  if (editMode) {setNpc({...props.editNpc})}
 
   return (
     <Fragment>
