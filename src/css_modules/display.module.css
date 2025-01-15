@@ -23,14 +23,15 @@
         flex-direction: column;
         justify-content: center;
 
-        &.npc{
-            
-        }
         button{
             background:none;
             height: 100%;
             font-size: large;
             border-radius:25px;
+        }
+        p{
+            text-align: center;
+            align-self: center;
         }
     }
     .card:hover{

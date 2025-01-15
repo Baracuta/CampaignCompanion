@@ -4,7 +4,7 @@ import {
   DialogContent,
   DialogActions,
 } from "@mui/material";
-import styles from "../css_modules/card.module.css";
+import styles from "../css_modules/display.module.css";
 import { Fragment, useState } from "react";
 import { NPC } from "../types/NPC";
 
@@ -36,7 +36,7 @@ function AddNPC(props: thingProps) {
         className={editMode ? styles.edit_button : styles.card}
         onClick={handleClickOpen}
       >
-        {editMode ? "Edit NPC" : "Add NPC"}
+        {editMode ? "Edit NPC" : <p>Add NPC</p>}
       </button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>
