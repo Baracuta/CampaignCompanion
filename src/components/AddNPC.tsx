@@ -1,5 +1,4 @@
 import {
-  Button,
   Dialog,
   DialogTitle,
   DialogContent,
@@ -33,13 +32,12 @@ function AddNPC(props: thingProps) {
 
   return (
     <Fragment>
-      <Button
-        className={styles.card}
-        variant="outlined"
+      <button
+        className={editMode ? styles.edit_button : styles.card}
         onClick={handleClickOpen}
       >
         {editMode ? "Edit NPC" : "Add NPC"}
-      </Button>
+      </button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>
           {editMode ? "Edit this NPC" : "Add a New NPC to this Campaign"}
