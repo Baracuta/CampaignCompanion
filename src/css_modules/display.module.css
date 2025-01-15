@@ -29,10 +29,6 @@
             font-size: large;
             border-radius:25px;
         }
-        p{
-            text-align: center;
-            align-self: center;
-        }
     }
     .card:hover{
         border-color: #fc0;
@@ -96,6 +92,8 @@
 
             width: 45%;
             height: 500px;
+            text-wrap: wrap;
+            text-wrap-style: pretty;
         }
     }
 }
