@@ -38,7 +38,7 @@ function CampaignLocations() {
       <CardPanel>
         <AddLocation
           campaignId={id as string}
-          addThing={async (location:Location, id: string) => {
+          addThing={async (id: string, location:Location) => {
             await createLocation(location, id);
             await refreshCampaign();
             return location;

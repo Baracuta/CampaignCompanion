@@ -11,7 +11,8 @@ import { Location } from "../types/Location";
 
 type thingProps = {
   campaignId: string;
-  addThing: (location: Location, id: string) => Promise<Location>;
+  editLocation?:Location;
+  addThing: (id: string, location:Location) => Promise<unknown>;
 };
 
 //Set it up to have a similar style to a card, but with unique properties
@@ -67,7 +68,7 @@ function AddLocation(props: thingProps) {
           <Button onClick={handleClose}>Cancel</Button>
           <Button
             onClick={() => {
-              props.addThing(location as Location, props.campaignId);
+              props.addThing(props.campaignId, location as Location);
               handleClose();
             }}
           >
