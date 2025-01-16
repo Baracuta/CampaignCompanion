@@ -7,8 +7,11 @@ import ToolBar from "../components/ToolBar";
 import { useCampaign } from "../hooks/useCampaign";
 import AddLocation from "../components/AddLocation";
 import ThingList from "../components/ThingList";
-import { createLocation, deleteLocation } from "../services/CampaignService";
+import { createLocation, deleteLocation, updateLocation } from "../services/CampaignService";
 import { Location } from "../types/Location";
+import { Item } from "../types/Item";
+import { NPC } from "../types/NPC";
+import { PlayerCharacter } from "../types/PlayerCharacter";
 
 function CampaignLocations() {
   const { id } = useParams();
@@ -48,6 +51,11 @@ function CampaignLocations() {
             await deleteLocation(id,location);
             await refreshCampaign();
             return Array<Location>;  
+          }}
+          updateThing={async (id: string, thing:NPC|Location|Item|PlayerCharacter) => {
+            await updateLocation(id,thing as Location);
+            await refreshCampaign();
+            return thing;
           }}
         />
       </CardPanel>
