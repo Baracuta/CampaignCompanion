@@ -77,15 +77,15 @@ function AddPC(props: thingProps) {
           </div>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button
+          <button onClick={handleClose}>Cancel</button>
+          <button
             onClick={() => {
-              props.addThing(pc as PlayerCharacter, props.campaignId);
+              props.addThing(props.campaignId, pc as PlayerCharacter);
               handleClose();
             }}
           >
-            Add Player Character
-          </Button>
+            {editMode ? "Confirm" : "Add Player Character"}
+          </button>
         </DialogActions>
       </Dialog>
     </Fragment>
