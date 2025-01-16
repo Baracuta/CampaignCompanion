@@ -8,4 +8,5 @@ export interface PlayerCharacter extends Entity{
     class?:string;
     level?:string;
     playerName?:string;
+    notes?:string;
 }

@@ -1,5 +1,4 @@
 import {
-  Button,
   Dialog,
   DialogTitle,
   DialogContent,
@@ -11,12 +10,13 @@ import { PlayerCharacter } from "../types/PlayerCharacter";
 
 type thingProps = {
   campaignId: string;
-  addThing: (pc: PlayerCharacter, id: string) => Promise<PlayerCharacter>;
+  editPC: PlayerCharacter;
+  addThing: (id: string, pc: PlayerCharacter) => Promise<unknown>;
 };
 
 //Set it up to have a similar style to a card, but with unique properties
 function AddPC(props: thingProps) {
-  const [pc, setPC] = useState<Partial<PlayerCharacter>>({});
+  const [pc, setPC] = useState<Partial<PlayerCharacter>>(props.editPC ?? {});
 
   const [open, setOpen] = useState(false);
 
@@ -28,20 +28,23 @@ function AddPC(props: thingProps) {
     setOpen(false);
   };
 
+  const editMode = props.editPC != null;
+
   return (
     <Fragment>
-      <Button
-        className={styles.card}
-        variant="outlined"
+      <button
+        className={editMode ? styles.edit_button : styles.card}
         onClick={handleClickOpen}
       >
-        Add NPC
-      </Button>
+        {editMode ? "Edit Player Character" : <p>Add Player Character</p>}
+      </button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Add a New Player Character to this Campaign</DialogTitle>
+        <DialogTitle>
+          {editMode ? "Edit this Player Character" : "Add a New Player Character to this Campaign"}
+        </DialogTitle>
         <DialogContent>
           <div className={styles.add_npc}>
-            <h3> Name this Player Character</h3>
+            <h3>{editMode ? "Rename this Player Character" : "Name this Player Character"}</h3>
 
             <input
               type="text"
@@ -52,13 +55,23 @@ function AddPC(props: thingProps) {
               }}
             />
 
-            <h3> Describe this PC</h3>
+            <h3>{editMode ? "Edit Description" : "Describe this PC"}</h3>
 
             <textarea
               value={pc.description ?? ""}
               onChange={(e) => {
                 const description = e.target.value;
                 setPC({ ...pc, description });
+              }}
+            />
+
+            <h3>{editMode ? "Edit Notes" : "Add Notes"}</h3>
+
+            <textarea
+              value={pc.notes ?? ""}
+              onChange={(e) => {
+                const notes = e.target.value;
+                setPC({ ...pc, notes });
               }}
             />
           </div>

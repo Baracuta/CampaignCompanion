@@ -33,7 +33,7 @@ function AddItem(props: thingProps) {
   return (
     <Fragment>
       <button
-        className={styles.card}
+        className={editMode ? styles.edit_button : styles.card}
         onClick={handleClickOpen}
       >
         {editMode ? "Edit Item" : <p>Add item</p>}
