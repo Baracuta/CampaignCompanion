@@ -4,7 +4,7 @@ import {
   DialogContent,
   DialogActions,
 } from "@mui/material";
-import styles from "../css_modules/card.module.css";
+import styles from "../css_modules/display.module.css";
 import { Fragment, useState } from "react";
 import { Item } from "../types/Item";
 
