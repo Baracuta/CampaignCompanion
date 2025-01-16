@@ -5,7 +5,7 @@ import {
   DialogContent,
   DialogActions,
 } from "@mui/material";
-import styles from "../css_modules/card.module.css";
+import styles from "../css_modules/display.module.css";
 import { Fragment, useState } from "react";
 import { Location } from "../types/Location";
 
@@ -17,7 +17,7 @@ type thingProps = {
 
 //Set it up to have a similar style to a card, but with unique properties
 function AddLocation(props: thingProps) {
-  const [location, setLocation] = useState<Partial<Location>>({});
+  const [location, setLocation] = useState<Partial<Location>>(props.editLocation ?? {});
 
   const [open, setOpen] = useState(false);
 
@@ -29,15 +29,16 @@ function AddLocation(props: thingProps) {
     setOpen(false);
   };
 
+  const editMode = props.editLocation != null;
+
   return (
     <Fragment>
-      <Button
-        className={styles.card}
-        variant="outlined"
+      <button
+        className={editMode ? styles.edit_button : styles.card}
         onClick={handleClickOpen}
       >
-        Add Location
-      </Button>
+        {editMode ? "Edit Location" : <p>Add Location</p>}
+      </button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Add a New Location to this Campaign</DialogTitle>
         <DialogContent>
