@@ -16,7 +16,7 @@ type thingProps = {
 
 //Set it up to have a similar style to a card, but with unique properties
 function AddItem(props: thingProps) {
-  const [item, setItem] = useState<Partial<Item>>({});
+  const [item, setItem] = useState<Partial<Item>>(props.editItem ?? {});
 
   const [open, setOpen] = useState(false);
 
