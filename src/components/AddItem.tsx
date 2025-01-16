@@ -1,5 +1,4 @@
 import {
-  Button,
   Dialog,
   DialogTitle,
   DialogContent,
@@ -11,7 +10,8 @@ import { Item } from "../types/Item";
 
 type thingProps = {
   campaignId: string;
-  addThing: (item: Item, id: string) => Promise<Item>;
+  editItem?:Item;
+  addThing: (id: string,item:Item) => Promise<unknown>;
 };
 
 //Set it up to have a similar style to a card, but with unique properties
@@ -28,20 +28,23 @@ function AddItem(props: thingProps) {
     setOpen(false);
   };
 
+  const editMode = props.editItem != null;
+
   return (
     <Fragment>
-      <Button
+      <button
         className={styles.card}
-        variant="outlined"
         onClick={handleClickOpen}
       >
-        Add item
-      </Button>
+        {editMode ? "Edit Item" : <p>Add item</p>}
+      </button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Add a New Item to this Campaign</DialogTitle>
+        <DialogTitle>
+          {editMode ? "Edit this Item" : "Add a New Item to this Campaign"}
+        </DialogTitle>
         <DialogContent>
           <div className={styles.add_npc}>
-            <h3> Name this Item</h3>
+            <h3>{editMode ? "Rename this Item" : "Name this Item"}</h3>
 
             <input
               type="text"
@@ -52,7 +55,7 @@ function AddItem(props: thingProps) {
               }}
             />
 
-            <h3> Describe this Item</h3>
+            <h3>{editMode ? "Edit Description" : "Describe this Item"}</h3>
 
             <textarea
               value={item.description ?? ""}
@@ -61,18 +64,28 @@ function AddItem(props: thingProps) {
                 setItem({ ...item, description });
               }}
             />
+
+            <h3>{editMode ? "Edit Notes" : "Add Notes"}</h3>
+
+            <textarea
+              value={item.notes ?? ""}
+              onChange={(e) => {
+                const notes = e.target.value;
+                setItem({ ...item, notes });
+              }}
+            />
           </div>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button
+          <button onClick={handleClose}>Cancel</button>
+          <button
             onClick={() => {
-              props.addThing(item as Item, props.campaignId);
+              props.addThing(props.campaignId,item as Item);
               handleClose();
             }}
           >
-            Add item
-          </Button>
+            {editMode ? "Confirm" : "Add item"}
+          </button>
         </DialogActions>
       </Dialog>
     </Fragment>

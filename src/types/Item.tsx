@@ -5,6 +5,7 @@ export interface Item extends Entity{
     type:"Item";
     name?:string;
     description?:string;
+    notes?:string;
     effect?:string;
     category?:string;
 }
