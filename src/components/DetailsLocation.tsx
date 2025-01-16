@@ -15,7 +15,7 @@ function LocationDetails (props:LocationProps){
                 <h3>{props.location.description}</h3>
             </div>
             <div className={styles.bottom}>
-                <textarea/>
+                <pre className={styles.notes}>{props.location.notes}</pre>
                 <div className={styles.placeholder}/>
             </div>
         </div>

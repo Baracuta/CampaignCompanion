@@ -1,5 +1,4 @@
 import {
-  Button,
   Dialog,
   DialogTitle,
   DialogContent,
@@ -65,18 +64,28 @@ function AddLocation(props: thingProps) {
                 setLocation({ ...location, description });
               }}
             />
+
+            <h3>{editMode ? "Edit Notes" : "Add Notes"}</h3>
+
+            <textarea
+              value={location.notes ?? ""}
+              onChange={(e) => {
+                const notes = e.target.value;
+                setLocation({ ...location, notes });
+              }}
+            />
           </div>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button
+          <button onClick={handleClose}>Cancel</button>
+          <button
             onClick={() => {
               props.addThing(props.campaignId, location as Location);
               handleClose();
             }}
           >
             {editMode ? "Confirm" : "Add Location"}
-          </Button>
+          </button>
         </DialogActions>
       </Dialog>
     </Fragment>
