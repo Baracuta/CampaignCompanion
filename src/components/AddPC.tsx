@@ -10,7 +10,7 @@ import { PlayerCharacter } from "../types/PlayerCharacter";
 
 type thingProps = {
   campaignId: string;
-  editPC: PlayerCharacter;
+  editPC?: PlayerCharacter;
   addThing: (id: string, pc: PlayerCharacter) => Promise<unknown>;
 };
 

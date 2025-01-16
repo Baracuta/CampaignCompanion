@@ -8,7 +8,10 @@ import { useCampaign } from "../hooks/useCampaign";
 import ThingList from "../components/ThingList";
 import AddPC from "../components/AddPC";
 import { PlayerCharacter } from "../types/PlayerCharacter";
-import { createPC, deletePC } from "../services/CampaignService";
+import { createPC, deletePC, updatePC } from "../services/CampaignService";
+import { Item } from "../types/Item";
+import { NPC } from "../types/NPC";
+import { Location } from "../types/Location";
 
 function CampaignPlayerCharacters() {
   const { id } = useParams();
@@ -35,7 +38,7 @@ function CampaignPlayerCharacters() {
       <CardPanel>
         <AddPC
           campaignId={id as string}
-          addThing={async (pc:PlayerCharacter, id:string) => {
+          addThing={async (id:string, pc:PlayerCharacter) => {
             await createPC(pc,id);
             await refreshCampaign();
             return pc
@@ -48,6 +51,11 @@ function CampaignPlayerCharacters() {
             await deletePC(id,pc);
             await refreshCampaign();
             return Array<PlayerCharacter>
+          }}
+          updateThing={async (id: string, thing:NPC|Location|Item|PlayerCharacter) => {
+            await updatePC(id,thing as PlayerCharacter);
+            await refreshCampaign();
+            return thing;
           }}
         />
       </CardPanel>
