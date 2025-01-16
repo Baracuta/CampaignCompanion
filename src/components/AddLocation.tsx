@@ -40,10 +40,12 @@ function AddLocation(props: thingProps) {
         {editMode ? "Edit Location" : <p>Add Location</p>}
       </button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Add a New Location to this Campaign</DialogTitle>
+        <DialogTitle>
+          {editMode ? "Edit this Location" : "Add a New Location to this Campaign"}
+        </DialogTitle>
         <DialogContent>
           <div className={styles.add_npc}>
-            <h3> Name this Location</h3>
+            <h3>{editMode ? "Rename this Location" : "Name this Location"}</h3>
 
             <input
               type="text"
@@ -54,7 +56,7 @@ function AddLocation(props: thingProps) {
               }}
             />
 
-            <h3> Describe this Location</h3>
+            <h3>{editMode ? "Edit Description" : "Describe this Location"}</h3>
 
             <textarea
               value={location.description ?? ""}
@@ -73,7 +75,7 @@ function AddLocation(props: thingProps) {
               handleClose();
             }}
           >
-            Add Location
+            {editMode ? "Confirm" : "Add Location"}
           </Button>
         </DialogActions>
       </Dialog>
