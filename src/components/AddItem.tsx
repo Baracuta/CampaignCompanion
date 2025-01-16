@@ -11,7 +11,7 @@ import { Item } from "../types/Item";
 type thingProps = {
   campaignId: string;
   editItem?:Item;
-  addThing: (id: string,item:Item) => Promise<unknown>;
+  addThing:(id:string,item:Item) => Promise<unknown>;
 };
 
 //Set it up to have a similar style to a card, but with unique properties

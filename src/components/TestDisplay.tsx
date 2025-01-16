@@ -15,7 +15,7 @@ import DeleteDialogue from "./DeleteDialogue";
 import AddNPC from "./AddNPC";
 import AddLocation from "./AddLocation";
 import AddItem from "./AddItem";
-import AddPC from "./AddPC";
+// import AddPC from "./AddPC";
 
 type DisplayProps = {
   name?: string;
@@ -80,13 +80,13 @@ export default function TestDisplay(props: DisplayProps) {
             editItem={props.thing}
           />
         )}
-        {props.thing.type === "PlayerCharacter" && (
+        {/* {props.thing.type === "PlayerCharacter" && (
           <AddPC
             campaignId={props.campaign.id as string}
             addThing={props.edit}
             editPC={props.thing}
           />
-        )}
+        )} */}
           <DeleteDialogue
             delete={props.delete}
             thingID={props.thing.id}

@@ -8,7 +8,10 @@ import { useCampaign } from "../hooks/useCampaign";
 import ThingList from "../components/ThingList";
 import AddItem from "../components/AddItem";
 import { Item } from "../types/Item";
-import { createItem, deleteItem } from "../services/CampaignService";
+import { createItem, deleteItem, updateItem } from "../services/CampaignService";
+import { NPC } from "../types/NPC";
+import { PlayerCharacter } from "../types/PlayerCharacter";
+import { Location } from "../types/Location";
 
 function CampaignItems() {
   const { id } = useParams();
@@ -35,7 +38,7 @@ function CampaignItems() {
       <CardPanel>
         <AddItem
           campaignId={id as string}
-          addThing={async (item:Item,id:string) => {
+          addThing={async (id:string, item:Item) => {
             await createItem(item,id);
             await refreshCampaign();
             return item;
@@ -48,6 +51,11 @@ function CampaignItems() {
             await deleteItem(id,item);
             await refreshCampaign();
             return Array<Item>;
+          }}
+          updateThing={async (id: string, thing:NPC|Location|Item|PlayerCharacter) => {
+            await updateItem(id,thing as Item);
+            await refreshCampaign();
+            return thing;
           }}
         />
       </CardPanel>
