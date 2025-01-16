@@ -65,6 +65,39 @@ function AddPC(props: thingProps) {
               }}
             />
 
+            <h3>{editMode ? "Edit Player Name" : "Player Name"}</h3>
+
+            <input
+              type="text"
+              value={pc.playerName ?? ""}
+              onChange={(e) => {
+                const playerName = e.target.value;
+                setPC({ ...pc, playerName });
+              }}
+            />
+
+            <h3>{editMode ? "Edit Class" : "Character Class"}</h3>
+
+            <input
+              type="text"
+              value={pc.pcClass ?? ""}
+              onChange={(e) => {
+                const pcClass = e.target.value;
+                setPC({ ...pc, pcClass});
+              }}
+            />
+
+            <h3>{editMode ? "Edit Character Level" : "Character Level"}</h3>
+
+            <input
+              type="text"
+              value={pc.level ?? ""}
+              onChange={(e) => {
+                const level = e.target.value;
+                setPC({ ...pc, level });
+              }}
+            />
+
             <h3>{editMode ? "Edit Notes" : "Add Notes"}</h3>
 
             <textarea

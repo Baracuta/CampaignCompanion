@@ -16,7 +16,7 @@ function PlayerCharacterDetails (props:PCProps){
             </div>
             <div className={styles.bottom}>
                 <h5>Player Name:{props.pc.playerName}</h5>
-                <h5>Class:{props.pc.class}</h5>
+                <h5>Class:{props.pc.pcClass}</h5>
                 <h5>Level:{props.pc.level}</h5>
                 <pre className={styles.notes}>{props.pc.notes}</pre>
             </div>

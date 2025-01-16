@@ -65,6 +65,28 @@ function AddItem(props: thingProps) {
               }}
             />
 
+            <h3>{editMode ? "Edit Category" : "Choose Item Category"}</h3>
+
+            <input
+              type="text"
+              value={item.category ?? ""}
+              onChange={(e) => {
+                const category = e.target.value;
+                setItem({ ...item, category });
+              }}
+            />
+
+            <h3>{editMode ? "Edit Effect" : "Choose Item Effect"}</h3>
+
+            <input
+              type="text"
+              value={item.effect ?? ""}
+              onChange={(e) => {
+                const effect = e.target.value;
+                setItem({ ...item, effect });
+              }}
+            />
+
             <h3>{editMode ? "Edit Notes" : "Add Notes"}</h3>
 
             <textarea

@@ -5,7 +5,7 @@ export interface PlayerCharacter extends Entity{
     type:"PlayerCharacter";
     name?:string;
     description?:string;
-    class?:string;
+    pcClass?:string;
     level?:string;
     playerName?:string;
     notes?:string;
