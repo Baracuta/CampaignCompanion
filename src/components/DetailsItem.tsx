@@ -17,7 +17,7 @@ function ItemDetails (props:ItemProps){
             <div className={styles.bottom}>
                 <h5>Category:{props.item.category}</h5>
                 <h5>Effect:{props.item.effect}</h5>
-                <textarea/>
+                <pre className={styles.notes}>{props.item.notes}</pre>
             </div>
         </div>
     )

@@ -18,7 +18,7 @@ function PlayerCharacterDetails (props:PCProps){
                 <h5>Player Name:{props.pc.playerName}</h5>
                 <h5>Class:{props.pc.class}</h5>
                 <h5>Level:{props.pc.level}</h5>
-                <textarea/>
+                <pre className={styles.notes}>{props.pc.notes}</pre>
             </div>
         </div>
     )
