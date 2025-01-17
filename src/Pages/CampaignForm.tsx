@@ -5,6 +5,7 @@ import { Campaign } from "../types/Campaign";
 import { useNavigate } from "react-router-dom";
 import { createCampaign } from "../services/CampaignService";
 import { Autocomplete, TextField } from "@mui/material";
+import { GameOptions } from "../constants/game_options";
 
 //This page is for the campaign creation form
 function CampaignForm() {
@@ -13,19 +14,6 @@ function CampaignForm() {
   // const [saving, setSaving] = useState(false);
   const navigate = useNavigate();
 
-  const gameOptions = [
-    `D&D 1e`,
-    `AD&D`,
-    `D&D 3e`,
-    `D&D 3.5e`,
-    `D&D 4e`,
-    `D&D 5e`,
-    `Pathfinder 1e`,
-    `Pathfinder 2e`,
-    `Starfinder`,
-    `Call of Cthulu`,
-    `Pulp Cthulu`,
-  ];
 
   function validate() {
     let check = true;
@@ -51,7 +39,7 @@ function CampaignForm() {
           <Autocomplete
             className={styles.Autocomplete}
             freeSolo
-            options={gameOptions}
+            options={GameOptions}
             value={campaign.game ?? ""}
             onChange={(e, value) => {
               const game = value ?? undefined;
