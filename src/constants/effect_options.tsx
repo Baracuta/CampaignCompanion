@@ -4,5 +4,6 @@ export const EffectOptions=[
     `Defense`,
     `Mobility`,
     `Quest-Related`,
-    `Temporary`,
+    `Temporary Buff`,
+    'Temporary Nerf',
 ]
