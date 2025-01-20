@@ -3,10 +3,13 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
+  Autocomplete,
+  TextField,
 } from "@mui/material";
 import styles from "../css_modules/display.module.css";
 import { Fragment, useState } from "react";
 import { Item } from "../types/Item";
+import { CategoryOptions } from "../constants/category_options";
 
 type thingProps = {
   campaignId: string;
@@ -67,13 +70,18 @@ function AddItem(props: thingProps) {
 
             <h3>{editMode ? "Edit Category" : "Choose Item Category"}</h3>
 
-            <input
-              type="text"
+            <Autocomplete
+              className={styles.Autocomplete}
+              freeSolo
+              options={CategoryOptions}
               value={item.category ?? ""}
-              onChange={(e) => {
-                const category = e.target.value;
+              onChange={(e, value) => {
+                const category = value ?? undefined;
                 setItem({ ...item, category });
               }}
+              renderInput={(params) => (
+                <TextField {...params} label="Item Category" />
+              )}
             />
 
             <h3>{editMode ? "Edit Effect" : "Choose Item Effect"}</h3>
