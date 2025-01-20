@@ -88,6 +88,19 @@
             height: 200px;
         }
 
+        .Autocomplete{
+            border: solid rgb(100, 100, 100);
+            background-color: rgba(75, 75, 75, 1);
+            border-radius: 5px;
+
+            width:45%;
+        
+            input{
+                color: white;
+                border:none;
+            }
+        }
+
         .notes{
             border: solid rgb(100, 100, 100);
             background-color: rgba(75, 75, 75, 1) ;
@@ -102,7 +115,7 @@
             text-wrap: wrap;
             text-wrap-style: pretty;
         }
-    }
+    }    
 }
 
 @media screen and (min-width:360px)

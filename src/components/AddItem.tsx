@@ -10,6 +10,7 @@ import styles from "../css_modules/display.module.css";
 import { Fragment, useState } from "react";
 import { Item } from "../types/Item";
 import { CategoryOptions } from "../constants/category_options";
+import { EffectOptions } from "../constants/effect_options";
 
 type thingProps = {
   campaignId: string;
@@ -80,19 +81,24 @@ function AddItem(props: thingProps) {
                 setItem({ ...item, category });
               }}
               renderInput={(params) => (
-                <TextField {...params} label="Item Category" />
+                <TextField {...params} className={styles.auto_text} label="" />
               )}
             />
 
             <h3>{editMode ? "Edit Effect" : "Choose Item Effect"}</h3>
 
-            <input
-              type="text"
+            <Autocomplete
+              className={styles.Autocomplete}
+              freeSolo
+              options={EffectOptions}
               value={item.effect ?? ""}
-              onChange={(e) => {
-                const effect = e.target.value;
+              onChange={(e, value) => {
+                const effect = value ?? undefined;
                 setItem({ ...item, effect });
               }}
+              renderInput={(params) => (
+                <TextField {...params} className={styles.auto_text} label="" />
+              )}
             />
 
             <h3>{editMode ? "Edit Notes" : "Add Notes"}</h3>
