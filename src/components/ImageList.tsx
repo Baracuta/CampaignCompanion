@@ -2,9 +2,13 @@ import { ImageList, ImageListItem, Popover } from "@mui/material";
 import { NpcImageData } from "../constants/npc_image_bank";
 import { useState } from "react";
 
-const itemData = NpcImageData;
 
-export default function StandardImageList() {
+type ListProps={
+    images:Array<unknown>;
+}
+
+
+export default function StandardImageList(props:ListProps) {
 
     const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -16,6 +20,7 @@ export default function StandardImageList() {
     const open = Boolean(anchorEl);
     const id = open ? "simple-popover" : undefined;
 
+    const itemData = props.images;
 
   return (
     <div>
