@@ -1,4 +1,4 @@
-import { Button, ImageList, ImageListItem, Popover } from "@mui/material";
+import { ImageList, ImageListItem, Popover } from "@mui/material";
 import { NpcImageData } from "../constants/npc_image_bank";
 import { useState } from "react";
 
@@ -19,9 +19,9 @@ export default function StandardImageList() {
 
   return (
     <div>
-      <Button aria-describedby={id} variant="contained" onClick={handleClick}>
+      <button aria-describedby={id} onClick={handleClick}>
         <p>Button</p>
-      </Button>
+      </button>
 
       <Popover
         className="testing"
