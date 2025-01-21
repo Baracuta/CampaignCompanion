@@ -20,7 +20,7 @@ export default function StandardImageList() {
   return (
     <div>
       <button aria-describedby={id} onClick={handleClick}>
-        <p>Button</p>
+        <p>Image List</p>
       </button>
 
       <Popover
