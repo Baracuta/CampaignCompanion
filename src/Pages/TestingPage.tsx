@@ -1,7 +1,7 @@
 import NavButton from "../components/NavButton"
 import TopBar from "../components/TopBar"
 import { ASSETS_PATH } from "../constants/assets_path"
-import StandardImageList from "../constants/npc_image_bank"
+import StandardImageList from "../components/ImageList"
 
 
 //This is a page used for testing purposes.
