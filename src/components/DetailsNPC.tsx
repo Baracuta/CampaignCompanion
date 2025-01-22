@@ -11,13 +11,14 @@ type NPCProps = {
 
 function NPCDetails (props:NPCProps){
     return(
-        <div>
+        <div className={styles.division}>
             <div className={styles.top}>
                 <h2>{props.npc.name}</h2>
                 <h3>{props.npc.description}</h3>
+                <pre className={styles.notes}>{props.npc.notes}</pre>
             </div>
             <div className={styles.bottom}>
-                <pre className={styles.notes}>{props.npc.notes}</pre>
+                <img src={props.npc.image}/>
                 <StandardImageList images={NpcImageData}/>
             </div>
         </div>

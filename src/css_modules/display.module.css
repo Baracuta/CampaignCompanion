@@ -49,6 +49,11 @@
         align-items: center;
 
     }
+
+    .division{
+        display: flex;
+        flex-direction: row;
+    }
     
     :global(.MuiPaper-root){
         border: solid rgb(100, 100, 100);
