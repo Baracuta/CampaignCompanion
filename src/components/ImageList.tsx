@@ -1,13 +1,13 @@
 import styles from '../css_modules/imagelist.module.css';
 import { ImageList, ImageListItem, Popover } from "@mui/material";
 import { NpcImageData } from "../constants/npc_image_bank";
-import { useState } from "react";
+import { MouseEventHandler, useState } from "react";
 import { ASSETS_PATH } from '../constants/assets_path';
 
 
 type ListProps={
     images:typeof NpcImageData;
-    imageClick: (img:string) => Promise<string>;
+    imageClick: (img:string) => Promise<MouseEventHandler<HTMLImageElement>>;
 }
 
 

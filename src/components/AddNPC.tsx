@@ -82,7 +82,13 @@ function AddNPC(props: thingProps) {
             <img
               src={npc.image ?? ""}
             />
-            <StandardImageList images={NpcImageData}/>
+            <StandardImageList
+              images={NpcImageData}
+              imageClick={(e)=>{
+                const image = e.target.value;
+                setNpc({ ...npc, image})
+              }}
+            />
           </div>
         </DialogContent>
         <DialogActions>
