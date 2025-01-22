@@ -19,6 +19,9 @@ export default function StandardImageList(props:ListProps) {
     const handleClose = () => {
     setAnchorEl(null);
     };
+    // const handleImage = () => {
+    //   ;
+    //   }; This is going to be where my logic for clicking on an image happens. Need to figure out how I want that to happen.
     const open = Boolean(anchorEl);
     const id = open ? "simple-popover" : undefined;
 
@@ -51,6 +54,7 @@ export default function StandardImageList(props:ListProps) {
                 src={`${ASSETS_PATH}${item.img}?w=164&h=164&fit=crop&auto=format`}
                 alt={item.title}
                 loading="lazy"
+                // onClick={handleImage}
               />
             </ImageListItem>
           ))}
