@@ -59,6 +59,7 @@ export default function StandardImageList(props:ListProps) {
                 loading="lazy"
                 onClick={() => {
                   clickImage(`${ASSETS_PATH}${item.img}`);
+                  handleClose();
                 }}
               />
             </ImageListItem>
