@@ -115,13 +115,14 @@
 
             padding: 5px;
 
-            width: 45%;
+            width: 90%;
             height: 500px;
 
             text-wrap: wrap;
             text-wrap-style: pretty;
         }
-    }    
+    }
+    
 }
 
 @media screen and (min-width:360px)
