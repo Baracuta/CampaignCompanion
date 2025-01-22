@@ -79,6 +79,9 @@ function AddNPC(props: thingProps) {
 
             <h3>Choose an Image</h3>
 
+            <img
+              src={npc.image ?? ""}
+            />
             <StandardImageList images={NpcImageData}/>
           </div>
         </DialogContent>
