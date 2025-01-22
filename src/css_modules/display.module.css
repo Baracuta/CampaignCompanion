@@ -60,7 +60,7 @@
         flex-direction: column;
 
         width:55% !important;
-        height: 90% !important;
+        height: fit-content !important;
 
         max-height: 750px !important;
 
