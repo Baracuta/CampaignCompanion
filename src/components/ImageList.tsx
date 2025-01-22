@@ -1,3 +1,4 @@
+import styles from '../css_modules/imagelist.module.css';
 import { ImageList, ImageListItem, Popover } from "@mui/material";
 import { NpcImageData } from "../constants/npc_image_bank";
 import { useState } from "react";
@@ -41,7 +42,7 @@ export default function StandardImageList(props:ListProps) {
           horizontal: "left",
         }}
       >
-        <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
+        <ImageList sx={{ width: 750, height: 450 }} cols={3} rowHeight={164}>
           {itemData.map((item) => (
             <ImageListItem key={item.img}>
               <img
