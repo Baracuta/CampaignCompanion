@@ -43,9 +43,9 @@ export default function StandardImageList(props:ListProps) {
           horizontal: "left",
         }}
       >
-        <ImageList className={styles.image_list} sx={{ width: 750, height: 450 }} cols={3} rowHeight={164}>
+        <ImageList className={styles.image_list} sx={{ width: 750, height: 50 }} cols={4} rowHeight={364}>
           {itemData.map((item) => (
-            <ImageListItem key={item.img}>
+            <ImageListItem className={styles.image_item} key={item.img}>
               <img
                 srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
                 src={`${ASSETS_PATH}${item.img}?w=164&h=164&fit=crop&auto=format`}
