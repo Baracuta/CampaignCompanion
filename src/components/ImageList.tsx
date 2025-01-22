@@ -49,7 +49,7 @@ export default function StandardImageList(props:ListProps) {
           horizontal: "left",
         }}
       >
-        <ImageList className={styles.image_list} sx={{ width: 750, height: 50 }} cols={4} rowHeight={364}>
+        <ImageList className={styles.image_list} sx={{ width: 750, height: 350 }} cols={4} rowHeight={364}>
           {itemData.map((item) => (
             <ImageListItem className={styles.image_item} key={item.img}>
               <img

@@ -81,13 +81,13 @@ function AddNPC(props: thingProps) {
 
             <img
               src={npc.image ?? ""}
+              width={364} height= {364}
             />
             <StandardImageList
               images={NpcImageData}
               imageClick={async (img:string)=>{
                 const image = img;
                 await setNpc({ ...npc, image})
-                console.log(image)
                 return image
               }}
             />
