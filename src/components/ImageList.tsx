@@ -2,6 +2,7 @@ import styles from '../css_modules/imagelist.module.css';
 import { ImageList, ImageListItem, Popover } from "@mui/material";
 import { NpcImageData } from "../constants/npc_image_bank";
 import { useState } from "react";
+import { ASSETS_PATH } from '../constants/assets_path';
 
 
 type ListProps={
@@ -47,7 +48,7 @@ export default function StandardImageList(props:ListProps) {
             <ImageListItem key={item.img}>
               <img
                 srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
+                src={`${ASSETS_PATH}${item.img}?w=164&h=164&fit=crop&auto=format`}
                 alt={item.title}
                 loading="lazy"
               />

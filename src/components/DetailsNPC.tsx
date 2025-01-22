@@ -1,5 +1,7 @@
 import { NPC } from "../types/NPC";
 import styles from "../css_modules/display.module.css";
+import StandardImageList from "./ImageList";
+import { NpcImageData } from "../constants/npc_image_bank";
 
 
 
@@ -16,7 +18,7 @@ function NPCDetails (props:NPCProps){
             </div>
             <div className={styles.bottom}>
                 <pre className={styles.notes}>{props.npc.notes}</pre>
-                <img/>
+                <StandardImageList images={NpcImageData}/>
             </div>
         </div>
     )
