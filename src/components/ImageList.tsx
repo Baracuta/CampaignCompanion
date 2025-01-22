@@ -4,7 +4,7 @@ import { useState } from "react";
 
 
 type ListProps={
-    images:Array<unknown>;
+    images:typeof NpcImageData;
 }
 
 
