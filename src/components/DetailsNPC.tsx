@@ -18,7 +18,6 @@ function NPCDetails (props:NPCProps){
             <div className={styles.bottom}>
                 <img
                     src={props.npc.image}
-                    width={400} height= {"auto%"}
                 />
             </div>
         </div>
