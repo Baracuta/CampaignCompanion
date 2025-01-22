@@ -7,6 +7,8 @@ import {
 import styles from "../css_modules/display.module.css";
 import { Fragment, useState } from "react";
 import { NPC } from "../types/NPC";
+import StandardImageList from "./ImageList";
+import { NpcImageData } from "../constants/npc_image_bank";
 
 type thingProps = {
   campaignId: string;
@@ -74,6 +76,10 @@ function AddNPC(props: thingProps) {
                 setNpc({ ...npc, notes });
               }}
             />
+
+            <h3>Choose an Image</h3>
+
+            <StandardImageList images={NpcImageData}/>
           </div>
         </DialogContent>
         <DialogActions>
