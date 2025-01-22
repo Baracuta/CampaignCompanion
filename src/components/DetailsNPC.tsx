@@ -16,7 +16,10 @@ function NPCDetails (props:NPCProps){
                 <pre className={styles.notes}>{props.npc.notes}</pre>
             </div>
             <div className={styles.bottom}>
-                <img src={props.npc.image}/>
+                <img
+                    src={props.npc.image}
+                    width={"auto"} height= {"max-content"}
+                    />
             </div>
         </div>
     )

@@ -81,7 +81,7 @@ function AddNPC(props: thingProps) {
 
             <img
               src={npc.image ?? ""}
-              width={364} height= {364}
+              width={300} height= {"auto"}
             />
             <StandardImageList
               images={NpcImageData}
