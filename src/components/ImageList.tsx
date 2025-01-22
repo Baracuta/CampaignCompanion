@@ -1,13 +1,13 @@
 import styles from '../css_modules/imagelist.module.css';
 import { ImageList, ImageListItem, Popover } from "@mui/material";
 import { NpcImageData } from "../constants/npc_image_bank";
-import { MouseEventHandler, useState } from "react";
+import { useState } from "react";
 import { ASSETS_PATH } from '../constants/assets_path';
 
 
 type ListProps={
     images:typeof NpcImageData;
-    imageClick: (img:string) => Promise<MouseEventHandler<HTMLImageElement>>;
+    imageClick: (img:string) => Promise<string>;
 }
 
 
@@ -21,6 +21,10 @@ export default function StandardImageList(props:ListProps) {
     setAnchorEl(null);
     };
   
+    const clickImage=(img:string)=>{
+      props.imageClick(img);
+    }
+
     const open = Boolean(anchorEl);
     const id = open ? "simple-popover" : undefined;
 
@@ -53,7 +57,9 @@ export default function StandardImageList(props:ListProps) {
                 src={`${ASSETS_PATH}${item.img}?w=164&h=164&fit=crop&auto=format`}
                 alt={item.title}
                 loading="lazy"
-                onClick={props.imageClick(item.img)}
+                onClick={() => {
+                  clickImage(`${ASSETS_PATH}${item.img}`);
+                }}
               />
             </ImageListItem>
           ))}
