@@ -2,6 +2,8 @@ import NavButton from "../components/NavButton"
 import TopBar from "../components/TopBar"
 import { ASSETS_PATH } from "../constants/assets_path"
 import StandardImageList from "../components/ImageList"
+import { NpcImageData } from "../constants/npc_image_bank"
+import { ItemImageData } from "../constants/item_image_bank"
 
 
 //This is a page used for testing purposes.
@@ -17,7 +19,8 @@ function TestPage(){
             <NavButton text="Campaign List" destination="/campaign-form"/>
 
             
-            <StandardImageList/>
+            <StandardImageList images={ItemImageData}/>
+            <StandardImageList images={NpcImageData}/>
             
         </div>
     )
