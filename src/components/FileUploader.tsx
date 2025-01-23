@@ -16,10 +16,12 @@ const SingleFileUploader = (props:uploadProps) => {
   const reader = new FileReader();
   const handleUpload = async () => {
     reader.onloadend = () => {
+
+      if (reader.result != null && typeof reader.result === "string"){
+        props.passedImage(reader.result);
+      } 
     };
     reader.readAsDataURL(file as File);
-    props.passedImage (URL.createObjectURL(file as File));
-    localStorage.setItem(URL.createObjectURL(file as File), URL.createObjectURL(file as File));
   };
 
   return (

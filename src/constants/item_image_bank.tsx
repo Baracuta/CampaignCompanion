@@ -1,4 +1,3 @@
-// Taking the weekend as a break. Going to get deep into it on Monday, then work through it until Thursday.
 
 export const ItemImageData = [
     {
