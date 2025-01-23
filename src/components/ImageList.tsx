@@ -3,6 +3,7 @@ import { ImageList, ImageListItem, Popover } from "@mui/material";
 import { NpcImageData } from "../constants/npc_image_bank";
 import { useState } from "react";
 import { ASSETS_PATH } from '../constants/assets_path';
+import SingleFileUploader from './FileUploader';
 
 
 type ListProps={
@@ -65,6 +66,7 @@ export default function StandardImageList(props:ListProps) {
             </ImageListItem>
           ))}
         </ImageList>
+        <SingleFileUploader/>
         <button onClick={handleClose}>Close</button>
       </Popover>
     </div>
