@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 
+type uploadProps={
+    passedImage:(img:string)=> Promise<unknown>;
+}
 
-const SingleFileUploader = () => {
+const SingleFileUploader = (props:uploadProps) => {
   const [file, setFile] = useState<File | null>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -10,8 +13,12 @@ const SingleFileUploader = () => {
     }
   };
 
+  const reader = new FileReader();
   const handleUpload = async () => {
-    // We will fill this out later
+    reader.onloadend = () => {
+    };
+    reader.readAsDataURL(file as File);
+    props.passedImage (URL.createObjectURL(file as File));
   };
 
   return (

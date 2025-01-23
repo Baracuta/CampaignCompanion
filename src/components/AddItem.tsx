@@ -11,6 +11,8 @@ import { Fragment, useState } from "react";
 import { Item } from "../types/Item";
 import { CategoryOptions } from "../constants/category_options";
 import { EffectOptions } from "../constants/effect_options";
+import { ItemImageData } from "../constants/item_image_bank";
+import StandardImageList from "./ImageList";
 
 type thingProps = {
   campaignId: string;
@@ -108,6 +110,21 @@ function AddItem(props: thingProps) {
               onChange={(e) => {
                 const notes = e.target.value;
                 setItem({ ...item, notes });
+              }}
+            />
+
+            <h3>Choose an Image</h3>
+                        
+            <img
+              src={item.image ?? ""}
+              width={300} height= {"auto"}
+            />
+            <StandardImageList
+              images={ItemImageData}
+              imageClick={async (img:string)=>{
+                const image = img;
+                await setItem({ ...item, image})
+                return image
               }}
             />
           </div>

@@ -18,7 +18,9 @@ function ItemDetails (props:ItemProps){
                 <pre className={styles.notes}>{props.item.notes}</pre>
             </div>
             <div className={styles.bottom}>
-                
+                <img
+                    src={props.item.image}
+                />
             </div>
         </div>
     )

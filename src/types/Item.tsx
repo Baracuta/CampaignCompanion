@@ -8,4 +8,5 @@ export interface Item extends Entity{
     notes?:string;
     effect?:string;
     category?:string;
+    image?:string;
 }
