@@ -7,6 +7,8 @@ import {
 import styles from "../css_modules/display.module.css";
 import { Fragment, useState } from "react";
 import { PlayerCharacter } from "../types/PlayerCharacter";
+import { NpcImageData } from "../constants/npc_image_bank";
+import StandardImageList from "./ImageList";
 
 type thingProps = {
   campaignId: string;
@@ -105,6 +107,21 @@ function AddPC(props: thingProps) {
               onChange={(e) => {
                 const notes = e.target.value;
                 setPC({ ...pc, notes });
+              }}
+            />
+
+            <h3>Choose an Image</h3>
+            
+            <img
+              src={pc.image ?? ""}
+              width={300} height= {"auto"}
+            />
+            <StandardImageList
+              images={NpcImageData}
+              imageClick={async (img:string)=>{
+                const image = img;
+                await setPC({ ...pc, image})
+                return image
               }}
             />
           </div>

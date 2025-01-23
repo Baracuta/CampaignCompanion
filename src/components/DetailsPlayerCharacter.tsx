@@ -9,7 +9,7 @@ type PCProps = {
 
 function PlayerCharacterDetails (props:PCProps){
     return(
-        <div>
+        <div className={styles.division}>
             <div className={styles.top}>
                 <h2>{props.pc.name}</h2>
                 <h3>{props.pc.description}</h3>
@@ -19,7 +19,9 @@ function PlayerCharacterDetails (props:PCProps){
                 <pre className={styles.notes}>{props.pc.notes}</pre>
             </div>
             <div className={styles.bottom}>
-                
+                <img
+                    src={props.pc.image}
+                />
             </div>
         </div>
     )
