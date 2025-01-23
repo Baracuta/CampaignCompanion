@@ -16,9 +16,13 @@ const SingleFileUploader = (props:uploadProps) => {
   const reader = new FileReader();
   const handleUpload = async () => {
     reader.onloadend = () => {
+      const base64String = (reader.result as string)
+        .replace('data:', '')
+        .replace(/^.+,/, '');
+      console.log(base64String);
+      props.passedImage(base64String);
     };
     reader.readAsDataURL(file as File);
-    props.passedImage (URL.createObjectURL(file as File));
   };
 
   return (
