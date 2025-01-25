@@ -27,7 +27,7 @@ const SingleFileUploader = (props:uploadProps) => {
   return (
     <>
       <div className="input-group">
-        <input id="file" type="file" onChange={handleFileChange} />
+        <input id="file" type="file" onChange={handleFileChange} accept='image/*' />
       </div>
       {file && (
         <section>
