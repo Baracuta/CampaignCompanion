@@ -67,9 +67,7 @@ function AddNPC(props: thingProps) {
                   setNpc({ ...npc, description });
                 }}
               />
-            
 
-            
               <h3>{editMode ? "Edit Notes" : "Add Notes"}</h3>
 
               <textarea
@@ -79,7 +77,7 @@ function AddNPC(props: thingProps) {
                   setNpc({ ...npc, notes });
                 }}
               />
-            </div>  
+            </div>
             <div className={styles.bottom}>
               <h3>Choose an Image</h3>
 

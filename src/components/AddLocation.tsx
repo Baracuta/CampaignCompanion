@@ -43,38 +43,44 @@ function AddLocation(props: thingProps) {
           {editMode ? "Edit this Location" : "Add a New Location to this Campaign"}
         </DialogTitle>
         <DialogContent>
-          <div className={styles.add_npc}>
-            <h3>{editMode ? "Rename this Location" : "Name this Location"}</h3>
+          <div className={styles.division}>
+            <div className={styles.top}>
+              <h3>{editMode ? "Rename this Location" : "Name this Location"}</h3>
 
-            <input
-              type="text"
-              value={location.name ?? ""}
-              onChange={(e) => {
-                const name = e.target.value;
-                setLocation({ ...location, name });
-              }}
-            />
+              <input
+                type="text"
+                value={location.name ?? ""}
+                onChange={(e) => {
+                  const name = e.target.value;
+                  setLocation({ ...location, name });
+                }}
+              />
 
-            <h3>{editMode ? "Edit Description" : "Describe this Location"}</h3>
+              <h3>{editMode ? "Edit Description" : "Describe this Location"}</h3>
 
-            <textarea
-              value={location.description ?? ""}
-              onChange={(e) => {
-                const description = e.target.value;
-                setLocation({ ...location, description });
-              }}
-            />
+              <textarea
+                value={location.description ?? ""}
+                onChange={(e) => {
+                  const description = e.target.value;
+                  setLocation({ ...location, description });
+                }}
+              />
+            </div>
 
-            <h3>{editMode ? "Edit Notes" : "Add Notes"}</h3>
+            <div className={styles.bottom}>
+              <h3>{editMode ? "Edit Notes" : "Add Notes"}</h3>
 
-            <textarea
-              value={location.notes ?? ""}
-              onChange={(e) => {
-                const notes = e.target.value;
-                setLocation({ ...location, notes });
-              }}
-            />
+              <textarea
+                value={location.notes ?? ""}
+                onChange={(e) => {
+                  const notes = e.target.value;
+                  setLocation({ ...location, notes });
+                }}
+              />
+            </div>
+            
           </div>
+
         </DialogContent>
         <DialogActions>
           <button onClick={handleClose}>Cancel</button>
