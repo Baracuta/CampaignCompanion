@@ -34,7 +34,7 @@ export default function StandardImageList(props:ListProps) {
   return (
     <div>
       <button aria-describedby={id} onClick={handleClick}>
-        <p>Image List</p>
+        <p>Choose Image</p>
       </button>
 
       <Popover
