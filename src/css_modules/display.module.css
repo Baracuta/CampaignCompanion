@@ -129,9 +129,14 @@
         display:flex;
         flex-direction: column;
         width:50%;
+
+        input{
+            max-width: 75%;
+        }
     }
     .bottom{
         display: flex;
+        flex-direction: column;
         width:50%;
         max-height: 675px;
 

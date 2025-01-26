@@ -45,8 +45,8 @@ function AddNPC(props: thingProps) {
           {editMode ? "Edit this NPC" : "Add a New NPC to this Campaign"}
         </DialogTitle>
         <DialogContent>
-          <div className={styles.add_npc}>
-            <div className={styles.left}>
+          <div className={styles.division}>
+            <div className={styles.top}>
               <h3>{editMode ? "Rename this NPC" : "Name this NPC"}</h3>
 
               <input
@@ -67,9 +67,9 @@ function AddNPC(props: thingProps) {
                   setNpc({ ...npc, description });
                 }}
               />
-            </div>
+            
 
-            <div className={styles.right}>
+            
               <h3>{editMode ? "Edit Notes" : "Add Notes"}</h3>
 
               <textarea
@@ -79,7 +79,8 @@ function AddNPC(props: thingProps) {
                   setNpc({ ...npc, notes });
                 }}
               />
-
+            </div>  
+            <div className={styles.bottom}>
               <h3>Choose an Image</h3>
 
               <img src={npc.image ?? ""} width={300} height={"auto"} />
