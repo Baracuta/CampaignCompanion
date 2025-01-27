@@ -1,5 +1,4 @@
 import { Avatar } from "@mui/material";
-import { ASSETS_PATH } from "../constants/assets_path";
 import { Location } from "../types/Location";
 import { Item } from "../types/Item";
 import { NPC } from "../types/NPC";
@@ -18,7 +17,7 @@ function AvatarComponent(props:AvatarProps){
     return(
         <Avatar
             alt={props.thing?.name}
-            src={`${ASSETS_PATH}/npcs/Dragonborn f 2.jpg`} //props.thing.image, usually
+            src={props.thing?.image} //props.thing.image, usually
             variant="rounded"
         />
     )
