@@ -1,4 +1,5 @@
 import styles from '../css_modules/toolbar.module.css'
+import AvatarComponent from './AvatarComponent'
 
 
 function ToolBar(){
@@ -8,6 +9,7 @@ function ToolBar(){
 
             <div className={styles.quick_access}>
                 <h4>Quick Access:</h4>
+                <AvatarComponent/>
             </div>
 
             <div className={styles.recent_edits}>
