@@ -9,14 +9,14 @@ type LocationProps = {
 
 function LocationDetails (props:LocationProps){
     return(
-        <div>
+        <div className={styles.division}>
             <div className={styles.top}>
                 <h2>{props.location.name}</h2>
                 <h3>{props.location.description}</h3>
+                <pre className={styles.notes}>{props.location.notes}</pre>
             </div>
             <div className={styles.bottom}>
-                <pre className={styles.notes}>{props.location.notes}</pre>
-                <div className={styles.placeholder}/>
+                <img src={props.location.image}/>
             </div>
         </div>
     )
