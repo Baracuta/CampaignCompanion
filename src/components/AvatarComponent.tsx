@@ -1,10 +1,13 @@
 import { Avatar } from "@mui/material";
 import { ASSETS_PATH } from "../constants/assets_path";
 
+type AvatarProps={
+
+}
 
 
 
-function AvatarComponent(){
+function AvatarComponent(props:AvatarProps){
 
 
     return(
@@ -16,3 +19,5 @@ function AvatarComponent(){
 }
 
 export default AvatarComponent
+
+//When I want to make this functional, I can use ThingList and pass new campaign props for favourites and for recent edits.
