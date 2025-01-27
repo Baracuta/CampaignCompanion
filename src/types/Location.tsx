@@ -6,5 +6,6 @@ export interface Location extends Entity{
     name?:string;
     description?:string;
     notes?:string;
-    maps?:string;
+    image?:string;
+    maps?:Array<string>;
 }

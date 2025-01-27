@@ -7,6 +7,8 @@ import {
 import styles from "../css_modules/display.module.css";
 import { Fragment, useState } from "react";
 import { Location } from "../types/Location";
+import { ItemImageData } from "../constants/item_image_bank";
+import StandardImageList from "./ImageList";
 
 type thingProps = {
   campaignId: string;
@@ -75,6 +77,18 @@ function AddLocation(props: thingProps) {
                 onChange={(e) => {
                   const notes = e.target.value;
                   setLocation({ ...location, notes });
+                }}
+              />
+
+              <h3>Choose an Image</h3>
+              
+              <img src={location.image ?? ""} width={300} height={"auto"} />
+              <StandardImageList
+                images={ItemImageData}
+                imageClick={async (img: string) => {
+                  const image = img;
+                  await setLocation({ ...location, image });
+                  return image;
                 }}
               />
             </div>
