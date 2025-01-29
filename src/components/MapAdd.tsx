@@ -1,16 +1,16 @@
 import styles from '../css_modules/imagelist.module.css';
 import { Popover, ImageList, ImageListItem } from "@mui/material";
 import { useState } from "react";
-import { ASSETS_PATH } from "../constants/assets_path";
 import SingleFileUploader from "./FileUploader";
 
 
 
 type MapProps={
     images:Array<string>;
+    addMap:(img:string) => Promise<string>;
 }
 
-export default function MapList(props:MapProps) {
+export default function MapAdd(props:MapProps) {
 
     const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -23,6 +23,7 @@ export default function MapList(props:MapProps) {
     const clickImage=(img:string)=>{
     //   props.imageClick(img);
     // Make this enlarge the clicked image on the screen.
+        console.log(img);
     }
 
     const open = Boolean(anchorEl);
@@ -33,7 +34,7 @@ export default function MapList(props:MapProps) {
   return (
     <div>
       <button aria-describedby={id} onClick={handleClick}>
-        <p>Add/View Maps</p>
+        <p>Add Maps</p>
       </button>
 
       <Popover
@@ -54,18 +55,18 @@ export default function MapList(props:MapProps) {
             <ImageListItem className={styles.image_item} key={item}>
               <img
                 srcSet={`${item}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                src={`${ASSETS_PATH}${item}?w=164&h=164&fit=crop&auto=format`}
+                src={`${item}?w=164&h=164&fit=crop&auto=format`}
                 alt={item}
                 loading="lazy"
                 onClick={() => {
-                  clickImage(`${ASSETS_PATH}${item}`);
+                  clickImage(`${item}`);
                   handleClose();
                 }}
               />
             </ImageListItem>
           ))}
         </ImageList>
-        <SingleFileUploader passedImage={props.imageClick}/>
+        <SingleFileUploader passedImage={props.addMap}/>
         <button onClick={handleClose}>Close</button>
       </Popover>
     </div>
