@@ -9,6 +9,7 @@ import { Fragment, useState } from "react";
 import { Location } from "../types/Location";
 import { ItemImageData } from "../constants/item_image_bank";
 import StandardImageList from "./ImageList";
+import MapAdd from "./MapAdd";
 
 type thingProps = {
   campaignId: string;
@@ -89,6 +90,17 @@ function AddLocation(props: thingProps) {
                   const image = img;
                   await setLocation({ ...location, image });
                   return image;
+                }}
+              />
+
+              <h3>Add/Edit Maps</h3>
+
+              <MapAdd
+                images={location.maps as Array<string>}
+                addMap={async (img:string) => {
+                  const maps = [...location.maps,img];
+                  await setLocation({...location,maps});
+                  return img;
                 }}
               />
             </div>
