@@ -2,15 +2,16 @@ import styles from '../css_modules/imagelist.module.css';
 import { Popover, ImageList, ImageListItem } from "@mui/material";
 import { useState } from "react";
 import SingleFileUploader from "./FileUploader";
+import { Location } from '../types/Location';
 
 
 
 type MapProps={
-    images:Array<string>;
+    images:Location;
     addMap:(img:string) => Promise<string>;
 }
 
-export default function MapAdd(props:MapProps) {
+export default function MapList(props:MapProps) {
 
     const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -29,7 +30,7 @@ export default function MapAdd(props:MapProps) {
     const open = Boolean(anchorEl);
     const id = open ? "simple-popover" : undefined;
 
-    const itemData = props.images;
+    const itemData = props.images.maps;
 
   return (
     <div>

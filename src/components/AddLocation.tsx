@@ -9,7 +9,7 @@ import { Fragment, useState } from "react";
 import { Location } from "../types/Location";
 import { ItemImageData } from "../constants/item_image_bank";
 import StandardImageList from "./ImageList";
-import MapAdd from "./MapAdd";
+import SingleFileUploader from "./FileUploader";
 
 type thingProps = {
   campaignId: string;
@@ -93,12 +93,13 @@ function AddLocation(props: thingProps) {
                 }}
               />
 
-              <h3>Add/Edit Maps</h3>
+              <h3>Add Maps</h3>
 
-              <MapAdd
-                images={location.maps as Array<string>}
-                addMap={async (img:string) => {
-                  const maps = [...location.maps as Array<string>,img];
+              <SingleFileUploader
+                passedImage={async (img:string) => {
+                  const oldmaps=location.maps as Array<string>;
+                  const newmap=img;
+                  const maps = [...oldmaps, newmap];
                   await setLocation({...location,maps});
                   return img;
                 }}
