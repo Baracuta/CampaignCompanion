@@ -98,7 +98,7 @@ function AddLocation(props: thingProps) {
               <MapAdd
                 images={location.maps as Array<string>}
                 addMap={async (img:string) => {
-                  const maps = [...location.maps,img];
+                  const maps = [...location.maps as Array<string>,img];
                   await setLocation({...location,maps});
                   return img;
                 }}
