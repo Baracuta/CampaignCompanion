@@ -51,14 +51,14 @@ export default function MapList(props:MapProps) {
       >
         <ImageList className={styles.image_list} sx={{ width: "auto", height: "auto" }} cols={4} rowHeight={364}>
           {itemData.map((item) => (
-            <ImageListItem className={styles.image_item} key={item.img}>
+            <ImageListItem className={styles.image_item} key={item}>
               <img
-                srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                src={`${ASSETS_PATH}${item.img}?w=164&h=164&fit=crop&auto=format`}
-                alt={item.title}
+                srcSet={`${item}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                src={`${ASSETS_PATH}${item}?w=164&h=164&fit=crop&auto=format`}
+                alt={item}
                 loading="lazy"
                 onClick={() => {
-                  clickImage(`${ASSETS_PATH}${item.img}`);
+                  clickImage(`${ASSETS_PATH}${item}`);
                   handleClose();
                 }}
               />
