@@ -1,12 +1,11 @@
 import styles from '../css_modules/imagelist.module.css';
 import { Popover, ImageList, ImageListItem } from "@mui/material";
 import { useState } from "react";
-import { LocationMap } from '../types/LocationMap';
 
 
 
 type MapProps={
-    images:Array<LocationMap>;
+    images:Array<string>;
 }
 
 export default function MapList(props:MapProps) {
@@ -49,11 +48,11 @@ return (
     >
       <ImageList className={styles.image_list} sx={{ width: "auto", height: "auto" }} cols={4} rowHeight={364}>
         {itemData.map((item) => (
-          <ImageListItem className={styles.image_item} key={item.img}>
+          <ImageListItem className={styles.image_item} key={item}>
             <img
-              srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-              src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-              alt={item.title}
+              srcSet={`${item}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+              src={`${item}?w=164&h=164&fit=crop&auto=format`}
+              alt={item}
               loading="lazy"
               onClick={() => {
                 // clickImage(`${ASSETS_PATH}${item.img}`);

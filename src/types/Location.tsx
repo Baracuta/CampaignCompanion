@@ -1,5 +1,4 @@
 import { Entity } from "./Entity";
-import { LocationMap } from "./LocationMap";
 
 export interface Location extends Entity{
     id:string;
@@ -8,5 +7,5 @@ export interface Location extends Entity{
     description?:string;
     notes?:string;
     image?:string;
-    maps?:Array<LocationMap>;
+    maps?:Array<string>;
 }
