@@ -46,7 +46,7 @@ return (
         horizontal: "left",
       }}
     >
-      <ImageList className={styles.image_list} sx={{ width: "auto", height: "auto" }} cols={4} rowHeight={364}>
+      <ImageList className={styles.image_list} sx={{ width: "auto", height: "350" }} cols={2} rowHeight={400}>
         {itemData.map((item) => (
           <ImageListItem className={styles.image_item} key={uuid()}>
             <img

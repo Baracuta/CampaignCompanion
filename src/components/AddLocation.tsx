@@ -89,7 +89,6 @@ function AddLocation(props: thingProps) {
                 imageClick={async (img: string) => {
                   const image = img;
                   await setLocation({ ...location, image });
-                  console.log(image);
                   return image;
                 }}
               />
@@ -102,7 +101,7 @@ function AddLocation(props: thingProps) {
                   const newmap=img;
                   const oldmaps = location.maps as Array<string>;
                   const maps = [...oldmaps, newmap];
-                  setLocation({...location, maps});
+                  await setLocation({...location, maps});
                   return maps;
                 }}
               />
