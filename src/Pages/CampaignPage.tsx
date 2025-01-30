@@ -6,6 +6,8 @@ import { ASSETS_PATH } from "../constants/assets_path";
 import TopBar from "../components/TopBar";
 import ToolBar from "../components/ToolBar";
 import { useCampaign } from "../hooks/useCampaign";
+import { Item } from "../types/Item";
+import { NPC } from "../types/NPC";
 
 function CampaignPage() {
   const { id } = useParams();
@@ -23,7 +25,10 @@ function CampaignPage() {
         image={`${ASSETS_PATH}/Emblem 1 3.png`}
       />
 
-      <ToolBar campaign={campaign} />
+      <ToolBar
+        favourites={campaign?.items as Array<Item>}
+        recentEdits={campaign?.npcs as Array<NPC>}
+      />
 
       <div className={styles.card_panel}>
         <Card

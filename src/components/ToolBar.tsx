@@ -1,11 +1,14 @@
 import styles from '../css_modules/toolbar.module.css'
-import { Campaign } from '../types/Campaign'
+import { Item } from '../types/Item'
+import { Location } from '../types/Location'
 import { NPC } from '../types/NPC'
+import { PlayerCharacter } from '../types/PlayerCharacter'
 import AvatarComponent from './AvatarComponent'
 import AvatarList from './AvatarList'
 
 type BarProps={
-    campaign:Campaign;
+    favourites:Array<NPC | Location | Item | PlayerCharacter>;
+    recentEdits:Array<NPC | Location | Item | PlayerCharacter>;
 }
 
 function ToolBar(props:BarProps){
@@ -20,7 +23,7 @@ function ToolBar(props:BarProps){
 
             <div className={styles.recent_edits}>
                 <h4>Recent Edits:</h4>
-                <AvatarList things={props.campaign?.npcs}/>
+                <AvatarList things={props.recentEdits}/>
             </div>
 
             <div className={styles.search_bar}>
