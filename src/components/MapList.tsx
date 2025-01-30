@@ -30,7 +30,7 @@ export default function MapList(props:MapProps) {
 return (
   <div>
     <button aria-describedby={id} onClick={handleClick}>
-      <p>Choose Image</p>
+      <p>View Maps</p>
     </button>
 
     <Popover

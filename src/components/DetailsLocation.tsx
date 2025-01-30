@@ -1,6 +1,6 @@
 import { Location } from "../types/Location";
 import styles from "../css_modules/display.module.css";
-import MapList from "./MapList";
+
 
 
 
@@ -18,7 +18,6 @@ function LocationDetails (props:LocationProps){
             </div>
             <div className={styles.bottom}>
                 <img src={props.location.image}/>
-                <MapList images={props.location.maps as Array<string>}/>
             </div>
         </div>
     )
