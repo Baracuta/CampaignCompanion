@@ -3,7 +3,6 @@ import { Item } from '../types/Item'
 import { Location } from '../types/Location'
 import { NPC } from '../types/NPC'
 import { PlayerCharacter } from '../types/PlayerCharacter'
-import AvatarComponent from './AvatarComponent'
 import AvatarList from './AvatarList'
 
 type BarProps={
@@ -18,7 +17,7 @@ function ToolBar(props:BarProps){
 
             <div className={styles.quick_access}>
                 <h4>Quick Access:</h4>
-                <AvatarComponent/>
+                <AvatarList things={props.favourites}/>
             </div>
 
             <div className={styles.recent_edits}>
