@@ -23,7 +23,7 @@ function CampaignPage() {
         image={`${ASSETS_PATH}/Emblem 1 3.png`}
       />
 
-      <ToolBar />
+      <ToolBar campaign={campaign} />
 
       <div className={styles.card_panel}>
         <Card

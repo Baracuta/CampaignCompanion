@@ -1,8 +1,14 @@
 import styles from '../css_modules/toolbar.module.css'
+import { Campaign } from '../types/Campaign'
+import { NPC } from '../types/NPC'
 import AvatarComponent from './AvatarComponent'
+import AvatarList from './AvatarList'
 
+type BarProps={
+    campaign:Campaign;
+}
 
-function ToolBar(){
+function ToolBar(props:BarProps){
 
     return(
         <div className={styles.tool_bar}>
@@ -14,6 +20,7 @@ function ToolBar(){
 
             <div className={styles.recent_edits}>
                 <h4>Recent Edits:</h4>
+                <AvatarList things={props.campaign?.npcs}/>
             </div>
 
             <div className={styles.search_bar}>
