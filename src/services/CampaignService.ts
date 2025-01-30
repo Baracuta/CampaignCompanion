@@ -178,7 +178,6 @@ export const createLocation = async (location: Location, campaignId: string): Pr
     ...location,
     id: uuid(),
     type:"Location",
-    maps:[],
   };
 
   const allLocations = await getLocations(campaignId);
