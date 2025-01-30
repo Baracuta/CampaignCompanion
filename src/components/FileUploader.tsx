@@ -44,7 +44,7 @@ const SingleFileUploader = (props:uploadProps) => {
         <button 
           onClick={handleUpload}
           className="submit"
-        >Upload a file</button>
+        >Upload Image</button>
       )}
     </>
   );
