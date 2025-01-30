@@ -68,6 +68,18 @@ function AddLocation(props: thingProps) {
                   setLocation({ ...location, description });
                 }}
               />
+
+              <h3>Add Maps</h3>
+
+              <SingleFileUploader
+                passedImage={async (img:string) => {
+                  const newmap=img;
+                  const oldmaps = location.maps as Array<string>;
+                  const maps = [...oldmaps, newmap];
+                  await setLocation({...location, maps});
+                  return maps;
+                }}
+              />
             </div>
 
             <div className={styles.bottom}>
@@ -90,19 +102,6 @@ function AddLocation(props: thingProps) {
                   const image = img;
                   await setLocation({ ...location, image });
                   return image;
-                }}
-              />
-
-              
-              <h3>Add Maps</h3>
-
-              <SingleFileUploader
-                passedImage={async (img:string) => {
-                  const newmap=img;
-                  const oldmaps = location.maps as Array<string>;
-                  const maps = [...oldmaps, newmap];
-                  await setLocation({...location, maps});
-                  return maps;
                 }}
               />
               
