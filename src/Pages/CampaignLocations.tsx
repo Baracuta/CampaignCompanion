@@ -32,7 +32,10 @@ function CampaignLocations() {
           buttonNav={`/campaign/${campaign?.id}`}
         />
 
-        <ToolBar />
+        <ToolBar
+          favourites={campaign?.items as Array<Item>}
+          recentEdits={campaign?.npcs as Array<NPC>}
+        />
       </div>
 
       <CardPanel>
