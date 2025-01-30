@@ -50,7 +50,7 @@ return (
         {itemData.map((item) => (
           <ImageListItem className={styles.image_item} key={uuid()}>
             <img
-              srcSet={`${item}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+              srcSet={`${item}`}
               src={`${item}?w=164&h=164&fit=crop&auto=format`}
               alt={item}
               loading="lazy"
