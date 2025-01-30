@@ -18,7 +18,7 @@ function LocationDetails (props:LocationProps){
             </div>
             <div className={styles.bottom}>
                 <img src={props.location.image}/>
-                <MapList images={props.location.maps}/>
+                <MapList images={props.location.maps as Array<string>}/>
             </div>
         </div>
     )
