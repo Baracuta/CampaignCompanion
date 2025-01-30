@@ -89,6 +89,7 @@ function AddLocation(props: thingProps) {
                 imageClick={async (img: string) => {
                   const image = img;
                   await setLocation({ ...location, image });
+                  console.log(image);
                   return image;
                 }}
               />
