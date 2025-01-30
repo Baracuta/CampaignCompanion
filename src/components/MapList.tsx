@@ -27,6 +27,17 @@ export default function MapList(props:MapProps) {
 
   const itemData = props.images;
 
+
+  // const [anchor2, setAnchor2] = useState<null | HTMLElement>(null);
+
+  // const handleImage = (event: React.MouseEvent<HTMLElement>) => {
+  //   setAnchor2(anchor2 ? null : event.currentTarget);
+  // };
+
+  // const open2 = Boolean(anchor2);
+  // const id2 = open ? 'simple-popper' : undefined;
+
+
 return (
   <div>
     <button aria-describedby={id} onClick={handleClick}>
@@ -55,8 +66,8 @@ return (
               alt={item}
               loading="lazy"
               onClick={() => {
-                // clickImage(`${ASSETS_PATH}${item.img}`);
-                handleClose();
+                // handleImage();
+                
               }}
             />
           </ImageListItem>
@@ -64,6 +75,12 @@ return (
       </ImageList>
       <button onClick={handleClose}>Close</button>
     </Popover>
+    {/* <Popper id={id2} open={open2} anchorEl={anchor2}>
+      <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
+        The content of the Popper.
+      </Box>
+    </Popper> */}
+
   </div>
 );
 }
