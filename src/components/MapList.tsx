@@ -1,7 +1,6 @@
 import styles from '../css_modules/imagelist.module.css';
 import { Popover, ImageList, ImageListItem } from "@mui/material";
 import { useState } from "react";
-import { v4 as uuid } from "uuid";
 
 
 type MapProps={
@@ -58,8 +57,8 @@ return (
       }}
     >
       <ImageList className={styles.image_list} sx={{ width: "auto", height: "350" }} cols={2} rowHeight={400}>
-        {itemData.map((item) => (
-          <ImageListItem className={styles.image_item} key={uuid()}>
+        {itemData.map((item, idx) => (
+          <ImageListItem className={styles.image_item} key={`image_${idx}`}>
             <img
               srcSet={`${item}`}
               src={`${item}?w=164&h=164&fit=crop&auto=format`}

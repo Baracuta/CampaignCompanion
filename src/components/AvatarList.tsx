@@ -10,7 +10,7 @@ type listProps = {
 
 function AvatarList(props: listProps) {
   const divs = (props.things ?? []).map((datum) => (
-    <AvatarComponent thing={datum}/>
+    <AvatarComponent key={datum.id} thing={datum}/>
   ));
 
   return divs;
