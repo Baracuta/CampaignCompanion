@@ -13,13 +13,15 @@ import SingleFileUploader from "./FileUploader";
 
 type thingProps = {
   campaignId: string;
-  editLocation?:Location;
-  addThing: (id: string, location:Location) => Promise<unknown>;
+  editLocation?: Location;
+  addThing: (id: string, location: Location) => Promise<unknown>;
 };
 
 //Set it up to have a similar style to a card, but with unique properties
 function AddLocation(props: thingProps) {
-  const [location, setLocation] = useState<Partial<Location>>(props.editLocation ?? {});
+  const [location, setLocation] = useState<Partial<Location>>(
+    props.editLocation ?? {}
+  );
 
   const [open, setOpen] = useState(false);
 
@@ -43,72 +45,67 @@ function AddLocation(props: thingProps) {
       </button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>
-          {editMode ? "Edit this Location" : "Add a New Location to this Campaign"}
+          {editMode
+            ? "Edit this Location"
+            : "Add a New Location to this Campaign"}
         </DialogTitle>
         <DialogContent>
-          <div className={styles.division}>
-            <div className={styles.top}>
-              <h3>{editMode ? "Rename this Location" : "Name this Location"}</h3>
+          <div className={styles.add_edit}>
+            <h3>{editMode ? "Rename this Location" : "Name this Location"}</h3>
 
-              <input
-                type="text"
-                value={location.name ?? ""}
-                onChange={(e) => {
-                  const name = e.target.value;
-                  setLocation({ ...location, name });
-                }}
-              />
+            <input
+              type="text"
+              value={location.name ?? ""}
+              onChange={(e) => {
+                const name = e.target.value;
+                setLocation({ ...location, name });
+              }}
+            />
 
-              <h3>{editMode ? "Edit Description" : "Describe this Location"}</h3>
+            <h3>{editMode ? "Edit Description" : "Describe this Location"}</h3>
 
-              <textarea
-                value={location.description ?? ""}
-                onChange={(e) => {
-                  const description = e.target.value;
-                  setLocation({ ...location, description });
-                }}
-              />
+            <textarea
+              value={location.description ?? ""}
+              onChange={(e) => {
+                const description = e.target.value;
+                setLocation({ ...location, description });
+              }}
+            />
 
-              <h3>Add Maps</h3>
+            <h3>Add Maps</h3>
 
-              <SingleFileUploader
-                passedImage={async (img:string) => {
-                  const newmap=img;
-                  const oldmaps = location.maps as Array<string>;
-                  const maps = [...oldmaps, newmap];
-                  await setLocation({...location, maps});
-                  return maps;
-                }}
-              />
-            </div>
+            <SingleFileUploader
+              passedImage={async (img: string) => {
+                const newmap = img;
+                const oldmaps = location.maps as Array<string>;
+                const maps = [...oldmaps, newmap];
+                await setLocation({ ...location, maps });
+                return maps;
+              }}
+            />
 
-            <div className={styles.bottom}>
-              <h3>{editMode ? "Edit Notes" : "Add Notes"}</h3>
+            <h3>{editMode ? "Edit Notes" : "Add Notes"}</h3>
 
-              <textarea
-                value={location.notes ?? ""}
-                onChange={(e) => {
-                  const notes = e.target.value;
-                  setLocation({ ...location, notes });
-                }}
-              />
+            <textarea
+              value={location.notes ?? ""}
+              onChange={(e) => {
+                const notes = e.target.value;
+                setLocation({ ...location, notes });
+              }}
+            />
 
-              <h3>Choose an Image</h3>
-              
-              <img src={location.image ?? ""} width={300} height={"auto"} />
-              <StandardImageList
-                images={ItemImageData}
-                imageClick={async (img: string) => {
-                  const image = img;
-                  await setLocation({ ...location, image });
-                  return image;
-                }}
-              />
-              
-            </div>
-            
+            <h3>Choose an Image</h3>
+
+            <img src={location.image ?? ""} width={300} height={"auto"} />
+            <StandardImageList
+              images={ItemImageData}
+              imageClick={async (img: string) => {
+                const image = img;
+                await setLocation({ ...location, image });
+                return image;
+              }}
+            />
           </div>
-
         </DialogContent>
         <DialogActions>
           <button onClick={handleClose}>Cancel</button>

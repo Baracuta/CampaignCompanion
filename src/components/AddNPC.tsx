@@ -45,52 +45,49 @@ function AddNPC(props: thingProps) {
           {editMode ? "Edit this NPC" : "Add a New NPC to this Campaign"}
         </DialogTitle>
         <DialogContent>
-          <div className={styles.division}>
-            <div className={styles.top}>
-              <h3>{editMode ? "Rename this NPC" : "Name this NPC"}</h3>
+          <div className={styles.add_edit}>
+            <h3>{editMode ? "Rename this NPC" : "Name this NPC"}</h3>
 
-              <input
-                type="text"
-                value={npc.name ?? ""}
-                onChange={(e) => {
-                  const name = e.target.value;
-                  setNpc({ ...npc, name });
-                }}
-              />
+            <input
+              type="text"
+              value={npc.name ?? ""}
+              onChange={(e) => {
+                const name = e.target.value;
+                setNpc({ ...npc, name });
+              }}
+            />
 
-              <h3>{editMode ? "Edit Description" : "Describe this NPC"}</h3>
+            <h3>{editMode ? "Edit Description" : "Describe this NPC"}</h3>
 
-              <textarea
-                value={npc.description ?? ""}
-                onChange={(e) => {
-                  const description = e.target.value;
-                  setNpc({ ...npc, description });
-                }}
-              />
+            <textarea
+              value={npc.description ?? ""}
+              onChange={(e) => {
+                const description = e.target.value;
+                setNpc({ ...npc, description });
+              }}
+            />
 
-              <h3>{editMode ? "Edit Notes" : "Add Notes"}</h3>
+            <h3>{editMode ? "Edit Notes" : "Add Notes"}</h3>
 
-              <textarea
-                value={npc.notes ?? ""}
-                onChange={(e) => {
-                  const notes = e.target.value;
-                  setNpc({ ...npc, notes });
-                }}
-              />
-            </div>
-            <div className={styles.bottom}>
-              <h3>Choose an Image</h3>
+            <textarea
+              value={npc.notes ?? ""}
+              onChange={(e) => {
+                const notes = e.target.value;
+                setNpc({ ...npc, notes });
+              }}
+            />
 
-              <img src={npc.image ?? ""} width={300} height={"auto"} />
-              <StandardImageList
-                images={NpcImageData}
-                imageClick={async (img: string) => {
-                  const image = img;
-                  await setNpc({ ...npc, image });
-                  return image;
-                }}
-              />
-            </div>
+            <h3>Choose an Image</h3>
+
+            <img src={npc.image ?? ""} width={300} height={"auto"} />
+            <StandardImageList
+              images={NpcImageData}
+              imageClick={async (img: string) => {
+                const image = img;
+                await setNpc({ ...npc, image });
+                return image;
+              }}
+            />
           </div>
         </DialogContent>
         <DialogActions>

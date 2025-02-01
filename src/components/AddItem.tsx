@@ -49,93 +49,81 @@ function AddItem(props: thingProps) {
           {editMode ? "Edit this Item" : "Add a New Item to this Campaign"}
         </DialogTitle>
         <DialogContent>
-          <div className={styles.division}>
-            <div className={styles.top}>
-              <h3>{editMode ? "Rename this Item" : "Name this Item"}</h3>
+          <div className={styles.add_edit}>
+            <h3>{editMode ? "Rename this Item" : "Name this Item"}</h3>
 
-              <input
-                type="text"
-                value={item.name ?? ""}
-                onChange={(e) => {
-                  const name = e.target.value;
-                  setItem({ ...item, name });
-                }}
-              />
+            <input
+              type="text"
+              value={item.name ?? ""}
+              onChange={(e) => {
+                const name = e.target.value;
+                setItem({ ...item, name });
+              }}
+            />
 
-              <h3>{editMode ? "Edit Description" : "Describe this Item"}</h3>
+            <h3>{editMode ? "Edit Description" : "Describe this Item"}</h3>
 
-              <textarea
-                value={item.description ?? ""}
-                onChange={(e) => {
-                  const description = e.target.value;
-                  setItem({ ...item, description });
-                }}
-              />
+            <textarea
+              value={item.description ?? ""}
+              onChange={(e) => {
+                const description = e.target.value;
+                setItem({ ...item, description });
+              }}
+            />
 
-              <h3>{editMode ? "Edit Category" : "Choose Item Category"}</h3>
+            <h3>{editMode ? "Edit Category" : "Choose Item Category"}</h3>
 
-              <Autocomplete
-                className={styles.Autocomplete}
-                freeSolo
-                options={CategoryOptions}
-                value={item.category ?? ""}
-                onChange={(e, value) => {
-                  const category = value ?? undefined;
-                  setItem({ ...item, category });
-                }}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    className={styles.auto_text}
-                    label=""
-                  />
-                )}
-              />
+            <Autocomplete
+              className={styles.Autocomplete}
+              freeSolo
+              options={CategoryOptions}
+              value={item.category ?? ""}
+              onChange={(e, value) => {
+                const category = value ?? undefined;
+                setItem({ ...item, category });
+              }}
+              renderInput={(params) => (
+                <TextField {...params} className={styles.auto_text} label="" />
+              )}
+            />
 
-              <h3>{editMode ? "Edit Effect" : "Choose Item Effect"}</h3>
+            <h3>{editMode ? "Edit Effect" : "Choose Item Effect"}</h3>
 
-              <Autocomplete
-                className={styles.Autocomplete}
-                freeSolo
-                options={EffectOptions}
-                value={item.effect ?? ""}
-                onChange={(e, value) => {
-                  const effect = value ?? undefined;
-                  setItem({ ...item, effect });
-                }}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    className={styles.auto_text}
-                    label=""
-                  />
-                )}
-              />
-            </div>
+            <Autocomplete
+              className={styles.Autocomplete}
+              freeSolo
+              options={EffectOptions}
+              value={item.effect ?? ""}
+              onChange={(e, value) => {
+                const effect = value ?? undefined;
+                setItem({ ...item, effect });
+              }}
+              renderInput={(params) => (
+                <TextField {...params} className={styles.auto_text} label="" />
+              )}
+            />
 
-            <div className={styles.bottom}>
-              <h3>{editMode ? "Edit Notes" : "Add Notes"}</h3>
+            <h3>{editMode ? "Edit Notes" : "Add Notes"}</h3>
 
-              <textarea
-                value={item.notes ?? ""}
-                onChange={(e) => {
-                  const notes = e.target.value;
-                  setItem({ ...item, notes });
-                }}
-              />
+            <textarea
+              value={item.notes ?? ""}
+              onChange={(e) => {
+                const notes = e.target.value;
+                setItem({ ...item, notes });
+              }}
+            />
 
-              <h3>Choose an Image</h3>
+            <h3>Choose an Image</h3>
 
-              <img src={item.image ?? ""} width={300} height={"auto"} />
-              <StandardImageList
-                images={ItemImageData}
-                imageClick={async (img: string) => {
-                  const image = img;
-                  await setItem({ ...item, image });
-                  return image;
-                }}
-              />
-            </div>
+            <img src={item.image ?? ""} width={300} height={"auto"} />
+            <StandardImageList
+              images={ItemImageData}
+              imageClick={async (img: string) => {
+                const image = img;
+                await setItem({ ...item, image });
+                return image;
+              }}
+            />
           </div>
         </DialogContent>
         <DialogActions>

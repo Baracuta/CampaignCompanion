@@ -153,37 +153,24 @@
         }
     }
 
-    .division{
+    .add_edit{
         display: flex;
-        flex-direction: row;
-
-        justify-content: space-between;
-    }
-    .top{
-        display:flex;
         flex-direction: column;
-        width:50%;
+
+        justify-content: space-around;
+
 
         input{
-            max-width: 75%;
+            width: 95%;
         }
-    }
-    .bottom{
-        display: flex;
-        flex-direction: column;
-        width:50%;
-        max-height: 675px;
 
-        justify-content: center;
+        textarea{
+            width:95%;
+        }
 
-        img{
-            
+        img{ 
             max-width:100%;
             max-height: 100%;
-
-            align-content: center;
-            align-self: center;
-            
         }
     }
 }
