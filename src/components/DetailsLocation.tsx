@@ -10,13 +10,13 @@ type LocationProps = {
 
 function LocationDetails (props:LocationProps){
     return(
-        <div className={styles.division}>
-            <div className={styles.top}>
+        <div className={styles.details_division}>
+            <div className={styles.details_top}>
                 <h2>{props.location.name}</h2>
                 <h3>{props.location.description}</h3>
                 <pre className={styles.notes}>{props.location.notes}</pre>
             </div>
-            <div className={styles.bottom}>
+            <div className={styles.details_bottom}>
                 <img src={props.location.image}/>
             </div>
         </div>
