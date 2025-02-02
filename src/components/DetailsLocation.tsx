@@ -1,5 +1,6 @@
 import { Location } from "../types/Location";
 import styles from "../css_modules/display.module.css";
+import MapList from "./MapList";
 
 type LocationProps = {
   location: Location;
@@ -17,6 +18,7 @@ function LocationDetails(props: LocationProps) {
       </div>
       <div className={styles.details_bottom}>
         <pre className={styles.notes}>{props.location.notes}</pre>
+        <MapList images={props.location.maps as Array<string>}/>
       </div>
     </div>
   );

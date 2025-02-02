@@ -16,7 +16,6 @@ import AddNPC from "./AddNPC";
 import AddLocation from "./AddLocation";
 import AddItem from "./AddItem";
 import AddPC from "./AddPC";
-import MapList from "./MapList";
 
 type DisplayProps = {
   name?: string;
@@ -66,9 +65,6 @@ export default function TestDisplay(props: DisplayProps) {
             addThing={props.edit}
             editNpc={props.thing}
           />
-        )}
-        {props.thing.type === "Location" && (
-          <MapList images={props.thing.maps as Array<string>}/>
         )}
          {props.thing.type === "Location" && (
           <AddLocation
