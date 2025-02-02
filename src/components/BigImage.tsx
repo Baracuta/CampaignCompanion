@@ -3,7 +3,18 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { useState } from 'react';
 
-
+const style = {
+  display: 'flex',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 100,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+  size: 10
+};
 
 type ModalProps={
     item:string;
@@ -26,13 +37,13 @@ export default function BigImage(props:ModalProps) {
         open={open}
         onClose={handleClose}
       >
-        <Box>
-            <img
+        <Box sx={style}>
+            <img className={styles.big_image}
                 srcSet={`${props.item}`}
                 src={`${props.item}?w=164&h=164&fit=crop&auto=format`}
                 alt={props.item}
                 loading="lazy"
-                onClick={handleOpen}
+                onClick={handleClose}
             />
         </Box>
       </Modal>

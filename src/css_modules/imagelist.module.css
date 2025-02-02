@@ -16,6 +16,10 @@
         border: solid blue;
     }
 
+    .big_image{
+        object-fit: cover;
+    }
+
 
 }
 
