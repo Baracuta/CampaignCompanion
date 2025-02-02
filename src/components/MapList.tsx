@@ -9,7 +9,6 @@ type MapProps={
 }
 
 export default function MapList(props:MapProps) {
-
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
   setAnchorEl(event.currentTarget);
@@ -18,25 +17,10 @@ export default function MapList(props:MapProps) {
   setAnchorEl(null);
   };
 
-  // const clickImage=(img:string)=>{
-  //   props.imageClick(img);
-  // }
-
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
 
   const itemData = props.images;
-
-
-  // const [anchor2, setAnchor2] = useState<null | HTMLElement>(null);
-
-  // const handleImage = (event: React.MouseEvent<HTMLElement>) => {
-  //   setAnchor2(anchor2 ? null : event.currentTarget);
-  // };
-
-  // const open2 = Boolean(anchor2);
-  // const id2 = open ? 'simple-popper' : undefined;
-
 
 return (
   <div>
@@ -60,18 +44,18 @@ return (
       <ImageList className={styles.image_list} sx={{ width: "auto", height: "350" }} cols={2} rowHeight={650}>
         {itemData.map((item, idx) => (
           <ImageListItem className={styles.image_item} key={`image_${idx}`}>
+            <img
+              srcSet={`${item}`}
+              src={`${item}?w=164&h=164&fit=crop&auto=format`}
+              alt={item}
+              loading="lazy"
+            />
             <BigImage item={item}/>
           </ImageListItem>
         ))}
       </ImageList>
       <button onClick={handleClose}>Close</button>
     </Popover>
-    {/* <Popper id={id2} open={open2} anchorEl={anchor2}>
-      <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
-        The content of the Popper.
-      </Box>
-    </Popper> */}
-
   </div>
 );
 }
