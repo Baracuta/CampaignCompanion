@@ -1,6 +1,7 @@
 import styles from '../css_modules/imagelist.module.css';
 import { Popover, ImageList, ImageListItem } from "@mui/material";
 import { useState } from "react";
+import BigImage from './BigImage';
 
 
 type MapProps={
@@ -56,19 +57,10 @@ return (
         horizontal: "left",
       }}
     >
-      <ImageList className={styles.image_list} sx={{ width: "auto", height: "350" }} cols={2} rowHeight={400}>
+      <ImageList className={styles.image_list} sx={{ width: "auto", height: "350" }} cols={2} rowHeight={650}>
         {itemData.map((item, idx) => (
           <ImageListItem className={styles.image_item} key={`image_${idx}`}>
-            <img
-              srcSet={`${item}`}
-              src={`${item}?w=164&h=164&fit=crop&auto=format`}
-              alt={item}
-              loading="lazy"
-              onClick={() => {
-                // handleImage();
-                
-              }}
-            />
+            <BigImage item={item}/>
           </ImageListItem>
         ))}
       </ImageList>

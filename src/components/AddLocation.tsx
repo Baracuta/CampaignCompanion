@@ -17,7 +17,6 @@ type thingProps = {
   addThing: (id: string, location: Location) => Promise<unknown>;
 };
 
-//Set it up to have a similar style to a card, but with unique properties
 function AddLocation(props: thingProps) {
   const [location, setLocation] = useState<Partial<Location>>(
     props.editLocation ?? {}
