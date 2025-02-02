@@ -49,8 +49,8 @@ return (
               src={`${item}?w=164&h=164&fit=crop&auto=format`}
               alt={item}
               loading="lazy"
+              onClick={()=> BigImage(item)}
             />
-            <BigImage item={item}/>
           </ImageListItem>
         ))}
       </ImageList>

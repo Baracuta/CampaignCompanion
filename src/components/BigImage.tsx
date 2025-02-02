@@ -16,10 +16,9 @@ const style = {
   size: 10
 };
 
-type ModalProps={
-    item:string;
-}
-export default function BigImage(props:ModalProps) {
+//Easiest thing to do is make this a function that, when called, takes the string of whatever called it (the img src) and then make a big version.
+
+export default function BigImage(item:string) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -27,9 +26,9 @@ export default function BigImage(props:ModalProps) {
   return (
     <div>
       <img className={styles.image_item}
-            srcSet={`${props.item}`}
-            src={`${props.item}?w=164&h=164&fit=crop&auto=format`}
-            alt={props.item}
+            srcSet={`${item}`}
+            src={`${item}?w=164&h=164&fit=crop&auto=format`}
+            alt={item}
             loading="lazy"
             onClick={handleOpen}
         />
@@ -39,9 +38,9 @@ export default function BigImage(props:ModalProps) {
       >
         <Box sx={style}>
             <img className={styles.big_image}
-                srcSet={`${props.item}`}
-                src={`${props.item}?w=164&h=164&fit=crop&auto=format`}
-                alt={props.item}
+                srcSet={`${item}`}
+                src={`${item}?w=164&h=164&fit=crop&auto=format`}
+                alt={item}
                 loading="lazy"
                 onClick={handleClose}
             />
