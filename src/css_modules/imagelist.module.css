@@ -13,19 +13,24 @@
     }
 
     .image_item{
-        border: solid blue;
+        border: solid black;
     }
 
     .box{
         display: flex;
-        justify-content: space-around;
-        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        height: 99%;
+
         .big_image{
             display: flex;
-            justify-content: space-around;
-            max-height: 500px;
-            border: solid red;
+            justify-content: center;
+            border: solid black;
             object-fit: contain;
+
+            max-height: 90%;
+            max-width: 90%;
         }
     }
 
