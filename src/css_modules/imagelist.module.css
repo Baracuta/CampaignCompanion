@@ -16,8 +16,17 @@
         border: solid blue;
     }
 
-    .big_image{
-        object-fit: cover;
+    .box{
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        .big_image{
+            display: flex;
+            justify-content: space-around;
+            max-height: 500px;
+            border: solid red;
+            object-fit: contain;
+        }
     }
 
 

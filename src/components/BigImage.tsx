@@ -3,19 +3,6 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { Fragment, useState } from 'react';
 
-const style = {
-  display: 'flex',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 100,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-  size: 10
-};
-
 //Easiest thing to do is make this a function that, when called, takes the string of whatever called it (the img src) and then make a big version.
 type ModalProps={
     item:string;
@@ -38,7 +25,7 @@ export default function BigImage(props:ModalProps) {
         open={open}
         onClose={handleClose}
       >
-        <Box sx={style}>
+        <Box className={styles.box}>
             <img className={styles.big_image}
                 srcSet={`${props.item}`}
                 src={`${props.item}?w=164&h=164&fit=crop&auto=format`}
