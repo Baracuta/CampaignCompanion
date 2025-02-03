@@ -5,5 +5,5 @@ export interface Entity {
     description?:string;
     notes?:string;
     image?:string;
-    isfavourite?:boolean;
+    isFavourite?:boolean;
 }
