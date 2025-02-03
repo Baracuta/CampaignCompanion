@@ -11,7 +11,7 @@ function LocationDetails(props: LocationProps) {
   return (
     <div className={styles.details_division}>
       <div className={styles.details_top}>
-        <BigImage item={props.location.image as string}/>
+        <BigImage src={props.location.image as string}/>
         <div className={styles.info}>
           <h2>{props.location.name}</h2>
           <h3>{props.location.description}</h3>

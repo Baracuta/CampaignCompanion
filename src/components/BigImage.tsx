@@ -5,7 +5,7 @@ import { Fragment, useState } from 'react';
 
 //Easiest thing to do is make this a function that, when called, takes the string of whatever called it (the img src) and then make a big version.
 type ModalProps={
-    item:string;
+    src:string;
 }
 export default function BigImage(props:ModalProps) {
   const [open, setOpen] = useState(false);
@@ -15,9 +15,9 @@ export default function BigImage(props:ModalProps) {
   return (
     <Fragment>
       <img className={styles.image_item}
-            srcSet={`${props.item}`}
-            src={`${props.item}?w=164&h=164&fit=crop&auto=format`}
-            alt={props.item}
+            srcSet={`${props.src}`}
+            src={`${props.src}?w=164&h=164&fit=crop&auto=format`}
+            alt={props.src}
             loading="lazy"
             onClick={handleOpen}
         />
@@ -27,9 +27,9 @@ export default function BigImage(props:ModalProps) {
       >
         <Box className={styles.box}>
             <img className={styles.big_image}
-                srcSet={`${props.item}`}
-                src={`${props.item}?w=164&h=164&fit=crop&auto=format`}
-                alt={props.item}
+                srcSet={`${props.src}`}
+                src={`${props.src}?w=164&h=164&fit=crop&auto=format`}
+                alt={props.src}
                 loading="lazy"
                 onClick={handleClose}
             />

@@ -1,5 +1,6 @@
 import { PlayerCharacter } from "../types/PlayerCharacter";
 import styles from "../css_modules/display.module.css";
+import BigImage from "./BigImage";
 
 
 
@@ -11,8 +12,8 @@ function PlayerCharacterDetails (props:PCProps){
     return(
         <div className={styles.details_division}>
             <div className={styles.details_top}>
-                <img
-                    src={props.pc.image}
+                <BigImage
+                    src={props.pc.image as string}
                 />
                 <div className={styles.info}>
                     <h2>{props.pc.name}</h2>

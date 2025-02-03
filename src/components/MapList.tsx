@@ -20,7 +20,7 @@ export default function MapList(props: MapProps) {
       >
         {itemData.map((item, idx) => (
           <ImageListItem className={styles.image_item} key={`image_${idx}`}>
-            <BigImage item={item}/>
+            <BigImage src={item}/>
           </ImageListItem>
         ))}
       </ImageList>

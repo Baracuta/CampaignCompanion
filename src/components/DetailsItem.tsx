@@ -1,5 +1,6 @@
 import { Item } from "../types/Item";
 import styles from "../css_modules/display.module.css";
+import BigImage from "./BigImage";
 
 
 
@@ -11,8 +12,8 @@ function ItemDetails (props:ItemProps){
     return(
         <div className={styles.details_division}>
             <div className={styles.details_top}>
-                <img
-                    src={props.item.image}
+                <BigImage
+                    src={props.item.image as string}
                 />
                 <div className={styles.info}>
                     <h2>{props.item.name}</h2>

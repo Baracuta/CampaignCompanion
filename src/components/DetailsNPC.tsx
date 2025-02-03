@@ -10,7 +10,7 @@ function NPCDetails(props: NPCProps) {
   return (
     <div className={styles.details_division}>
       <div className={styles.details_top}>
-        <BigImage item={props.npc.image as string} />
+        <BigImage src={props.npc.image as string} />
         <div className={styles.info}>
           <h2>{props.npc.name}</h2>
           <h3>{props.npc.description}</h3>
