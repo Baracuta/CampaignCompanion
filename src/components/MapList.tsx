@@ -9,8 +9,8 @@ type MapProps = {
 export default function MapList(props: MapProps) {
   const itemData = props.images;
 
-  const MagnifyImage = (item:string) => {
-    <BigImage item={item}/>
+  const MagnifyImage = (img:string) => {
+    <BigImage item={img}/>
   }
   return (
     <div>
@@ -27,7 +27,9 @@ export default function MapList(props: MapProps) {
               src={`${item}?w=164&h=164&fit=crop&auto=format`}
               alt={item}
               loading="lazy"
-              onClick={(e)=> MagnifyImage()}
+              onClick={()=> {
+                MagnifyImage(item)
+              }}
             />
           </ImageListItem>
         ))}
