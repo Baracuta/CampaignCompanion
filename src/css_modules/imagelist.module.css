@@ -15,6 +15,9 @@
     .image_item{
         border: solid black;
     }
+    .image_item:hover{
+        cursor: zoom-in;
+    }
 
     .box{
         display: flex;
@@ -31,6 +34,9 @@
 
             max-height: 90%;
             max-width: 90%;
+        }
+        .big_image:hover{
+            cursor: zoom-out;
         }
     }
 
