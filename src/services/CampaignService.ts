@@ -96,6 +96,7 @@ export const createNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
     ...npc,
     id: uuid(),
     type:"NPC",
+    modifiedDate:Date.now(),
   };
 
   const allNPCS = await getNPCs(campaignId);
@@ -185,6 +186,7 @@ export const createLocation = async (location: Location, campaignId: string): Pr
     id: uuid(),
     type:"Location",
     maps:(location.maps ?? []),
+    modifiedDate:Date.now(),
   };
 
   const allLocations = await getLocations(campaignId);
@@ -234,6 +236,11 @@ export const getLocations = async (campaignId: string): Promise<Array<Location>>
 //
 export const updateLocation = async (campaignId: string, location: Location): Promise<Location> => {
   const campaign = await getCampaign(campaignId);
+
+  location = {
+    ...location,
+    modifiedDate:Date.now(),
+  }
   const updatedLocation = location;
 
   const removedOld = await deleteLocation(campaign.id, location.id);
@@ -268,6 +275,7 @@ export const createItem = async (item: Item, campaignId: string): Promise<Item> 
     ...item,
     id: uuid(),
     type:"Item",
+    modifiedDate:Date.now(),
   };
 
   const allItems = await getItems(campaignId);
@@ -317,6 +325,11 @@ export const getItems = async (campaignId: string): Promise<Array<Item>> => {
 //
 export const updateItem = async (campaignId: string, item: Item): Promise<Item> => {
   const campaign = await getCampaign(campaignId);
+
+  item = {
+    ...item,
+    modifiedDate:Date.now(),
+  }
   const updatedItem = item;
 
   const removedOld = await deleteItem(campaign.id, item.id);
@@ -351,6 +364,7 @@ export const createPC = async (pc: PlayerCharacter, campaignId: string): Promise
     ...pc,
     id: uuid(),
     type:"PlayerCharacter",
+    modifiedDate:Date.now(),
   };
 
   const allPCs = await getPCs(campaignId);
@@ -400,6 +414,11 @@ export const getPCs = async (campaignId: string): Promise<Array<PlayerCharacter>
 //
 export const updatePC = async (campaignId: string, pc: PlayerCharacter): Promise<PlayerCharacter> => {
   const campaign = await getCampaign(campaignId);
+
+  pc = {
+    ...pc,
+    modifiedDate:Date.now(),
+  }
   const updatedPC = pc;
 
   const removedOld = await deletePC(campaign.id, pc.id);
