@@ -6,4 +6,5 @@ export interface Entity {
     notes?:string;
     image?:string;
     isFavourite?:boolean;
+    modifiedDate?:Date;
 }
