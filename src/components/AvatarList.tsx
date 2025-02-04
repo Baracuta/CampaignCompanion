@@ -6,10 +6,12 @@ type listProps = {
 };
 
 function AvatarList(props: listProps) {
-  const thingsArray = props.things.sort((a: Entity, b: Entity) => b.modifiedDate - a.modifiedDate);
+  const thingsArray = (props.things ?? []).sort(
+    (a: Entity, b: Entity) => b.modifiedDate - a.modifiedDate
+  );
 
   const divs = (thingsArray ?? []).map((datum) => (
-    <AvatarComponent key={datum.id} thing={datum}/>
+    <AvatarComponent key={datum.id} thing={datum} />
   ));
 
   return divs;

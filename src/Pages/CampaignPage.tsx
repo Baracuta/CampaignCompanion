@@ -6,8 +6,6 @@ import { ASSETS_PATH } from "../constants/assets_path";
 import TopBar from "../components/TopBar";
 import ToolBar from "../components/ToolBar";
 import { useCampaign } from "../hooks/useCampaign";
-import { Item } from "../types/Item";
-import { NPC } from "../types/NPC";
 import { Entity } from "../types/Entity";
 
 function CampaignPage() {
@@ -27,7 +25,7 @@ function CampaignPage() {
       />
 
       <ToolBar
-        favourites={campaign?.items as Array<Item>}
+        favourites={campaign?.items as Array<Entity>}
         recentEdits={campaign?.npcs as Array<Entity>}
       />
 

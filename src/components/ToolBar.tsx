@@ -1,13 +1,9 @@
 import styles from '../css_modules/toolbar.module.css'
 import { Entity } from '../types/Entity'
-import { Item } from '../types/Item'
-import { Location } from '../types/Location'
-import { NPC } from '../types/NPC'
-import { PlayerCharacter } from '../types/PlayerCharacter'
 import AvatarList from './AvatarList'
 
 type BarProps={
-    favourites:Array<NPC | Location | Item | PlayerCharacter>;
+    favourites:Array<Entity>;
     recentEdits:Array<Entity>;
 }
 
