@@ -1,0 +1,14 @@
+.css-1sx06gy-MuiAvatarGroup-root .MuiAvatar-root{
+    border: solid red !important;
+    width: 5000p;
+}
+@media screen and (min-width:1024px){
+    .css-1sx06gy-MuiAvatarGroup-root .MuiAvatar-root{
+        border: solid red !important;
+        width: 5000p;
+    }
+    :global(.MuiAvatarGroup-avatar){
+        border:solid red;
+    }
+
+}
