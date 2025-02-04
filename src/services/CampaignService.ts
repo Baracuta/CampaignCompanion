@@ -16,6 +16,7 @@ export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
   campaign = {
     ...campaign,
     id: uuid(),
+    entities: [],
     npcs: [],
     locations: [],
     items: [],

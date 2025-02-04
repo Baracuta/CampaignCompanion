@@ -13,8 +13,13 @@ function CampaignPage() {
 
   const campaign = useCampaign(id as string).campaign;
 
-  console.log(campaign);
+  const campaignEntities = ((
+    campaign?.npcs as Array<Entity> ??[]).concat(
+      campaign?.locations as Array<Entity> ?? []).concat(
+        campaign?.items as Array<Entity> ?? []).concat(
+          campaign?.playerCharacters as Array<Entity> ?? [])) as Array<Entity>;
 
+        
   return (
     <main className={styles.main}>
       <TopBar
@@ -26,7 +31,7 @@ function CampaignPage() {
 
       <ToolBar
         favourites={campaign?.items as Array<Entity>}
-        recentEdits={campaign?.npcs as Array<Entity>}
+        recentEdits={campaignEntities}
       />
 
       <div className={styles.card_panel}>
