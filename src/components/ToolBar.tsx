@@ -1,4 +1,5 @@
 import styles from '../css_modules/toolbar.module.css'
+import { Entity } from '../types/Entity'
 import { Item } from '../types/Item'
 import { Location } from '../types/Location'
 import { NPC } from '../types/NPC'
@@ -7,7 +8,7 @@ import AvatarList from './AvatarList'
 
 type BarProps={
     favourites:Array<NPC | Location | Item | PlayerCharacter>;
-    recentEdits:Array<NPC | Location | Item | PlayerCharacter>;
+    recentEdits:Array<Entity>;
 }
 
 function ToolBar(props:BarProps){

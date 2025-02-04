@@ -1,15 +1,14 @@
-import { NPC } from "../types/NPC";
-import { Location } from "../types/Location";
-import { Item } from "../types/Item";
-import { PlayerCharacter } from "../types/PlayerCharacter";
 import AvatarComponent from "./AvatarComponent";
+import { Entity } from "../types/Entity";
 
 type listProps = {
-  things: Array<NPC | Location | Item | PlayerCharacter>;
+  things: Array<Entity>;
 };
 
 function AvatarList(props: listProps) {
-  const divs = (props.things ?? []).map((datum) => (
+  const thingsArray = props.things.sort((a: Entity, b: Entity) => b.modifiedDate - a.modifiedDate);
+
+  const divs = (thingsArray ?? []).map((datum) => (
     <AvatarComponent key={datum.id} thing={datum}/>
   ));
 

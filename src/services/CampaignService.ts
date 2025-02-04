@@ -144,6 +144,11 @@ export const getNPCs = async (campaignId: string): Promise<Array<NPC>> => {
 //Uncertain if this works because I haven't had a way to test it yet, but it will be necessary anytime an NPC's props are updated.
 export const updateNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
   const campaign = await getCampaign(campaignId);
+  
+  npc={
+    ...npc,
+    modifiedDate:Date.now(),
+  }
   const updatedNpc = npc;
 
   const removedOld = await deleteNPC(campaign.id, npc.id);
