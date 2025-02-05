@@ -78,6 +78,8 @@
             flex-direction: row;
             justify-content: right;
             align-items: center;
+
+            
         }
 
         textarea{
@@ -101,6 +103,9 @@
                 color: white;
                 border:none;
             }
+        }
+        .icon:hover{
+            cursor: pointer;
         }
     }
 
