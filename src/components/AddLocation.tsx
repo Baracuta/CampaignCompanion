@@ -114,13 +114,13 @@ function AddLocation(props: thingProps) {
               <div onClick={async()=>{
                 const isFavourite = false;
                 await setLocation({...location, isFavourite})
-              }}> <StarIcon/>
+              }}> <StarIcon fontSize="large"/>
               </div>
               :
               <div onClick={async()=>{
                 const isFavourite = true;
                 await setLocation({...location, isFavourite})
-              }}> <StarBorderIcon/>
+              }}> <StarBorderIcon fontSize="large"/>
               </div>
             }
           </div>

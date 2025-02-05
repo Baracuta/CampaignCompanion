@@ -136,13 +136,13 @@ function AddItem(props: thingProps) {
               <div onClick={async()=>{
                 const isFavourite = false;
                 await setItem({...item, isFavourite})
-              }}> <StarIcon/>
+              }}> <StarIcon fontSize="large"/>
               </div>
               :
               <div onClick={async()=>{
                 const isFavourite = true;
                 await setItem({...item, isFavourite})
-              }}> <StarBorderIcon/>
+              }}> <StarBorderIcon fontSize="large"/>
               </div>
             }
           </div>
