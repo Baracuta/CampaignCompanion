@@ -134,13 +134,13 @@ function AddPC(props: thingProps) {
             <h3>Favourite/Unfavourite</h3>
 
             {favourite ?
-              <div onClick={async()=>{
+              <div className={styles.icon} onClick={async()=>{
                 const isFavourite = false;
                 await setPC({...pc, isFavourite})
               }}> <StarIcon fontSize="large"/>
               </div>
               :
-              <div onClick={async()=>{
+              <div className={styles.icon} onClick={async()=>{
                 const isFavourite = true;
                 await setPC({...pc, isFavourite})
               }}> <StarBorderIcon fontSize="large"/>

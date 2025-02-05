@@ -133,13 +133,13 @@ function AddItem(props: thingProps) {
             <h3>Favourite/Unfavourite</h3>
 
             {favourite ?
-              <div onClick={async()=>{
+              <div className={styles.icon} onClick={async()=>{
                 const isFavourite = false;
                 await setItem({...item, isFavourite})
               }}> <StarIcon fontSize="large"/>
               </div>
               :
-              <div onClick={async()=>{
+              <div className={styles.icon} onClick={async()=>{
                 const isFavourite = true;
                 await setItem({...item, isFavourite})
               }}> <StarBorderIcon fontSize="large"/>

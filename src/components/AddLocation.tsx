@@ -111,13 +111,13 @@ function AddLocation(props: thingProps) {
             <h3>Favourite/Unfavourite</h3>
 
             {favourite ?
-              <div onClick={async()=>{
+              <div className={styles.icon} onClick={async()=>{
                 const isFavourite = false;
                 await setLocation({...location, isFavourite})
               }}> <StarIcon fontSize="large"/>
               </div>
               :
-              <div onClick={async()=>{
+              <div className={styles.icon} onClick={async()=>{
                 const isFavourite = true;
                 await setLocation({...location, isFavourite})
               }}> <StarBorderIcon fontSize="large"/>
