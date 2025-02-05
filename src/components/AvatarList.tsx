@@ -1,4 +1,4 @@
-import styles from '../css_modules/avatars.module.css'
+// import styles from '../css_modules/avatars.module.css'
 import AvatarComponent from "./AvatarComponent";
 import { Entity } from "../types/Entity";
 import { AvatarGroup } from "@mui/material";
