@@ -13,7 +13,7 @@ function ToolBar(props:BarProps){
         <div className={styles.tool_bar}>
 
             <div className={styles.quick_access}>
-                <h4>Quick Access:</h4>
+                <h4>Favourites:</h4>
                 <AvatarList things={props.favourites}/>
             </div>
 
