@@ -6,6 +6,8 @@ import {
   Autocomplete,
   TextField,
 } from "@mui/material";
+import StarIcon from '@mui/icons-material/Star';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 import styles from "../css_modules/display.module.css";
 import { Fragment, useState } from "react";
 import { Item } from "../types/Item";
@@ -35,6 +37,7 @@ function AddItem(props: thingProps) {
   };
 
   const editMode = props.editItem != null;
+  const favourite = item.isFavourite === true;
 
   return (
     <Fragment>
@@ -123,7 +126,25 @@ function AddItem(props: thingProps) {
                 await setItem({ ...item, image });
                 return image;
               }}
+
+              
             />
+
+            <h3>Favourite/Unfavourite</h3>
+
+            {favourite ?
+              <div onClick={async()=>{
+                const isFavourite = false;
+                await setItem({...item, isFavourite})
+              }}> <StarIcon/>
+              </div>
+              :
+              <div onClick={async()=>{
+                const isFavourite = true;
+                await setItem({...item, isFavourite})
+              }}> <StarBorderIcon/>
+              </div>
+            }
           </div>
         </DialogContent>
         <DialogActions>

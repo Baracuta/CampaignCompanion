@@ -4,6 +4,8 @@ import {
   DialogContent,
   DialogActions,
 } from "@mui/material";
+import StarIcon from '@mui/icons-material/Star';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 import styles from "../css_modules/display.module.css";
 import { Fragment, useState } from "react";
 import { Location } from "../types/Location";
@@ -33,6 +35,7 @@ function AddLocation(props: thingProps) {
   };
 
   const editMode = props.editLocation != null;
+  const favourite = location.isFavourite ===true;
 
   return (
     <Fragment>
@@ -104,6 +107,22 @@ function AddLocation(props: thingProps) {
                 return maps;
               }}
             />
+
+            <h3>Favourite/Unfavourite</h3>
+
+            {favourite ?
+              <div onClick={async()=>{
+                const isFavourite = false;
+                await setLocation({...location, isFavourite})
+              }}> <StarIcon/>
+              </div>
+              :
+              <div onClick={async()=>{
+                const isFavourite = true;
+                await setLocation({...location, isFavourite})
+              }}> <StarBorderIcon/>
+              </div>
+            }
           </div>
         </DialogContent>
         <DialogActions>

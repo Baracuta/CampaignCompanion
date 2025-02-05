@@ -4,6 +4,8 @@ import {
   DialogContent,
   DialogActions,
 } from "@mui/material";
+import StarIcon from '@mui/icons-material/Star';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 import styles from "../css_modules/display.module.css";
 import { Fragment, useState } from "react";
 import { PlayerCharacter } from "../types/PlayerCharacter";
@@ -31,6 +33,7 @@ function AddPC(props: thingProps) {
   };
 
   const editMode = props.editPC != null;
+  const favourite = pc.isFavourite === true;
 
   return (
     <Fragment>
@@ -127,6 +130,22 @@ function AddPC(props: thingProps) {
                 return image;
               }}
             />
+
+            <h3>Favourite/Unfavourite</h3>
+
+            {favourite ?
+              <div onClick={async()=>{
+                const isFavourite = false;
+                await setPC({...pc, isFavourite})
+              }}> <StarIcon/>
+              </div>
+              :
+              <div onClick={async()=>{
+                const isFavourite = true;
+                await setPC({...pc, isFavourite})
+              }}> <StarBorderIcon/>
+              </div>
+            }
           </div>
         </DialogContent>
         <DialogActions>
