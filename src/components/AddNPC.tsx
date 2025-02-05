@@ -4,6 +4,8 @@ import {
   DialogContent,
   DialogActions,
 } from "@mui/material";
+import StarIcon from '@mui/icons-material/Star';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 import styles from "../css_modules/display.module.css";
 import { Fragment, useState } from "react";
 import { NPC } from "../types/NPC";
@@ -31,6 +33,7 @@ function AddNPC(props: thingProps) {
   };
 
   const editMode = props.editNpc != null;
+  const favourite = npc.isFavourite === true;
 
   return (
     <Fragment>
@@ -88,6 +91,22 @@ function AddNPC(props: thingProps) {
                 return image;
               }}
             />
+
+            <h3>Favourite/Unfavourite</h3>
+
+            {favourite ?
+              <div onClick={async()=>{
+                const isFavourite = false;
+                await setNpc({...npc, isFavourite})
+              }}> <StarIcon/>
+              </div>
+              :
+              <div onClick={async()=>{
+                const isFavourite = true;
+                await setNpc({...npc, isFavourite})
+              }}> <StarBorderIcon/>
+              </div>
+            }
           </div>
         </DialogContent>
         <DialogActions>

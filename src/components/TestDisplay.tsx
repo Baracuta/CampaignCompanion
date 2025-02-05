@@ -59,6 +59,7 @@ export default function TestDisplay(props: DisplayProps) {
         }}
       >
         <div className={styles.button_panel}>
+
         {props.thing.type === "NPC" && (
           <AddNPC
             campaignId={props.campaign.id as string}
