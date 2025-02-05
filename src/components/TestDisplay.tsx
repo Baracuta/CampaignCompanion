@@ -1,5 +1,7 @@
 import Popover from "@mui/material/Popover";
 import Button from "@mui/material/Button";
+import StarIcon from '@mui/icons-material/Star';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 import { useState } from "react";
 import styles from "../css_modules/display.module.css";
 import { NPC } from "../types/NPC";
@@ -58,8 +60,13 @@ export default function TestDisplay(props: DisplayProps) {
           horizontal: "left",
         }}
       >
+        
         <div className={styles.button_panel}>
-
+          {props.thing.isFavourite ? 
+            <StarIcon fontSize="large"/>
+            :
+            <StarBorderIcon fontSize="large"/>
+          }
         {props.thing.type === "NPC" && (
           <AddNPC
             campaignId={props.campaign.id as string}

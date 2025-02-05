@@ -98,13 +98,13 @@ function AddNPC(props: thingProps) {
               <div onClick={async()=>{
                 const isFavourite = false;
                 await setNpc({...npc, isFavourite})
-              }}> <StarIcon/>
+              }}> <StarIcon fontSize="large"/>
               </div>
               :
               <div onClick={async()=>{
                 const isFavourite = true;
                 await setNpc({...npc, isFavourite})
-              }}> <StarBorderIcon/>
+              }}> <StarBorderIcon fontSize="large"/>
               </div>
             }
           </div>
