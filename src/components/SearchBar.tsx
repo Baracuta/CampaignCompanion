@@ -1,0 +1,1 @@
+//This is gonna be the component for the searchbar.
