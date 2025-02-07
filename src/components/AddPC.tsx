@@ -4,8 +4,8 @@ import {
   DialogContent,
   DialogActions,
 } from "@mui/material";
-import StarIcon from '@mui/icons-material/Star';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
+import StarIcon from "@mui/icons-material/Star";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
 import styles from "../css_modules/display.module.css";
 import { Fragment, useState } from "react";
 import { PlayerCharacter } from "../types/PlayerCharacter";
@@ -51,6 +51,32 @@ function AddPC(props: thingProps) {
         </DialogTitle>
         <DialogContent>
           <div className={styles.add_edit}>
+            <h3>Favourite</h3>
+
+            {favourite ? (
+              <div
+                className={styles.icon}
+                onClick={async () => {
+                  const isFavourite = false;
+                  await setPC({ ...pc, isFavourite });
+                }}
+              >
+                {" "}
+                <StarIcon fontSize="large" />
+              </div>
+            ) : (
+              <div
+                className={styles.icon}
+                onClick={async () => {
+                  const isFavourite = true;
+                  await setPC({ ...pc, isFavourite });
+                }}
+              >
+                {" "}
+                <StarBorderIcon fontSize="large" />
+              </div>
+            )}
+
             <h3>
               {editMode
                 ? "Rename this Player Character"
@@ -130,22 +156,6 @@ function AddPC(props: thingProps) {
                 return image;
               }}
             />
-
-            <h3>Favourite/Unfavourite</h3>
-
-            {favourite ?
-              <div className={styles.icon} onClick={async()=>{
-                const isFavourite = false;
-                await setPC({...pc, isFavourite})
-              }}> <StarIcon fontSize="large"/>
-              </div>
-              :
-              <div className={styles.icon} onClick={async()=>{
-                const isFavourite = true;
-                await setPC({...pc, isFavourite})
-              }}> <StarBorderIcon fontSize="large"/>
-              </div>
-            }
           </div>
         </DialogContent>
         <DialogActions>

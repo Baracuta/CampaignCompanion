@@ -6,8 +6,8 @@ import {
   Autocomplete,
   TextField,
 } from "@mui/material";
-import StarIcon from '@mui/icons-material/Star';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
+import StarIcon from "@mui/icons-material/Star";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
 import styles from "../css_modules/display.module.css";
 import { Fragment, useState } from "react";
 import { Item } from "../types/Item";
@@ -53,6 +53,32 @@ function AddItem(props: thingProps) {
         </DialogTitle>
         <DialogContent>
           <div className={styles.add_edit}>
+            <h3>Favourite</h3>
+
+            {favourite ? (
+              <div
+                className={styles.icon}
+                onClick={async () => {
+                  const isFavourite = false;
+                  await setItem({ ...item, isFavourite });
+                }}
+              >
+                {" "}
+                <StarIcon fontSize="large" />
+              </div>
+            ) : (
+              <div
+                className={styles.icon}
+                onClick={async () => {
+                  const isFavourite = true;
+                  await setItem({ ...item, isFavourite });
+                }}
+              >
+                {" "}
+                <StarBorderIcon fontSize="large" />
+              </div>
+            )}
+
             <h3>{editMode ? "Rename this Item" : "Name this Item"}</h3>
 
             <input
@@ -126,25 +152,7 @@ function AddItem(props: thingProps) {
                 await setItem({ ...item, image });
                 return image;
               }}
-
-              
             />
-
-            <h3>Favourite/Unfavourite</h3>
-
-            {favourite ?
-              <div className={styles.icon} onClick={async()=>{
-                const isFavourite = false;
-                await setItem({...item, isFavourite})
-              }}> <StarIcon fontSize="large"/>
-              </div>
-              :
-              <div className={styles.icon} onClick={async()=>{
-                const isFavourite = true;
-                await setItem({...item, isFavourite})
-              }}> <StarBorderIcon fontSize="large"/>
-              </div>
-            }
           </div>
         </DialogContent>
         <DialogActions>

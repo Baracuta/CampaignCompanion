@@ -4,8 +4,8 @@ import {
   DialogContent,
   DialogActions,
 } from "@mui/material";
-import StarIcon from '@mui/icons-material/Star';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
+import StarIcon from "@mui/icons-material/Star";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
 import styles from "../css_modules/display.module.css";
 import { Fragment, useState } from "react";
 import { Location } from "../types/Location";
@@ -35,7 +35,7 @@ function AddLocation(props: thingProps) {
   };
 
   const editMode = props.editLocation != null;
-  const favourite = location.isFavourite ===true;
+  const favourite = location.isFavourite === true;
 
   return (
     <Fragment>
@@ -53,6 +53,32 @@ function AddLocation(props: thingProps) {
         </DialogTitle>
         <DialogContent>
           <div className={styles.add_edit}>
+            <h3>Favourite</h3>
+
+            {favourite ? (
+              <div
+                className={styles.icon}
+                onClick={async () => {
+                  const isFavourite = false;
+                  await setLocation({ ...location, isFavourite });
+                }}
+              >
+                {" "}
+                <StarIcon fontSize="large" />
+              </div>
+            ) : (
+              <div
+                className={styles.icon}
+                onClick={async () => {
+                  const isFavourite = true;
+                  await setLocation({ ...location, isFavourite });
+                }}
+              >
+                {" "}
+                <StarBorderIcon fontSize="large" />
+              </div>
+            )}
+
             <h3>{editMode ? "Rename this Location" : "Name this Location"}</h3>
 
             <input
@@ -107,22 +133,6 @@ function AddLocation(props: thingProps) {
                 return maps;
               }}
             />
-
-            <h3>Favourite/Unfavourite</h3>
-
-            {favourite ?
-              <div className={styles.icon} onClick={async()=>{
-                const isFavourite = false;
-                await setLocation({...location, isFavourite})
-              }}> <StarIcon fontSize="large"/>
-              </div>
-              :
-              <div className={styles.icon} onClick={async()=>{
-                const isFavourite = true;
-                await setLocation({...location, isFavourite})
-              }}> <StarBorderIcon fontSize="large"/>
-              </div>
-            }
           </div>
         </DialogContent>
         <DialogActions>
