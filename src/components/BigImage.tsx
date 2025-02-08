@@ -15,8 +15,7 @@ export default function BigImage(props:ModalProps) {
   return (
     <Fragment>
       <img className={styles.image_item}
-            srcSet={`${props.src}`}
-            src={`${props.src}?w=164&h=164&fit=crop&auto=format`}
+            src={`${props.src}`}
             alt={props.src}
             loading="lazy"
             onClick={handleOpen}
@@ -27,8 +26,7 @@ export default function BigImage(props:ModalProps) {
       >
         <Box className={styles.box}>
             <img className={styles.big_image}
-                srcSet={`${props.src}`}
-                src={`${props.src}?w=164&h=164&fit=crop&auto=format`}
+                src={`${props.src}`}
                 alt={props.src}
                 loading="lazy"
                 onClick={handleClose}
