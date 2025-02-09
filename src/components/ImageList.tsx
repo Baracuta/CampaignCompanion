@@ -54,7 +54,7 @@ export default function StandardImageList(props:ListProps) {
           {itemData.map((item) => (
             <ImageListItem className={styles.image_item} key={item.img}>
               <img
-                src={`${ASSETS_PATH}${item.img}?w=164&h=164&fit=crop&auto=format`}
+                src={`${ASSETS_PATH}${item.img}`}
                 alt={item.title}
                 loading="lazy"
                 onClick={() => {
