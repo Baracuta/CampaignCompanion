@@ -12,6 +12,7 @@ import { createPC, deletePC, updatePC } from "../services/CampaignService";
 import { Item } from "../types/Item";
 import { NPC } from "../types/NPC";
 import { Location } from "../types/Location";
+import EntityList from "../Utilities/Entities";
 
 function CampaignPlayerCharacters() {
   const { id } = useParams();
@@ -30,10 +31,7 @@ function CampaignPlayerCharacters() {
           buttonNav={`/campaign/${campaign?.id}`}
         />
 
-        <ToolBar
-          favourites={campaign?.items as Array<Item>}
-          recentEdits={campaign?.npcs as Array<NPC>}
-        />
+        <ToolBar campaignEntities={EntityList(campaign)}/>
       </div>
 
       <CardPanel>

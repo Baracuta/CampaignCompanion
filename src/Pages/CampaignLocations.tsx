@@ -12,6 +12,7 @@ import { Location } from "../types/Location";
 import { Item } from "../types/Item";
 import { NPC } from "../types/NPC";
 import { PlayerCharacter } from "../types/PlayerCharacter";
+import EntityList from "../Utilities/Entities";
 
 function CampaignLocations() {
   const { id } = useParams();
@@ -30,10 +31,7 @@ function CampaignLocations() {
           buttonNav={`/campaign/${campaign?.id}`}
         />
 
-        <ToolBar
-          favourites={campaign?.items as Array<Item>}
-          recentEdits={campaign?.npcs as Array<NPC>}
-        />
+        <ToolBar campaignEntities={EntityList(campaign)}/>
       </div>
 
       <CardPanel>
