@@ -6,16 +6,12 @@ import { ASSETS_PATH } from "../constants/assets_path";
 import TopBar from "../components/TopBar";
 import ToolBar from "../components/ToolBar";
 import { useCampaign } from "../hooks/useCampaign";
-import { Entity } from "../types/Entity";
 import EntityList from "../Utilities/Entities";
 
 function CampaignPage() {
   const { id } = useParams();
 
   const campaign = useCampaign(id as string).campaign;
-
-  const campaignEntities = (EntityList(campaign));
-
         
   return (
     <main className={styles.main}>
@@ -26,10 +22,7 @@ function CampaignPage() {
         image={`${ASSETS_PATH}/Emblem 1 3.png`}
       />
 
-      <ToolBar
-        favourites={campaign?.items as Array<Entity>}
-        recentEdits={campaignEntities}
-      />
+      <ToolBar campaignEntities={EntityList(campaign)}/>
 
       <div className={styles.card_panel}>
         <Card
