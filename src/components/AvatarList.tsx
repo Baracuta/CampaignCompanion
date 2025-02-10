@@ -9,7 +9,7 @@ type listProps = {
 
 function AvatarList(props: listProps) {
   
-  const divs = (props.things ?? []).map((datum) => (
+  const divs = (props.things.slice(0,5) ?? []).map((datum) => (
     <AvatarComponent key={datum.id} thing={datum} />
   ));
 
