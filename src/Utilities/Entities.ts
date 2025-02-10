@@ -1,17 +1,13 @@
 import { Campaign } from "../types/Campaign"
 import { Entity } from "../types/Entity";
 
-type compProps={
-    campaign:Campaign;
-}
-
-function EntityList(props:compProps){
+function EntityList(campaign:Campaign){
 
     return [
-        ...(props.campaign.npcs ?? []),
-        ...(props.campaign.locations ?? []),
-        ...(props.campaign.items ?? []),
-        ...(props.campaign.playerCharacters ?? [])
+        ...(campaign?.npcs ?? []),
+        ...(campaign?.locations ?? []),
+        ...(campaign?.items ?? []),
+        ...(campaign?.playerCharacters ?? [])
     ] as Array<Entity>
 }
 

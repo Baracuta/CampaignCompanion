@@ -7,17 +7,14 @@ import TopBar from "../components/TopBar";
 import ToolBar from "../components/ToolBar";
 import { useCampaign } from "../hooks/useCampaign";
 import { Entity } from "../types/Entity";
+import EntityList from "../Utilities/Entities";
 
 function CampaignPage() {
   const { id } = useParams();
 
   const campaign = useCampaign(id as string).campaign;
 
-  const campaignEntities = ((
-    campaign?.npcs as Array<Entity> ??[]).concat(
-      campaign?.locations as Array<Entity> ?? []).concat(
-        campaign?.items as Array<Entity> ?? []).concat(
-          campaign?.playerCharacters as Array<Entity> ?? [])) as Array<Entity>;
+  const campaignEntities = (EntityList(campaign));
 
         
   return (
