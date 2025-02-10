@@ -1,16 +1,16 @@
 import { Campaign } from "../types/Campaign"
 
 type compProps={
-    thing:Campaign;
+    campaign:Campaign;
 }
 
 function EntityList(props:compProps){
 
-    const campaign={props.thing}
-
     return [
-        ...{props.campaign.npcs ?? []},
-        ...{props.campaign.locations ?? []},
+        ...(props.campaign.npcs ?? []),
+        ...(props.campaign.locations ?? []),
+        ...(props.campaign.items ?? []),
+        ...(props.campaign.playerCharacters ?? [])
     ]
 }
 
