@@ -1,4 +1,5 @@
 import { Campaign } from "../types/Campaign"
+import { Entity } from "../types/Entity";
 
 type compProps={
     campaign:Campaign;
@@ -11,7 +12,7 @@ function EntityList(props:compProps){
         ...(props.campaign.locations ?? []),
         ...(props.campaign.items ?? []),
         ...(props.campaign.playerCharacters ?? [])
-    ]
+    ] as Array<Entity>
 }
 
 
