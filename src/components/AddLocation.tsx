@@ -12,6 +12,7 @@ import { Location } from "../types/Location";
 import { ItemImageData } from "../constants/item_image_bank";
 import StandardImageList from "./ImageList";
 import SingleFileUploader from "./FileUploader";
+import MapList from "./MapList";
 
 type thingProps = {
   campaignId: string;
@@ -133,6 +134,8 @@ function AddLocation(props: thingProps) {
                 return maps;
               }}
             />
+
+            <MapList images={location.maps as Array<string>}/>
           </div>
         </DialogContent>
         <DialogActions>
