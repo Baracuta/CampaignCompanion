@@ -1,7 +1,7 @@
 import Popover from "@mui/material/Popover";
 import Button from "@mui/material/Button";
-import StarIcon from '@mui/icons-material/Star';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
+import StarIcon from "@mui/icons-material/Star";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
 import { useState } from "react";
 import styles from "../css_modules/display.module.css";
 import { NPC } from "../types/NPC";
@@ -20,14 +20,13 @@ import AddItem from "./AddItem";
 import AddPC from "./AddPC";
 
 type DisplayProps = {
-  name?: string;
-  description?: string;
-  notes?: string;
-  image?: string;
   thing: NPC | Location | Item | PlayerCharacter;
   campaign: Campaign;
-  delete:(campaign:string,thing:string) => Promise<unknown>;
-  edit:(campaign:string, thing:NPC|Location|Item|PlayerCharacter) => Promise<unknown>;
+  delete: (campaign: string, thing: string) => Promise<unknown>;
+  edit: (
+    campaign: string,
+    thing: NPC | Location | Item | PlayerCharacter
+  ) => Promise<unknown>;
 };
 
 export default function TestDisplay(props: DisplayProps) {
@@ -60,41 +59,40 @@ export default function TestDisplay(props: DisplayProps) {
           horizontal: "left",
         }}
       >
-        
         <div className={styles.button_panel}>
-          {props.thing.isFavourite ? 
-            <StarIcon fontSize="large"/>
-            :
-            <StarBorderIcon fontSize="large"/>
-          }
-        {props.thing.type === "NPC" && (
-          <AddNPC
-            campaignId={props.campaign.id as string}
-            addThing={props.edit}
-            editNpc={props.thing}
-          />
-        )}
-         {props.thing.type === "Location" && (
-          <AddLocation
-            campaignId={props.campaign.id as string}
-            addThing={props.edit}
-            editLocation={props.thing}
-          />
-        )}
-        {props.thing.type === "Item" && (
-          <AddItem
-            campaignId={props.campaign.id as string}
-            addThing={props.edit}
-            editItem={props.thing}
-          />
-        )}
-        {props.thing.type === "PlayerCharacter" && (
-          <AddPC
-            campaignId={props.campaign.id as string}
-            addThing={props.edit}
-            editPC={props.thing}
-          />
-        )}
+          {props.thing.isFavourite ? (
+            <StarIcon fontSize="large" />
+          ) : (
+            <StarBorderIcon fontSize="large" />
+          )}
+          {props.thing.type === "NPC" && (
+            <AddNPC
+              campaignId={props.campaign.id as string}
+              addThing={props.edit}
+              editNpc={props.thing}
+            />
+          )}
+          {props.thing.type === "Location" && (
+            <AddLocation
+              campaignId={props.campaign.id as string}
+              addThing={props.edit}
+              editLocation={props.thing}
+            />
+          )}
+          {props.thing.type === "Item" && (
+            <AddItem
+              campaignId={props.campaign.id as string}
+              addThing={props.edit}
+              editItem={props.thing}
+            />
+          )}
+          {props.thing.type === "PlayerCharacter" && (
+            <AddPC
+              campaignId={props.campaign.id as string}
+              addThing={props.edit}
+              editPC={props.thing}
+            />
+          )}
           <DeleteDialogue
             delete={props.delete}
             thingID={props.thing.id}
@@ -103,9 +101,7 @@ export default function TestDisplay(props: DisplayProps) {
           <button onClick={handleClose}>Close</button>
         </div>
 
-        {props.thing.type === "NPC" && (
-          <NPCDetails npc={props.thing as NPC} />
-        )}
+        {props.thing.type === "NPC" && <NPCDetails npc={props.thing as NPC} />}
         {props.thing.type === "Location" && (
           <LocationDetails location={props.thing as Location} />
         )}
