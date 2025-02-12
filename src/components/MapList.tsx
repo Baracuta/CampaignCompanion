@@ -23,11 +23,13 @@ export default function MapList(props: MapProps) {
         cols={2}
         rowHeight={100}
       >
-        {itemData.map((item, idx) => (
-          <ImageListItem className={styles.image_item} key={`image_${idx}`}>
-            <BigImage src={FindImage(item)}/>
-          </ImageListItem>
-        ))}
+        {itemData != null && (
+          itemData.map((item, idx) => (
+            <ImageListItem className={styles.image_item} key={`image_${idx}`}>
+              <BigImage src={FindImage(item)}/>
+            </ImageListItem>
+          ))
+      )}
       </ImageList>
     </div>
   );
