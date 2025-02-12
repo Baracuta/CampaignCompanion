@@ -12,5 +12,5 @@ export const useImage = (imageId: string) => {
         })
     }, [imageId]);
 
-    return image;
+    return image as string;
 };
