@@ -15,6 +15,8 @@ import { CategoryOptions } from "../constants/category_options";
 import { EffectOptions } from "../constants/effect_options";
 import { ItemImageData } from "../constants/item_image_bank";
 import StandardImageList from "./ImageList";
+import { useImage } from "../hooks/useImage";
+import { uploadImage } from "../services/ImageService";
 
 type thingProps = {
   campaignId: string;
@@ -38,6 +40,8 @@ function AddItem(props: thingProps) {
 
   const editMode = props.editItem != null;
   const favourite = item.isFavourite === true;
+  const image = useImage(item.image as string);
+  
 
   return (
     <Fragment>
@@ -144,12 +148,13 @@ function AddItem(props: thingProps) {
 
             <h3>Choose an Image</h3>
 
-            <img src={item.image ?? ""} width={300} height={"auto"} />
+            <img src={image ?? ""} width={300} height={"auto"} />
             <StandardImageList
               images={ItemImageData}
               imageClick={async (img: string) => {
                 const image = img;
-                await setItem({ ...item, image });
+                const imageId = await uploadImage(img);
+                await setItem({ ...item, image: imageId });
                 return image;
               }}
             />

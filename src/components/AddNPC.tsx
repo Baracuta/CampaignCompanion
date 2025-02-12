@@ -36,7 +36,6 @@ function AddNPC(props: thingProps) {
 
   const editMode = props.editNpc != null;
   const favourite = npc.isFavourite === true;
-
   const image = useImage(npc.image as string);
 
   return (
@@ -117,7 +116,7 @@ function AddNPC(props: thingProps) {
               images={NpcImageData}
               imageClick={async (img: string) => {
                 const image = img;
-                const imageId = await uploadImage(img)
+                const imageId = await uploadImage(img);
                 await setNpc({ ...npc, image: imageId });
                 return image;
               }}

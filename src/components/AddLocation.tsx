@@ -13,6 +13,8 @@ import { ItemImageData } from "../constants/item_image_bank";
 import StandardImageList from "./ImageList";
 import SingleFileUploader from "./FileUploader";
 import MapList from "./MapList";
+import { useImage } from "../hooks/useImage";
+import { uploadImage } from "../services/ImageService";
 
 type thingProps = {
   campaignId: string;
@@ -37,6 +39,8 @@ function AddLocation(props: thingProps) {
 
   const editMode = props.editLocation != null;
   const favourite = location.isFavourite === true;
+  const image = useImage(location.image as string);
+  
 
   return (
     <Fragment>
@@ -113,12 +117,13 @@ function AddLocation(props: thingProps) {
 
             <h3>Choose an Image</h3>
 
-            <img src={location.image ?? ""} width={300} height={"auto"} />
+            <img src={image ?? ""} width={300} height={"auto"} />
             <StandardImageList
               images={ItemImageData}
               imageClick={async (img: string) => {
                 const image = img;
-                await setLocation({ ...location, image });
+                const imageId = await uploadImage(img)
+                await setLocation({ ...location, image: imageId });
                 return image;
               }}
             />
