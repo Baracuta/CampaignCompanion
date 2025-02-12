@@ -132,9 +132,9 @@ function AddLocation(props: thingProps) {
 
             <SingleFileUploader
               passedImage={async (img: string) => {
-                const newmap = img;
+                const newmapId = await uploadImage(img)
                 const oldmaps = location.maps as Array<string>;
-                const maps = [...oldmaps, newmap];
+                const maps = [...oldmaps, newmapId];
                 await setLocation({ ...location, maps });
                 return maps;
               }}
