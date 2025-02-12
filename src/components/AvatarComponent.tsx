@@ -3,6 +3,7 @@ import { Location } from "../types/Location";
 import { Item } from "../types/Item";
 import { NPC } from "../types/NPC";
 import { PlayerCharacter } from "../types/PlayerCharacter";
+import { useImage } from "../hooks/useImage";
 
 type AvatarProps={
     thing?: NPC | Location | Item | PlayerCharacter;
@@ -12,12 +13,13 @@ type AvatarProps={
 
 
 function AvatarComponent(props:AvatarProps){
+  const image = useImage(props.thing?.image as string);
 
 
     return(
         <Avatar
             alt={props.thing?.name}
-            src={props.thing?.image} //props.thing.image, usually
+            src={image ?? ""} 
             variant="rounded"
         />
     )
