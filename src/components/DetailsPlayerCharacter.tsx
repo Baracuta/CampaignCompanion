@@ -1,16 +1,19 @@
 import { PlayerCharacter } from "../types/PlayerCharacter";
 import styles from "../css_modules/display.module.css";
 import BigImage from "./BigImage";
+import { useImage } from "../hooks/useImage";
 
 type PCProps = {
   pc: PlayerCharacter;
 };
 
 function PlayerCharacterDetails(props: PCProps) {
+  const image = useImage(props.pc.image as string);
+  
   return (
     <div className={styles.details_division}>
       <div className={styles.details_top}>
-        {props.pc.image == null ? null : <BigImage src={props.pc.image} />}
+        {image == null ? null : <BigImage src={image} />}
         <div className={styles.info}>
           <h2>{props.pc.name}</h2>
           <h3>{props.pc.description}</h3>

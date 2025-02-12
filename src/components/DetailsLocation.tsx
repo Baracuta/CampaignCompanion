@@ -2,16 +2,19 @@ import { Location } from "../types/Location";
 import styles from "../css_modules/display.module.css";
 import MapList from "./MapList";
 import BigImage from "./BigImage";
+import { useImage } from "../hooks/useImage";
 
 type LocationProps = {
   location: Location;
 };
 
 function LocationDetails(props: LocationProps) {
+  const image = useImage(props.location.image as string);
+  
   return (
     <div className={styles.details_division}>
       <div className={styles.details_top}>
-        {props.location.image == null ? null : <BigImage src={props.location.image} />}
+        {image == null ? null : <BigImage src={image} />}
         <div className={styles.info}>
           <h2>{props.location.name}</h2>
           <h3>{props.location.description}</h3>
