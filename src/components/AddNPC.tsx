@@ -12,6 +12,7 @@ import { NPC } from "../types/NPC";
 import StandardImageList from "./ImageList";
 import { NpcImageData } from "../constants/npc_image_bank";
 import { uploadImage } from "../services/ImageService";
+import { useImage } from "../hooks/useImage";
 
 type thingProps = {
   campaignId: string;
@@ -35,6 +36,8 @@ function AddNPC(props: thingProps) {
 
   const editMode = props.editNpc != null;
   const favourite = npc.isFavourite === true;
+
+  const image = useImage(npc.image as string);
 
   return (
     <Fragment>
@@ -109,7 +112,7 @@ function AddNPC(props: thingProps) {
 
             <h3>Choose an Image</h3>
 
-            <img src={npc.image ?? ""} width={300} height={"auto"} />
+            <img src={image ?? ""} width={300} height={"auto"} />
             <StandardImageList
               images={NpcImageData}
               imageClick={async (img: string) => {

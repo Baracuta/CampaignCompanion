@@ -8,12 +8,12 @@ type NPCProps = {
 };
 
 function NPCDetails(props: NPCProps) {
-  const image = useImage(props.npc.image)
+  const image = useImage(props.npc.image as string);
 
   return (
     <div className={styles.details_division}>
       <div className={styles.details_top}>
-        {props.npc.image == null ? null : <BigImage src={image} />}
+        {image == null ? null : <BigImage src={image} />}
         <div className={styles.info}>
           <h2>{props.npc.name}</h2>
           <h3>{props.npc.description}</h3>
