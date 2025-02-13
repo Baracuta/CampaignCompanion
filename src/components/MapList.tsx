@@ -10,9 +10,8 @@ type MapProps = {
 export default function MapList(props: MapProps) {
   const itemData = props.images;
 
-  function FindImage(key:string) {
-    const image = useImage(key as string)
-    return image as string;
+  const FindImage = (key:string) => {
+    return useImage(key as string) ?? ""
   }
   
   return (
