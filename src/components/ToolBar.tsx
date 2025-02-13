@@ -1,6 +1,7 @@
 import styles from "../css_modules/toolbar.module.css";
 import { Entity } from "../types/Entity";
 import AvatarList from "./AvatarList";
+import SearchBar from "./SearchBar";
 
 type BarProps = {
   campaignEntities: Array<Entity>;
@@ -29,6 +30,7 @@ function ToolBar(props: BarProps) {
 
       <div className={styles.search_bar}>
         <h4>Search Bar:</h4>
+        <SearchBar EntityList={props.campaignEntities}/>
       </div>
     </div>
   );
