@@ -17,17 +17,14 @@ function SearchBar(props:SearchProps){
         <Autocomplete
             className={styles.Autocomplete}
             freeSolo
-            options={props.EntityList.map((option) => option.name)}
+            options={props.EntityList.map((option) => `${option.name} (${option.type})`)}
             // value={item.category ?? ""}
             // onChange={(e, value) => {
             //     const category = value ?? undefined;
             //     setItem({ ...item, category });
             // }}
             renderInput={(params) => (
-                <TextField
-                    {...params}
-                    label=""
-                />
+                <TextField {...params} label=""/>
             )}
         />
     )
