@@ -26,13 +26,8 @@ function SearchBar(props:SearchProps){
             renderInput={(params) => (
                 <TextField
                     {...params}
-                    label="Search input"
-                    slotProps={{
-                    input: {
-                        ...params.InputProps,
-                        type: 'search',
-                    },
-                    }}
+                    label=""
+                    type="search"
                 />
             )}
         />
