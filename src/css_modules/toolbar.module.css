@@ -24,7 +24,6 @@
         }
 
         .quick_access{
-            border: solid red;
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -37,8 +36,6 @@
         }
 
         .recent_edits{
-            border: solid blue;
-
             display: flex;
             flex-direction: row;
             align-items:center;
@@ -51,7 +48,6 @@
         }
 
         .search_bar{
-            border: solid yellow;
             display: flex;
             flex-direction: row;
             align-items:center;
@@ -64,11 +60,12 @@
             
 
             .Autocomplete{
-                border: solid rgb(100, 100, 100);
-                background-color: rgba(75, 75, 75, 1);
+                border: solid black;
+                border-width: 1px;
+                background-color: rgba(75, 75, 75, 0.5);
                 border-radius: 5px;
     
-                width:75%;
+                width:70%;
 
                 input{
                     color: white;

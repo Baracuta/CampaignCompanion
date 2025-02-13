@@ -27,7 +27,6 @@ function SearchBar(props:SearchProps){
                 <TextField
                     {...params}
                     label=""
-                    type="search"
                 />
             )}
         />
