@@ -23,6 +23,7 @@ function SearchBar(props:SearchProps){
             //     const category = value ?? undefined;
             //     setItem({ ...item, category });
             // }}
+            onChange={console.log}
             renderInput={(params) => (
                 <TextField {...params} label=""/>
             )}
