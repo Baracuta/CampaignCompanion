@@ -27,14 +27,14 @@ export const uploadImage = async (img: string): Promise<string> => {
   // generate id with uuid
   const id = uuid();
   //put image in indexeddb with the key as that uuid
-  set(id,img);
+  await set(id,img);
   //return the uuid
   return id
 };
 
 export const getImage = async (imageId: string): Promise<string> => {
   // look for the image in indexeddb
-  const image = get(imageId)
+  const image = await get(imageId)
   // return the image
   return image
 };

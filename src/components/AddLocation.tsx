@@ -39,7 +39,7 @@ function AddLocation(props: thingProps) {
 
   const editMode = props.editLocation != null;
   const favourite = location.isFavourite === true;
-  const image = useImage(location.image as string);
+  const image = useImage(location.image);
   
 
   return (
@@ -133,7 +133,7 @@ function AddLocation(props: thingProps) {
             <SingleFileUploader
               passedImage={async (img: string) => {
                 const newmapId = await uploadImage(img)
-                const oldmaps = location.maps as Array<string>;
+                const oldmaps = location.maps as Array<string> ?? [];
                 const maps = [...oldmaps, newmapId];
                 await setLocation({ ...location, maps });
                 return maps;

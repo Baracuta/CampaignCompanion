@@ -36,7 +36,7 @@ function AddNPC(props: thingProps) {
 
   const editMode = props.editNpc != null;
   const favourite = npc.isFavourite === true;
-  const image = useImage(npc.image as string);
+  const image = useImage(npc.image);
 
   return (
     <Fragment>
