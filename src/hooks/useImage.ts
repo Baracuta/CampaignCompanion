@@ -8,10 +8,11 @@ export const useImage = (imageId?: string) => {
 
     // Wrap stuff inside useEffect statement in an if imageId =! null
     useEffect(() => {
-        getImage(imageId).then((image) => {
-            setImage(image);
-        })
-    }, [imageId]);
+        if (imageId != null){
+            getImage(imageId).then((image) => {
+                setImage(image);
+            })
+    }}, [imageId]);
 
     return image;
 };
