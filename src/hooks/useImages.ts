@@ -1,0 +1,1 @@
+// Going to get multiple images. Useful for location map arrays.
