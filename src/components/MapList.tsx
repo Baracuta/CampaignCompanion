@@ -8,8 +8,8 @@ type MapProps = {
 };
 
 export default function MapList(props: MapProps) {
-  const itemData = useImages(props.images);
 
+  const images = useImages(props.images);
   
   
   return (
@@ -20,10 +20,10 @@ export default function MapList(props: MapProps) {
         cols={2}
         rowHeight={100}
       >
-        {itemData != null && (
-          itemData.map((item, idx) => (
+        {props.images != null && (
+          props.images.map((item, idx) => (
             <ImageListItem className={styles.image_item} key={`image_${idx}`}>
-              <BigImage src={FindImage(item)}/>
+              <BigImage src={images.item}/>
             </ImageListItem>
           ))
       )}
