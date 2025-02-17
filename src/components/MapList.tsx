@@ -1,18 +1,16 @@
 import styles from "../css_modules/imagelist.module.css";
 import { ImageList, ImageListItem } from "@mui/material";
 import BigImage from "./BigImage";
-import { useImage } from "../hooks/useImage";
+import { useImages } from "../hooks/useImages";
 
 type MapProps = {
   images: Array<string>;
 };
 
 export default function MapList(props: MapProps) {
-  const itemData = props.images;
+  const itemData = useImages(props.images);
 
-  const FindImage = (key:string) => {
-    return useImage(key as string) ?? ""
-  }
+  
   
   return (
     <div>
