@@ -23,7 +23,7 @@ export default function MapList(props: MapProps) {
         {props.images != null && (
           props.images.map((item, idx) => (
             <ImageListItem className={styles.image_item} key={`image_${idx}`}>
-              <BigImage src={images.item}/>
+              <BigImage src={images[item]}/>
             </ImageListItem>
           ))
       )}
