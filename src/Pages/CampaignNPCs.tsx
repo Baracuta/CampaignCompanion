@@ -14,6 +14,7 @@ import { Item } from "../types/Item";
 import { PlayerCharacter } from "../types/PlayerCharacter";
 import EntityList from "../Utilities/Entities";
 
+// To delete images for a thing, just use the hook and delete it in the deleteThing workpath
 function CampaignNPCs() {
   const { id } = useParams();
 
