@@ -1,5 +1,3 @@
-// Going to get multiple images. Useful for location map arrays.
-
 import { useState, useEffect } from "react";
 import { getImage } from "../services/ImageService";
 
