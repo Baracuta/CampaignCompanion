@@ -1,0 +1,1 @@
+// Going to be the means for Avatarlist and searchbar to open an entity from any page
