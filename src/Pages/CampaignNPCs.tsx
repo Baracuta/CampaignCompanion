@@ -8,11 +8,12 @@ import AddNPC from "../components/AddNPC";
 import { NPC } from "../types/NPC";
 import { useCampaign } from "../hooks/useCampaign";
 import ThingList from "../components/ThingList";
-import { createNPC, deleteNPC, updateNPC } from "../services/CampaignService";
+import { createNPC, deleteNPC, getNPC, updateNPC } from "../services/CampaignService";
 import { Location } from "../types/Location";
 import { Item } from "../types/Item";
 import { PlayerCharacter } from "../types/PlayerCharacter";
 import EntityList from "../Utilities/Entities";
+import { del } from "../services/ImageService";
 
 // To delete images for a thing, just use the hook and delete it in the deleteThing workpath
 function CampaignNPCs() {
@@ -48,7 +49,12 @@ function CampaignNPCs() {
           things={campaign?.npcs as Array<NPC>}
           campaign={campaign}
           deleteThing={async (id: string, npc:string) => {
+            const npcGuy=getNPC(id,npc)
+            const npcImage=(await npcGuy).image
             await deleteNPC(id,npc);
+            if (npcImage != null){
+              await del(npcImage)
+            }
             await refreshCampaign();
             return Array<NPC>;  
           }}
