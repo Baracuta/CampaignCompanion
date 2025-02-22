@@ -49,8 +49,7 @@ function CampaignNPCs() {
           things={campaign?.npcs as Array<NPC>}
           campaign={campaign}
           deleteThing={async (id: string, npc:string) => {
-            const npcGuy=getNPC(id,npc)
-            const npcImage=(await npcGuy).image
+            const npcImage= (await getNPC(id,npc)).image;
             await deleteNPC(id,npc);
             if (npcImage != null){
               await del(npcImage)

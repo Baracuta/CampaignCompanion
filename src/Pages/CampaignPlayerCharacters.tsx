@@ -8,11 +8,12 @@ import { useCampaign } from "../hooks/useCampaign";
 import ThingList from "../components/ThingList";
 import AddPC from "../components/AddPC";
 import { PlayerCharacter } from "../types/PlayerCharacter";
-import { createPC, deletePC, updatePC } from "../services/CampaignService";
+import { createPC, deletePC, getPC, updatePC } from "../services/CampaignService";
 import { Item } from "../types/Item";
 import { NPC } from "../types/NPC";
 import { Location } from "../types/Location";
 import EntityList from "../Utilities/Entities";
+import { del } from "../services/ImageService";
 
 function CampaignPlayerCharacters() {
   const { id } = useParams();
@@ -47,7 +48,11 @@ function CampaignPlayerCharacters() {
           things={campaign?.playerCharacters as Array<PlayerCharacter>}
           campaign={campaign}
           deleteThing={async (id:string,pc:string) => {
+            const pcImage = (await getPC(id, pc)).image;
             await deletePC(id,pc);
+            if (pcImage != null){
+              await del(pcImage)
+            }
             await refreshCampaign();
             return Array<PlayerCharacter>
           }}

@@ -8,11 +8,12 @@ import { useCampaign } from "../hooks/useCampaign";
 import ThingList from "../components/ThingList";
 import AddItem from "../components/AddItem";
 import { Item } from "../types/Item";
-import { createItem, deleteItem, updateItem } from "../services/CampaignService";
+import { createItem, deleteItem, getItem, updateItem } from "../services/CampaignService";
 import { NPC } from "../types/NPC";
 import { PlayerCharacter } from "../types/PlayerCharacter";
 import { Location } from "../types/Location";
 import EntityList from "../Utilities/Entities";
+import { del } from "../services/ImageService";
 
 function CampaignItems() {
   const { id } = useParams();
@@ -47,7 +48,11 @@ function CampaignItems() {
           things={campaign?.items as Array<Item>}
           campaign={campaign}
           deleteThing={async (id:string,item:string) => {
+            const itemImage= (await getItem(id,item)).image;
             await deleteItem(id,item);
+            if (itemImage != null){
+              await del(itemImage)
+            }
             await refreshCampaign();
             return Array<Item>;
           }}

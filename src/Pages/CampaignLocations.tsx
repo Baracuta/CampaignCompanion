@@ -7,12 +7,13 @@ import ToolBar from "../components/ToolBar";
 import { useCampaign } from "../hooks/useCampaign";
 import AddLocation from "../components/AddLocation";
 import ThingList from "../components/ThingList";
-import { createLocation, deleteLocation, updateLocation } from "../services/CampaignService";
+import { createLocation, deleteLocation, getLocation, updateLocation } from "../services/CampaignService";
 import { Location } from "../types/Location";
 import { Item } from "../types/Item";
 import { NPC } from "../types/NPC";
 import { PlayerCharacter } from "../types/PlayerCharacter";
 import EntityList from "../Utilities/Entities";
+import { del } from "../services/ImageService";
 
 function CampaignLocations() {
   const { id } = useParams();
@@ -47,7 +48,11 @@ function CampaignLocations() {
           things={campaign?.locations as unknown as Array<Location>}
           campaign={campaign}
           deleteThing={async (id: string, location:string) => {
+            const locationImage= (await getLocation(id,location)).image;
             await deleteLocation(id,location);
+            if (locationImage != null){
+              await del(locationImage)
+            }
             await refreshCampaign();
             return Array<Location>;  
           }}
