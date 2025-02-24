@@ -22,7 +22,8 @@ export async function clear() {
 export async function keys() {
   return (await dbPromise).getAllKeys("keyval");
 }
-
+// Need to make it so uploadImage checks to see if there is already a keyval pair for the thing.
+// OR, it needs to just delete the previous one if there is already one.
 export const uploadImage = async (img: string): Promise<string> => {
   // generate id with uuid
   const id = uuid();
