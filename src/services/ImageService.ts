@@ -29,7 +29,7 @@ export const uploadImage = async (img: string): Promise<string> => {
   await set(id,img);
   return id
 };
-
+// Use this to make the above happen.
 export const getImage = async (imageId: string): Promise<string> => {
   const image = await get(imageId)
   return image
