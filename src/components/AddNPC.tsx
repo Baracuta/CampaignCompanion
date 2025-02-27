@@ -116,6 +116,7 @@ function AddNPC(props: thingProps) {
               images={NpcImageData}
               imageClick={async (img: string) => {
                 const image = img;
+                // If image != null, getImage => setimage. else, upload as usual
                 const imageId = await uploadImage(img);
                 await setNpc({ ...npc, image: imageId });
                 return image;
