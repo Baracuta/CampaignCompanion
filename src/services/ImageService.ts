@@ -30,6 +30,7 @@ export const uploadImage = async (img: string): Promise<string> => {
   return id
 };
 // Use this to make the above happen.
+// Prioritize making this work before next meeting
 export const getImage = async (imageId: string): Promise<string> => {
   const image = await get(imageId)
   return image
