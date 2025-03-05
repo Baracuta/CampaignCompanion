@@ -28,7 +28,7 @@ type DisplayProps = {
     thing: NPC | Location | Item | PlayerCharacter
   ) => Promise<unknown>;
 };
-
+//Make some sort of onClick component for the clickable star.
 export default function TestDisplay(props: DisplayProps) {
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
