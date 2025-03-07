@@ -1,5 +1,5 @@
 export interface Entity {
-    type: "NPC"|"Location"|"Item"|"PlayerCharacter";
+    type: "NPC"|"Location"|"Item"|"PC";
     id:string;
     name?:string;
     description?:string;
