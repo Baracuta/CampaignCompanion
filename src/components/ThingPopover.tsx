@@ -1,5 +1,7 @@
 import styles from "../css_modules/display.module.css"
 import { Popover } from "@mui/material"
+import StarIcon from "@mui/icons-material/Star";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
 import { Item } from "../types/Item"
 import { NPC } from "../types/NPC"
 import { PlayerCharacter } from "../types/PlayerCharacter"
