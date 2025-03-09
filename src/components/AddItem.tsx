@@ -111,7 +111,7 @@ function AddItem(props: thingProps) {
               freeSolo
               options={CategoryOptions}
               value={item.category ?? ""}
-              onChange={(e, value) => {
+              onChange={(_e, value) => {
                 const category = value ?? undefined;
                 setItem({ ...item, category });
               }}
@@ -127,7 +127,7 @@ function AddItem(props: thingProps) {
               freeSolo
               options={EffectOptions}
               value={item.effect ?? ""}
-              onChange={(e, value) => {
+              onChange={(_e, value) => {
                 const effect = value ?? undefined;
                 setItem({ ...item, effect });
               }}

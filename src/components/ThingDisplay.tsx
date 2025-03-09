@@ -86,7 +86,7 @@ export default function TestDisplay(props: DisplayProps) {
               editItem={props.thing}
             />
           )}
-          {props.thing.type === "PlayerCharacter" && (
+          {props.thing.type === "PC" && (
             <AddPC
               campaignId={props.campaign.id as string}
               addThing={props.edit}
@@ -108,7 +108,7 @@ export default function TestDisplay(props: DisplayProps) {
         {props.thing.type === "Item" && (
           <ItemDetails item={props.thing as Item} />
         )}
-        {props.thing.type === "PlayerCharacter" && (
+        {props.thing.type === "PC" && (
           <PlayerCharacterDetails pc={props.thing as PlayerCharacter} />
         )}
       </Popover>

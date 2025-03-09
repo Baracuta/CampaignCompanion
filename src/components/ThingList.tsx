@@ -3,7 +3,7 @@ import { NPC } from "../types/NPC";
 import { Location } from "../types/Location";
 import { Item } from "../types/Item";
 import { PlayerCharacter } from "../types/PlayerCharacter";
-import TestDisplay from "./TestDisplay";
+import TestDisplay from "./ThingDisplay";
 
 type listProps = {
   things: Array<NPC | Location | Item | PlayerCharacter>;
