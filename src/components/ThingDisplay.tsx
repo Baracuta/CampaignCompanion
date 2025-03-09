@@ -29,7 +29,7 @@ type DisplayProps = {
   ) => Promise<unknown>;
 };
 //Make some sort of onClick component for the clickable star.
-export default function TestDisplay(props: DisplayProps) {
+export default function ThingDisplay(props: DisplayProps) {
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);

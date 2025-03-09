@@ -3,7 +3,7 @@ import { NPC } from "../types/NPC";
 import { Location } from "../types/Location";
 import { Item } from "../types/Item";
 import { PlayerCharacter } from "../types/PlayerCharacter";
-import TestDisplay from "./ThingDisplay";
+import ThingDisplay from "./ThingDisplay";
 
 type listProps = {
   things: Array<NPC | Location | Item | PlayerCharacter>;
@@ -14,7 +14,7 @@ type listProps = {
 
 function NPCList(props: listProps) {
   const divs = (props.things ?? []).map((datum) => (
-    <TestDisplay
+    <ThingDisplay
       thing={datum}
       campaign={props.campaign}
       key={datum.id}
