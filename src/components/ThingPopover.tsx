@@ -24,6 +24,7 @@ type PopProps = {
     campaign: string,
     thing: NPC | Location | Item | PlayerCharacter
   ) => Promise<unknown>;
+  open: boolean;
 };
 
 export default function ThingPopover(props:PopProps){
@@ -34,7 +35,7 @@ export default function ThingPopover(props:PopProps){
                 anchorReference="anchorPosition"
                 anchorPosition={{ top: 0, left: 0 }}
                 id={id}
-                open={open}
+                open={props.open}
                 anchorEl={anchorEl}
                 onClose={handleClose}
                 anchorOrigin={{
