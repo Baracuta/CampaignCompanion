@@ -65,7 +65,7 @@ export default function StandardImageList(props:ListProps) {
             </ImageListItem>
           ))}
         </ImageList>
-        <SingleFileUploader passedImage={props.imageClick}/>
+        <SingleFileUploader passedImage={props.imageClick} closer={handleClose}/>
         <button onClick={handleClose}>Close</button>
       </Popover>
     </div>

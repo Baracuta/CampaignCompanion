@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 type uploadProps={
     passedImage:(img:string)=> Promise<unknown>;
+    closer: () => unknown;
 }
 
 const SingleFileUploader = (props:uploadProps) => {
@@ -32,7 +33,10 @@ const SingleFileUploader = (props:uploadProps) => {
 
       {file && (
         <button 
-          onClick={handleUpload}
+          onClick={() => {
+            handleUpload();
+            props.closer();
+          }}
           className="submit"
         >Upload Image</button>
       )}
