@@ -15,6 +15,8 @@ import LocationDetails from "./DetailsLocation"
 import NPCDetails from "./DetailsNPC"
 import PlayerCharacterDetails from "./DetailsPlayerCharacter"
 import { Campaign } from "../types/Campaign"
+import { Location } from "../types/Location";
+import { useState } from "react";
 
 type PopProps = {
   thing: NPC | Location | Item | PlayerCharacter;
@@ -28,6 +30,13 @@ type PopProps = {
 };
 
 export default function ThingPopover(props:PopProps){
+  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
+
 
     return(
          <Popover
@@ -35,7 +44,7 @@ export default function ThingPopover(props:PopProps){
                 anchorReference="anchorPosition"
                 anchorPosition={{ top: 0, left: 0 }}
                 id={id}
-                open={props.open}
+                open={open}
                 anchorEl={anchorEl}
                 onClose={handleClose}
                 anchorOrigin={{
