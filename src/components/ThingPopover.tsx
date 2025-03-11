@@ -34,7 +34,6 @@ type PopProps = {
 // For the clickable star, make a conditional for each type of "updateEntity"
 // method in the service. Maybe use a hook that contains all of the update methods.
 export default function ThingPopover(props: PopProps) {
-  const open = props.open;
 
   return (
     <Popover
@@ -42,7 +41,7 @@ export default function ThingPopover(props: PopProps) {
       anchorReference="anchorPosition"
       anchorPosition={{ top: 0, left: 0 }}
       id={props.id}
-      open={open}
+      open={props.open}
       anchorEl={props.anchorEl}
       onClose={props.handleClose}
       anchorOrigin={{
