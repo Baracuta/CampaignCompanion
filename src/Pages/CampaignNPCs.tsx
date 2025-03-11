@@ -11,7 +11,7 @@ import ThingList from "../components/ThingList";
 import { createNPC, deleteNPC, getNPC, updateNPC } from "../services/CampaignService";
 import { Location } from "../types/Location";
 import { Item } from "../types/Item";
-import { PlayerCharacter } from "../types/PlayerCharacter";
+import { PC } from "../types/PlayerCharacter";
 import EntityList from "../Utilities/Entities";
 import { del } from "../services/ImageService";
 
@@ -57,7 +57,7 @@ function CampaignNPCs() {
             await refreshCampaign();
             return Array<NPC>;  
           }}
-          updateThing={async (id: string, thing:NPC|Location|Item|PlayerCharacter) => {
+          updateThing={async (id: string, thing:NPC|Location|Item|PC) => {
             await updateNPC(id,thing as NPC);
             await refreshCampaign();
             return thing;

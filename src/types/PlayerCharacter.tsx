@@ -1,6 +1,6 @@
 import { Entity } from "./Entity";
 
-export interface PlayerCharacter extends Entity{
+export interface PC extends Entity{
     type:"PC";
     pcClass?:string;
     level?:string;

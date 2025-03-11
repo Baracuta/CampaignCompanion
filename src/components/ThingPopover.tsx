@@ -4,7 +4,7 @@ import StarIcon from "@mui/icons-material/Star";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import { Item } from "../types/Item";
 import { NPC } from "../types/NPC";
-import { PlayerCharacter } from "../types/PlayerCharacter";
+import { PC } from "../types/PlayerCharacter";
 import AddItem from "./AddItem";
 import AddLocation from "./AddLocation";
 import AddNPC from "./AddNPC";
@@ -18,12 +18,12 @@ import { Campaign } from "../types/Campaign";
 import { Location } from "../types/Location";
 
 type PopProps = {
-  thing: NPC | Location | Item | PlayerCharacter;
+  thing: NPC | Location | Item | PC;
   campaign: Campaign;
   delete: (campaign: string, thing: string) => Promise<unknown>;
   edit: (
     campaign: string,
-    thing: NPC | Location | Item | PlayerCharacter
+    thing: NPC | Location | Item | PC
   ) => Promise<unknown>;
   anchorEl: HTMLButtonElement | null;
   handleClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -100,7 +100,7 @@ export default function ThingPopover(props: PopProps) {
         <ItemDetails item={props.thing as Item} />
       )}
       {props.thing.type === "PC" && (
-        <PlayerCharacterDetails pc={props.thing as PlayerCharacter} />
+        <PlayerCharacterDetails pc={props.thing as PC} />
       )}
     </Popover>
   );

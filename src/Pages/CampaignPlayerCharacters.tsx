@@ -7,7 +7,7 @@ import ToolBar from "../components/ToolBar";
 import { useCampaign } from "../hooks/useCampaign";
 import ThingList from "../components/ThingList";
 import AddPC from "../components/AddPC";
-import { PlayerCharacter } from "../types/PlayerCharacter";
+import { PC } from "../types/PlayerCharacter";
 import { createPC, deletePC, getPC, updatePC } from "../services/CampaignService";
 import { Item } from "../types/Item";
 import { NPC } from "../types/NPC";
@@ -38,14 +38,14 @@ function CampaignPlayerCharacters() {
       <CardPanel>
         <AddPC
           campaignId={id as string}
-          addThing={async (id:string, pc:PlayerCharacter) => {
+          addThing={async (id:string, pc:PC) => {
             await createPC(pc,id);
             await refreshCampaign();
             return pc
           }}
         />
         <ThingList
-          things={campaign?.playerCharacters as Array<PlayerCharacter>}
+          things={campaign?.playerCharacters as Array<PC>}
           campaign={campaign}
           deleteThing={async (id:string,pc:string) => {
             const pcImage = (await getPC(id, pc)).image;
@@ -54,10 +54,10 @@ function CampaignPlayerCharacters() {
               await del(pcImage)
             }
             await refreshCampaign();
-            return Array<PlayerCharacter>
+            return Array<PC>
           }}
-          updateThing={async (id: string, thing:NPC|Location|Item|PlayerCharacter) => {
-            await updatePC(id,thing as PlayerCharacter);
+          updateThing={async (id: string, thing:NPC|Location|Item|PC) => {
+            await updatePC(id,thing as PC);
             await refreshCampaign();
             return thing;
           }}

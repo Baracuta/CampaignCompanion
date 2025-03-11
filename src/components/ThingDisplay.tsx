@@ -4,17 +4,17 @@ import styles from "../css_modules/display.module.css";
 import { NPC } from "../types/NPC";
 import { Location } from "../types/Location";
 import { Item } from "../types/Item";
-import { PlayerCharacter } from "../types/PlayerCharacter";
+import { PC } from "../types/PlayerCharacter";
 import { Campaign } from "../types/Campaign";
 import ThingPopover from "./ThingPopover";
 
 type DisplayProps = {
-  thing: NPC | Location | Item | PlayerCharacter;
+  thing: NPC | Location | Item | PC;
   campaign: Campaign;
   delete: (campaign: string, thing: string) => Promise<unknown>;
   update: (
     campaign: string,
-    thing: NPC | Location | Item | PlayerCharacter
+    thing: NPC | Location | Item | PC
   ) => Promise<unknown>;
 };
 //Make some sort of onClick component for the clickable star.

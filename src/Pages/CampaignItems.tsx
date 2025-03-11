@@ -10,7 +10,7 @@ import AddItem from "../components/AddItem";
 import { Item } from "../types/Item";
 import { createItem, deleteItem, getItem, updateItem } from "../services/CampaignService";
 import { NPC } from "../types/NPC";
-import { PlayerCharacter } from "../types/PlayerCharacter";
+import { PC } from "../types/PlayerCharacter";
 import { Location } from "../types/Location";
 import EntityList from "../Utilities/Entities";
 import { del } from "../services/ImageService";
@@ -56,7 +56,7 @@ function CampaignItems() {
             await refreshCampaign();
             return Array<Item>;
           }}
-          updateThing={async (id: string, thing:NPC|Location|Item|PlayerCharacter) => {
+          updateThing={async (id: string, thing:NPC|Location|Item|PC) => {
             await updateItem(id,thing as Item);
             await refreshCampaign();
             return thing;

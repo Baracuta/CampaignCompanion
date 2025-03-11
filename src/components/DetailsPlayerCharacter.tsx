@@ -1,10 +1,10 @@
-import { PlayerCharacter } from "../types/PlayerCharacter";
+import { PC } from "../types/PlayerCharacter";
 import styles from "../css_modules/display.module.css";
 import BigImage from "./BigImage";
 import { useImage } from "../hooks/useImage";
 
 type PCProps = {
-  pc: PlayerCharacter;
+  pc: PC;
 };
 
 function PlayerCharacterDetails(props: PCProps) {

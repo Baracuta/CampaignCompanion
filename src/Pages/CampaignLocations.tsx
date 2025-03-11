@@ -11,7 +11,7 @@ import { createLocation, deleteLocation, getLocation, updateLocation } from "../
 import { Location } from "../types/Location";
 import { Item } from "../types/Item";
 import { NPC } from "../types/NPC";
-import { PlayerCharacter } from "../types/PlayerCharacter";
+import { PC } from "../types/PlayerCharacter";
 import EntityList from "../Utilities/Entities";
 import { del } from "../services/ImageService";
 
@@ -56,7 +56,7 @@ function CampaignLocations() {
             await refreshCampaign();
             return Array<Location>;  
           }}
-          updateThing={async (id: string, thing:NPC|Location|Item|PlayerCharacter) => {
+          updateThing={async (id: string, thing:NPC|Location|Item|PC) => {
             await updateLocation(id,thing as Location);
             await refreshCampaign();
             return thing;

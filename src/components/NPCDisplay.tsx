@@ -5,7 +5,7 @@ import styles from "../css_modules/display.module.css";
 //Going to make this one strictly for NPCs for the time being, and if it turns out that there's a way to make one component function to provide for all 4 entity types, then we'll do that.
 
 type DisplayProps = {
-  displayType: "npc" | "location" | "item" | "playerCharacter";
+  displayType: "npc" | "location" | "item" | "PC";
   name?: string;
   description?: string;
   notes?: string;

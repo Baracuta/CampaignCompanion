@@ -3,7 +3,7 @@ import { v4 as uuid } from "uuid";
 import { NPC } from "../types/NPC";
 import { Location } from "../types/Location";
 import { Item } from "../types/Item";
-import { PlayerCharacter } from "../types/PlayerCharacter";
+import { PC } from "../types/PlayerCharacter";
 
 //Every single "entity" should have the following: create, delete, get, getPlural(getCampaigns, getNPCs...), update, updatePlural
 
@@ -357,13 +357,13 @@ export const updateItems = async (
 //PC Section
 
 //
-export const createPC = async (pc: PlayerCharacter, campaignId: string): Promise<PlayerCharacter> => {
+export const createPC = async (pc: PC, campaignId: string): Promise<PC> => {
   const campaign = await getCampaign(campaignId);
 
   pc = {
     ...pc,
     id: uuid(),
-    type:"PlayerCharacter",
+    type:"PC",
     modifiedDate:Date.now(),
   };
 
@@ -380,7 +380,7 @@ export const createPC = async (pc: PlayerCharacter, campaignId: string): Promise
 export const deletePC = async (
   campaignId: string,
   pcId: string
-): Promise<Array<PlayerCharacter>> => {
+): Promise<Array<PC>> => {
   const campaign = await getCampaign(campaignId);
   const pcList = await getPCs(campaignId);
   const pc = await getPC(campaignId, pcId);
@@ -396,23 +396,23 @@ export const deletePC = async (
 export const getPC = async (
   campaignId: string,
   pcId: string
-): Promise<PlayerCharacter> => {
+): Promise<PC> => {
   const pcList = await getPCs(campaignId);
   const findPC = pcList.find((datum) => datum.id === pcId);
 
-  return findPC as PlayerCharacter;
+  return findPC as PC;
 };
 
 //
-export const getPCs = async (campaignId: string): Promise<Array<PlayerCharacter>> => {
+export const getPCs = async (campaignId: string): Promise<Array<PC>> => {
   const campaign = await getCampaign(campaignId);
 
   const pcs = campaign.playerCharacters;
-  return pcs as Array<PlayerCharacter>;
+  return pcs as Array<PC>;
 };
 
 //
-export const updatePC = async (campaignId: string, pc: PlayerCharacter): Promise<PlayerCharacter> => {
+export const updatePC = async (campaignId: string, pc: PC): Promise<PC> => {
   const campaign = await getCampaign(campaignId);
 
   pc = {
@@ -432,9 +432,9 @@ export const updatePC = async (campaignId: string, pc: PlayerCharacter): Promise
 
 //
 export const updatePCs = async (
-  newPCs: Array<PlayerCharacter>,
+  newPCs: Array<PC>,
   campaign: Campaign
-): Promise<Array<PlayerCharacter>> => {
+): Promise<Array<PC>> => {
   campaign.playerCharacters = newPCs;
 
   await updateCampaign(campaign);

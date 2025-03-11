@@ -8,7 +8,7 @@ import StarIcon from "@mui/icons-material/Star";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import styles from "../css_modules/display.module.css";
 import { Fragment, useState } from "react";
-import { PlayerCharacter } from "../types/PlayerCharacter";
+import { PC } from "../types/PlayerCharacter";
 import { NpcImageData } from "../constants/npc_image_bank";
 import StandardImageList from "./ImageList";
 import { useImage } from "../hooks/useImage";
@@ -16,13 +16,13 @@ import { uploadImage } from "../services/ImageService";
 
 type thingProps = {
   campaignId: string;
-  editPC?: PlayerCharacter;
-  addThing: (id: string, pc: PlayerCharacter) => Promise<unknown>;
+  editPC?: PC;
+  addThing: (id: string, pc: PC) => Promise<unknown>;
 };
 
 //Set it up to have a similar style to a card, but with unique properties
 function AddPC(props: thingProps) {
-  const [pc, setPC] = useState<Partial<PlayerCharacter>>(props.editPC ?? {});
+  const [pc, setPC] = useState<Partial<PC>>(props.editPC ?? {});
 
   const [open, setOpen] = useState(false);
 
@@ -167,7 +167,7 @@ function AddPC(props: thingProps) {
           <button onClick={handleClose}>Cancel</button>
           <button
             onClick={() => {
-              props.addThing(props.campaignId, pc as PlayerCharacter);
+              props.addThing(props.campaignId, pc as PC);
               handleClose();
             }}
           >

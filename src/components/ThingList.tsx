@@ -2,14 +2,14 @@ import { Campaign } from "../types/Campaign";
 import { NPC } from "../types/NPC";
 import { Location } from "../types/Location";
 import { Item } from "../types/Item";
-import { PlayerCharacter } from "../types/PlayerCharacter";
+import { PC } from "../types/PlayerCharacter";
 import ThingDisplay from "./ThingDisplay";
 
 type listProps = {
-  things: Array<NPC | Location | Item | PlayerCharacter>;
+  things: Array<NPC | Location | Item | PC>;
   campaign: Campaign;
   deleteThing:(campaign:string,thing:string) => Promise<unknown>;
-  updateThing:(campaign:string, thing:NPC|Location|Item|PlayerCharacter) => Promise<unknown>;
+  updateThing:(campaign:string, thing:NPC|Location|Item|PC) => Promise<unknown>;
 };
 
 function NPCList(props: listProps) {

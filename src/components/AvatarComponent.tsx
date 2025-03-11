@@ -2,11 +2,11 @@ import { Avatar } from "@mui/material";
 import { Location } from "../types/Location";
 import { Item } from "../types/Item";
 import { NPC } from "../types/NPC";
-import { PlayerCharacter } from "../types/PlayerCharacter";
+import { PC } from "../types/PlayerCharacter";
 import { useImage } from "../hooks/useImage";
 
 type AvatarProps={
-    thing?: NPC | Location | Item | PlayerCharacter;
+    thing?: NPC | Location | Item | PC;
 
 }
 
