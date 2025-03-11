@@ -1,7 +1,4 @@
-import Popover from "@mui/material/Popover";
 import Button from "@mui/material/Button";
-import StarIcon from "@mui/icons-material/Star";
-import StarBorderIcon from "@mui/icons-material/StarBorder";
 import { useState } from "react";
 import styles from "../css_modules/display.module.css";
 import { NPC } from "../types/NPC";
@@ -9,15 +6,6 @@ import { Location } from "../types/Location";
 import { Item } from "../types/Item";
 import { PlayerCharacter } from "../types/PlayerCharacter";
 import { Campaign } from "../types/Campaign";
-import NPCDetails from "./DetailsNPC";
-import LocationDetails from "./DetailsLocation";
-import ItemDetails from "./DetailsItem";
-import PlayerCharacterDetails from "./DetailsPlayerCharacter";
-import DeleteDialogue from "./DeleteDialogue";
-import AddNPC from "./AddNPC";
-import AddLocation from "./AddLocation";
-import AddItem from "./AddItem";
-import AddPC from "./AddPC";
 import ThingPopover from "./ThingPopover";
 
 type DisplayProps = {
@@ -35,14 +23,30 @@ export default function ThingDisplay(props: DisplayProps) {
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
- 
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const open = Boolean(anchorEl)
+  const id = open ? "simple-popover" : undefined;
+
+
   return (
     <div className={styles.card}>
       <Button aria-describedby={id} variant="contained" onClick={handleClick}>
         <p>{props.thing.name}</p>
       </Button>
 
-      <ThingPopover thing={props.thing}/>
+      <ThingPopover
+        thing={props.thing}
+        campaign={props.campaign}
+        delete={props.delete}
+        edit={props.edit}
+        anchorEl={anchorEl}
+        handleClick={handleClick}
+        handleClose={handleClose}
+        id={id}
+        open={open}
+      />
     </div>
   );
 }
