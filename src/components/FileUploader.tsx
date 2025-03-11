@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 type uploadProps={
     passedImage:(img:string)=> Promise<unknown>;
-    closer: () => unknown;
+    closer?: () => unknown;
 }
 
 const SingleFileUploader = (props:uploadProps) => {
@@ -35,7 +35,9 @@ const SingleFileUploader = (props:uploadProps) => {
         <button 
           onClick={() => {
             handleUpload();
+            if (props.closer != undefined){
             props.closer();
+            }
           }}
           className="submit"
         >Upload Image</button>
