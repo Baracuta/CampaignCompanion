@@ -12,7 +12,7 @@ type DisplayProps = {
   thing: NPC | Location | Item | PlayerCharacter;
   campaign: Campaign;
   delete: (campaign: string, thing: string) => Promise<unknown>;
-  edit: (
+  update: (
     campaign: string,
     thing: NPC | Location | Item | PlayerCharacter
   ) => Promise<unknown>;
@@ -40,7 +40,7 @@ export default function ThingDisplay(props: DisplayProps) {
         thing={props.thing}
         campaign={props.campaign}
         delete={props.delete}
-        edit={props.edit}
+        edit={props.update}
         anchorEl={anchorEl}
         handleClick={handleClick}
         handleClose={handleClose}

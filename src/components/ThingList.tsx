@@ -19,7 +19,7 @@ function NPCList(props: listProps) {
       campaign={props.campaign}
       key={datum.id}
       delete={props.deleteThing}
-      edit={props.updateThing}
+      update={props.updateThing}
     />
   ));
 
