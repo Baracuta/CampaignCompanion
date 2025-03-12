@@ -36,8 +36,8 @@ type PopProps = {
 // For the clickable star, make a conditional for each type of "updateEntity"
 // method in the service. Maybe use a hook that contains all of the update methods.
 export default function ThingPopover(props: PopProps) {
-  const [entity, setEntity] = useState<Partial<Entity>>(props.thing ?? {});
-  const favourite = entity.isFavourite === true;
+  const [entity, setEntity] = useState<Entity>(props.thing);
+  const favourite = props.thing.isFavourite === true;
 
   return (
     <Popover
@@ -57,10 +57,10 @@ export default function ThingPopover(props: PopProps) {
         {favourite ? (
           <div
             className={styles.icon}
-            onClick={async () => {
+            onClick={ () => {
               const isFavourite = false;
-              await setEntity({ ...entity, isFavourite });
-              await props.edit(props.campaign.id,entity as Entity);
+              setEntity({ ...entity, isFavourite });
+              props.edit(props.campaign.id,entity as Entity);
             }}
           >
             {" "}
@@ -69,10 +69,10 @@ export default function ThingPopover(props: PopProps) {
         ) : (
           <div
             className={styles.icon}
-            onClick={async () => {
+            onClick={() => {
               const isFavourite = true;
-              await setEntity({ ...entity, isFavourite });
-              await props.edit(props.campaign.id,entity as Entity);
+              setEntity({ ...entity, isFavourite });
+              props.edit(props.campaign.id,entity as Entity);
             }}
           >
             {" "}
