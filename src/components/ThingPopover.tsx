@@ -33,8 +33,7 @@ type PopProps = {
   id: string | undefined;
   open: boolean;
 };
-// For the clickable star, make a conditional for each type of "updateEntity"
-// method in the service. Maybe use a hook that contains all of the update methods.
+
 export default function ThingPopover(props: PopProps) {
   const [entity, setEntity] = useState<Entity>(props.thing);
   const favourite = props.thing.isFavourite === true;
