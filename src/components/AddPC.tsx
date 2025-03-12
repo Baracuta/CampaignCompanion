@@ -34,10 +34,13 @@ function AddPC(props: thingProps) {
     setOpen(false);
   };
 
+  const clearPC = () => {
+    setPC(props.editPC ?? {});
+  };
+
   const editMode = props.editPC != null;
   const favourite = pc.isFavourite === true;
   const image = useImage(pc.image as string);
-  
 
   return (
     <Fragment>
@@ -164,11 +167,19 @@ function AddPC(props: thingProps) {
           </div>
         </DialogContent>
         <DialogActions>
-          <button onClick={handleClose}>Cancel</button>
+          <button
+            onClick={() => {
+              handleClose();
+              clearPC();
+            }}
+          >
+            Cancel
+          </button>
           <button
             onClick={() => {
               props.addThing(props.campaignId, pc as PC);
               handleClose();
+              clearPC();
             }}
           >
             {editMode ? "Confirm" : "Add Player Character"}
