@@ -7,9 +7,10 @@ import { Item } from "../types/Item";
 import { PC } from "../types/PlayerCharacter";
 import { Campaign } from "../types/Campaign";
 import ThingPopover from "./ThingPopover";
+import { Entity } from "../types/Entity";
 
 type DisplayProps = {
-  thing: NPC | Location | Item | PC;
+  thing: Entity;
   campaign: Campaign;
   delete: (campaign: string, thing: string) => Promise<unknown>;
   update: (

@@ -18,15 +18,14 @@ import { Campaign } from "../types/Campaign";
 import { Location } from "../types/Location";
 import { useState } from "react";
 import { Entity } from "../types/Entity";
-import { useUpdate } from "../hooks/useUpdate";
 
 type PopProps = {
-  thing: NPC | Location | Item | PC;
+  thing: Entity;
   campaign: Campaign;
   delete: (campaign: string, thing: string) => Promise<unknown>;
   edit: (
     campaign: string,
-    thing: NPC | Location | Item | PC
+    thing: Entity
   ) => Promise<unknown>;
   anchorEl: HTMLButtonElement | null;
   handleClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -39,9 +38,6 @@ type PopProps = {
 export default function ThingPopover(props: PopProps) {
   const [entity, setEntity] = useState<Partial<Entity>>(props.thing ?? {});
   const favourite = entity.isFavourite === true;
-  const update = (campaignId,thing) => {
-    useUpdate(props.campaign.id, props.thing)
-  }
 
   return (
     <Popover
@@ -64,6 +60,7 @@ export default function ThingPopover(props: PopProps) {
             onClick={async () => {
               const isFavourite = false;
               await setEntity({ ...entity, isFavourite });
+              await props.edit(props.campaign.id,entity as Entity);
             }}
           >
             {" "}
@@ -75,7 +72,7 @@ export default function ThingPopover(props: PopProps) {
             onClick={async () => {
               const isFavourite = true;
               await setEntity({ ...entity, isFavourite });
-              await useUpdate(props.campaign.id,props.thing)
+              await props.edit(props.campaign.id,entity as Entity);
             }}
           >
             {" "}
@@ -91,28 +88,28 @@ export default function ThingPopover(props: PopProps) {
           <AddNPC
             campaignId={props.campaign.id as string}
             addThing={props.edit}
-            editNpc={props.thing}
+            editNpc={props.thing as NPC}
           />
         )}
         {props.thing.type === "Location" && (
           <AddLocation
             campaignId={props.campaign.id as string}
             addThing={props.edit}
-            editLocation={props.thing}
+            editLocation={props.thing as Location}
           />
         )}
         {props.thing.type === "Item" && (
           <AddItem
             campaignId={props.campaign.id as string}
             addThing={props.edit}
-            editItem={props.thing}
+            editItem={props.thing as Item}
           />
         )}
         {props.thing.type === "PC" && (
           <AddPC
             campaignId={props.campaign.id as string}
             addThing={props.edit}
-            editPC={props.thing}
+            editPC={props.thing as PC}
           />
         )}
         <DeleteDialogue
