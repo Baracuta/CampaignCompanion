@@ -37,10 +37,13 @@ function AddLocation(props: thingProps) {
     setOpen(false);
   };
 
+  const clearLocation = () => {
+    setLocation(props.editLocation ?? {});
+  };
+
   const editMode = props.editLocation != null;
   const favourite = location.isFavourite === true;
   const image = useImage(location.image);
-  
 
   return (
     <Fragment>
@@ -122,7 +125,7 @@ function AddLocation(props: thingProps) {
               images={ItemImageData}
               imageClick={async (img: string) => {
                 const image = img;
-                const imageId = await uploadImage(img)
+                const imageId = await uploadImage(img);
                 await setLocation({ ...location, image: imageId });
                 return image;
               }}
@@ -132,23 +135,31 @@ function AddLocation(props: thingProps) {
 
             <SingleFileUploader
               passedImage={async (img: string) => {
-                const newmapId = await uploadImage(img)
-                const oldmaps = location.maps as Array<string> ?? [];
+                const newmapId = await uploadImage(img);
+                const oldmaps = (location.maps as Array<string>) ?? [];
                 const maps = [...oldmaps, newmapId];
                 await setLocation({ ...location, maps });
                 return maps;
               }}
             />
 
-            <MapList images={location.maps as Array<string>}/>
+            <MapList images={location.maps as Array<string>} />
           </div>
         </DialogContent>
         <DialogActions>
-          <button onClick={handleClose}>Cancel</button>
+          <button
+            onClick={() => {
+              handleClose();
+              clearLocation();
+            }}
+          >
+            Cancel
+          </button>
           <button
             onClick={() => {
               props.addThing(props.campaignId, location as Location);
               handleClose();
+              clearLocation();
             }}
           >
             {editMode ? "Confirm" : "Add Location"}
