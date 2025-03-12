@@ -16,6 +16,9 @@ import NPCDetails from "./DetailsNPC";
 import PlayerCharacterDetails from "./DetailsPlayerCharacter";
 import { Campaign } from "../types/Campaign";
 import { Location } from "../types/Location";
+import { useState } from "react";
+import { Entity } from "../types/Entity";
+import { useUpdate } from "../hooks/useUpdate";
 
 type PopProps = {
   thing: NPC | Location | Item | PC;
@@ -34,6 +37,11 @@ type PopProps = {
 // For the clickable star, make a conditional for each type of "updateEntity"
 // method in the service. Maybe use a hook that contains all of the update methods.
 export default function ThingPopover(props: PopProps) {
+  const [entity, setEntity] = useState<Partial<Entity>>(props.thing ?? {});
+  const favourite = entity.isFavourite === true;
+  const update = (campaignId,thing) => {
+    useUpdate(props.campaign.id, props.thing)
+  }
 
   return (
     <Popover
@@ -50,11 +58,35 @@ export default function ThingPopover(props: PopProps) {
       }}
     >
       <div className={styles.button_panel}>
-        {props.thing.isFavourite ? (
+        {favourite ? (
+          <div
+            className={styles.icon}
+            onClick={async () => {
+              const isFavourite = false;
+              await setEntity({ ...entity, isFavourite });
+            }}
+          >
+            {" "}
+            <StarIcon fontSize="large" />
+          </div>
+        ) : (
+          <div
+            className={styles.icon}
+            onClick={async () => {
+              const isFavourite = true;
+              await setEntity({ ...entity, isFavourite });
+              await useUpdate(props.campaign.id,props.thing)
+            }}
+          >
+            {" "}
+            <StarBorderIcon fontSize="large" />
+          </div>
+        )}
+        {/* {props.thing.isFavourite ? (
           <StarIcon fontSize="large" />
         ) : (
           <StarBorderIcon fontSize="large" />
-        )}
+        )} */}
         {props.thing.type === "NPC" && (
           <AddNPC
             campaignId={props.campaign.id as string}
