@@ -34,6 +34,10 @@ function AddNPC(props: thingProps) {
     setOpen(false);
   };
 
+  const clearNpc = () => {
+    setNpc(props.editNpc ?? {});
+  };
+
   const editMode = props.editNpc != null;
   const favourite = npc.isFavourite === true;
   const image = useImage(npc.image);
@@ -125,11 +129,19 @@ function AddNPC(props: thingProps) {
           </div>
         </DialogContent>
         <DialogActions>
-          <button onClick={handleClose}>Cancel</button>
+          <button
+            onClick={() => {
+              handleClose();
+              clearNpc();
+            }}
+          >
+            Cancel
+          </button>
           <button
             onClick={() => {
               props.addThing(props.campaignId, npc as NPC);
               handleClose();
+              clearNpc();
             }}
           >
             {editMode ? "Confirm" : "Add NPC"}
