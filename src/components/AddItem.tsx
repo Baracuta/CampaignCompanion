@@ -38,10 +38,13 @@ function AddItem(props: thingProps) {
     setOpen(false);
   };
 
+  const clearItem = () => {
+    setItem(props.editItem ?? {});
+  };
+
   const editMode = props.editItem != null;
   const favourite = item.isFavourite === true;
   const image = useImage(item.image as string);
-  
 
   return (
     <Fragment>
@@ -116,7 +119,7 @@ function AddItem(props: thingProps) {
                 setItem({ ...item, category });
               }}
               renderInput={(params) => (
-                <TextField {...params} className={styles.auto_text} label=""/>
+                <TextField {...params} className={styles.auto_text} label="" />
               )}
             />
 
@@ -161,11 +164,19 @@ function AddItem(props: thingProps) {
           </div>
         </DialogContent>
         <DialogActions>
-          <button onClick={handleClose}>Cancel</button>
+          <button
+            onClick={() => {
+              handleClose();
+              clearItem();
+            }}
+          >
+            Cancel
+          </button>
           <button
             onClick={() => {
               props.addThing(props.campaignId, item as Item);
               handleClose();
+              clearItem();
             }}
           >
             {editMode ? "Confirm" : "Add item"}
