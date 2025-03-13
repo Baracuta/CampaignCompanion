@@ -139,7 +139,11 @@ function AddItem(props: thingProps) {
                 setItem({ ...item, effect });
               }}
               renderInput={(params) => (
-                <TextField {...params} className={styles.auto_text} label="" />
+                <TextField {...params} className={styles.auto_text} label=""
+                onChange={(e) => {
+                  const effect = e.target.value;
+                  setItem({...item, effect})
+                }} />
               )}
             />
 
