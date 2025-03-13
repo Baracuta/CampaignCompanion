@@ -119,7 +119,11 @@ function AddItem(props: thingProps) {
                 setItem({ ...item, category });
               }}
               renderInput={(params) => (
-                <TextField {...params} className={styles.auto_text} label="" />
+                <TextField {...params} className={styles.auto_text} label=""
+                onChange={(e, value) => {
+                  const category = value ?? undefined;
+                  setItem({...item, category})
+                }} />
               )}
             />
 
