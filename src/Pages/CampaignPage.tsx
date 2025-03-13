@@ -7,6 +7,8 @@ import TopBar from "../components/TopBar";
 import ToolBar from "../components/ToolBar";
 import { useCampaign } from "../hooks/useCampaign";
 import EntityList from "../Utilities/Entities";
+import { useUpdate } from "../hooks/useUpdate";
+import { Entity } from "../types/Entity";
 
 function CampaignPage() {
   const { id } = useParams();
@@ -22,7 +24,14 @@ function CampaignPage() {
         image={`${ASSETS_PATH}/Emblem 1 3.png`}
       />
 
-      <ToolBar campaignEntities={EntityList(campaign)}/>
+      <ToolBar
+        campaignEntities={EntityList(campaign)}
+        campaign={campaign}
+        delete={}
+        update={async (id: string, thing: Entity) => {
+          await useUpdate(id, thing);
+        }}
+      />
 
       <div className={styles.card_panel}>
         <Card

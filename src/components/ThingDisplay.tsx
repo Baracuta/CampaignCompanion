@@ -13,12 +13,9 @@ type DisplayProps = {
   thing: Entity;
   campaign: Campaign;
   delete: (campaign: string, thing: string) => Promise<unknown>;
-  update: (
-    campaign: string,
-    thing: NPC | Location | Item | PC
-  ) => Promise<unknown>;
+  update: (campaign: string, thing: NPC | Location | Item | PC) => Promise<unknown>;
 };
-//Make some sort of onClick component for the clickable star.
+
 export default function ThingDisplay(props: DisplayProps) {
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {

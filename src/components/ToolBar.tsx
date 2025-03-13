@@ -1,10 +1,18 @@
 import styles from "../css_modules/toolbar.module.css";
+import { Campaign } from "../types/Campaign";
 import { Entity } from "../types/Entity";
+import { Item } from "../types/Item";
+import { Location } from "../types/Location";
+import { NPC } from "../types/NPC";
+import { PC } from "../types/PlayerCharacter";
 import AvatarList from "./AvatarList";
 import SearchBar from "./SearchBar";
 
 type BarProps = {
   campaignEntities: Array<Entity>;
+  campaign: Campaign;
+  delete: (campaign: string, thing: string) => Promise<unknown>;
+  update: (campaign: string, thing: NPC | Location | Item | PC) => Promise<unknown>;
 };
 
 function ToolBar(props: BarProps) {
@@ -16,6 +24,9 @@ function ToolBar(props: BarProps) {
           things={props.campaignEntities?.filter(
             (item) => item.isFavourite == true
           )}
+          campaign={props.campaign}
+          delete={props.delete}
+          update={props.update}
         />
       </div>
 
@@ -25,6 +36,9 @@ function ToolBar(props: BarProps) {
           things={props.campaignEntities?.sort(
             (a: Entity, b: Entity) => b.modifiedDate - a.modifiedDate
           )}
+          campaign={props.campaign}
+          delete={props.delete}
+          update={props.update}
         />
       </div>
 
