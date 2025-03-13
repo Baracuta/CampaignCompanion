@@ -17,11 +17,15 @@ function AvatarComponent(props:AvatarProps){
 
 
     return(
-        <Avatar
-            alt={props.thing?.name}
-            src={image ?? ""} 
-            variant="rounded"
-        />
+        <div>
+            <div>
+                <Avatar
+                    alt={props.thing?.name}
+                    src={image ?? ""} 
+                    variant="rounded"
+                />
+            </div>
+        </div>
     )
 }
 
