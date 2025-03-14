@@ -8,13 +8,14 @@ import AddNPC from "../components/AddNPC";
 import { NPC } from "../types/NPC";
 import { useCampaign } from "../hooks/useCampaign";
 import ThingList from "../components/ThingList";
-import { createNPC, deleteNPC, getNPC, updateNPC } from "../services/CampaignService";
+import { createNPC, getNPC } from "../services/CampaignService";
 import { Location } from "../types/Location";
 import { Item } from "../types/Item";
 import { PC } from "../types/PlayerCharacter";
 import EntityList from "../Utilities/Entities";
 import { del } from "../services/ImageService";
 import { Entity } from "../types/Entity";
+import { deleteThing, updateThing } from "../components/ThingUpdater";
 
 // To delete images for a thing, just use the hook and delete it in the deleteThing workpath
 function CampaignNPCs() {
@@ -34,7 +35,16 @@ function CampaignNPCs() {
           buttonNav={`/campaign/${campaign?.id}`}
         />
 
-        <ToolBar campaignEntities={EntityList(campaign)}/>
+        <ToolBar
+        campaignEntities={EntityList(campaign)}
+        campaign={campaign}
+        delete={async (id: string, thing: Entity) => {
+          await deleteThing(id, thing);
+        }}
+        update={async (id: string, thing: Entity) => {
+          await updateThing(id, thing);
+        }}
+      />
       </div>
 
       <CardPanel>
@@ -51,7 +61,7 @@ function CampaignNPCs() {
           campaign={campaign}
           deleteThing={async (id: string, npc:Entity) => {
             const npcImage= (await getNPC(id,npc.id)).image;
-            await deleteNPC(id,npc.id);
+            await deleteThing(id,npc);
             if (npcImage != null){
               await del(npcImage)
             }
@@ -59,7 +69,7 @@ function CampaignNPCs() {
             return Array<NPC>;  
           }}
           updateThing={async (id: string, thing:NPC|Location|Item|PC) => {
-            await updateNPC(id,thing as NPC);
+            await updateThing(id,thing as NPC);
             await refreshCampaign();
             return thing;
           }}

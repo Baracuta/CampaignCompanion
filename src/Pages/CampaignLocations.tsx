@@ -7,13 +7,15 @@ import ToolBar from "../components/ToolBar";
 import { useCampaign } from "../hooks/useCampaign";
 import AddLocation from "../components/AddLocation";
 import ThingList from "../components/ThingList";
-import { createLocation, deleteLocation, getLocation, updateLocation } from "../services/CampaignService";
+import { createLocation, getLocation } from "../services/CampaignService";
 import { Location } from "../types/Location";
 import { Item } from "../types/Item";
 import { NPC } from "../types/NPC";
 import { PC } from "../types/PlayerCharacter";
 import EntityList from "../Utilities/Entities";
 import { del } from "../services/ImageService";
+import { deleteThing, updateThing } from "../components/ThingUpdater";
+import { Entity } from "../types/Entity";
 
 function CampaignLocations() {
   const { id } = useParams();
@@ -32,7 +34,16 @@ function CampaignLocations() {
           buttonNav={`/campaign/${campaign?.id}`}
         />
 
-        <ToolBar campaignEntities={EntityList(campaign)}/>
+        <ToolBar
+        campaignEntities={EntityList(campaign)}
+        campaign={campaign}
+        delete={async (id: string, thing: Entity) => {
+          await deleteThing(id, thing);
+        }}
+        update={async (id: string, thing: Entity) => {
+          await updateThing(id, thing);
+        }}
+      />
       </div>
 
       <CardPanel>
@@ -47,9 +58,9 @@ function CampaignLocations() {
         <ThingList
           things={campaign?.locations as unknown as Array<Location>}
           campaign={campaign}
-          deleteThing={async (id: string, location:string) => {
-            const locationImage= (await getLocation(id,location)).image;
-            await deleteLocation(id,location);
+          deleteThing={async (id:string, location:Entity) => {
+            const locationImage= (await getLocation(id,location.id)).image;
+            await deleteThing(id,location);
             if (locationImage != null){
               await del(locationImage)
             }
@@ -57,7 +68,7 @@ function CampaignLocations() {
             return Array<Location>;  
           }}
           updateThing={async (id: string, thing:NPC|Location|Item|PC) => {
-            await updateLocation(id,thing as Location);
+            await updateThing(id,thing as Location);
             await refreshCampaign();
             return thing;
           }}

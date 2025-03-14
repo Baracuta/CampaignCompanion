@@ -8,12 +8,14 @@ import { useCampaign } from "../hooks/useCampaign";
 import ThingList from "../components/ThingList";
 import AddItem from "../components/AddItem";
 import { Item } from "../types/Item";
-import { createItem, deleteItem, getItem, updateItem } from "../services/CampaignService";
+import { createItem, getItem } from "../services/CampaignService";
 import { NPC } from "../types/NPC";
 import { PC } from "../types/PlayerCharacter";
 import { Location } from "../types/Location";
 import EntityList from "../Utilities/Entities";
 import { del } from "../services/ImageService";
+import { deleteThing, updateThing } from "../components/ThingUpdater";
+import { Entity } from "../types/Entity";
 
 function CampaignItems() {
   const { id } = useParams();
@@ -32,7 +34,16 @@ function CampaignItems() {
           buttonNav={`/campaign/${campaign?.id}`}
         />
 
-        <ToolBar campaignEntities={EntityList(campaign)}/>
+        <ToolBar
+          campaignEntities={EntityList(campaign)}
+          campaign={campaign}
+          delete={async (id: string, thing: Entity) => {
+            await deleteThing(id, thing);
+          }}
+          update={async (id: string, thing: Entity) => {
+            await updateThing(id, thing);
+          }}
+        />
       </div>
 
       <CardPanel>
@@ -47,9 +58,9 @@ function CampaignItems() {
         <ThingList
           things={campaign?.items as Array<Item>}
           campaign={campaign}
-          deleteThing={async (id:string,item:string) => {
-            const itemImage= (await getItem(id,item)).image;
-            await deleteItem(id,item);
+          deleteThing={async (id:string,item:Entity) => {
+            const itemImage= (await getItem(id,item.id)).image;
+            await deleteThing(id,item);
             if (itemImage != null){
               await del(itemImage)
             }
@@ -57,7 +68,7 @@ function CampaignItems() {
             return Array<Item>;
           }}
           updateThing={async (id: string, thing:NPC|Location|Item|PC) => {
-            await updateItem(id,thing as Item);
+            await updateThing(id,thing as Item);
             await refreshCampaign();
             return thing;
           }}

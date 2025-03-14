@@ -8,12 +8,14 @@ import { useCampaign } from "../hooks/useCampaign";
 import ThingList from "../components/ThingList";
 import AddPC from "../components/AddPC";
 import { PC } from "../types/PlayerCharacter";
-import { createPC, deletePC, getPC, updatePC } from "../services/CampaignService";
+import { createPC, getPC } from "../services/CampaignService";
 import { Item } from "../types/Item";
 import { NPC } from "../types/NPC";
 import { Location } from "../types/Location";
 import EntityList from "../Utilities/Entities";
 import { del } from "../services/ImageService";
+import { deleteThing, updateThing } from "../components/ThingUpdater";
+import { Entity } from "../types/Entity";
 
 function CampaignPlayerCharacters() {
   const { id } = useParams();
@@ -32,7 +34,16 @@ function CampaignPlayerCharacters() {
           buttonNav={`/campaign/${campaign?.id}`}
         />
 
-        <ToolBar campaignEntities={EntityList(campaign)}/>
+        <ToolBar
+          campaignEntities={EntityList(campaign)}
+          campaign={campaign}
+          delete={async (id: string, thing: Entity) => {
+            await deleteThing(id, thing);
+          }}
+          update={async (id: string, thing: Entity) => {
+            await updateThing(id, thing);
+          }}
+        />
       </div>
 
       <CardPanel>
@@ -47,9 +58,9 @@ function CampaignPlayerCharacters() {
         <ThingList
           things={campaign?.playerCharacters as Array<PC>}
           campaign={campaign}
-          deleteThing={async (id:string,pc:string) => {
-            const pcImage = (await getPC(id, pc)).image;
-            await deletePC(id,pc);
+          deleteThing={async (id:string,pc:Entity) => {
+            const pcImage = (await getPC(id, pc.id)).image;
+            await deleteThing(id,pc);
             if (pcImage != null){
               await del(pcImage)
             }
@@ -57,7 +68,7 @@ function CampaignPlayerCharacters() {
             return Array<PC>
           }}
           updateThing={async (id: string, thing:NPC|Location|Item|PC) => {
-            await updatePC(id,thing as PC);
+            await updateThing(id,thing as PC);
             await refreshCampaign();
             return thing;
           }}
