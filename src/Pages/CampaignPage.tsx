@@ -13,7 +13,7 @@ import { deleteThing, updateThing } from "../components/ThingUpdater";
 function CampaignPage() {
   const { id } = useParams();
 
-  const campaign = useCampaign(id as string).campaign;
+  const {campaign,refreshCampaign} = useCampaign(id as string);
         
   return (
     <main className={styles.main}>
@@ -29,9 +29,11 @@ function CampaignPage() {
         campaign={campaign}
         delete={async (id: string, thing: Entity) => {
           await deleteThing(id, thing);
+          await refreshCampaign();
         }}
         update={async (id: string, thing: Entity) => {
           await updateThing(id, thing);
+          await refreshCampaign();
         }}
       />
 

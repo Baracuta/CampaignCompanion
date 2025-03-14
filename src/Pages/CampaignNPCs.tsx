@@ -40,9 +40,11 @@ function CampaignNPCs() {
         campaign={campaign}
         delete={async (id: string, thing: Entity) => {
           await deleteThing(id, thing);
+          await refreshCampaign();
         }}
         update={async (id: string, thing: Entity) => {
           await updateThing(id, thing);
+          await refreshCampaign();
         }}
       />
       </div>
