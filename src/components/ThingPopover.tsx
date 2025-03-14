@@ -16,7 +16,6 @@ import NPCDetails from "./DetailsNPC";
 import PlayerCharacterDetails from "./DetailsPlayerCharacter";
 import { Campaign } from "../types/Campaign";
 import { Location } from "../types/Location";
-import { useState } from "react";
 import { Entity } from "../types/Entity";
 
 type PopProps = {
@@ -32,7 +31,6 @@ type PopProps = {
 };
 
 export default function ThingPopover(props: PopProps) {
-  const [entity, setEntity] = useState<Entity>(props.thing);
   const favourite = props.thing.isFavourite === true;
 
   return (
@@ -50,36 +48,24 @@ export default function ThingPopover(props: PopProps) {
       }}
     >
       <div className={styles.button_panel}>
-        {favourite ? (
-          <div
-            className={styles.icon}
-            onClick={ () => {
-              const isFavourite = false;
-              setEntity({ ...entity, isFavourite });
-              props.edit(props.campaign.id,entity as Entity);
-            }}
-          >
-            {" "}
+        <div
+          className={styles.icon}
+          onClick={async () => {
+            const isFavourite = !props.thing.isFavourite;
+            await props.edit(props.campaign.id, {
+              ...props.thing,
+              isFavourite,
+            } as Entity);
+          }}
+        >
+          {" "}
+          {favourite === true ? (
             <StarIcon fontSize="large" />
-          </div>
-        ) : (
-          <div
-            className={styles.icon}
-            onClick={() => {
-              const isFavourite = true;
-              setEntity({ ...entity, isFavourite });
-              props.edit(props.campaign.id,entity as Entity);
-            }}
-          >
-            {" "}
+          ) : (
             <StarBorderIcon fontSize="large" />
-          </div>
-        )}
-        {/* {props.thing.isFavourite ? (
-          <StarIcon fontSize="large" />
-        ) : (
-          <StarBorderIcon fontSize="large" />
-        )} */}
+          )}
+        </div>
+
         {props.thing.type === "NPC" && (
           <AddNPC
             campaignId={props.campaign.id as string}
