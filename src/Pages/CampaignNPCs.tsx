@@ -14,6 +14,7 @@ import { Item } from "../types/Item";
 import { PC } from "../types/PlayerCharacter";
 import EntityList from "../Utilities/Entities";
 import { del } from "../services/ImageService";
+import { Entity } from "../types/Entity";
 
 // To delete images for a thing, just use the hook and delete it in the deleteThing workpath
 function CampaignNPCs() {
@@ -48,9 +49,9 @@ function CampaignNPCs() {
         <ThingList
           things={campaign?.npcs as Array<NPC>}
           campaign={campaign}
-          deleteThing={async (id: string, npc:string) => {
-            const npcImage= (await getNPC(id,npc)).image;
-            await deleteNPC(id,npc);
+          deleteThing={async (id: string, npc:Entity) => {
+            const npcImage= (await getNPC(id,npc.id)).image;
+            await deleteNPC(id,npc.id);
             if (npcImage != null){
               await del(npcImage)
             }

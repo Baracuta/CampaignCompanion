@@ -24,7 +24,7 @@ type PopProps = {
   campaign: Campaign;
   delete: (campaign: string, thing: Entity) => Promise<unknown>;
   edit: (campaign: string, thing: Entity) => Promise<unknown>;
-  anchorEl: HTMLButtonElement | null;
+  anchorEl: HTMLElement | null;
   handleClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
   handleClose: () => void;
   id: string | undefined;

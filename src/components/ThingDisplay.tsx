@@ -12,7 +12,7 @@ import { Entity } from "../types/Entity";
 type DisplayProps = {
   thing: Entity;
   campaign: Campaign;
-  delete: (campaign: string, thing: string) => Promise<unknown>;
+  delete: (campaign: string, thing: Entity) => Promise<unknown>;
   update: (campaign: string, thing: NPC | Location | Item | PC) => Promise<unknown>;
 };
 

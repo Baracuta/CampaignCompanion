@@ -4,11 +4,12 @@ import { Location } from "../types/Location";
 import { Item } from "../types/Item";
 import { PC } from "../types/PlayerCharacter";
 import ThingDisplay from "./ThingDisplay";
+import { Entity } from "../types/Entity";
 
 type listProps = {
   things: Array<NPC | Location | Item | PC>;
   campaign: Campaign;
-  deleteThing:(campaign:string,thing:string) => Promise<unknown>;
+  deleteThing:(campaign:string,thing:Entity) => Promise<unknown>;
   updateThing:(campaign:string, thing:NPC|Location|Item|PC) => Promise<unknown>;
 };
 
