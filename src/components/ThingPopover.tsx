@@ -22,7 +22,7 @@ import { Entity } from "../types/Entity";
 type PopProps = {
   thing: Entity;
   campaign: Campaign;
-  delete: (campaign: string, thing: string) => Promise<unknown>;
+  delete: (campaign: string, thing: Entity) => Promise<unknown>;
   edit: (campaign: string, thing: Entity) => Promise<unknown>;
   anchorEl: HTMLButtonElement | null;
   handleClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -110,7 +110,7 @@ export default function ThingPopover(props: PopProps) {
         )}
         <DeleteDialogue
           delete={props.delete}
-          thingID={props.thing.id}
+          thing={props.thing}
           campaignID={props.campaign.id}
         />
         <button onClick={props.handleClose}>Close</button>

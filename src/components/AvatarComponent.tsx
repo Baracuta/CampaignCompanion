@@ -12,7 +12,7 @@ import { Location } from "../types/Location";
 type AvatarProps = {
     thing: Entity;
     campaign: Campaign;
-    delete: (campaign: string, thing: string) => Promise<unknown>;
+    delete: (campaign: string, thing: Entity) => Promise<unknown>;
     update: (campaign: string, thing: NPC | Location | Item | PC) => Promise<unknown>;
 };
 

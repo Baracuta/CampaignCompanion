@@ -7,8 +7,8 @@ import TopBar from "../components/TopBar";
 import ToolBar from "../components/ToolBar";
 import { useCampaign } from "../hooks/useCampaign";
 import EntityList from "../Utilities/Entities";
-import { useUpdate } from "../hooks/useUpdate";
 import { Entity } from "../types/Entity";
+import { deleteThing, updateThing } from "../components/ThingUpdater";
 
 function CampaignPage() {
   const { id } = useParams();
@@ -27,9 +27,11 @@ function CampaignPage() {
       <ToolBar
         campaignEntities={EntityList(campaign)}
         campaign={campaign}
-        delete={}
+        delete={async (id: string, thing: Entity) => {
+          await deleteThing(id, thing);
+        }}
         update={async (id: string, thing: Entity) => {
-          await useUpdate(id, thing);
+          await updateThing(id, thing);
         }}
       />
 

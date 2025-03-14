@@ -2,11 +2,12 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 import React from 'react';
+import { Entity } from '../types/Entity';
 
 
 type DeleteProps = {
-    delete:(campaign:string,thing:string) => Promise<unknown>;
-    thingID: string;
+    delete:(campaign:string,thing:Entity) => Promise<unknown>;
+    thing: Entity;
     campaignID: string;
 }
 export default function AlertDialog(props: DeleteProps) {
@@ -21,7 +22,7 @@ export default function AlertDialog(props: DeleteProps) {
   };
 
   const handleDelete = () => {
-    props.delete(props.campaignID, props.thingID);
+    props.delete(props.campaignID, props.thing);
   };
 
   return (
