@@ -1,6 +1,5 @@
 import { ASSETS_PATH } from "../constants/assets_path"
 
-//This is the slideshow background for the main splash screen.
 function SplashBackground(){
     return(
         <div className="background-image">
