@@ -11,6 +11,7 @@ type SearchProps = {
 
 function SearchBar(props:SearchProps){
 
+    // Add in the logic for ThingPopovers, and set the trigger for "open" to onChange in the Autocomplete
 
 
     return (
