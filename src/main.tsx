@@ -10,7 +10,6 @@ import CampaignNPCs from './pages/CampaignNPCs.tsx'
 import CampaignLocations from './pages/CampaignLocations.tsx'
 import CampaignItems from './pages/CampaignItems.tsx'
 import CampaignPlayerCharacters from './pages/CampaignPlayerCharacters.tsx'
-import NPCForm from './pages/NPCForm.tsx'
 
 //All of the different available routes will be here, since there won't be too too many.
 const router=createBrowserRouter([
@@ -49,10 +48,6 @@ const router=createBrowserRouter([
     {
         path:"/campaign/:id/PlayerCharacters",
         element:<CampaignPlayerCharacters/>
-    },
-    {
-        path:"/campaign/:id/NPCs/new",
-        element:<NPCForm/>
     },
 ])
 

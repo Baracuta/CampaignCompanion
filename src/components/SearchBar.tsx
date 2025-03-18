@@ -26,38 +26,45 @@ function SearchBar(props:SearchProps){
     const open = Boolean(anchorEl)
     const id = open ? "simple-popover" : undefined;
 
+    const clickCheck = (event: React.MouseEvent<HTMLElement>) => {
+
+    }
     // Add in the logic for ThingPopovers
     //  and set the trigger for "open" to onChange in the Autocomplete
 
+    const divs = (props.EntityList).map((datum) => (
+        <ThingPopover
+            key={datum.id}
+            thing={datum}
+            campaign={props.campaign}
+            delete={props.delete}
+            edit={props.update}
+            anchorEl={anchorEl}
+            handleClick={handleClick}
+            handleClose={handleClose}
+            id={id}
+            open={open}
+        />
+    ))
+
     return (
-        <div>
+        <>
             <Autocomplete
                 className={styles.Autocomplete}
                 freeSolo
                 options={props.EntityList.map((option) => `${option.name} (${option.type})`)}
-                // value={item.category ?? ""}
-                // onChange={(e, value) => {
-                //     const category = value ?? undefined;
-                //     setItem({ ...item, category });
-                // }}
+                value={ ?? ""}
+                onChange={(e, value) => {
+                    const thing = value ?? undefined;
+                    setItem({ ...item, category });
+                }}
                 onChange={console.log}
                 renderInput={(params) => (
-                    <TextField {...params} label=""/>
+                    <TextField {...params} label="" onClick={handleClick}/>
                 )}
             />
-
-            <ThingPopover
-                thing={props.thing}
-                campaign={props.campaign}
-                delete={props.delete}
-                edit={props.update}
-                anchorEl={anchorEl}
-                handleClick={handleClick}
-                handleClose={handleClose}
-                id={id}
-                open={open}
-            />
-        </div>
+            {divs}
+        </>
     )
 }
 

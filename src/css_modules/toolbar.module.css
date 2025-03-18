@@ -47,7 +47,10 @@
 
             margin: 5px;
         }
-
+        .container{
+            max-width: fit-content;
+            min-width: none;
+        }
         .search_bar{
             display: flex;
             flex-direction: row;
@@ -59,7 +62,7 @@
 
             margin: 5px;
             
-
+            
             .Autocomplete{
                 border: solid black;
                 border-width: 1px;
