@@ -7,17 +7,33 @@
 
         .image_item:hover{
             cursor:pointer;
-            border-width: 20px;
-            border: solid #fc0;
+            
         }
     }
 
     .image_item{
         border: solid black;
+        position: relative;
+
+        .delete{
+            border: solid red;
+            position:absolute;
+
+            right:0;
+
+            width:25px;
+            height:25px;
+        }
+
+        .delete:hover{
+            border:solid white;
+        }
     }
     .image_item:hover{
         cursor: zoom-in;
     }
+
+    
 
     .box{
         display: flex;

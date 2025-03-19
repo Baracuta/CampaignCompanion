@@ -14,7 +14,7 @@ import StandardImageList from "./ImageList";
 import SingleFileUploader from "./FileUploader";
 import MapList from "./MapList";
 import { useImage } from "../hooks/useImage";
-import { uploadImage } from "../services/ImageService";
+import { del, get, uploadImage } from "../services/ImageService";
 
 type thingProps = {
   campaignId: string;
@@ -143,7 +143,18 @@ function AddLocation(props: thingProps) {
               }}
             />
 
-            <MapList images={location.maps as Array<string>} />
+            <MapList
+              images={location.maps as Array<string>}
+              editMaps={true}
+              deleteMap={async (imgKey: string) => {
+                const targetKey = await get(imgKey);
+                const oldmaps = (location.maps as Array<string>) ?? [];
+                const maps = [...oldmaps.slice(targetKey)];
+                await setLocation({...location, maps });
+                await del(targetKey);
+                return maps;
+              }}
+            />
           </div>
         </DialogContent>
         <DialogActions>
