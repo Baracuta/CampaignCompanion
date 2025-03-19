@@ -16,7 +16,9 @@ type SearchProps = {
 }
 
 function SearchBar(props:SearchProps){
+    const [value, setValue] = useState<string | null>();
     const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
     };
@@ -47,12 +49,11 @@ function SearchBar(props:SearchProps){
                 className={styles.Autocomplete}
                 freeSolo
                 options={props.EntityList.map((option) => `${option.name} (${option.type})`)}
-                // value={ ?? ""}
-                // onChange={(e, value) => {
-                //     const thing = value ?? undefined;
-                //     setItem({ ...item, category });
-                // }}
-                onChange={console.log}
+                value={value}
+                onChange={(event: unknown, newValue: string | null) => {
+                    setValue(newValue);
+                }}
+        
                 renderInput={(params) => (
                     <TextField {...params} label="" onClick={handleClick}/>
                 )}
