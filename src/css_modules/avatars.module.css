@@ -11,4 +11,7 @@
         border:solid red;
     }
 
+    .avatar_click:hover{
+        cursor: pointer;
+    }
 }

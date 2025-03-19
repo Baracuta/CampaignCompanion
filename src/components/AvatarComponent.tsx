@@ -1,3 +1,4 @@
+import styles from '../css_modules/avatars.module.css'
 import { Avatar } from "@mui/material";
 import { useImage } from "../hooks/useImage";
 import { Entity } from "../types/Entity";
@@ -29,7 +30,7 @@ function AvatarComponent(props: AvatarProps) {
       const id = open ? "simple-popover" : undefined;
   return (
     <div>
-      <div onClick={handleClick}>
+      <div className={styles.avatar_click} onClick={handleClick}>
         <Avatar alt={props.thing?.name} src={image ?? ""} variant="rounded" />
       </div>
         <ThingPopover
