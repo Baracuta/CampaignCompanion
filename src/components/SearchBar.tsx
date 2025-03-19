@@ -15,12 +15,16 @@ type SearchProps = {
     update: (campaign: string, thing: Entity) => Promise<unknown>;
 }
 
+// Something confirms that value matches an Entity ID. If it does, filter/find/sort divs to be just that one entity with the matching ID.
+// Set value in the autocomplete box. Then clicking checks it. If yay, it does the thing. If not, nothing happens.
 function SearchBar(props:SearchProps){
     const [value, setValue] = useState<string | null>();
     const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
+        // const clickValue = event.currentTarget;
+        setAnchorEl(event.currentTarget);
+        console.log(value);
     };
     const handleClose = () => {
     setAnchorEl(null);
@@ -50,8 +54,9 @@ function SearchBar(props:SearchProps){
                 freeSolo
                 options={props.EntityList.map((option) => `${option.name} (${option.type})`)}
                 value={value}
-                onChange={(event: unknown, newValue: string | null) => {
-                    setValue(newValue);
+                onChange={async (_event: unknown, newValue: string | null) => {
+                    await setValue(newValue);
+                    // await console.log(newValue);
                 }}
         
                 renderInput={(params) => (

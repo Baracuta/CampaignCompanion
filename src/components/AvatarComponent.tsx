@@ -48,6 +48,3 @@ function AvatarComponent(props: AvatarProps) {
 }
 
 export default AvatarComponent;
-
-//When I want to make this functional, I can use ThingList and pass new campaign props for favourites and for recent edits.
-//Give each campaign new arrays for favourites and recentedits. Use them in the service.
