@@ -55,7 +55,7 @@ function SearchBar(props:SearchProps){
                 className={styles.Autocomplete}
                 freeSolo
                 options={props.EntityList.map((option) => `${option.name} (${option.type})`)}
-                value={value}
+                value={value ?? ""}
                 onChange={async (_event: unknown, newValue: string | null) => {
                     await setValue(newValue);
                     // await console.log(newValue);
