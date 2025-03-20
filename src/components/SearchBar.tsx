@@ -17,6 +17,8 @@ type SearchProps = {
 
 // Something confirms that value matches an Entity ID. If it does, filter/find/sort divs to be just that one entity with the matching ID.
 // Set value in the autocomplete box. Then clicking checks it. If yay, it does the thing. If not, nothing happens.
+
+// Divs doesn't need to be the whole entityList. Just the one entity that has its ID being passed to it.
 function SearchBar(props:SearchProps){
     const [value, setValue] = useState<string | null>();
     const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
