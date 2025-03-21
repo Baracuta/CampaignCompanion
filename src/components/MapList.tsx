@@ -1,5 +1,6 @@
 import styles from "../css_modules/imagelist.module.css";
 import { ImageList, ImageListItem } from "@mui/material";
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import BigImage from "./BigImage";
 import { useImages } from "../hooks/useImages";
 
@@ -31,7 +32,9 @@ export default function MapList(props: MapProps) {
                 <div className={styles.delete} onClick={() => {
                   props.deleteMap(item)
                   console.log(images[item])
-                }}/>
+                }}>
+                  <DeleteForeverIcon fontSize="medium"/>
+                </div>
                 ): null
               }
             </ImageListItem>

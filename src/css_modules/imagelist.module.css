@@ -16,7 +16,6 @@
         position: relative;
 
         .delete{
-            border: solid red;
             position:absolute;
 
             right:0;
