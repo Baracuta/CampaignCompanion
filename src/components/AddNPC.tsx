@@ -39,7 +39,6 @@ function AddNPC(props: thingProps) {
   const image = useImage(npc.image);
 
   const clearNpc = () => {
-    if (props.editNpc != null)  {setNpc(props.editNpc ?? {})};
     if (props.editNpc == null) {setNpc({});}
   };
 

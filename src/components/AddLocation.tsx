@@ -23,11 +23,9 @@ type thingProps = {
 };
 
 function AddLocation(props: thingProps) {
-  const [location, setLocation] = useState<Partial<Location>>(
-    props.editLocation ?? {}
-  );
-
+  const [location, setLocation] = useState<Partial<Location>>(props.editLocation ?? {});
   const [open, setOpen] = useState(false);
+  const [imagesToDelete, setImagesToDelete] = useState<Array<string>>([]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -42,7 +40,6 @@ function AddLocation(props: thingProps) {
   const image = useImage(location.image);
 
   const clearLocation = () => {
-    if (props.editLocation != null)  {setLocation(props.editLocation ?? {})};
     if (props.editLocation == null) {setLocation({});}
   };
 
@@ -151,7 +148,7 @@ function AddLocation(props: thingProps) {
                 const oldmaps = (location.maps as Array<string>) ?? [];
                 const maps = [...oldmaps.filter((datum) => datum != imgKey)];
                 await setLocation({...location, maps });
-                await del(imgKey);
+                setImagesToDelete([...imagesToDelete, imgKey]);
                 return maps;
               }}
             />
@@ -167,8 +164,14 @@ function AddLocation(props: thingProps) {
             Cancel
           </button>
           <button
-            onClick={() => {
-              props.addThing(props.campaignId, location as Location);
+            onClick={async () => {
+              await props.addThing(props.campaignId, location as Location);
+
+              if (imagesToDelete.length >0) {
+                for (let i=0; i < imagesToDelete.length; i++) {
+                  await del(imagesToDelete[i]);
+                }
+              }
               handleClose();
               clearLocation();
             }}

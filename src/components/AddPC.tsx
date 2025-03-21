@@ -38,7 +38,6 @@ function AddPC(props: thingProps) {
   const image = useImage(pc.image as string);
 
   const clearPC = () => {
-    if (props.editPC != null)  {setPC(props.editPC ?? {})};
     if (props.editPC == null) {setPC({});}
   };
 

@@ -44,7 +44,6 @@ function AddItem(props: thingProps) {
   const image = useImage(item.image as string);
 
   const clearItem = () => {
-    if (props.editItem != null)  {setItem(props.editItem ?? {})};
     if (props.editItem == null) {setItem({});}
   };
 
