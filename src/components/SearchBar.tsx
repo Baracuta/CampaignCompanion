@@ -18,6 +18,7 @@ function SearchBar(props: SearchProps) {
 
   const handleClose = () => {
     setEntity(null);
+    setValue(null);
   };
 
   const popoverDiv = entity ? (
