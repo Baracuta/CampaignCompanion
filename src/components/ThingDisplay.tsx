@@ -40,7 +40,6 @@ export default function ThingDisplay(props: DisplayProps) {
         delete={props.delete}
         edit={props.update}
         anchorEl={anchorEl}
-        handleClick={handleClick}
         handleClose={handleClose}
         id={id}
         open={open}
