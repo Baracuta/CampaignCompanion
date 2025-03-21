@@ -17,6 +17,7 @@
 
         .delete{
             position:absolute;
+            border: 2px solid transparent;
 
             right:0;
 
@@ -25,7 +26,7 @@
         }
 
         .delete:hover{
-            border:solid white;
+            border: 2px solid white;
         }
     }
     .image_item:hover{
