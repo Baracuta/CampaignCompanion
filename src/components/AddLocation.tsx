@@ -37,13 +37,14 @@ function AddLocation(props: thingProps) {
     setOpen(false);
   };
 
-  const clearLocation = () => {
-    setLocation(props.editLocation ?? {});
-  };
-
   const editMode = props.editLocation != null;
   const favourite = location.isFavourite === true;
   const image = useImage(location.image);
+
+  const clearLocation = () => {
+    if (props.editLocation != null)  {setLocation(props.editLocation ?? {})};
+    if (props.editLocation == null) {setLocation({});}
+  };
 
   return (
     <Fragment>

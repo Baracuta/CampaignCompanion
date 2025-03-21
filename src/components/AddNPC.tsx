@@ -34,13 +34,14 @@ function AddNPC(props: thingProps) {
     setOpen(false);
   };
 
-  const clearNpc = () => {
-    setNpc(props.editNpc ?? {});
-  };
-
   const editMode = props.editNpc != null;
   const favourite = npc.isFavourite === true;
   const image = useImage(npc.image);
+
+  const clearNpc = () => {
+    if (props.editNpc != null)  {setNpc(props.editNpc ?? {})};
+    if (props.editNpc == null) {setNpc({});}
+  };
 
   return (
     <Fragment>

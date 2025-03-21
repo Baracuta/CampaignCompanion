@@ -38,13 +38,15 @@ function AddItem(props: thingProps) {
     setOpen(false);
   };
 
-  const clearItem = () => {
-    setItem(props.editItem ?? {});
-  };
 
   const editMode = props.editItem != null;
   const favourite = item.isFavourite === true;
   const image = useImage(item.image as string);
+
+  const clearItem = () => {
+    if (props.editItem != null)  {setItem(props.editItem ?? {})};
+    if (props.editItem == null) {setItem({});}
+  };
 
   return (
     <Fragment>

@@ -29,18 +29,18 @@ function AddPC(props: thingProps) {
   const handleClickOpen = () => {
     setOpen(true);
   };
-
   const handleClose = () => {
     setOpen(false);
-  };
-
-  const clearPC = () => {
-    setPC(props.editPC ?? {});
   };
 
   const editMode = props.editPC != null;
   const favourite = pc.isFavourite === true;
   const image = useImage(pc.image as string);
+
+  const clearPC = () => {
+    if (props.editPC != null)  {setPC(props.editPC ?? {})};
+    if (props.editPC == null) {setPC({});}
+  };
 
   return (
     <Fragment>
