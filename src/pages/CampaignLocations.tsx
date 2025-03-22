@@ -12,7 +12,7 @@ import { Location } from "../types/Location";
 import { Item } from "../types/Item";
 import { NPC } from "../types/NPC";
 import { PC } from "../types/PlayerCharacter";
-import EntityList from "../Utilities/Entities";
+import EntityList from "../utilities/Entities";
 import { del } from "../services/ImageService";
 import { deleteThing, updateThing } from "../components/ThingUpdater";
 import { Entity } from "../types/Entity";

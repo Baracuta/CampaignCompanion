@@ -6,7 +6,7 @@ import { ASSETS_PATH } from "../constants/assets_path";
 import TopBar from "../components/TopBar";
 import ToolBar from "../components/ToolBar";
 import { useCampaign } from "../hooks/useCampaign";
-import EntityList from "../Utilities/Entities";
+import EntityList from "../utilities/Entities";
 import { Entity } from "../types/Entity";
 import { deleteThing, updateThing } from "../components/ThingUpdater";
 
