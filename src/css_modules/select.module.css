@@ -70,4 +70,43 @@
 
         overflow: hidden;
     }
+
+    .top_bar{
+        border: solid black;
+        border-radius: 25px;
+        background-color: rgba(0, 0, 0, 0.5);
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        align-content:center;
+        flex-grow:0,0,0;
+
+        min-width: 80%;
+        width: 95%;
+        max-width: 95%;
+        min-height: fit-content;
+        height: 100px;
+        max-height:20%;
+
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .card_panel{
+        display: flex;
+        flex-direction:row;
+        flex-wrap:wrap;
+        justify-content: flex-start;
+        align-content: baseline;
+
+        min-width: 95%;
+        width:95%;
+        max-width: 95%;
+        height: 500px;
+
+        border: solid black;
+        border-radius: 10px;
+
+    }
 }
