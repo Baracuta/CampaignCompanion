@@ -53,7 +53,7 @@ function AddItem(props: thingProps) {
         className={editMode ? styles.edit_button : styles.card}
         onClick={handleClickOpen}
       >
-        {editMode ? "Edit Item" : <p>Add item</p>}
+        {editMode ? "Edit" : <p>Add item</p>}
       </button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>
