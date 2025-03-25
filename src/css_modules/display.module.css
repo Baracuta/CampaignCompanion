@@ -347,9 +347,6 @@ and (max-width: 1023px){
                 align-self: center;  
             }
             .info{
-                padding: 2%;
-
-                justify-content: center;
                 text-align: center;
 
                 border: solid red;
