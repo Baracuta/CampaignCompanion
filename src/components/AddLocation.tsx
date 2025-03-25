@@ -49,7 +49,7 @@ function AddLocation(props: thingProps) {
         className={editMode ? styles.edit_button : styles.card}
         onClick={handleClickOpen}
       >
-        {editMode ? "Edit Location" : <p>Add Location</p>}
+        {editMode ? "Edit" : <p>Add Location</p>}
       </button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>

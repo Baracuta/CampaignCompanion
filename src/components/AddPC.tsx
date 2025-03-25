@@ -47,7 +47,7 @@ function AddPC(props: thingProps) {
         className={editMode ? styles.edit_button : styles.card}
         onClick={handleClickOpen}
       >
-        {editMode ? "Edit Player Character" : <p>Add Player Character</p>}
+        {editMode ? "Edit" : <p>Add Player Character</p>}
       </button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>

@@ -48,7 +48,7 @@ function AddNPC(props: thingProps) {
         className={editMode ? styles.edit_button : styles.card}
         onClick={handleClickOpen}
       >
-        {editMode ? "Edit NPC" : <p>Add NPC</p>}
+        {editMode ? "Edit" : <p>Add NPC</p>}
       </button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>
