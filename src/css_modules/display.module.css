@@ -351,6 +351,10 @@ and (max-width: 1023px){
 
                 justify-content: center;
                 text-align: center;
+
+                border: solid red;
+
+                max-height: 10%;
             }
         }
         .details_bottom{
