@@ -1,4 +1,3 @@
-import NavButton from "../components/NavButton";
 import styles from "../css_modules/campaign.module.css";
 import Card from "../components/Card";
 import { useParams } from "react-router-dom";
@@ -63,9 +62,7 @@ function CampaignPage() {
         ></Card>
       </div>
 
-      <div className={styles.bottom_bar}>
-        <NavButton text="Go Back" destination="/campaign-select" />
-      </div>
+      <div className={styles.bottom_bar}/>
     </main>
   );
 }
