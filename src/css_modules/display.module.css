@@ -217,7 +217,7 @@ and (max-width: 1023px){
         min-height:25%;
         height:25%;
 
-        font-size:25px;
+        font-size:20px;
         font-weight: bold;
 
         margin: 5px;
@@ -227,12 +227,13 @@ and (max-width: 1023px){
 
         display: flex;
         flex-direction: column;
+        flex-basis: 40%;
         justify-content: center;
 
         button{
             background:none;
             height: 100%;
-            font-size: large;
+            font-size: small;
             border-radius:25px;
         }
         p{
