@@ -349,9 +349,20 @@ and (max-width: 1023px){
             .info{
                 text-align: center;
 
-                border: solid red;
+                height: 50%;
+                max-height: 50%;
+                
+                h2{
+                    margin: 5px;
+                }
+                h3{
+                    margin: 5px;
+                }
+                h5{
+                    font-size: small;
 
-                max-height: 10%;
+                    margin: 5px;
+                }
             }
         }
         .details_bottom{
