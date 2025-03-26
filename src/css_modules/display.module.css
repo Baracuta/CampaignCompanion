@@ -358,10 +358,16 @@ and (max-width: 1023px){
                 h3{
                     margin: 5px;
                 }
-                h5{
-                    font-size: small;
+                .sub_container{
+                    display: flex;
+                    justify-content: center;
+                    
+                    h5{
+                        font-size: small;
 
-                    margin: 5px;
+                        margin-top: 5px;
+                        margin-bottom: 5px;                        
+                    }
                 }
             }
         }

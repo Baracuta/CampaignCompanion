@@ -17,8 +17,10 @@ function ItemDetails(props: ItemProps) {
         <div className={styles.info}>
           <h2>{props.item.name}</h2>
           <h3>{props.item.description}</h3>
-          <h5>Category: {props.item.category}</h5>
-          <h5>Effect: {props.item.effect}</h5>
+          <div className={styles.sub_container}>
+            <h5>| Category: {props.item.category} |</h5>
+            <h5>| Effect: {props.item.effect} |</h5>
+          </div>
         </div>
       </div>
       <div className={styles.details_bottom}>
