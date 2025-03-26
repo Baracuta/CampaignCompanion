@@ -41,7 +41,7 @@ function CampaignForm() {
             freeSolo
             options={GameOptions}
             value={campaign.game ?? ""}
-            onChange={(e, value) => {
+            onChange={(_e, value) => {
               const game = value ?? undefined;
               setCampaign({ ...campaign, game });
             }}
