@@ -1,3 +1,3 @@
 
 
-export const ASSETS_PATH="/public/assets"
+export const ASSETS_PATH="/CampaignCompanion"
