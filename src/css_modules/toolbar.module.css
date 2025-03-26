@@ -24,7 +24,7 @@
             margin-right: 5px;
         }
 
-        .quick_access{
+        .favourites{
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -83,7 +83,7 @@
 @media screen and (min-width:360px) and (max-width:1023px){
     .tool_bar{
         border: solid black;
-        border-radius: 4%;
+        border-radius: 10px;
         background-color: rgba(0, 0, 0, 0.5);
 
         display: flex;
@@ -94,52 +94,77 @@
         width:90%;
         max-width: auto;
         min-height: 10%;
-        height:20%;
-        max-height: 20%;
+        height:30%;
+        max-height: 30%;
 
         margin: 5px;
 
         overflow-y: scroll;
-        scroll-snap-type: mandatory;
-        scroll-padding: 0px;
+        scroll-snap-type:y mandatory;
+        scroll-padding: 5px;
         scroll-margin: 0px;
+        scroll-behavior: smooth;
+        scroll-snap-type: mandatory;
+        scroll-snap-stop: always;
 
-        .quick_access{
-            scroll-snap-align: center;
+        h4{
+            margin-right: 5px;
+            margin-left: 5px;
+        }
+
+        .favourites{
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
 
             display: flex;
             flex-direction: row;
             align-items: center;
 
             min-width: none;
-            width:40%;
-            max-width: 50%;
-
+            width:80%;
+            max-width: 80%;
         }
 
         .recent_edits{
-            
+            scroll-snap-align: center;
+            scroll-snap-stop: always;
 
             display: flex;
             flex-direction: row;
             align-items:center;
 
             min-width: none;
-            width:40%;
-            max-width: 50%;
+            width:80%;
+            max-width: 80%;
 
 
         }
 
         .search_bar{
+            scroll-snap-align: end;
+            scroll-snap-stop: always;
+
             display: flex;
             flex-direction: row;
             align-items:center;
 
             min-width: none;
-            width:40%;
-            max-width: 50%;
+            width:80%;
+            max-width: 80%;
 
+            .Autocomplete{
+                border: solid black;
+                border-width: 1px;
+                background-color: rgba(75, 75, 75, 0.5);
+                border-radius: 5px;
+    
+                width:70%;
+
+                input{
+                    color: white;
+                    border:none;
+                }
+            }
 
         }
     }

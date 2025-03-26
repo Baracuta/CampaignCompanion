@@ -18,7 +18,7 @@ type BarProps = {
 function ToolBar(props: BarProps) {
   return (
     <div className={styles.tool_bar}>
-      <div className={styles.quick_access}>
+      <div className={styles.favourites}>
         <h4>Favourites:</h4>
         <AvatarList
           things={props.campaignEntities?.filter(
