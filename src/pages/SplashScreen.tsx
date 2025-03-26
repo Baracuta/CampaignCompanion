@@ -13,7 +13,7 @@ function SplashScreen() {
   
         <div className="splash-items">
   
-          <img className="logo" src="src/assets/Emblem 1 3.png" alt="" />
+          <img className="logo" src="public/assets/Emblem 1 3.png" alt="" />
           <h1>Campaign Companion</h1>
           <div className="options">
             <NavButton text="Create New Campaign" destination="/campaign-form"/>
