@@ -22,7 +22,7 @@ function LocationDetails(props: LocationProps) {
       </div>
       <div className={styles.details_bottom}>
         <pre className={styles.notes}>{props.location.notes}</pre>
-        <MapList images={props.location.maps as Array<string>} />
+        <MapList images={props.location.maps as Array<string>} deleteMap={undefined} />
       </div>
     </div>
   );

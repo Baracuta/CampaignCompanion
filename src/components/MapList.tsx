@@ -7,15 +7,14 @@ import { useImages } from "../hooks/useImages";
 type MapProps = {
   images: Array<string>;
   editMaps?: boolean;
-  deleteMap: (imgKey: string) => Promise<unknown>;
+  deleteMap?: (imgKey: string) => Promise<unknown>;
 };
 
 export default function MapList(props: MapProps) {
   const editMode = props.editMaps != null;
 
   const images = useImages(props.images);
-  
-  
+    
   return (
     <div>
       <ImageList
@@ -29,9 +28,8 @@ export default function MapList(props: MapProps) {
             <ImageListItem className={styles.image_item} key={`image_${idx}`}>
               <BigImage src={images[item]}/>
               {editMode ? (
-                <div className={styles.delete} onClick={() => {
-                  props.deleteMap(item)
-                  console.log(images[item])
+                <div className={styles.delete} onClick={() => {                  
+                  if (props.deleteMap != null) props.deleteMap(item)
                 }}>
                   <DeleteForeverIcon fontSize="medium"/>
                 </div>
