@@ -1,3 +1,3 @@
 
 
-export const ASSETS_PATH="/src/assets"
+export const ASSETS_PATH="/public/assets"
