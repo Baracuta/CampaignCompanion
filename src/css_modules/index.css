@@ -107,6 +107,7 @@ button {
   font-family: inherit;
 
   background-color: #1a1a1a;
+  color: white;
 
   cursor: pointer;
   transition: border-color 0.25s;
@@ -122,6 +123,7 @@ button {
 
 button:hover {
   border-color: #FC0;
+  text-shadow: #fc0 1px 0 5px, white 1px 0 10px;
 }
 button:focus,
 button:focus-visible {
