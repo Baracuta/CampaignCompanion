@@ -49,7 +49,7 @@ const router=createBrowserRouter([
         path:"/campaign/:id/PlayerCharacters",
         element:<CampaignPlayerCharacters/>
     },
-], {basename: "/CampaignCompanion"})
+], {basename: "/Campaign-Companion"})
 
 createRoot(document.getElementById('root')!).render(
     <RouterProvider router={router}/>
