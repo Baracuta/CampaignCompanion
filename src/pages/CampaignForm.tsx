@@ -29,7 +29,6 @@ function CampaignForm() {
     <main className={styles.main}>
       <div>
         <NavButton text="Home" destination="/" />
-        <NavButton text="Campaign Page" destination="/campaign/:id" />
       </div>
 
       <div className={styles.form_body}>
