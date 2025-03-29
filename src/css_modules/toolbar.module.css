@@ -89,16 +89,18 @@
         display: flex;
         flex-direction: column;
         flex-basis: 10%;
+        gap:10px;
         justify-content: space-between;
 
         min-width: fit-content;
         width:90%;
         max-width: auto;
-        min-height: 80px;
-        height: 100%;
-        max-height: 500px;
+        min-height: fit-content;
+        
 
         margin: 5px;
+        padding-top:10px;
+        padding-bottom: 10px;
 
         overflow-y: scroll;
         scroll-snap-type:y mandatory;
@@ -123,6 +125,7 @@
             min-width: none;
             width:80%;
             max-width: 80%;
+            height:50px;
         }
 
         .recent_edits{
@@ -136,6 +139,7 @@
             min-width: none;
             width:80%;
             max-width: 80%;
+            height:50px;
         }
 
         .search_bar{
@@ -149,6 +153,7 @@
             min-width: none;
             width:80%;
             max-width: 80%;
+            height:50px;
 
             .Autocomplete{
                 border: solid black;

@@ -30,7 +30,7 @@ and (max-width: 1023px){
     .card_panel{
         border:solid rgba(0,0,0,0.5);
         border-width: 4px;
-        border-radius:3%;
+        border-radius:15px;
 
         background-color: rgba(0, 0, 0, 0.5);
 
@@ -41,9 +41,9 @@ and (max-width: 1023px){
         justify-content: center;
     
         min-width: 50%;
-        width:75%;
-        height: 60%;
-        max-height:100%;
+        width:85%;
+        height: 275px;
+        max-height:275px;
 
         margin-bottom: 15px;
         
