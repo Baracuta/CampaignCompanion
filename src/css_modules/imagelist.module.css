@@ -66,6 +66,7 @@ and (max-width: 1023px){
         height: 100%;
         width: 100%;
         border-radius: 5px;
+        grid-template-columns: repeat(2, 1fr) !important;
 
         .image_item:hover{
             cursor:pointer;
