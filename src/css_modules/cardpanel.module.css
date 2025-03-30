@@ -21,15 +21,24 @@
 
         padding:15px;
 
-        overflow-y: scroll;
+        overflow-y: auto;
 
         &.campaignPanel{
             display: flex;
-            flex-direction: column;
-            justify-content:flex-start;
-            align-content: center;
+            flex-direction: row;
+            justify-content:center;
+            align-content: flex-start;
 
             width: 85%;
+            max-width: 85%;
+
+            scroll-snap-type:mandatory;
+            scroll-padding: 0px;
+            scroll-margin: 0px;
+
+            button{
+                width: 90%;
+            }
         }
     }
 }
@@ -63,13 +72,17 @@ and (max-width: 1023px){
 
         &.campaignPanel{
             display: flex;
-            flex-direction: column;
-            justify-content:flex-start;
-            align-content: center;
+            flex-direction: row;
+            justify-content:center;
+            align-content: flex-start;
 
             width: 85%;
             height: 70%;
             max-height: 70%;
+
+            button{
+                width: 90%;
+            }
         }
     }
 }
