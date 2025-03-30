@@ -74,7 +74,7 @@
 
 @media screen and (min-width:360px) and (max-width:1023px){
     .top_bar{
-        border: solid red;
+        border: solid black;
         border-radius: 25px;
         background-color: rgba(0, 0, 0, 0.5);
 
