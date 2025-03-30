@@ -23,6 +23,11 @@
 
         overflow-y: scroll;
     }
+    
+    &.campaign{
+        display: flex;
+        flex-direction: column !important;
+    }
 }
 
 @media screen and (min-width:360px)
@@ -52,5 +57,8 @@ and (max-width: 1023px){
         scroll-padding: 0px;
         scroll-margin: 0px;
       
+    }
+    &.campaign{
+
     }
 }
