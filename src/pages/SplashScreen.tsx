@@ -12,7 +12,7 @@ function SplashScreen() {
   
         <SplashBackground/>
   
-        <div className="splash-items">
+        <div className="splash_items">
   
           <img className="logo" src={`${ASSETS_PATH}/Emblem 1 3.png`} alt="" />
           <h1>Campaign Companion</h1>
