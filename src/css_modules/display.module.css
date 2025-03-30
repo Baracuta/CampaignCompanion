@@ -279,7 +279,7 @@ and (max-width: 1023px){
             justify-content: center;
             align-items: center;
 
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
 
             width: 100%;
 

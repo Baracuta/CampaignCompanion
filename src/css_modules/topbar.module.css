@@ -74,7 +74,7 @@
 
 @media screen and (min-width:360px) and (max-width:1023px){
     .top_bar{
-        border: solid black;
+        border: solid red;
         border-radius: 25px;
         background-color: rgba(0, 0, 0, 0.5);
 
@@ -87,8 +87,8 @@
         min-width: 80%;
         width: 90%;
         max-width: 95%;
-        min-height: fit-content;
-        height: 100px;
+        min-height: 120px;
+        height: 125px;
 
         margin-top: 20px;
         margin-bottom: 10px;
