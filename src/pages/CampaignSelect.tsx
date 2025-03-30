@@ -13,7 +13,7 @@ function CampaignSelect() {
         image={`${ASSETS_PATH}/Emblem 1 3.png`}
       />
 
-      <CardPanel panelType="campaign">
+      <CardPanel panelType="campaignPanel">
         <CampaignList />
       </CardPanel>
     </main>

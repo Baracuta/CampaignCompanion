@@ -33,24 +33,6 @@
         margin-top: 20px;
         margin-bottom: 20px;
     }
-
-    .card_panel{
-        display: flex;
-        flex-direction:row;
-        flex-wrap:wrap;
-        justify-content: flex-start;
-        align-content: baseline;
-
-        min-width: 95%;
-        width:95%;
-        max-width: 95%;
-        height: 500px;
-
-        border: solid black;
-        border-radius: 10px;
-
-    }
-
 }
 
 
@@ -91,22 +73,5 @@
 
         margin-top: 20px;
         margin-bottom: 20px;
-    }
-
-    .card_panel{
-        display: flex;
-        flex-direction:row;
-        flex-wrap:wrap;
-        justify-content: flex-start;
-        align-content: baseline;
-
-        min-width: 95%;
-        width:95%;
-        max-width: 95%;
-        height: 500px;
-
-        border: solid black;
-        border-radius: 10px;
-
     }
 }

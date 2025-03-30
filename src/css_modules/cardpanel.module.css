@@ -22,11 +22,15 @@
         padding:15px;
 
         overflow-y: scroll;
-    }
-    
-    &.campaign{
-        display: flex;
-        flex-direction: column !important;
+
+        &.campaignPanel{
+            display: flex;
+            flex-direction: column;
+            justify-content:flex-start;
+            align-content: center;
+
+            width: 85%;
+        }
     }
 }
 
@@ -56,9 +60,16 @@ and (max-width: 1023px){
         scroll-snap-type:mandatory;
         scroll-padding: 0px;
         scroll-margin: 0px;
-      
-    }
-    &.campaign{
 
+        &.campaignPanel{
+            display: flex;
+            flex-direction: column;
+            justify-content:flex-start;
+            align-content: center;
+
+            width: 85%;
+            height: 70%;
+            max-height: 70%;
+        }
     }
 }
