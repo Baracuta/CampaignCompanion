@@ -12,9 +12,6 @@
         flex-direction: column;
         align-items: center;
 
-
-        
-
         .card_panel{
             display: flex;
             flex-direction: row;
@@ -22,10 +19,7 @@
             min-width: fit-content;
             width:95%;
             max-width: 95%;
-            height: 500px;
-            
-
-            
+            height: 500px;            
         }
 
         .bottom_bar{
@@ -51,26 +45,17 @@
 
         overflow: hidden;
 
-
-       
-
         .card_panel{
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             flex-wrap: nowrap;
             align-items: center;
             justify-self: center;
             justify-content: flex-start;
 
-            width:290px;            
+            width:90%;            
             height: 500px;
 
-            overflow-x:scroll;
-            scroll-snap-type:x mandatory;
-            scroll-padding:0px;
-            scroll-margin:0px;
-            scroll-behavior: smooth;
-            
         }
 
         .bottom_bar{

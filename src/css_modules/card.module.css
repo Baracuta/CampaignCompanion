@@ -24,7 +24,7 @@
         justify-content: center;
 
         &.bigCard{
-            height:100%;
+            height:90%;
             background-color: rgba(0, 0, 0, 0.5);
 
             display: flex;
@@ -92,9 +92,14 @@ and (max-width: 1023px){
             color: white;
         }
         &.bigCard{
-            height:95%;
-            min-width:250px;
-            width:250px;
+            border: solid black;
+            border-radius: 10px;
+
+            min-height: 10%;
+            height:25%;
+            min-width:80%;
+            width:100%;
+            max-width: 100%;
 
             background-color: rgba(0, 0, 0, 0.5);
 

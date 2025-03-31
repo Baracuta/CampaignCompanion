@@ -99,8 +99,8 @@
         
 
         margin: 5px;
-        padding-top:10px;
-        padding-bottom: 10px;
+        padding-top:5px;
+        padding-bottom: 5px;
 
         overflow-y: scroll;
         scroll-snap-type:y mandatory;
