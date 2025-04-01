@@ -43,7 +43,7 @@ function ToolBar(props: BarProps) {
       </div>
 
       <div className={styles.search_bar}>
-        <h4>Search Bar:</h4>
+        <h4>Search:</h4>
         <SearchBar
         EntityList={props.campaignEntities}
         campaign={props.campaign}
