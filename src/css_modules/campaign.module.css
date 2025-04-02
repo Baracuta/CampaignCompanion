@@ -43,7 +43,7 @@
         flex-direction: column;
         align-items: center;
 
-        overflow-y: scroll;
+        overflow-y: auto;
 
         .card_panel{
             display: flex;
