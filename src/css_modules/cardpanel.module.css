@@ -60,6 +60,7 @@ and (max-width: 1023px){
     
         min-width: 50%;
         width:85%;
+        min-height: 30%;
         height: 275px;
         max-height:275px;
 
