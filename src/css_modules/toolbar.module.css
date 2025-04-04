@@ -95,8 +95,8 @@
         min-width: fit-content;
         width:90%;
         max-width: auto;
-        min-height: 28%;
-        max-height: 30%;
+        min-height: fit-content;
+        max-height: 40%;
 
         margin: 5px;
 
