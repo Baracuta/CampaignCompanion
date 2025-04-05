@@ -95,8 +95,7 @@ and (max-width: 1023px){
             border: solid black;
             border-radius: 10px;
 
-            min-height: 10%;
-            height:25%;
+            min-height: fit-content;
             min-width:80%;
             width:100%;
             max-width: 100%;

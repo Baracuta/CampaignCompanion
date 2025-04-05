@@ -88,15 +88,13 @@
 
         display: flex;
         flex-direction: column;
-        flex-basis: 10%;
-        gap:5%;
-        justify-content:center;
+        gap:15px;
+        justify-content:space-between;
 
         min-width: fit-content;
         width:90%;
         max-width: auto;
         min-height: fit-content;
-        max-height: 40%;
 
         margin: 5px;
 
