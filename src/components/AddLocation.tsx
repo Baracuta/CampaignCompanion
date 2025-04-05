@@ -9,7 +9,7 @@ import StarBorderIcon from "@mui/icons-material/StarBorder";
 import styles from "../css_modules/display.module.css";
 import { Fragment, useState } from "react";
 import { Location } from "../types/Location";
-import { ItemImageData } from "../constants/item_image_bank";
+import { LocationImageData } from "../constants/location_image_bank";
 import StandardImageList from "./ImageList";
 import SingleFileUploader from "./FileUploader";
 import MapList from "./MapList";
@@ -120,7 +120,7 @@ function AddLocation(props: thingProps) {
 
             <img src={image ?? ""} width={300} height={"auto"} />
             <StandardImageList
-              images={ItemImageData}
+              images={LocationImageData}
               imageClick={async (img: string) => {
                 const image = img;
                 const imageId = await uploadImage(img);
