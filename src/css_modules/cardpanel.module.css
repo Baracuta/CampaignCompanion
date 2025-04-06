@@ -60,13 +60,13 @@ and (max-width: 1023px){
     
         min-width: 50%;
         width:85%;
-        min-height: 30%;
+        min-height: fit-content;
         height: 400px;
         max-height: 40%;
 
         margin-bottom: 15px;
         
-        overflow-y: auto;
+        overflow-y: scroll;
         scroll-snap-type:mandatory;
         scroll-padding: 0px;
         scroll-margin: 0px;
