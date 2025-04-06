@@ -108,6 +108,7 @@
         h4{
             margin-right: 5px;
             margin-left: 5px;
+            white-space: nowrap;
         }
 
         .favourites{
