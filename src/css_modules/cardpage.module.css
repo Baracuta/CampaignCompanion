@@ -81,7 +81,7 @@ and (max-width: 1023px){
         background-size: cover;
 
         
-        height: 100vh;
+        min-height: 100vh;
         min-width: 360px;
         width: 100vw;
 
