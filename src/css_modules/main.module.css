@@ -4,7 +4,7 @@
         background-repeat: no-repeat;
         background-size: cover;
 
-        height: 100dvh;
+        height: 100ddvh;
         min-width: 360px;
         width: 100vw;
 
@@ -22,7 +22,7 @@ and (max-width: 1023px){
         background-repeat: no-repeat;
         background-size: cover;
 
-        height: 100dh;
+        height: 100ddvh;
         min-width: 360px;
         width: 100vw;
 

@@ -47,7 +47,7 @@ body {
 }
 
 .background-image{
-  height:100vh;
+  height:100dvh;
   width: 100vw;
   position: relative;
   z-index: 1;
@@ -91,7 +91,7 @@ body {
 }
 
 h1 {
-  font-size: 6vh;
+  font-size: 6dvh;
   line-height: 1.0;
   text-shadow: #fc0 1px 0 10px, black 1px 0 10px;
   text-align:center;

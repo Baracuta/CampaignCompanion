@@ -44,7 +44,7 @@
     .popover{
         background-color:rgba(75, 75, 75, 0.5);
         width: 100vw;
-        height: 100vh;
+        height: 100dvh;
         display: flex;
         align-items: center;
 
@@ -325,7 +325,7 @@ and (max-width: 1023px){
     .details_division{
         display: flex;
         flex-direction: column;
-        height: 80vh;
+        height: 80dvh;
 
         justify-content: space-between;
 
