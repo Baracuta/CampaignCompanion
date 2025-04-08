@@ -23,6 +23,7 @@ function TopBar(props:TopBarProps){
                 <div className={styles.dashboard_menu}>
                     <NavButton text="Go Back" destination={props.buttonNav}/>
                     
+                    
                 </div>
 
             </div>

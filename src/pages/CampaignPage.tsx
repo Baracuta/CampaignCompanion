@@ -1,6 +1,6 @@
 import styles from "../css_modules/campaign.module.css";
 import Card from "../components/Card";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ASSETS_PATH } from "../constants/assets_path";
 import TopBar from "../components/TopBar";
 import ToolBar from "../components/ToolBar";
@@ -8,11 +8,15 @@ import { useCampaign } from "../hooks/useCampaign";
 import EntityList from "../utilities/Entities";
 import { Entity } from "../types/Entity";
 import { deleteThing, updateThing } from "../components/ThingUpdater";
+import DeleteCampaign from "../components/DeleteCampaign";
+import { deleteCampaign } from "../services/CampaignService";
 
 function CampaignPage() {
   const { id } = useParams();
 
   const {campaign,refreshCampaign} = useCampaign(id as string);
+
+  const navigate=useNavigate();
         
   return (
     <main className={styles.main}>
@@ -62,7 +66,13 @@ function CampaignPage() {
         ></Card>
       </div>
 
-      <div className={styles.bottom_bar}/>
+      <div className={styles.bottom_bar}>
+        <DeleteCampaign campaignID={id as string} delete={async (id:string) => {
+          await deleteCampaign(id);
+          await refreshCampaign();
+          await navigate("/campaign-select");
+        }}/>
+        </div>
     </main>
   );
 }
