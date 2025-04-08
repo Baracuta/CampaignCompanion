@@ -64,14 +64,16 @@ function CampaignPage() {
           cardType="bigCard"
           cardLink={`/campaign/${campaign?.id}/PlayerCharacters`}
         ></Card>
-      </div>
 
-      <div className={styles.bottom_bar}>
         <DeleteCampaign campaignID={id as string} delete={async (id:string) => {
           await deleteCampaign(id);
           await refreshCampaign();
           await navigate("/campaign-select");
         }}/>
+      </div>
+
+      <div className={styles.bottom_bar}>
+        
         </div>
     </main>
   );

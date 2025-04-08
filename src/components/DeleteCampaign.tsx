@@ -34,7 +34,7 @@ export default function AlertDialog(props: DeleteProps) {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {"Are you sure you wish to delete this?"}
+          {"Are you sure you wish to delete this campaign? This cannot be undone."}
         </DialogTitle>
         <DialogActions>
           <button onClick={handleClose}>No</button>
