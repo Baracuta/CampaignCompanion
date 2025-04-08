@@ -19,7 +19,11 @@
             min-width: fit-content;
             width:95%;
             max-width: 95%;
-            height: 500px;            
+            height: 500px;     
+            
+            button{
+                height: 90%;
+            }
         }
 
         .bottom_bar{
