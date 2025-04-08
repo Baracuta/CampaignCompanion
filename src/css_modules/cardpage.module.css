@@ -90,8 +90,6 @@ and (max-width: 1023px){
         align-items: center;
 
         overflow-y: scroll;
-
-        
     }
     
     .bars{
@@ -109,9 +107,7 @@ and (max-width: 1023px){
 
         .big_card_panel{
             display: none;
-        }
-    
-        
+        }   
     }
     
     .top_bar{
