@@ -5,13 +5,13 @@
         border-width: 2px;
         background-color: rgba(75, 75, 75, 0.5);
 
-        min-width:15%;
-        width: 18%;
+        min-width:200px;
+        width: 250px;
         max-width:50%;
         min-height:25%;
         height:25%;
 
-        font-size:25px;
+        font-size:20px;
         font-weight: bold;
 
         margin: 5px;
@@ -217,7 +217,7 @@ and (max-width: 1023px){
         min-height:fit-content;
         
 
-        font-size:20px;
+        font-size:15px;
         font-weight: bold;
 
         margin: 5px;
