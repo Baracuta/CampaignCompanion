@@ -25,7 +25,7 @@ export default function AlertDialog(props: DeleteProps) {
   return (
     <React.Fragment>
       <button onClick={handleClickOpen}>
-        Delete
+        Delete Campaign
       </button>
       <Dialog
         open={open}
