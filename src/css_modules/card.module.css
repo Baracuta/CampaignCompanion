@@ -108,10 +108,11 @@ and (max-width: 1023px){
         &.campaignCard{
             border-radius: 5px;
 
-            width: 90%;
+
+            width: 330px;
             max-width: 100%;
 
-            min-height: 10%;
+            min-height: fit-content;
             max-height: 10%;
         }
 
