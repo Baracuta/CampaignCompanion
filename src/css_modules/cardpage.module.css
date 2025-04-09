@@ -81,7 +81,6 @@ and (max-width: 1023px){
         background-size: cover;
 
         height: 100dvh;
-        
         min-width: 360px;
         width: 100vw;
 
@@ -90,56 +89,53 @@ and (max-width: 1023px){
         align-items: center;
 
         overflow-y: scroll;
-    }
-    
-    .bars{
-    
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-evenly;
-    
-    
-        min-width: 50%;
-        width: 100%;
-        min-height: fit-content;
 
-        .big_card_panel{
-            display: none;
-        }   
-    }
-    
-    .top_bar{
-        border: solid black;
-        border-radius: 25px;
-        background-color: rgba(0, 0, 0, 0.5);
+        .bars{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+        
+            min-width: 50%;
+            width: 100%;
+            min-height: fit-content;
 
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        align-content:center;
-        flex-grow:0,0,0;
-
-        min-width: 80%;
-        width: 95%;
-        max-width: 95%;
-        min-height: fit-content;
-        height: 100px;
-        max-height:20%;
-
-        margin-top: 5%;
-        margin-bottom: 5%;
-
-        img{
-            border: solid black;
-            border-radius: 75px;
-            background-color: rgba(255, 255, 255, 0.15);
-
-            height: 75px;
-            width: 75px;
-            
-            margin-left: 5px;
+            .big_card_panel{
+                display: none;
+            }   
         }
-    }
     
+        .top_bar{
+            border: solid black;
+            border-radius: 25px;
+            background-color: rgba(0, 0, 0, 0.5);
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            align-content:center;
+            flex-grow:0,0,0;
+
+            min-width: 80%;
+            width: 95%;
+            max-width: 95%;
+            min-height: fit-content;
+            height: 100px;
+            max-height:20%;
+
+            margin-top: 5%;
+            margin-bottom: 5%;
+
+            img{
+                border: solid black;
+                border-radius: 75px;
+                background-color: rgba(255, 255, 255, 0.15);
+
+                height: 75px;
+                width: 75px;
+                
+                margin-left: 5px;
+            }
+        }
+    } 
 }
