@@ -63,7 +63,7 @@ and (max-width: 1023px){
         height: 100px;
         max-height: 400px;
 
-        margin-bottom: 15%;
+        margin-bottom: 50px;
         
         overflow-y: scroll;
         scroll-snap-type:mandatory;
