@@ -15,17 +15,12 @@
     }
     
     .bars{
-        
-    
         display: flex;
         flex-direction: column;
         align-items: center;
     
-    
         min-width: 80%;
-        height: 55%;
-    
-        
+        height: fit-content;
     }
     
     .top_bar{
@@ -83,17 +78,20 @@ and (max-width: 1023px){
         flex-direction: column;
         align-items: center;
 
-        overflow: scroll;
+        overflow-y: scroll;
+
+        .CardPanel{
+            border: solid blue !important;
+        }
 
         .bars{
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-evenly;
         
             min-width: 50%;
             width: 100%;
-            min-height: fit-content;   
+            height: fit-content;   
         }
     
         .top_bar{
@@ -105,7 +103,6 @@ and (max-width: 1023px){
             justify-content: space-between;
             align-items: center;
             align-content:center;
-            flex-grow:0,0,0;
 
             min-width: 80%;
             width: 95%;
@@ -113,9 +110,6 @@ and (max-width: 1023px){
             min-height: fit-content;
             height: 100px;
             max-height:20%;
-
-            margin-top: 5%;
-            margin-bottom: 5%;
 
             img{
                 border: solid black;
