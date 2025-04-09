@@ -60,10 +60,9 @@ and (max-width: 1023px){
     
         width:90%;
         min-height: fit-content;
-        height: 100px;
-        max-height: 400px;
+        height: 100%;
 
-        margin-bottom: 100px;
+        margin-bottom: 15px;
         
         overflow-y: scroll;
         scroll-snap-type:mandatory;
