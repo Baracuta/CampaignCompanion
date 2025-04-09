@@ -95,9 +95,7 @@ and (max-width: 1023px){
             width: 100%;
             min-height: fit-content;
 
-            .big_card_panel{
-                display: none;
-            }   
+            
         }
     
         .top_bar{
