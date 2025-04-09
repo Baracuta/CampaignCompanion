@@ -61,8 +61,8 @@ and (max-width: 1023px){
         min-width: 50%;
         width:85%;
         min-height: fit-content;
-        height: 400px;
-        max-height: 40%;
+        height: fit-content;
+        max-height: 400px;
 
         margin-bottom: 15px;
         
