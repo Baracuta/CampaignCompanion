@@ -2,7 +2,6 @@ import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './css_modules/index.css'
 import App from './App.tsx'
-import TestPage from './pages/TestingPage.tsx'
 import CampaignSelect from './pages/CampaignSelect.tsx'
 import CampaignForm from './pages/CampaignForm.tsx'
 import CampaignPage from './pages/CampaignPage.tsx'
@@ -15,10 +14,6 @@ const router=createBrowserRouter([
     {
         path:"/",
         element:<App/>,
-    },
-    {
-        path:"/test-page",
-        element:<TestPage/>
     },
     {
         path:"/campaign-form",
