@@ -1,13 +1,12 @@
-import SplashScreen from './pages/SplashScreen'
+import SplashScreen from "./pages/SplashScreen";
 
 //This is the actual application itself.
 function App() {
-
   return (
     <>
-      <SplashScreen/>
+      <SplashScreen />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
