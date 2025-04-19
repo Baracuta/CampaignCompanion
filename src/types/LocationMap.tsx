@@ -1,5 +1,4 @@
-
-export type LocationMap={
-    img:string;
-    title:string;
-}
+export type LocationMap = {
+  img: string;
+  title: string;
+};

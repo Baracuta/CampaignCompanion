@@ -1,6 +1,6 @@
 import { Entity } from "./Entity";
 
-export interface Location extends Entity{
-    type:"Location";
-    maps?:Array<string>;
+export interface Location extends Entity {
+  type: "Location";
+  maps?: Array<string>;
 }
