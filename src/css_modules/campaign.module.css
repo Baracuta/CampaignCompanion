@@ -15,10 +15,10 @@
         .card_panel{
             display: flex;
             flex-direction: row;
-            justify-content: space-around;
+            justify-content: space-between;
             min-width: fit-content;
-            width:95%;
-            max-width: 95%;
+            width:90%;
+            max-width: 90%;
             height: 500px;     
         }
 

@@ -17,7 +17,7 @@ function TopBar(props:TopBarProps){
 
                 <div className={styles.title_box}>
                     <h2>{props?.name}</h2>
-                    <h3>{props?.game}</h3>
+                    <h4>{props?.game}</h4>
                 </div>
 
                 <div className={styles.dashboard_menu}>

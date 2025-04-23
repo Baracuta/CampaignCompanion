@@ -8,6 +8,7 @@ import { PC } from "../types/PlayerCharacter";
 import { Campaign } from "../types/Campaign";
 import ThingPopover from "./ThingPopover";
 import { Entity } from "../types/Entity";
+// import { useImage } from "../hooks/useImage";
 
 type DisplayProps = {
   thing: Entity;
@@ -27,11 +28,14 @@ export default function ThingDisplay(props: DisplayProps) {
   const open = Boolean(anchorEl)
   const id = open ? "simple-popover" : undefined;
 
+  // const image = useImage(props.thing.image as string);
+
 
   return (
     <div className={styles.card}>
       <Button aria-describedby={id} variant="contained" onClick={handleClick}>
         <p>{props.thing.name}</p>
+        {/* {image == null ? null :<img src={image} alt="" />} */}
       </Button>
 
       <ThingPopover

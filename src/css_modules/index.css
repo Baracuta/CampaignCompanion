@@ -43,6 +43,10 @@ body {
   justify-content: center;
   align-items: center;
 
+  button{
+    width:250px;
+  }
+
   
 }
 
@@ -103,10 +107,10 @@ button {
   border: 1px solid transparent;
 
   padding: 0.6em 1.2em;
-  margin: 5px;
+  margin: 0 auto;
+  margin-bottom: 5px;
 
   width:auto;
-
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;

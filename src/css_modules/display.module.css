@@ -10,6 +10,7 @@
         max-width:50%;
         min-height:25%;
         height:25%;
+        max-height: 25%;
 
         font-size:20px;
         font-weight: bold;
@@ -32,6 +33,11 @@
         p{
             text-align: center;
             align-self: center;
+
+            text-transform: capitalize;
+            font-size: larger;
+            font-weight:100;
+            font-family: 'Times New Roman', Times, serif;
         }
     }
     .card:hover{
@@ -83,6 +89,10 @@
         }
 
         textarea{
+            border: solid rgb(100, 100, 100);
+            background-color: rgba(75, 75, 75, 1);
+            border-radius: 5px;
+            
             font-size: larger;
             font-family: 'Times New Roman', Times, serif;
 
@@ -185,15 +195,24 @@
 
         input{
             width: 95%;
+            border: solid rgb(100, 100, 100);
+            background-color: rgba(75, 75, 75, 1);
+            border-radius: 5px;
         }
 
         textarea{
             width:95%;
+            border: solid rgb(100, 100, 100);
+            background-color: rgba(75, 75, 75, 1);
+            border-radius: 5px;
         }
 
         img{ 
             max-width:100%;
             max-height: 100%;
+
+            border: solid black;
+            border-radius: 10px;
         }
     }
 }
@@ -214,13 +233,16 @@ and (max-width: 1023px){
         min-width:15%;
         width: 40%;
         max-width:50%;
-        min-height:fit-content;
+        min-height:50px;
+
+        text-wrap: nowrap;
         
 
         font-size:15px;
         font-weight: bold;
 
         margin: 5px;
+        padding: 5px;
 
         overflow:hidden;
         text-overflow:ellipsis;
@@ -425,15 +447,24 @@ and (max-width: 1023px){
 
         input{
             width: 95%;
+            border: solid rgb(100, 100, 100);
+            background-color: rgba(75, 75, 75, 1);
+            border-radius: 5px;
         }
 
         textarea{
             width:95%;
+            border: solid rgb(100, 100, 100);
+            background-color: rgba(75, 75, 75, 1);
+            border-radius: 5px;
         }
 
         img{ 
             max-width:100%;
             max-height: 100%;
+
+            border: solid black;
+            border-radius: 10px;
         }
 
         .Autocomplete{
