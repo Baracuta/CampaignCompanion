@@ -16,3 +16,14 @@ I was motivated to make this project for my own love of TTRPGs, and from my own 
 In a given moment DURING a game, I don't want to have to sift through my notes on the extensive history of the city the players are currently entering if I am just looking for the name of the magical merchant they heard about in the previous session.
 
 The Campaign Companion is not supposed to be a repository for everything a Game-Master MIGHT need for a session: just the things they WILL need.
+
+## Visual Aid
+
+Campaign Selection
+![cc3](https://github.com/user-attachments/assets/b664bfeb-c30b-4f9f-83cd-4a58383b1ac1)
+
+Main Dashboard
+![cc1](https://github.com/user-attachments/assets/f63e2e89-539a-4dec-9e06-3f3fdddad372)
+
+Sample NPC Popup
+![cc2](https://github.com/user-attachments/assets/7346ec6f-f02e-460e-823a-e9e77878d963)
