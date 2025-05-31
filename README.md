@@ -5,6 +5,8 @@
 ## Overview
 This is a tool I developed to help TTRPG (Table-Top-Role-Playing-Game) Game-Masters keep track of the most commonly-changing elements of their ongoing games.
 
+I would like to thank and acknowledge my GetBuilding Coach for this module, Adam Morgan, who helped me make this project what it is.
+
 ## Description
 Within table-top-role-playing-games, the Game-Master is often responsible for far more than just running the current adventure that the other players will experience: they must also keep track of the effects that the players' actions have in broader game-world. In long-running campaigns spanning many sessions, the players are expected to have agency within the game-world to create change through their characters' actions. When campaigns can last for real-life months, or even years, it can be a lot for the Game-Master to monitor. The Campaign Companion is a tool to help with that.
 
