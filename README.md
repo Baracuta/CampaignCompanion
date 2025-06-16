@@ -1,8 +1,11 @@
 # Campaign Companion
 
+## DEMO: https://baracuta.github.io/Campaign-Companion/
 
 ## Overview
 This is a tool I developed to help TTRPG (Table-Top-Role-Playing-Game) Game-Masters keep track of the most commonly-changing elements of their ongoing games.
+
+I would like to thank and acknowledge my GetBuilding Coach for this module, Adam Morgan, who helped me make this project what it is.
 
 ## Description
 Within table-top-role-playing-games, the Game-Master is often responsible for far more than just running the current adventure that the other players will experience: they must also keep track of the effects that the players' actions have in broader game-world. In long-running campaigns spanning many sessions, the players are expected to have agency within the game-world to create change through their characters' actions. When campaigns can last for real-life months, or even years, it can be a lot for the Game-Master to monitor. The Campaign Companion is a tool to help with that.
@@ -15,3 +18,14 @@ I was motivated to make this project for my own love of TTRPGs, and from my own 
 In a given moment DURING a game, I don't want to have to sift through my notes on the extensive history of the city the players are currently entering if I am just looking for the name of the magical merchant they heard about in the previous session.
 
 The Campaign Companion is not supposed to be a repository for everything a Game-Master MIGHT need for a session: just the things they WILL need.
+
+## Visual Aid
+
+Campaign Selection
+![cc3](https://github.com/user-attachments/assets/b664bfeb-c30b-4f9f-83cd-4a58383b1ac1)
+
+Main Dashboard
+![cc1](https://github.com/user-attachments/assets/f63e2e89-539a-4dec-9e06-3f3fdddad372)
+
+Sample NPC Popup
+![cc2](https://github.com/user-attachments/assets/7346ec6f-f02e-460e-823a-e9e77878d963)
