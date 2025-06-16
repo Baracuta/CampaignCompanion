@@ -30,7 +30,6 @@ export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
   return campaign;
 };
 
-//Currently does not have a place to call it outside of test-page. Will alter this in the future.
 export const deleteCampaign = async (id: string): Promise<Array<Campaign>> => {
   const allCampaigns = await getCampaigns();
 

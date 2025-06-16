@@ -10,7 +10,7 @@ import CampaignLocations from "./pages/CampaignLocations.tsx";
 import CampaignItems from "./pages/CampaignItems.tsx";
 import CampaignPlayerCharacters from "./pages/CampaignPlayerCharacters.tsx";
 
-const router = createBrowserRouter(
+export const router = createBrowserRouter(
   [
     {
       path: "/",
