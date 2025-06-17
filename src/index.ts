@@ -6,7 +6,7 @@ const port = 5000
 
 app.use(express.json());
 
-app.use('/', (req, res) => {
+app.use('/', (_req, res) => {
   res.send('Hello World!')
 })
 
