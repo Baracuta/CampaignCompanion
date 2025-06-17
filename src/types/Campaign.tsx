@@ -4,7 +4,6 @@ import { Item } from "./Item";
 import { PC } from "./PlayerCharacter";
 import { Entity } from "./Entity";
 
-//For godsake, if there's a way to tell this thing "if undefined, actually just return an empty set" that'd be grand
 export type Campaign = {
   id: string;
   name?: string;
