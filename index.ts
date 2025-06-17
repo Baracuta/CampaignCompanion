@@ -7,8 +7,8 @@ const port = 5000
 // Serve static files at /CampaignCompanion
 app.use('/CampaignCompanion', express.static(path.join(__dirname, 'dist')))
 
-// Catch-all: serve index.html for all /CampaignCompanion routes (for React Router)
-app.get('/CampaignCompanion/', (_req, res) => {
+// Use this catch-all route for Express 5
+app.get(/^\/CampaignCompanion(\/.*)?$/, (_req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'))
 })
 
