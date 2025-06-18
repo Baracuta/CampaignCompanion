@@ -1,5 +1,6 @@
 import express from 'express'
 import path from 'path'
+import campaignRouter from './src/routers/CampaignRouter'
 
 const app = express()
 const port = 5000
@@ -11,6 +12,8 @@ app.use('/CampaignCompanion', express.static(path.join(__dirname, 'dist')))
 app.get(/^\/CampaignCompanion(\/.*)?$/, (_req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'))
 })
+
+app.use('/CampaignCompanion/api/campaign', campaignRouter)
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}/CampaignCompanion`)
