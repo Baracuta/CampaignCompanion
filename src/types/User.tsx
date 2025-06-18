@@ -4,5 +4,5 @@ export interface User {
     id?: string;
     username: string;
     password: string;
-    campaigns: Array<Campaign>;
+    campaigns?: Array<Campaign>;
 }
