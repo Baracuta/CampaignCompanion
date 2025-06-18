@@ -14,7 +14,7 @@ const UserSchema = Joi.object<User>({
 })
 
 
-export const createUser: RequestHandler = async (req, res, next) => {
+export const createUser: RequestHandler = async (req, res) => {
     const {error, value} = UserSchema.validate(req.body)
     if (error !== undefined) {
         res.status(400).json(new Joi.ValidationError(
