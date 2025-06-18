@@ -14,9 +14,9 @@ app.get(/^\/CampaignCompanion(\/.*)?$/, (_req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'))
 })
 
-app.use('/CampaignCompanion/api/campaign', campaignRouter)
+app.use('/api/campaign', campaignRouter)
 
-app.use('/CampaignCompanion/api/user', userRouter)
+app.use('/api/user', userRouter)
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}/CampaignCompanion`)
