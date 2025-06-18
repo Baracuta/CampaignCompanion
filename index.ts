@@ -1,6 +1,7 @@
 import express from 'express'
 import path from 'path'
 import campaignRouter from './src/routers/CampaignRouter'
+import userRouter from './src/routers/UserRouter'
 
 const app = express()
 const port = 5000
@@ -14,6 +15,8 @@ app.get(/^\/CampaignCompanion(\/.*)?$/, (_req, res) => {
 })
 
 app.use('/CampaignCompanion/api/campaign', campaignRouter)
+
+app.use('/CampaignCompanion/api/user', userRouter)
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}/CampaignCompanion`)
