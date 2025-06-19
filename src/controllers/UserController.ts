@@ -58,15 +58,31 @@ export const updateUser: RequestHandler = (req, res): void => {
     return
   }
 
-  const userIndex = USERS.findIndex(u => u.id === id);
+  const userIndex = USERS.findIndex(u => u.id === id)
+  if (userIndex === -1) {
+    res.status(404).json("User not found");
+    return;
+  }
 
   const updatedUser = {
-    ...user,
+    ...USERS[userIndex],
     ...value,
     id
   }
 
-  USERS = updatedUser;
+  USERS[userIndex] = updatedUser;
   res.status(200).json(USERS);
 
+};
+
+export const deleteUser: RequestHandler = (req, res): void => {
+  const userId = req.params.id;
+  const userIndex = USERS.findIndex(u => u.id === userId);
+  if (userIndex === -1) {
+    res.status(404).json("User not found");
+    return;
+  }
+
+  USERS.splice(userIndex, 1);
+  res.status(204).send();
 };
