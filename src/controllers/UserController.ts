@@ -14,14 +14,14 @@ const UserSchema = Joi.object<User>({
 });
 
 export const createUser: RequestHandler = (req, res): void => {
-  const {error, value } = UserSchema.validate(req.body);
+  const { error, value } = UserSchema.validate(req.body);
   if (error !== undefined) {
     res.status(400).json("User data is invalid");
   }
 
   const user = value;
-  if ('id' in user) {
-    res.status(400).json('User ID will be generated automatically')
+  if ("id" in user) {
+    res.status(400).json("User ID will be generated automatically");
   }
 
   const id = uuid();
@@ -37,7 +37,7 @@ export const createUser: RequestHandler = (req, res): void => {
 
 export const getUser: RequestHandler = (req, res): void => {
   const userId = req.params.id;
-  const user = USERS.find(u => u.id === userId);
+  const user = USERS.find((u) => u.id === userId);
   if (!user) {
     res.status(404).json("User not found");
     return;
@@ -46,19 +46,19 @@ export const getUser: RequestHandler = (req, res): void => {
 };
 
 export const updateUser: RequestHandler = (req, res): void => {
-  const id = (req.params.id)
+  const id = req.params.id;
   if (!id) {
-    res.status(400).json('Invalid user ID format');
+    res.status(400).json("Invalid user ID format");
     return;
   }
 
-  const {error, value} = UserSchema.validate(req.body)
+  const { error, value } = UserSchema.validate(req.body);
   if (error !== undefined) {
     res.status(400).json("User data is invalid");
-    return
+    return;
   }
 
-  const userIndex = USERS.findIndex(u => u.id === id)
+  const userIndex = USERS.findIndex((u) => u.id === id);
   if (userIndex === -1) {
     res.status(404).json("User not found");
     return;
@@ -67,22 +67,21 @@ export const updateUser: RequestHandler = (req, res): void => {
   const updatedUser = {
     ...USERS[userIndex],
     ...value,
-    id
-  }
+    id,
+  };
 
   USERS[userIndex] = updatedUser;
   res.status(200).json(USERS);
-
 };
 
 export const deleteUser: RequestHandler = (req, res): void => {
   const userId = req.params.id;
-  const userIndex = USERS.findIndex(u => u.id === userId);
+  const userIndex = USERS.findIndex((u) => u.id === userId);
   if (userIndex === -1) {
     res.status(404).json("User not found");
     return;
   }
 
   USERS.splice(userIndex, 1);
-  res.status(204).send();
+  res.status(200).json("User deleted successfully");
 };
