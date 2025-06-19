@@ -45,7 +45,7 @@ export const router = createBrowserRouter(
       element: <CampaignPlayerCharacters />,
     },
   ],
-  { basename: "/Campaign-Companion/" }
+  { basename: "/CampaignCompanion/" }
 );
 
 createRoot(document.getElementById("root")!).render(
