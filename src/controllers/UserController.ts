@@ -7,7 +7,7 @@ import { v4 as uuid } from "uuid";
 const USERS: User[] = [];
 
 const UserSchema = Joi.object<User>({
-  id: Joi.string().optional(),
+  id: Joi.string().uuid().optional(),
   username: Joi.string().required(),
   password: Joi.string().required(),
   campaigns: Joi.array<Campaign>().optional(),
@@ -32,5 +32,41 @@ export const createUser: RequestHandler = (req, res): void => {
   };
 
   USERS.push(createdUser);
-  res.status(200).json(createdUser);
+  res.status(200).json(USERS);
+};
+
+export const getUser: RequestHandler = (req, res): void => {
+  const userId = req.params.id;
+  const user = USERS.find(u => u.id === userId);
+  if (!user) {
+    res.status(404).json("User not found");
+    return;
+  }
+  res.status(200).json(user);
+};
+
+export const updateUser: RequestHandler = (req, res): void => {
+  const id = (req.params.id)
+  if (!id) {
+    res.status(400).json('Invalid user ID format');
+    return;
+  }
+
+  const {error, value} = UserSchema.validate(req.body)
+  if (error !== undefined) {
+    res.status(400).json("User data is invalid");
+    return
+  }
+
+  const userIndex = USERS.findIndex(u => u.id === id);
+
+  const updatedUser = {
+    ...user,
+    ...value,
+    id
+  }
+
+  USERS = updatedUser;
+  res.status(200).json(USERS);
+
 };
