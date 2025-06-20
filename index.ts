@@ -1,6 +1,6 @@
 import express from 'express'
 import path from 'path'
-import campaignRouter from './src/routers/CampaignRouter'
+// import campaignRouter from './src/routers/CampaignRouter'
 import userRouter from './src/routers/UserRouter'
 
 const app = express()
@@ -16,7 +16,7 @@ app.get(/^\/CampaignCompanion(\/.*)?$/, (_req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'))
 })
 
-app.use('/api/campaign', campaignRouter)
+// app.use('/api/campaign', campaignRouter)
 
 app.use('/api/user', userRouter)
 

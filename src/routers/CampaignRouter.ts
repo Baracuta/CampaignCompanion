@@ -1,11 +1,11 @@
-import { Router } from 'express'
-import * as CampaignController from '../controllers/CampaignController'
+// import { Router } from 'express'
+// import * as CampaignController from '../controllers/CampaignController'
 
-const router = Router()
+// const router = Router()
 
-router.post('/', CampaignController.createCampaign);
-// router.get('/:id', CampaignController.getCampaign);
-// router.put('/:id', CampaignController.updateCampaign);
-// router.delete('/:id', CampaignController.deleteCampaign);
+// router.post('/', CampaignController.createCampaign);
+// // router.get('/:id', CampaignController.getCampaign);
+// // router.put('/:id', CampaignController.updateCampaign);
+// // router.delete('/:id', CampaignController.deleteCampaign);
 
-export default router
+// export default router
