@@ -2,7 +2,7 @@ import {mock} from 'node:test';
 import * as UserController from '../../src/controllers/userController';
 import { Request, Response } from 'express';
 
-const mockRequest = (body: any, params: any) => {
+const mockRequest = (body, params) => {
     return {
         body: body,
         params: params,
