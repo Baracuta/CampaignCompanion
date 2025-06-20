@@ -2,14 +2,16 @@ import {mock} from 'node:test';
 import * as UserController from '../../src/controllers/userController';
 import { Request, Response } from 'express';
 
-const mockRequest = (body,) => {
+const mockRequest = (body: any, params: any) => {
     return {
         body: body,
+        params: params,
     } as unknown as Request;
 };
 
+
 const mockResponse = () => {
-    const res = {
+    let res = {
         status: jest.fn(),
         json: jest.fn(),
     };
@@ -25,8 +27,8 @@ describe('createUser', () => {
     })
 
     it('should create a user and return 200 status', () => {
-        const req = mockRequest({ username: 'John Doe', password: 'password' });
-        const res = mockResponse();
+        let req = mockRequest({ username: 'John Doe', password: 'password' }, {});
+        let res = mockResponse();
 
         UserController.createUser(req, res, () => {});
 
