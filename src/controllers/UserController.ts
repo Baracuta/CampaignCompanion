@@ -4,7 +4,13 @@ import { User } from "../types/User";
 import Joi from "joi";
 import { v4 as uuid } from "uuid";
 
-const USERS: User[] = [];
+const USERS: User[] = [
+  {
+    id:'123',
+    username: "Test User",
+    password: "password",
+  },
+];
 
 const UserSchema = Joi.object<User>({
   id: Joi.string().uuid().optional(),
