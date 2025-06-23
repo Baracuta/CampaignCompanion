@@ -77,7 +77,7 @@ export const updateUser: RequestHandler = (req, res): void => {
   };
 
   USERS[userIndex] = updatedUser;
-  res.status(200).json(USERS);
+  res.status(200).json(updatedUser);
 };
 
 export const deleteUser: RequestHandler = (req, res): void => {
