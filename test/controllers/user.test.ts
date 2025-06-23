@@ -2,10 +2,10 @@ import {mock} from 'node:test';
 import * as UserController from '../../src/controllers/userController';
 import { Request, Response } from 'express';
 
-const mockRequest = (body, params) => {
+const mockRequest = (body, id) => {
     return {
         body: body,
-        params: params,
+        id: id,
     } as unknown as Request;
 };
 
@@ -34,7 +34,7 @@ describe('createUser', () => {
 
         expect(res.status).toHaveBeenCalledWith(200);
         expect(res.json).toHaveBeenCalledWith({
-            message: 'User created successfully'
+            req
         });
     })
 })
