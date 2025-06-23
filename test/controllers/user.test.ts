@@ -34,7 +34,9 @@ describe('createUser', () => {
 
         expect(res.status).toHaveBeenCalledWith(200);
         expect(res.json).toHaveBeenCalledWith({
-            req
+            id: expect.any(String),
+            username: 'John Doe',
+            password:'password'
         });
     })
 })

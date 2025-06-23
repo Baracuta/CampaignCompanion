@@ -32,7 +32,7 @@ export const createUser: RequestHandler = (req, res): void => {
   };
 
   USERS.push(createdUser);
-  res.status(200).json(USERS);
+  res.status(200).json(createdUser);
 };
 
 export const getUser: RequestHandler = (req, res): void => {
