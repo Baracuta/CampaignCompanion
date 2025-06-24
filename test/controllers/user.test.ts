@@ -39,7 +39,7 @@ describe('createUser', () => {
             password:'password'
         });
     })
-})
+});
 
 describe('getUser', () => {
     beforeEach(() => {
@@ -59,4 +59,40 @@ describe('getUser', () => {
             password: expect.any(String)
         });
     })
-})
+});
+
+describe('updateUser', () => {
+    beforeEach(() => {
+        jest.clearAllMocks()
+    })
+
+    it('should update and return a user and 200 status', () => {
+        let req = mockRequest({id:'123'}, { username: 'Jane Doe', password: 'newpassword' });
+        let res = mockResponse();
+
+        UserController.updateUser(req, res, () => {});
+
+        expect(res.status).toHaveBeenCalledWith(200);
+        expect(res.json).toHaveBeenCalledWith({
+            id: '123',
+            username: 'Jane Doe',
+            password: 'newpassword'
+        });
+    })
+});
+
+describe('deleteUser', () => {
+    beforeEach(() => {
+        jest.clearAllMocks()
+    })
+
+    it('should delete a user and return 200 status', () => {
+        let req = mockRequest({id:'123'}, {});
+        let res = mockResponse();
+
+        UserController.deleteUser(req, res, () => {});
+
+        expect(res.status).toHaveBeenCalledWith(200);
+        expect(res.json).toHaveBeenCalledWith("User deleted successfully");
+    })
+});
