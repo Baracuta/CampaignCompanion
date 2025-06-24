@@ -38,3 +38,59 @@ describe('createCampaign', () => {
         });
     });
 })
+
+describe('getCampaign', () => {
+    beforeEach(() => {
+        jest.clearAllMocks();
+    });
+
+    it('should take an ID and return a matching campaign with 200 status', () => {
+        let req = mockRequest({id:'123'}, {});
+        let res = mockResponse();
+
+        CampaignController.getCampaign(req, res, () => {});
+
+        expect(res.status).toHaveBeenCalledWith(200);
+        expect(res.json).toHaveBeenCalledWith({
+            id: '123',
+            name: expect.any(String),
+            players: expect.any(Number),
+        });
+    });
+});
+
+describe('updateCampaign', () => {
+    beforeEach(() => {
+        jest.clearAllMocks();
+    });
+
+    it('should update and return a campaign with 200 status', () => {
+        let req = mockRequest({id:'123'}, { name: 'Updated Campaign', players: 5 });
+        let res = mockResponse();
+
+        CampaignController.updateCampaign(req, res, () => {});
+
+        expect(res.status).toHaveBeenCalledWith(200);
+        expect(res.json).toHaveBeenCalledWith({
+            id: '123',
+            name: 'Updated Campaign',
+            players: 5,
+        });
+    });
+});
+
+describe('deleteCampaign', () => {
+    beforeEach(() => {
+        jest.clearAllMocks();
+    });
+
+    it('should delete a campaign and return 204 status', () => {
+        let req = mockRequest({id:'123'}, {});
+        let res = mockResponse();
+
+        CampaignController.deleteCampaign(req, res, () => {});
+
+        expect(res.status).toHaveBeenCalledWith(204);
+        expect(res.json).toHaveBeenCalledWith("Campaign deleted successfully");
+    });
+});
