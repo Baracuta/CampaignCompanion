@@ -1,4 +1,3 @@
-import {mock} from 'node:test';
 import * as UserController from '../../src/controllers/userController';
 import { Request, Response } from 'express';
 
