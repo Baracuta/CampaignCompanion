@@ -1,5 +1,5 @@
 import type { RequestHandler } from "express";
-import * as CampaignService from '../services/CampaignService';
+import * as CampaignService from '../services/CampaignServiceConnect';
 import Joi from "joi";
 import { Campaign } from "../types/Campaign";
 
@@ -28,7 +28,7 @@ export const createCampaign: RequestHandler = async (req, res): Promise<void> =>
     const newCampaigns = [...Campaigns, newCampaign];
 
     CampaignService.updateCampaigns(newCampaigns);
-    res.status(201).json(newCampaign);
+    res.status(201).json(newCampaigns);
 };
 
 export const getCampaign: RequestHandler = async (req, res): Promise<void> => {
@@ -83,7 +83,7 @@ export const deleteCampaign: RequestHandler = async (req, res): Promise<void> =>
         return;
     }
 
-    Campaigns.splice(index, 1);
-    CampaignService.updateCampaigns(Campaigns);
-    res.status(204).json("Campaign deleted successfully");
+    CampaignService.deleteCampaign(campaignId);
+
+    res.status(204).json('Campaign deleted successfully');
 }
