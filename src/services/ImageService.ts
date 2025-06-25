@@ -1,7 +1,7 @@
 import { v4 as uuid } from "uuid";
 import { openDB } from "idb";
 
-const dbPromise = openDB("Ayy the testing", 1, {
+const dbPromise = openDB("Saved Images", 1, {
   upgrade(db) {
     db.createObjectStore("keyval");
   },

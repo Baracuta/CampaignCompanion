@@ -30,7 +30,7 @@ describe('createCampaign', () => {
 
         CampaignController.createCampaign(req, res, () => {});
 
-        expect(res.status).toHaveBeenCalledWith(201);
+        expect(res.status).toHaveBeenCalledWith(200);
         expect(res.json).toHaveBeenCalledWith({
             id: expect.any(String),
             name: 'Test Campaign',
@@ -90,7 +90,7 @@ describe('deleteCampaign', () => {
 
         CampaignController.deleteCampaign(req, res, () => {});
 
-        expect(res.status).toHaveBeenCalledWith(204);
+        expect(res.status).toHaveBeenCalledWith(200);
         expect(res.json).toHaveBeenCalledWith("Campaign deleted successfully");
     });
 });

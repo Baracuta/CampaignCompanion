@@ -28,7 +28,7 @@ export const createCampaign: RequestHandler = async (req, res): Promise<void> =>
     const newCampaigns = [...Campaigns, newCampaign];
 
     CampaignService.updateCampaigns(newCampaigns);
-    res.status(201).json(newCampaigns);
+    res.status(200).json(newCampaigns);
 };
 
 export const getCampaign: RequestHandler = async (req, res): Promise<void> => {
@@ -71,11 +71,6 @@ export const updateCampaign: RequestHandler = async (req, res): Promise<void> =>
 
 export const deleteCampaign: RequestHandler = async (req, res): Promise<void> => {
     const campaignId = req.params.id;
-    if (!campaignId) {
-        res.status(400).json({ error: "Invalid campaign ID format" });
-        return;
-    }
-
     const Campaigns = await CampaignService.getCampaigns();
     const index = Campaigns.findIndex(c => c.id === campaignId);
     if (index === -1) {
@@ -85,5 +80,9 @@ export const deleteCampaign: RequestHandler = async (req, res): Promise<void> =>
 
     CampaignService.deleteCampaign(campaignId);
 
-    res.status(204).json('Campaign deleted successfully');
-}
+    const updatedCampaigns = Campaigns.filter(
+    (item) => item.id != campaignId
+  );
+    CampaignService.updateCampaigns(updatedCampaigns);
+    res.status(200).json('Campaign deleted successfully');
+};
