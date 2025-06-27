@@ -36,6 +36,8 @@ export const deleteCampaign = async (id: string): Promise<Array<Campaign>> => {
 
   const campaign = await getCampaign(id);
 
+  await pool.query('DELETE FROM campaigns WHERE id = $1', [id]);
+
   const updatedCampaigns = allCampaigns.filter(
     (item) => item.id != campaign.id
   );
