@@ -4,8 +4,7 @@ import { NPC } from "../types/NPC";
 import { Location } from "../types/Location";
 import { Item } from "../types/Item";
 import { PC } from "../types/PlayerCharacter";
-import { pool } from '../db';
-
+import { pool } from "../db";
 
 //Every single "entity" should have the following: create, delete, get, getPlural(getCampaigns, getNPCs...), update, updatePlural
 
@@ -25,15 +24,15 @@ export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
       JSON.stringify(campaign.npcs ?? []),
       JSON.stringify(campaign.locations ?? []),
       JSON.stringify(campaign.items ?? []),
-      JSON.stringify(campaign.playerCharacters ?? [])
+      JSON.stringify(campaign.playerCharacters ?? []),
     ]
   );
   return { ...campaign, id };
-}
+};
 
 export const deleteCampaign = async (id: string): Promise<Array<Campaign>> => {
-  await pool.query('DELETE FROM campaigns WHERE id = $1', [id]);
-  
+  await pool.query("DELETE FROM campaigns WHERE id = $1", [id]);
+
   const allCampaigns = await getCampaigns();
 
   return allCampaigns;
@@ -41,14 +40,16 @@ export const deleteCampaign = async (id: string): Promise<Array<Campaign>> => {
 
 //Used in the useCampaign hook, which itself is used anywhere where the campaign needs to be set.
 export const getCampaign = async (id: string): Promise<Campaign> => {
-  const result = await pool.query('SELECT * FROM campaigns WHERE id = $1', [id]);
+  const result = await pool.query("SELECT * FROM campaigns WHERE id = $1", [
+    id,
+  ]);
 
   return result.rows[0] as Campaign;
 };
 
 //Used in the getCampaign method, as well as in the useCampaigns hook, which is used in the CampaignList component.
 export const getCampaigns = async (): Promise<Campaign[]> => {
-  const result = await pool.query('SELECT * FROM campaigns');
+  const result = await pool.query("SELECT * FROM campaigns");
   return result.rows as Campaign[];
 };
 
@@ -75,7 +76,6 @@ export const updateCampaign = async (campaign: Campaign): Promise<Campaign> => {
   return updatedCampaign;
 };
 
-
 //NPC Section
 
 //Used in the AddNPC component to save a new NPC object to a campaign.
@@ -85,8 +85,8 @@ export const createNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
   npc = {
     ...npc,
     id: uuid(),
-    type:"NPC",
-    modifiedDate:Date.now(),
+    type: "NPC",
+    modifiedDate: Date.now(),
   };
 
   const allNPCS = await getNPCs(campaignId);
@@ -136,11 +136,11 @@ export const getNPCs = async (campaignId: string): Promise<Array<NPC>> => {
 //Uncertain if this works because I haven't had a way to test it yet, but it will be necessary anytime an NPC's props are updated.
 export const updateNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
   const campaign = await getCampaign(campaignId);
-  
-  npc={
+
+  npc = {
     ...npc,
-    modifiedDate:Date.now(),
-  }
+    modifiedDate: Date.now(),
+  };
   const updatedNpc = npc;
 
   const removedOld = await deleteNPC(campaign.id, npc.id);
@@ -164,19 +164,21 @@ export const updateNPCs = async (
   return campaign.npcs;
 };
 
-
 //Location Section
 
 //
-export const createLocation = async (location: Location, campaignId: string): Promise<Location> => {
+export const createLocation = async (
+  location: Location,
+  campaignId: string
+): Promise<Location> => {
   const campaign = await getCampaign(campaignId);
 
   location = {
     ...location,
     id: uuid(),
-    type:"Location",
-    maps:(location.maps ?? []),
-    modifiedDate:Date.now(),
+    type: "Location",
+    maps: location.maps ?? [],
+    modifiedDate: Date.now(),
   };
 
   const allLocations = await getLocations(campaignId);
@@ -197,7 +199,9 @@ export const deleteLocation = async (
   const locationList = await getLocations(campaignId);
   const location = await getLocation(campaignId, locationId);
 
-  const updatedLocations = locationList.filter((datum) => datum.id != location.id);
+  const updatedLocations = locationList.filter(
+    (datum) => datum.id != location.id
+  );
 
   await updateLocations(updatedLocations, campaign);
 
@@ -216,7 +220,9 @@ export const getLocation = async (
 };
 
 //
-export const getLocations = async (campaignId: string): Promise<Array<Location>> => {
+export const getLocations = async (
+  campaignId: string
+): Promise<Array<Location>> => {
   const campaign = await getCampaign(campaignId);
 
   const locations = campaign.locations;
@@ -224,13 +230,16 @@ export const getLocations = async (campaignId: string): Promise<Array<Location>>
 };
 
 //
-export const updateLocation = async (campaignId: string, location: Location): Promise<Location> => {
+export const updateLocation = async (
+  campaignId: string,
+  location: Location
+): Promise<Location> => {
   const campaign = await getCampaign(campaignId);
 
   location = {
     ...location,
-    modifiedDate:Date.now(),
-  }
+    modifiedDate: Date.now(),
+  };
   const updatedLocation = location;
 
   const removedOld = await deleteLocation(campaign.id, location.id);
@@ -254,18 +263,20 @@ export const updateLocations = async (
   return campaign.locations;
 };
 
-
 //Item Section
 
 //
-export const createItem = async (item: Item, campaignId: string): Promise<Item> => {
+export const createItem = async (
+  item: Item,
+  campaignId: string
+): Promise<Item> => {
   const campaign = await getCampaign(campaignId);
 
   item = {
     ...item,
     id: uuid(),
-    type:"Item",
-    modifiedDate:Date.now(),
+    type: "Item",
+    modifiedDate: Date.now(),
   };
 
   const allItems = await getItems(campaignId);
@@ -313,13 +324,16 @@ export const getItems = async (campaignId: string): Promise<Array<Item>> => {
 };
 
 //
-export const updateItem = async (campaignId: string, item: Item): Promise<Item> => {
+export const updateItem = async (
+  campaignId: string,
+  item: Item
+): Promise<Item> => {
   const campaign = await getCampaign(campaignId);
 
   item = {
     ...item,
-    modifiedDate:Date.now(),
-  }
+    modifiedDate: Date.now(),
+  };
   const updatedItem = item;
 
   const removedOld = await deleteItem(campaign.id, item.id);
@@ -343,7 +357,6 @@ export const updateItems = async (
   return campaign.items;
 };
 
-
 //PC Section
 
 //
@@ -353,8 +366,8 @@ export const createPC = async (pc: PC, campaignId: string): Promise<PC> => {
   pc = {
     ...pc,
     id: uuid(),
-    type:"PC",
-    modifiedDate:Date.now(),
+    type: "PC",
+    modifiedDate: Date.now(),
   };
 
   const allPCs = await getPCs(campaignId);
@@ -383,10 +396,7 @@ export const deletePC = async (
 };
 
 //
-export const getPC = async (
-  campaignId: string,
-  pcId: string
-): Promise<PC> => {
+export const getPC = async (campaignId: string, pcId: string): Promise<PC> => {
   const pcList = await getPCs(campaignId);
   const findPC = pcList.find((datum) => datum.id === pcId);
 
@@ -407,8 +417,8 @@ export const updatePC = async (campaignId: string, pc: PC): Promise<PC> => {
 
   pc = {
     ...pc,
-    modifiedDate:Date.now(),
-  }
+    modifiedDate: Date.now(),
+  };
   const updatedPC = pc;
 
   const removedOld = await deletePC(campaign.id, pc.id);
