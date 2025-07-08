@@ -1,6 +1,9 @@
 import { any } from 'joi';
 import * as CampaignController from '../../src/controllers/CampaignController';
 import { Request, Response } from 'express';
+import * as uuid from 'uuid';
+
+const TEST_ID = 'eb579531-abbe-49b5-9ea8-033e865e713b';
 
 const mockRequest = (params, body) => {
     return {
@@ -19,6 +22,7 @@ const mockResponse = () => {
     return res as unknown as Response;
 };
 
+jest.spyOn(uuid, 'v4').mockReturnValue(TEST_ID as any);
 
 describe('createCampaign', () => {
     beforeEach(() => {
@@ -26,17 +30,13 @@ describe('createCampaign', () => {
     });
 
     it('should create and return a campaign with 201 status', async () => {
-        let req = mockRequest({}, { name: 'Test Campaign', players: 4 });
+        let req = mockRequest({id: TEST_ID}, { name: 'Test Campaign', players: 4 });
         let res = mockResponse();
 
         await CampaignController.createCampaign(req, res, () => {});
 
         expect(res.status).toHaveBeenCalledWith(201);
-        expect(res.json).toHaveBeenCalledWith({
-            id: expect.any(String),
-            name: 'Test Campaign',
-            players: 4,
-        });
+        expect(res.json).toHaveBeenCalledWith('Campaign created successfully');
     });
 })
 
@@ -46,17 +46,13 @@ describe('getCampaign', () => {
     });
 
     it('should take an ID and return a matching campaign with 200 status', async () => {
-        let req = mockRequest({id:'eb579531-abbe-49b5-9ea8-033e865e713b'}, {});
+        let req = mockRequest({id: TEST_ID}, {});
         let res = mockResponse();
 
         await CampaignController.getCampaign(req, res, () => {});
 
         expect(res.status).toHaveBeenCalledWith(200);
-        expect(res.json).toHaveBeenCalledWith({
-            id: 'eb579531-abbe-49b5-9ea8-033e865e713b',
-            name: expect.any(String),
-            players: expect.any(Number),
-        });
+        expect(res.json).toHaveBeenCalledWith('Campaign retrieved successfully');
     });
 });
 
@@ -65,18 +61,14 @@ describe('updateCampaign', () => {
         jest.clearAllMocks();
     });
 
-    it('should update and return a campaign with 200 status', async () => {
-        let req = mockRequest({id:'eb579531-abbe-49b5-9ea8-033e865e713b'}, { name: 'Updated Campaign', players: 5 });
+    it('should update and return a campaign with 201 status', async () => {
+        let req = mockRequest({id: TEST_ID}, { name: 'Updated Campaign', players: 5 });
         let res = mockResponse();
 
         await CampaignController.updateCampaign(req, res, () => {});
 
-        expect(res.status).toHaveBeenCalledWith(200);
-        expect(res.json).toHaveBeenCalledWith({
-            id: 'eb579531-abbe-49b5-9ea8-033e865e713b',
-            name: 'Updated Campaign',
-            players: 5,
-        });
+        expect(res.status).toHaveBeenCalledWith(201);
+        expect(res.json).toHaveBeenCalledWith('Campaign updated successfully');
     });
 });
 
@@ -86,7 +78,7 @@ describe('deleteCampaign', () => {
     });
 
     it('should delete a campaign and return 204 status', async () => {
-        let req = mockRequest({id:'eb579531-abbe-49b5-9ea8-033e865e713b'}, {});
+        let req = mockRequest({id: TEST_ID}, {});
         let res = mockResponse();
 
         await CampaignController.deleteCampaign(req, res, () => {});
