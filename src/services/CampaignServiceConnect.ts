@@ -32,19 +32,11 @@ export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
 }
 
 export const deleteCampaign = async (id: string): Promise<Array<Campaign>> => {
+  await pool.query('DELETE FROM campaigns WHERE id = $1', [id]);
+  
   const allCampaigns = await getCampaigns();
 
-  const campaign = await getCampaign(id);
-
-  await pool.query('DELETE FROM campaigns WHERE id = $1', [id]);
-
-  const updatedCampaigns = allCampaigns.filter(
-    (item) => item.id != campaign.id
-  );
-
-  await updateCampaigns(updatedCampaigns);
-
-  return updatedCampaigns;
+  return allCampaigns;
 };
 
 //Used in the useCampaign hook, which itself is used anywhere where the campaign needs to be set.
@@ -62,48 +54,25 @@ export const getCampaigns = async (): Promise<Campaign[]> => {
 
 //Used anytime that something within a Campaign is changed or updated so that the new information can be saved.
 export const updateCampaign = async (campaign: Campaign): Promise<Campaign> => {
+  await pool.query(
+    `UPDATE campaigns
+    SET name = $2, players = $3, entities = $4, npcs = $5, locations = $6, items = $7, player_characters = $8
+    WHERE id = $1`,
+    [
+      campaign.id,
+      campaign.name,
+      campaign.players,
+      JSON.stringify(campaign.entities ?? []),
+      JSON.stringify(campaign.npcs ?? []),
+      JSON.stringify(campaign.locations ?? []),
+      JSON.stringify(campaign.items ?? []),
+      JSON.stringify(campaign.playerCharacters ?? []),
+    ]
+  );
+
   const updatedCampaign = campaign;
 
-  const removedOld = await deleteCampaign(campaign.id);
-
-  const addingUpdated = [...removedOld, updatedCampaign];
-
-  await updateCampaigns(addingUpdated);
-
   return updatedCampaign;
-};
-
-//After a campaign has been updated with new information, this will update the total list of all campaigns.
-export const updateCampaigns = async (
-  updatedCampaigns: Array<Campaign>
-): Promise<Array<Campaign>> => {
-  // Update each campaign in the database
-  for (const campaign of updatedCampaigns) {
-    await pool.query(
-      `INSERT INTO campaigns (id, name, players, entities, npcs, locations, items, player_characters)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
-       ON CONFLICT (id) DO UPDATE SET
-         name = EXCLUDED.name,
-         players = EXCLUDED.players,
-         entities = EXCLUDED.entities,
-         npcs = EXCLUDED.npcs,
-         locations = EXCLUDED.locations,
-         items = EXCLUDED.items,
-         player_characters = EXCLUDED.player_characters
-      `,
-      [
-        campaign.id,
-        campaign.name,
-        campaign.players,
-        JSON.stringify(campaign.entities ?? []),
-        JSON.stringify(campaign.npcs ?? []),
-        JSON.stringify(campaign.locations ?? []),
-        JSON.stringify(campaign.items ?? []),
-        JSON.stringify(campaign.playerCharacters ?? [])
-      ]
-    );
-  }
-  return updatedCampaigns;
 };
 
 
