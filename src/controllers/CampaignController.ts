@@ -32,9 +32,7 @@ export const createCampaign: RequestHandler = async (req, res): Promise<void> =>
 };
 
 export const getCampaign: RequestHandler = async (req, res): Promise<void> => {
-    const campaignId = req.params.id;
-    const Campaigns = await CampaignService.getCampaigns();
-    const campaign = Campaigns.find(c => c.id === campaignId);
+    const campaign = await CampaignService.getCampaign(req.params.id);
     if (!campaign) {
         res.status(404).json({ error: "Campaign not found" });
         return;

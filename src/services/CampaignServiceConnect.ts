@@ -49,10 +49,9 @@ export const deleteCampaign = async (id: string): Promise<Array<Campaign>> => {
 
 //Used in the useCampaign hook, which itself is used anywhere where the campaign needs to be set.
 export const getCampaign = async (id: string): Promise<Campaign> => {
-  const allCampaigns = await getCampaigns();
-  const campaign = allCampaigns.find((datum) => datum.id === id);
+  const result = await pool.query('SELECT * FROM campaigns WHERE id = $1', [id]);
 
-  return campaign as Campaign;
+  return result.rows[0] as Campaign;
 };
 
 //Used in the getCampaign method, as well as in the useCampaigns hook, which is used in the CampaignList component.
