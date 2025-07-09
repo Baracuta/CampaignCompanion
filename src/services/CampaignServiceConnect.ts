@@ -158,9 +158,7 @@ export const updateNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
     ]
   );
 
-  const updatedNpc = npc;
-
-  return updatedNpc;
+  return npc;
 };
 
 //Location Section
@@ -263,112 +261,115 @@ export const updateLocation = async (campaignId: string,location: Location): Pro
     ]
   );
 
-  const updatedLocation = location;
-
-  return updatedLocation;
+  return location;
 };
 
 
 //Item Section
 
 //
-export const createItem = async (
-  item: Item,
-  campaignId: string
-): Promise<Item> => {
-  const campaign = await getCampaign(campaignId);
-
+export const createItem = async (item: Item,campaignId: string): Promise<Item> => {
   item = {
     ...item,
     id: uuid(),
     type: "Item",
     modifiedDate: Date.now(),
   };
-
-  const allItems = await getItems(campaignId);
-
-  const newItems = [...allItems, item];
-
-  await updateItems(newItems, campaign);
+  await pool.query(
+    `INSERT INTO entities (id, type, name, description, notes, image, isfavourite, modifieddate, incampaign)
+     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
+    [
+      item.id,
+      item.type,
+      item.name,
+      item.description,
+      item.notes,
+      item.image,
+      item.isFavourite,
+      item.modifiedDate,
+      campaignId
+    ]
+  );
+  await pool.query(
+    `INSERT INTO items (entity, effect, category)
+     VALUES ($1, $2, $3)`,
+    [
+      item.id,
+      item.effect,
+      item.category
+    ]
+  );
 
   return item;
 };
 
 //
-export const deleteItem = async (
-  campaignId: string,
-  itemId: string
-): Promise<Array<Item>> => {
-  const campaign = await getCampaign(campaignId);
-  const itemList = await getItems(campaignId);
-  const item = await getItem(campaignId, itemId);
+export const deleteItem = async (campaignId: string,itemId: string): Promise<Array<Item>> => {
+  await pool.query("DELETE FROM entities WHERE id = $1",
+    [itemId]
+  );
 
-  const updatedItems = itemList.filter((datum) => datum.id != item.id);
+  const campaignItems = await getItems(campaignId);
 
-  await updateItems(updatedItems, campaign);
-
-  return updatedItems;
+  return campaignItems;
 };
 
 //
-export const getItem = async (
-  campaignId: string,
-  itemId: string
-): Promise<Item> => {
-  const itemList = await getItems(campaignId);
-  const finditem = itemList.find((datum) => datum.id === itemId);
+export const getItem = async (campaignId: string,itemId: string): Promise<Item> => {
+  const foundItem = await pool.query(
+    "SELECT * FROM entities WHERE id = $1 AND incampaign = $2",
+    [itemId, campaignId]
+  );
 
-  return finditem as Item;
+  return foundItem.rows[0] as Item;
 };
 
 //
 export const getItems = async (campaignId: string): Promise<Array<Item>> => {
-  const campaign = await getCampaign(campaignId);
+  const campaignItems = await pool.query(
+    "SELECT * FROM entities WHERE incampaign = $1 AND type = $2",
+    [campaignId, "Item"]
+  );
 
-  const items = campaign.items;
-  return items as Array<Item>;
+  return campaignItems.rows as Array<Item>;
 };
 
 //
-export const updateItem = async (
-  campaignId: string,
-  item: Item
-): Promise<Item> => {
-  const campaign = await getCampaign(campaignId);
+export const updateItem = async (campaignId: string,item: Item): Promise<Item> => {
+  await pool.query(
+    `UPDATE entities
+     SET name = $2, description = $3, notes = $4, image = $5, isfavourite = $6, modifieddate = $7
+     WHERE id = $1 AND incampaign = $8`,
+    [
+      item.id,
+      item.name,
+      item.description,
+      item.notes,
+      item.image,
+      item.isFavourite,
+      Date.now(),
+      campaignId
+    ]
+  );
+  await pool.query(
+    `UPDATE items
+     SET effect = $2, category = $3
+     WHERE entity = $1`,
+    [
+      item.id,
+      item.effect,
+      item.category
+    ]
+  );
 
-  item = {
-    ...item,
-    modifiedDate: Date.now(),
-  };
-  const updatedItem = item;
-
-  const removedOld = await deleteItem(campaign.id, item.id);
-
-  const addingUpdated = [...removedOld, updatedItem];
-
-  await updateItems(addingUpdated, campaign);
-
-  return updatedItem;
+  return item;
 };
 
-//
-export const updateItems = async (
-  newItems: Array<Item>,
-  campaign: Campaign
-): Promise<Array<Item>> => {
-  campaign.items = newItems;
-
-  await updateCampaign(campaign);
-
-  return campaign.items;
-};
 
 //PC Section
 
 //
 export const createPC = async (pc: PC, campaignId: string): Promise<PC> => {
-  const campaign = await getCampaign(campaignId);
-
   pc = {
     ...pc,
     id: uuid(),
@@ -376,74 +377,94 @@ export const createPC = async (pc: PC, campaignId: string): Promise<PC> => {
     modifiedDate: Date.now(),
   };
 
-  const allPCs = await getPCs(campaignId);
-
-  const newPCs = [...allPCs, pc];
-
-  await updatePCs(newPCs, campaign);
+  await pool.query(
+    `INSERT INTO entities (id, type, name, description, notes, image, isfavourite, modifieddate, incampaign)
+     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
+    [
+      pc.id,
+      pc.type,
+      pc.name,
+      pc.description,
+      pc.notes,
+      pc.image,
+      pc.isFavourite,
+      pc.modifiedDate,
+      campaignId
+    ]
+  );
+  await pool.query(
+    `INSERT INTO player_characters (entity, pc_class, level, player_name)
+     VALUES ($1, $2, $3, $4)`,
+    [
+      pc.id,
+      pc.pcClass,
+      pc.level,
+      pc.playerName
+    ]
+  );
 
   return pc;
 };
 
 //
-export const deletePC = async (
-  campaignId: string,
-  pcId: string
-): Promise<Array<PC>> => {
-  const campaign = await getCampaign(campaignId);
-  const pcList = await getPCs(campaignId);
-  const pc = await getPC(campaignId, pcId);
+export const deletePC = async (campaignId: string,pcId: string): Promise<Array<PC>> => {
+  await pool.query("DELETE FROM entities WHERE id = $1",
+    [pcId]
+  );
 
-  const updatedPCs = pcList.filter((datum) => datum.id != pc.id);
+  const campaignPCs = await getPCs(campaignId);
 
-  await updatePCs(updatedPCs, campaign);
-
-  return updatedPCs;
+  return campaignPCs;
 };
 
 //
 export const getPC = async (campaignId: string, pcId: string): Promise<PC> => {
-  const pcList = await getPCs(campaignId);
-  const findPC = pcList.find((datum) => datum.id === pcId);
+  const foundPC = await pool.query(
+    "SELECT * FROM entities WHERE id = $1 AND incampaign = $2",
+    [pcId, campaignId]
+  );
 
-  return findPC as PC;
+  return foundPC.rows[0] as PC;
 };
 
 //
 export const getPCs = async (campaignId: string): Promise<Array<PC>> => {
-  const campaign = await getCampaign(campaignId);
+  const campaignPCs = await pool.query(
+    "SELECT * FROM entities WHERE incampaign = $1 AND type = $2",
+    [campaignId, "PC"]
+  );
 
-  const pcs = campaign.playerCharacters;
-  return pcs as Array<PC>;
+  return campaignPCs.rows as Array<PC>;
 };
 
 //
 export const updatePC = async (campaignId: string, pc: PC): Promise<PC> => {
-  const campaign = await getCampaign(campaignId);
+  await pool.query(
+    `UPDATE entities
+     SET name = $2, description = $3, notes = $4, image = $5, isfavourite = $6, modifieddate = $7
+     WHERE id = $1 AND incampaign = $8`,
+    [
+      pc.id,
+      pc.name,
+      pc.description,
+      pc.notes,
+      pc.image,
+      pc.isFavourite,
+      Date.now(),
+      campaignId
+    ]
+  );
+  await pool.query(
+    `UPDATE player_characters
+     SET pc_class = $2, level = $3, player_name = $4
+     WHERE entity = $1`,
+    [
+      pc.id,
+      pc.pcClass,
+      pc.level,
+      pc.playerName
+    ]
+  );
 
-  pc = {
-    ...pc,
-    modifiedDate: Date.now(),
-  };
-  const updatedPC = pc;
-
-  const removedOld = await deletePC(campaign.id, pc.id);
-
-  const addingUpdated = [...removedOld, updatedPC];
-
-  await updatePCs(addingUpdated, campaign);
-
-  return updatedPC;
-};
-
-//
-export const updatePCs = async (
-  newPCs: Array<PC>,
-  campaign: Campaign
-): Promise<Array<PC>> => {
-  campaign.playerCharacters = newPCs;
-
-  await updateCampaign(campaign);
-
-  return campaign.playerCharacters;
+  return pc;
 };
