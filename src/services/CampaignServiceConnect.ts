@@ -133,8 +133,8 @@ export const getNPC = async (
 
 //Used in getNPC, as well as in the ThingList component.
 export const getNPCs = async (campaignId: string): Promise<Array<NPC>> => {
-  const campaignNpcs = await pool.query("SELECT * FROM entities WHERE incampaign = $1",
-    [campaignId]
+  const campaignNpcs = await pool.query("SELECT * FROM entities WHERE incampaign = $1 AND type = $2",
+    [campaignId, "NPC"]
   );
 
   return campaignNpcs.rows as Array<NPC>;
