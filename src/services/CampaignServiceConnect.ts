@@ -40,9 +40,9 @@ export const deleteCampaign = async (id: string): Promise<Array<Campaign>> => {
 
 //Used in the useCampaign hook, which itself is used anywhere where the campaign needs to be set.
 export const getCampaign = async (id: string): Promise<Campaign> => {
-  const result = await pool.query("SELECT * FROM campaigns WHERE id = $1", [
-    id,
-  ]);
+  const result = await pool.query("SELECT * FROM campaigns WHERE id = $1",
+    [id]
+  );
 
   return result.rows[0] as Campaign;
 };
@@ -80,8 +80,6 @@ export const updateCampaign = async (campaign: Campaign): Promise<Campaign> => {
 
 //Used in the AddNPC component to save a new NPC object to a campaign.
 export const createNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
-  const campaign = await getCampaign(campaignId);
-
   npc = {
     ...npc,
     id: uuid(),
@@ -89,29 +87,35 @@ export const createNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
     modifiedDate: Date.now(),
   };
 
-  const allNPCS = await getNPCs(campaignId);
-
-  const newNPCs = [...allNPCS, npc];
-
-  await updateNPCs(newNPCs, campaign);
+  await pool.query(
+    `INSERT INTO entities (id, type, name, description, notes, image, isfavourite, modifieddate, incampaign)
+     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
+    [
+      npc.id,
+      npc.type,
+      npc.name,
+      npc.description,
+      npc.notes,
+      npc.image,
+      npc.isFavourite,
+      npc.modifiedDate,
+      campaignId
+    ]
+  );
 
   return npc;
 };
 
-//Functional, but no way for a user to currently use this. Will rectify in the future.
+//
 export const deleteNPC = async (
   campaignId: string,
   npcId: string
 ): Promise<Array<NPC>> => {
-  const campaign = await getCampaign(campaignId);
-  const npcList = await getNPCs(campaignId);
-  const npc = await getNPC(campaignId, npcId);
+  await pool.query("DELETE FROM entities WHERE id = $1", [npcId]);
 
-  const updatedNpcs = npcList.filter((datum) => datum.id != npc.id);
+  const campaignNpcs = await getNPCs(campaignId);
 
-  await updateNPCs(updatedNpcs, campaign);
-
-  return updatedNpcs;
+  return campaignNpcs;
 };
 
 //Acquires an NPC. Necessary for updating an NPC's props.
@@ -119,49 +123,44 @@ export const getNPC = async (
   campaignId: string,
   npcId: string
 ): Promise<NPC> => {
-  const npcList = await getNPCs(campaignId);
-  const findNpc = npcList.find((datum) => datum.id === npcId);
+  const foundNpc = await pool.query(
+    "SELECT * FROM entities WHERE id = $1 AND incampaign = $2",
+    [npcId, campaignId]
+  );
 
-  return findNpc as NPC;
+  return foundNpc.rows[0] as NPC;
 };
 
 //Used in getNPC, as well as in the ThingList component.
 export const getNPCs = async (campaignId: string): Promise<Array<NPC>> => {
-  const campaign = await getCampaign(campaignId);
+  const campaignNpcs = await pool.query("SELECT * FROM entities WHERE incampaign = $1",
+    [campaignId]
+  );
 
-  const npcs = campaign.npcs;
-  return npcs as Array<NPC>;
+  return campaignNpcs.rows as Array<NPC>;
 };
 
 //Uncertain if this works because I haven't had a way to test it yet, but it will be necessary anytime an NPC's props are updated.
 export const updateNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
-  const campaign = await getCampaign(campaignId);
+  await pool.query(
+    `UPDATE entities
+     SET name = $2, description = $3, notes = $4, image = $5, isfavourite = $6, modifieddate = $7
+     WHERE id = $1 AND incampaign = $8`,
+    [
+      npc.id,
+      npc.name,
+      npc.description,
+      npc.notes,
+      npc.image,
+      npc.isFavourite,
+      Date.now(),
+      campaignId
+    ]
+  );
 
-  npc = {
-    ...npc,
-    modifiedDate: Date.now(),
-  };
   const updatedNpc = npc;
 
-  const removedOld = await deleteNPC(campaign.id, npc.id);
-
-  const addingUpdated = [...removedOld, updatedNpc];
-
-  await updateNPCs(addingUpdated, campaign);
-
   return updatedNpc;
-};
-
-//Used to update the list of NPCs within a campaign.
-export const updateNPCs = async (
-  newNPCs: Array<NPC>,
-  campaign: Campaign
-): Promise<Array<NPC>> => {
-  campaign.npcs = newNPCs;
-
-  await updateCampaign(campaign);
-
-  return campaign.npcs;
 };
 
 //Location Section
