@@ -166,12 +166,7 @@ export const updateNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
 //Location Section
 
 //
-export const createLocation = async (
-  location: Location,
-  campaignId: string
-): Promise<Location> => {
-  const campaign = await getCampaign(campaignId);
-
+export const createLocation = async (location: Location,campaignId: string): Promise<Location> => {
   location = {
     ...location,
     id: uuid(),
@@ -180,87 +175,99 @@ export const createLocation = async (
     modifiedDate: Date.now(),
   };
 
-  const allLocations = await getLocations(campaignId);
-
-  const newLocations = [...allLocations, location];
-
-  await updateLocations(newLocations, campaign);
+  await pool.query(
+    `INSERT INTO entities (id, type, name, description, notes, image, isfavourite, modifieddate, incampaign)
+     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
+    [
+      location.id,
+      location.type,
+      location.name,
+      location.description,
+      location.notes,
+      location.image,
+      location.isFavourite,
+      location.modifiedDate,
+      campaignId
+    ]
+  );
+  await pool.query(
+    `INSERT INTO locations (entity, maps)
+     VALUES ($1, $2)`,
+     [
+      location.id,
+      location.maps
+    ]
+  );
 
   return location;
 };
 
 //
-export const deleteLocation = async (
-  campaignId: string,
-  locationId: string
-): Promise<Array<Location>> => {
-  const campaign = await getCampaign(campaignId);
-  const locationList = await getLocations(campaignId);
-  const location = await getLocation(campaignId, locationId);
+export const deleteLocation = async (campaignId: string,locationId: string): Promise<Array<Location>> => {
+  await pool.query("DELETE FROM entities WHERE id = $1",
+    [locationId]
+  );
+  // await pool.query("DELETE FROM locations WHERE entity = $1",
+  //   [locationId]
+  // ); This will only be necessary if cascadedeletion isn't set up in the database.
 
-  const updatedLocations = locationList.filter(
-    (datum) => datum.id != location.id
+  const campaignLocations = await getLocations(campaignId);
+
+  return campaignLocations;
+};
+
+//
+export const getLocation = async (campaignId: string,locationId: string): Promise<Location> => {
+  const foundLocation = await pool.query(
+    "SELECT * FROM entities WHERE id = $1 AND incampaign = $2",
+    [locationId, campaignId]
   );
 
-  await updateLocations(updatedLocations, campaign);
-
-  return updatedLocations;
+  return foundLocation.rows[0] as Location;
 };
 
 //
-export const getLocation = async (
-  campaignId: string,
-  locationId: string
-): Promise<Location> => {
-  const locationList = await getLocations(campaignId);
-  const findlocation = locationList.find((datum) => datum.id === locationId);
+export const getLocations = async (campaignId: string): Promise<Array<Location>> => {
+  const campaignLocations = await pool.query(
+    "SELECT * FROM entities WHERE incampaign = $1 AND type = $2",
+    [campaignId, "Location"]
+  );
 
-  return findlocation as Location;
+  return campaignLocations.rows as Array<Location>;
 };
 
 //
-export const getLocations = async (
-  campaignId: string
-): Promise<Array<Location>> => {
-  const campaign = await getCampaign(campaignId);
+export const updateLocation = async (campaignId: string,location: Location): Promise<Location> => {
+  await pool.query(
+    `UPDATE entities
+     SET name = $2, description = $3, notes = $4, image = $5, isfavourite = $6, modifieddate = $7
+     WHERE id = $1 AND incampaign = $8`,
+    [
+      location.id,
+      location.name,
+      location.description,
+      location.notes,
+      location.image,
+      location.isFavourite,
+      Date.now(),
+      campaignId
+    ]
+  );
+  await pool.query(
+    `UPDATE locations
+     SET maps = $2
+     WHERE entity = $1`,
+    [
+      location.id,
+      location.maps
+    ]
+  );
 
-  const locations = campaign.locations;
-  return locations as Array<Location>;
-};
-
-//
-export const updateLocation = async (
-  campaignId: string,
-  location: Location
-): Promise<Location> => {
-  const campaign = await getCampaign(campaignId);
-
-  location = {
-    ...location,
-    modifiedDate: Date.now(),
-  };
   const updatedLocation = location;
-
-  const removedOld = await deleteLocation(campaign.id, location.id);
-
-  const addingUpdated = [...removedOld, updatedLocation];
-
-  await updateLocations(addingUpdated, campaign);
 
   return updatedLocation;
 };
 
-//
-export const updateLocations = async (
-  newlocations: Array<Location>,
-  campaign: Campaign
-): Promise<Array<Location>> => {
-  campaign.locations = newlocations;
-
-  await updateCampaign(campaign);
-
-  return campaign.locations;
-};
 
 //Item Section
 
