@@ -26,7 +26,7 @@ export const createNPC: RequestHandler = async (req, res): Promise<void> => {
         res.status(400).json({ error: "Invalid NPC data" });
         return;
     }
-
+    // The campaign ID is hardcoded for now
     const campaign = await CampaignService.getCampaign("1c932bb3-1bae-44aa-8536-c0aadf432882");
 
     await CampaignService.createNPC(campaign.id, value as NPC);
