@@ -2,6 +2,7 @@ import express from 'express'
 import path from 'path'
 import campaignRouter from './src/routers/CampaignRouter'
 import userRouter from './src/routers/UserRouter'
+import entityRouter from './src/routers/EntityRouter'
 
 const app = express()
 const port = 5000
@@ -17,6 +18,8 @@ app.get(/^\/CampaignCompanion(\/.*)?$/, (_req, res) => {
 })
 
 app.use('/api/campaign', campaignRouter)
+
+app.use('/api/entity', entityRouter)
 
 app.use('/api/user', userRouter)
 
