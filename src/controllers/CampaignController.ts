@@ -9,10 +9,7 @@ const CampaignSchema = {
   players: Joi.number().required(),
 };
 
-export const createCampaign: RequestHandler = async (
-  req,
-  res
-): Promise<void> => {
+export const createCampaign: RequestHandler = async (req, res): Promise<void> => {
   const { error, value } = Joi.object(CampaignSchema).validate(req.body);
   if (error) {
     res.status(400).json({ error: "Invalid campaign data" });
@@ -37,10 +34,7 @@ export const getCampaign: RequestHandler = async (req, res): Promise<void> => {
   res.status(200).json("Campaign retrieved successfully");
 };
 
-export const updateCampaign: RequestHandler = async (
-  req,
-  res
-): Promise<void> => {
+export const updateCampaign: RequestHandler = async (req, res): Promise<void> => {
   const campaignId = req.params.id;
   if (!campaignId) {
     res.status(400).json({ error: "Invalid campaign ID format" });
@@ -59,13 +53,11 @@ export const updateCampaign: RequestHandler = async (
   }
 
   await CampaignService.updateCampaign({ ...value, id: campaignId });
+  
   res.status(201).json("Campaign updated successfully");
 };
 
-export const deleteCampaign: RequestHandler = async (
-  req,
-  res
-): Promise<void> => {
+export const deleteCampaign: RequestHandler = async (req, res): Promise<void> => {
   const campaignId = req.params.id;
 
   if (!campaignId) {
