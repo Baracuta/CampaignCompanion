@@ -5,9 +5,10 @@ import userRouter from './src/routers/UserRouter'
 import entityRouter from './src/routers/EntityRouter'
 
 const app = express()
+const cors = require('cors')
 const port = 5000
 
-app.use(express.json());
+app.use(cors());
 
 // Serve static files at /CampaignCompanion
 app.use('/CampaignCompanion', express.static(path.join(__dirname, 'dist')))
