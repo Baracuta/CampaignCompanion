@@ -52,9 +52,29 @@ export const getNPC: RequestHandler = async (req, res): Promise<void> => {
   res.status(200).json("NPC retrieved successfully");
 };
 
-// export const updateNPC: RequestHandler = async (req, res): Promise<void> => {
+export const updateNPC: RequestHandler = async (req, res): Promise<void> => {
+  const { error, value } = Joi.object(NPCSchema).validate(req.body);
+  if (error) {
+    res.status(400).json({ error: "Invalid NPC data" });
+    return;
+  }
 
-// };
+  const campaign = await CampaignService.getCampaign(req.params.campaignId);
+  if (!campaign) {
+    res.status(404).json({ error: "Campaign not found" });
+    return;
+  }
+
+  const npc = await CampaignService.getNPC(campaign.id, req.params.npcId);
+  if (!npc) {
+    res.status(404).json({ error: "NPC not found" });
+    return;
+  }
+  
+  await CampaignService.updateNPC(campaign.id, { ...npc, ...value } as NPC);
+
+  res.status(200).json("NPC updated successfully");
+};
 
 // export const deleteNPC: RequestHandler = async (req, res): Promise<void> => {
 
@@ -103,9 +123,29 @@ export const getLocation: RequestHandler = async (req, res): Promise<void> => {
   res.status(200).json("Location retrieved successfully");
 };
 
-// export const updateLocation: RequestHandler = async (req, res): Promise<void> => {
+export const updateLocation: RequestHandler = async (req, res): Promise<void> => {
+  const { error, value } = Joi.object(LocationSchema).validate(req.body);
+  if (error) {
+    res.status(400).json({ error: "Invalid Location data" });
+    return;
+  }
 
-// };
+  const campaign = await CampaignService.getCampaign(req.params.campaignId);
+  if (!campaign) {
+    res.status(404).json({ error: "Campaign not found" });
+    return;
+  }
+
+  const location = await CampaignService.getLocation(campaign.id, req.params.locationId);
+  if (!location) {
+    res.status(404).json({ error: "Location not found" });
+    return;
+  }
+
+  await CampaignService.updateLocation(campaign.id, { ...location, ...value } as Location);
+
+  res.status(200).json("Location updated successfully");
+};
 
 // export const deleteLocation: RequestHandler = async (req, res): Promise<void> => {
 
@@ -154,9 +194,29 @@ export const getItem: RequestHandler = async (req, res): Promise<void> => {
   res.status(200).json("Item retrieved successfully");
 };
 
-// export const updateItem: RequestHandler = async (req, res): Promise<void> => {
+export const updateItem: RequestHandler = async (req, res): Promise<void> => {
+  const { error, value } = Joi.object(ItemSchema).validate(req.body);
+  if (error) {
+    res.status(400).json({ error: "Invalid Item data" });
+    return;
+  }
 
-// };
+  const campaign = await CampaignService.getCampaign(req.params.campaignId);
+  if (!campaign) {
+    res.status(404).json({ error: "Campaign not found" });
+    return;
+  }
+
+  const item = await CampaignService.getItem(campaign.id, req.params.itemId);
+  if (!item) {
+    res.status(404).json({ error: "Item not found" });
+    return;
+  }
+
+  await CampaignService.updateItem(campaign.id, { ...item, ...value } as Item);
+
+  res.status(200).json("Item updated successfully");
+};
 
 // export const deleteItem: RequestHandler = async (req, res): Promise<void> => {
 
@@ -205,9 +265,29 @@ export const getPC: RequestHandler = async (req, res): Promise<void> => {
   res.status(200).json("Player Character retrieved successfully");
 };
 
-// export const updatePC: RequestHandler = async (req, res): Promise<void> => {
+export const updatePC: RequestHandler = async (req, res): Promise<void> => {
+  const { error, value } = Joi.object(PCSchema).validate(req.body);
+  if (error) {
+    res.status(400).json({ error: "Invalid Player Character data" });
+    return;
+  }
 
-// };
+  const campaign = await CampaignService.getCampaign(req.params.campaignId);
+  if (!campaign) {
+    res.status(404).json({ error: "Campaign not found" });
+    return;
+  }
+
+  const pc = await CampaignService.getPC(campaign.id, req.params.pcId);
+  if (!pc) {
+    res.status(404).json({ error: "Player Character not found" });
+    return;
+  }
+
+  await CampaignService.updatePC(campaign.id, { ...pc, ...value } as PC);
+
+  res.status(200).json("Player Character updated successfully");
+};
 
 // export const deletePC: RequestHandler = async (req, res): Promise<void> => {
 
