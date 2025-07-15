@@ -14,17 +14,12 @@ import { pool } from "../db";
 export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
   const id = uuid();
   await pool.query(
-    `INSERT INTO campaigns (id, name, players, entities, npcs, locations, items, player_characters)
-     VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
+    `INSERT INTO campaigns (id, name, players)
+     VALUES ($1, $2, $3)`,
     [
       id,
       campaign.name,
       campaign.players,
-      JSON.stringify(campaign.entities ?? []),
-      JSON.stringify(campaign.npcs ?? []),
-      JSON.stringify(campaign.locations ?? []),
-      JSON.stringify(campaign.items ?? []),
-      JSON.stringify(campaign.playerCharacters ?? []),
     ]
   );
   return { ...campaign, id };
@@ -57,17 +52,12 @@ export const getCampaigns = async (): Promise<Campaign[]> => {
 export const updateCampaign = async (campaign: Campaign): Promise<Campaign> => {
   await pool.query(
     `UPDATE campaigns
-    SET name = $2, players = $3, entities = $4, npcs = $5, locations = $6, items = $7, player_characters = $8
+    SET name = $2, players = $3
     WHERE id = $1`,
     [
       campaign.id,
       campaign.name,
       campaign.players,
-      JSON.stringify(campaign.entities ?? []),
-      JSON.stringify(campaign.npcs ?? []),
-      JSON.stringify(campaign.locations ?? []),
-      JSON.stringify(campaign.items ?? []),
-      JSON.stringify(campaign.playerCharacters ?? []),
     ]
   );
 
