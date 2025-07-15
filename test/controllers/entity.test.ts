@@ -32,7 +32,7 @@ describe("NPC Controller", () => {
   });
 
   it("should create an NPC with 201 status", async () => {
-    let req = mockRequest({}, { name: "Test NPC", campaignId: CAMPAIGN_ID });
+    let req = mockRequest({ campaignId: CAMPAIGN_ID }, { name: "Test NPC" });
     let res = mockResponse();
 
     jest.spyOn(require("../../src/services/CampaignServiceConnect"), "getCampaign").mockResolvedValue({ id: CAMPAIGN_ID });
@@ -96,7 +96,7 @@ describe("Location Controller", () => {
   });
 
   it("should create a Location with 201 status", async () => {
-    let req = mockRequest({}, { name: "Test Location", campaignId: CAMPAIGN_ID });
+    let req = mockRequest({ campaignId: CAMPAIGN_ID }, { name: "Test Location" });
     let res = mockResponse();
 
     jest.spyOn(require("../../src/services/CampaignServiceConnect"), "createLocation").mockResolvedValue({ id: ENTITY_ID });
@@ -154,7 +154,7 @@ describe("Item Controller", () => {
   });
 
   it("should create an Item with 201 status", async () => {
-    let req = mockRequest({}, { name: "Test Item", campaignId: CAMPAIGN_ID });
+    let req = mockRequest({ campaignId: CAMPAIGN_ID }, { name: "Test Item" });
     let res = mockResponse();
 
     jest.spyOn(require("../../src/services/CampaignServiceConnect"), "createItem").mockResolvedValue({ id: ENTITY_ID });
@@ -212,7 +212,7 @@ describe("PC Controller", () => {
   });
 
   it("should create a PC with 201 status", async () => {
-    let req = mockRequest({}, { name: "Test PC", campaignId: CAMPAIGN_ID });
+    let req = mockRequest({ campaignId: CAMPAIGN_ID }, { name: "Test PC" });
     let res = mockResponse();
 
     jest.spyOn(require("../../src/services/CampaignServiceConnect"), "createPC").mockResolvedValue({ id: ENTITY_ID });
@@ -236,10 +236,7 @@ describe("PC Controller", () => {
   });
 
   it("should update a PC with 200 status", async () => {
-    let req = mockRequest(
-      { campaignId: CAMPAIGN_ID, pcId: ENTITY_ID },
-      { name: "Updated PC" }
-    );
+    let req = mockRequest({ campaignId: CAMPAIGN_ID, pcId: ENTITY_ID }, { name: "Updated PC" });
     let res = mockResponse();
 
     jest.spyOn(require("../../src/services/CampaignServiceConnect"), "updatePC").mockResolvedValue({ id: ENTITY_ID });
