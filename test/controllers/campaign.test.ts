@@ -1,9 +1,9 @@
-import { any } from "joi";
 import * as CampaignController from "../../src/controllers/CampaignController";
 import { Request, Response } from "express";
 import * as uuid from "uuid";
 
 const TEST_ID = "eb579531-abbe-49b5-9ea8-033e865e713b";
+const USER_ID = "11111111-2222-3333-4444-555555555555";
 
 const mockRequest = (params, body) => {
   return {
@@ -32,7 +32,7 @@ describe("createCampaign", () => {
   it("should create and return a campaign with 201 status", async () => {
     let req = mockRequest(
       { id: TEST_ID },
-      { name: "Test Campaign", players: 4 }
+      { name: "Test Campaign", players: 4}
     );
     let res = mockResponse();
 
