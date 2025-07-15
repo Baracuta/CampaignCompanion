@@ -97,10 +97,7 @@ export const createNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
 };
 
 //
-export const deleteNPC = async (
-  campaignId: string,
-  npcId: string
-): Promise<Array<NPC>> => {
+export const deleteNPC = async (campaignId: string, npcId: string): Promise<Array<NPC>> => {
   await pool.query("DELETE FROM entities WHERE id = $1", [npcId]);
 
   const campaignNpcs = await getNPCs(campaignId);
@@ -109,10 +106,7 @@ export const deleteNPC = async (
 };
 
 //Acquires an NPC. Necessary for updating an NPC's props.
-export const getNPC = async (
-  campaignId: string,
-  npcId: string
-): Promise<NPC> => {
+export const getNPC = async (campaignId: string, npcId: string): Promise<NPC> => {
   const foundNpc = await pool.query(
     "SELECT * FROM entities WHERE id = $1 AND incampaign = $2",
     [npcId, campaignId]
@@ -130,7 +124,7 @@ export const getNPCs = async (campaignId: string): Promise<Array<NPC>> => {
   return campaignNpcs.rows as Array<NPC>;
 };
 
-//Uncertain if this works because I haven't had a way to test it yet, but it will be necessary anytime an NPC's props are updated.
+//
 export const updateNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
   await pool.query(
     `UPDATE entities

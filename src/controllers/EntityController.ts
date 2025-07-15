@@ -26,17 +26,31 @@ export const createNPC: RequestHandler = async (req, res): Promise<void> => {
       res.status(400).json({ error: "Invalid NPC data" });
       return;
   }
-  // The campaign ID is hardcoded for now
-  const campaign = await CampaignService.getCampaign("1c932bb3-1bae-44aa-8536-c0aadf432882");
+  const campaign = await CampaignService.getCampaign(req.body.campaignId);
 
   await CampaignService.createNPC(campaign.id, value as NPC);
 
   res.status(201).json("NPC created successfully");
 };
 
-// export const getNPC: RequestHandler = async (req, res): Promise<void> => {
+export const getNPC: RequestHandler = async (req, res): Promise<void> => {
+  const campaign = await CampaignService.getCampaign(req.params.campaignId);
+  if (!campaign) {
+    res.status(404).json({ error: "Campaign not found" });
+    return;
+  }
 
-// };
+  const npc = await CampaignService.getNPC(campaign.id, req.params.npcId);
+
+  if (!npc) {
+    res.status(404).json({ error: "NPC not found" });
+    return;
+  }
+
+  await CampaignService.getNPC(campaign.id, npc.id);
+
+  res.status(200).json("NPC retrieved successfully");
+};
 
 // export const updateNPC: RequestHandler = async (req, res): Promise<void> => {
 
@@ -63,17 +77,31 @@ export const createLocation: RequestHandler = async (req, res): Promise<void> =>
         res.status(400).json({ error: "Invalid Location data" });
         return;
     }
-    // The campaign ID is hardcoded for now
-    const campaign = await CampaignService.getCampaign("1c932bb3-1bae-44aa-8536-c0aadf432882");
+    const campaign = await CampaignService.getCampaign(req.body.campaignId);
 
     await CampaignService.createLocation(value as Location, campaign.id);
 
     res.status(201).json("Location created successfully");
 };
 
-// export const getLocation: RequestHandler = async (req, res): Promise<void> => {
+export const getLocation: RequestHandler = async (req, res): Promise<void> => {
+  const campaign = await CampaignService.getCampaign(req.params.campaignId);
+  if (!campaign) {
+      res.status(404).json({ error: "Campaign not found" });
+      return;
+  }
 
-// };
+  const location = await CampaignService.getLocation(campaign.id, req.params.locationId);
+
+  if (!location) {
+      res.status(404).json({ error: "Location not found" });
+      return;
+  }
+
+  await CampaignService.getLocation(campaign.id, location.id);
+
+  res.status(200).json("Location retrieved successfully");
+};
 
 // export const updateLocation: RequestHandler = async (req, res): Promise<void> => {
 
@@ -100,17 +128,31 @@ export const createItem: RequestHandler = async (req, res): Promise<void> => {
     res.status(400).json({ error: "Invalid Item data" });
     return;
   }
-  // The campaign ID is hardcoded for now
-  const campaign = await CampaignService.getCampaign("1c932bb3-1bae-44aa-8536-c0aadf432882");
+  const campaign = await CampaignService.getCampaign(req.body.campaignId);
 
   await CampaignService.createItem(value as Item, campaign.id);
 
   res.status(201).json("Item created successfully");
 };
 
-// export const getItem: RequestHandler = async (req, res): Promise<void> => {
+export const getItem: RequestHandler = async (req, res): Promise<void> => {
+  const campaign = await CampaignService.getCampaign(req.params.campaignId);
+  if (!campaign) {
+    res.status(404).json({ error: "Campaign not found" });
+    return;
+  }
 
-// };
+  const item = await CampaignService.getItem(campaign.id, req.params.itemId);
+
+  if (!item) {
+    res.status(404).json({ error: "Item not found" });
+    return;
+  }
+
+  await CampaignService.getItem(campaign.id, item.id);
+
+  res.status(200).json("Item retrieved successfully");
+};
 
 // export const updateItem: RequestHandler = async (req, res): Promise<void> => {
 
@@ -137,17 +179,31 @@ export const createPC: RequestHandler = async (req, res): Promise<void> => {
     res.status(400).json({ error: "Invalid Player Character data" });
     return;
   }
-  // The campaign ID is hardcoded for now
-  const campaign = await CampaignService.getCampaign("1c932bb3-1bae-44aa-8536-c0aadf432882");
+  const campaign = await CampaignService.getCampaign(req.body.campaignId);
 
   await CampaignService.createPC(value as PC, campaign.id);
 
   res.status(201).json("Player Character created successfully");
 };
 
-// export const getPC: RequestHandler = async (req, res): Promise<void> => {
+export const getPC: RequestHandler = async (req, res): Promise<void> => {
+  const campaign = await CampaignService.getCampaign(req.params.campaignId);
+  if (!campaign) {
+    res.status(404).json({ error: "Campaign not found" });
+    return;
+  }
 
-// };
+  const pc = await CampaignService.getPC(campaign.id, req.params.pcId);
+
+  if (!pc) {
+    res.status(404).json({ error: "Player Character not found" });
+    return;
+  }
+
+  await CampaignService.getPC(campaign.id, pc.id);
+
+  res.status(200).json("Player Character retrieved successfully");
+};
 
 // export const updatePC: RequestHandler = async (req, res): Promise<void> => {
 
