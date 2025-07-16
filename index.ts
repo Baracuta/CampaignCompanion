@@ -2,7 +2,7 @@ import express from 'express'
 import path from 'path'
 import campaignRouter from './src/routers/CampaignRouter'
 import userRouter from './src/routers/UserRouter'
-import entityRouter from './src/routers/EntityRouter'
+import * as entityRouter from './src/routers/EntityRouter'
 
 const app = express()
 const cors = require('cors')
@@ -20,7 +20,10 @@ app.get(/^\/CampaignCompanion(\/.*)?$/, (_req, res) => {
 
 app.use('/api/campaign', campaignRouter)
 
-app.use('/api/entity', entityRouter)
+app.use('/api/npc', entityRouter.npcRouter)
+app.use('/api/location', entityRouter.locationRouter)
+app.use('/api/item', entityRouter.itemRouter)
+app.use('/api/pc', entityRouter.pcRouter)
 
 app.use('/api/user', userRouter)
 
