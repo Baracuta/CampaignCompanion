@@ -1,6 +1,7 @@
 import * as CampaignController from "../../src/controllers/CampaignController";
 import { Request, Response } from "express";
 import * as uuid from "uuid";
+import { Campaign } from "../../src/types/Campaign";
 
 const TEST_ID = "eb579531-abbe-49b5-9ea8-033e865e713b";
 const USER_ID = "11111111-2222-3333-4444-555555555555";
@@ -39,7 +40,11 @@ describe("createCampaign", () => {
     await CampaignController.createCampaign(req, res, () => {});
 
     expect(res.status).toHaveBeenCalledWith(201);
-    expect(res.json).toHaveBeenCalledWith("Campaign created successfully");
+    expect(res.json).toHaveBeenCalledWith({
+      id: TEST_ID,
+      name: "Test Campaign",
+      players: 4
+    });
   });
 });
 
@@ -55,7 +60,12 @@ describe("getCampaign", () => {
     await CampaignController.getCampaign(req, res, () => {});
 
     expect(res.status).toHaveBeenCalledWith(200);
-    expect(res.json).toHaveBeenCalledWith("Campaign retrieved successfully");
+    expect(res.json).toHaveBeenCalledWith({
+      id: TEST_ID,
+      name: "Test Campaign",
+      players: 4,
+      user: null
+    });
   });
 });
 
@@ -74,7 +84,12 @@ describe("updateCampaign", () => {
     await CampaignController.updateCampaign(req, res, () => {});
 
     expect(res.status).toHaveBeenCalledWith(201);
-    expect(res.json).toHaveBeenCalledWith("Campaign updated successfully");
+    expect(res.json).toHaveBeenCalledWith({
+      id: TEST_ID,
+      name: "Updated Campaign",
+      players: 5,
+      user: null
+    });
   });
 });
 

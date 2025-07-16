@@ -22,7 +22,7 @@ export const createCampaign: RequestHandler = async (req, res): Promise<void> =>
     return;
   }
 
-  res.status(201).json("Campaign created successfully");
+  res.status(201).json(newCampaign);
 };
 
 export const getCampaign: RequestHandler = async (req, res): Promise<void> => {
@@ -31,7 +31,7 @@ export const getCampaign: RequestHandler = async (req, res): Promise<void> => {
     res.status(404).json({ error: "Campaign not found" });
     return;
   }
-  res.status(200).json("Campaign retrieved successfully");
+  res.status(200).json(campaign);
 };
 
 export const updateCampaign: RequestHandler = async (req, res): Promise<void> => {
@@ -54,7 +54,13 @@ export const updateCampaign: RequestHandler = async (req, res): Promise<void> =>
 
   await CampaignService.updateCampaign({ ...value, id: campaignId });
   
-  res.status(201).json("Campaign updated successfully");
+  const updatedCampaign = await CampaignService.getCampaign(campaignId);
+  if (!updatedCampaign) {
+    res.status(500).json({ error: "Failed to find updated campaign" });
+    return;
+  }
+
+  res.status(201).json(updatedCampaign);
 };
 
 export const deleteCampaign: RequestHandler = async (req, res): Promise<void> => {
