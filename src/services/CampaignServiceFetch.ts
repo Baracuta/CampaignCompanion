@@ -195,89 +195,91 @@ export const updateNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
 
 //
 export const createLocation = async (location: Location, campaignId: string): Promise<Location> => {
-  const campaign = await getCampaign(campaignId);
+  const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/location`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(location),
+  });
 
-  location = {
-    ...location,
-    id: uuid(),
-    type:"Location",
-    maps:(location.maps ?? []),
-    modifiedDate:Date.now(),
-  };
+  if (!response.ok) {
+    throw new Error("Failed to create location");
+  }
 
-  const allLocations = await getLocations(campaignId);
-
-  const newLocations = [...allLocations, location];
-
-  await updateLocations(newLocations, campaign);
-
-  return location;
+  const createdLocation = await response.json();
+  return createdLocation as Location;
 };
 
+
 //
-export const deleteLocation = async (
-  campaignId: string,
-  locationId: string
-): Promise<Array<Location>> => {
-  const campaign = await getCampaign(campaignId);
-  const locationList = await getLocations(campaignId);
-  const location = await getLocation(campaignId, locationId);
+export const deleteLocation = async (campaignId: string, locationId: string): Promise<Array<Location>> => {
+  const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/location/${locationId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
-  const updatedLocations = locationList.filter((datum) => datum.id != location.id);
+  if (!response.ok) {
+    throw new Error("Failed to delete location");
+  }
 
-  await updateLocations(updatedLocations, campaign);
-
+  const updatedLocations = await getLocations(campaignId);
   return updatedLocations;
 };
 
-//
-export const getLocation = async (
-  campaignId: string,
-  locationId: string
-): Promise<Location> => {
-  const locationList = await getLocations(campaignId);
-  const findlocation = locationList.find((datum) => datum.id === locationId);
 
-  return findlocation as Location;
+//
+export const getLocation = async (campaignId: string, locationId: string): Promise<Location> => {
+  const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/location/${locationId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  
+  if (!response.ok) {
+    throw new Error("Failed to fetch location");
+  }
+
+  const location = await response.json();
+  return location as Location;
 };
 
 //
 export const getLocations = async (campaignId: string): Promise<Array<Location>> => {
-  const campaign = await getCampaign(campaignId);
+  const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/locations`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
-  const locations = campaign.locations;
+  if (!response.ok) {
+    throw new Error("Failed to fetch locations");
+  }
+
+  const locations = await response.json();
   return locations as Array<Location>;
 };
 
 //
 export const updateLocation = async (campaignId: string, location: Location): Promise<Location> => {
-  const campaign = await getCampaign(campaignId);
+  const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/location/${location.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(location),
+  });
 
-  location = {
-    ...location,
-    modifiedDate:Date.now(),
+  if (!response.ok) {
+    throw new Error("Failed to update location");
   }
-  const updatedLocation = location;
 
-  const removedOld = await deleteLocation(campaign.id, location.id);
-
-  const addingUpdated = [...removedOld, updatedLocation];
-
-  await updateLocations(addingUpdated, campaign);
-
-  return updatedLocation;
-};
-
-//
-export const updateLocations = async (
-  newlocations: Array<Location>,
-  campaign: Campaign
-): Promise<Array<Location>> => {
-  campaign.locations = newlocations;
-
-  await updateCampaign(campaign);
-
-  return campaign.locations;
+  const updatedLocation = await response.json();
+  return updatedLocation as Location;
 };
 
 
