@@ -287,89 +287,94 @@ export const updateLocation = async (campaignId: string, location: Location): Pr
 
 //
 export const createItem = async (item: Item, campaignId: string): Promise<Item> => {
-  const campaign = await getCampaign(campaignId);
+  const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/item`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(item),
+  });
 
-  item = {
-    ...item,
-    id: uuid(),
-    type:"Item",
-    modifiedDate:Date.now(),
-  };
+  if (!response.ok) {
+    throw new Error("Failed to create item");
+  }
 
-  const allItems = await getItems(campaignId);
-
-  const newItems = [...allItems, item];
-
-  await updateItems(newItems, campaign);
-
-  return item;
+  const createdItem = await response.json();
+  return createdItem as Item;
 };
 
+
 //
-export const deleteItem = async (
-  campaignId: string,
-  itemId: string
-): Promise<Array<Item>> => {
-  const campaign = await getCampaign(campaignId);
-  const itemList = await getItems(campaignId);
-  const item = await getItem(campaignId, itemId);
+export const deleteItem = async (campaignId: string, itemId: string): Promise<Array<Item>> => {
+  const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/item/${itemId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
-  const updatedItems = itemList.filter((datum) => datum.id != item.id);
+  if (!response.ok) {
+    throw new Error("Failed to delete item");
+  }
 
-  await updateItems(updatedItems, campaign);
+  const updatedItems = await getItems(campaignId);
 
   return updatedItems;
 };
 
 //
-export const getItem = async (
-  campaignId: string,
-  itemId: string
-): Promise<Item> => {
-  const itemList = await getItems(campaignId);
-  const finditem = itemList.find((datum) => datum.id === itemId);
+export const getItem = async (campaignId: string, itemId: string): Promise<Item> => {
+  const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/item/${itemId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
-  return finditem as Item;
+  if (!response.ok) {
+    throw new Error("Failed to fetch item");
+  }
+
+  const item = await response.json();
+  return item as Item;
 };
 
 //
 export const getItems = async (campaignId: string): Promise<Array<Item>> => {
-  const campaign = await getCampaign(campaignId);
+  const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/items`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
-  const items = campaign.items;
+  if (!response.ok) {
+    throw new Error("Failed to fetch items");
+  }
+
+  const items = await response.json();
   return items as Array<Item>;
 };
 
 //
 export const updateItem = async (campaignId: string, item: Item): Promise<Item> => {
-  const campaign = await getCampaign(campaignId);
+  const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/item/${item.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(item),
+  });
 
-  item = {
-    ...item,
-    modifiedDate:Date.now(),
+  if (!response.ok) {
+    throw new Error("Failed to update item");
   }
-  const updatedItem = item;
 
-  const removedOld = await deleteItem(campaign.id, item.id);
+  const updatedItem = await response.json();
 
-  const addingUpdated = [...removedOld, updatedItem];
-
-  await updateItems(addingUpdated, campaign);
-
-  return updatedItem;
+  return updatedItem as Item;
 };
 
-//
-export const updateItems = async (
-  newItems: Array<Item>,
-  campaign: Campaign
-): Promise<Array<Item>> => {
-  campaign.items = newItems;
-
-  await updateCampaign(campaign);
-
-  return campaign.items;
-};
 
 
 //PC Section
