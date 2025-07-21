@@ -1,5 +1,5 @@
 import type { RequestHandler } from "express";
-import * as CampaignService from "../services/CampaignServiceConnect";
+import * as CampaignService from "../services/CampaignServiceBackend";
 import Joi from "joi";
 import { Campaign } from "../types/Campaign";
 
