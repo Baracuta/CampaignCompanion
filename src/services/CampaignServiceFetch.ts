@@ -28,58 +28,77 @@ export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
 };
 
 export const deleteCampaign = async (id: string): Promise<Array<Campaign>> => {
+  const response = await fetch(`http://localhost:5000/api/campaign/${id}`, {
+    method: "DELETE",
+    headers:{
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to delete campaign");
+  }
+
   const allCampaigns = await getCampaigns();
 
-  const campaign = await getCampaign(id);
-
-  const updatedCampaigns = allCampaigns.filter(
-    (item) => item.id != campaign.id
-  );
-
-  await updateCampaigns(updatedCampaigns);
-
-  return updatedCampaigns;
+  return allCampaigns;
 };
 
 //Used in the useCampaign hook, which itself is used anywhere where the campaign needs to be set.
 export const getCampaign = async (id: string): Promise<Campaign> => {
-  const allCampaigns = await getCampaigns();
-  const campaign = allCampaigns.find((datum) => datum.id === id);
+  const response = await fetch(`http://localhost:5000/api/campaign/${id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch campaign");
+  }
+
+  const campaign = await response.json();
 
   return campaign as Campaign;
 };
 
 //Used in the getCampaign method, as well as in the useCampaigns hook, which is used in the CampaignList component.
 export const getCampaigns = async (): Promise<Array<Campaign>> => {
-  const allCampaignsString = localStorage.getItem("campaigns");
-  const allCampaigns =
-    allCampaignsString == null
-      ? []
-      : (JSON.parse(allCampaignsString) as Campaign[]);
+  const response = await fetch("http://localhost:5000/api/campaign", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
-  return allCampaigns;
+  if (!response.ok) {
+    throw new Error("Failed to fetch campaigns");
+  }
+
+  const allCampaigns = await response.json();
+
+  return allCampaigns as Array<Campaign>;
 };
 
 //Used anytime that something within a Campaign is changed or updated so that the new information can be saved.
 export const updateCampaign = async (campaign: Campaign): Promise<Campaign> => {
-  const updatedCampaign = campaign;
+  const response = await fetch(`http://localhost:5000/api/campaign/${campaign.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(campaign),
+  });
 
-  const removedOld = await deleteCampaign(campaign.id);
+  if (!response.ok) {
+    throw new Error("Failed to update campaign");
+  }
 
-  const addingUpdated = [...removedOld, updatedCampaign];
+  const updatedCampaign = await response.json();
 
-  await updateCampaigns(addingUpdated);
-
-  return updatedCampaign;
+  return updatedCampaign as Campaign;
 };
 
-//After a campaign has been updated with new information, this will update the total list of all campaigns.
-export const updateCampaigns = async (
-  updatedCampaigns: Array<Campaign>
-): Promise<Array<Campaign>> => {
-  localStorage.setItem("campaigns", JSON.stringify(updatedCampaigns));
-  return updatedCampaigns;
-};
 
 
 //NPC Section
