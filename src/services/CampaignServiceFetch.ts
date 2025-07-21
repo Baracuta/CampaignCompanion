@@ -1,5 +1,4 @@
 import { Campaign } from "../types/Campaign";
-import { v4 as uuid } from "uuid";
 import { NPC } from "../types/NPC";
 import { Location } from "../types/Location";
 import { Item } from "../types/Item";
@@ -381,86 +380,89 @@ export const updateItem = async (campaignId: string, item: Item): Promise<Item> 
 
 //
 export const createPC = async (pc: PC, campaignId: string): Promise<PC> => {
-  const campaign = await getCampaign(campaignId);
+  const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/pc`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(pc),
+  });
 
-  pc = {
-    ...pc,
-    id: uuid(),
-    type:"PC",
-    modifiedDate:Date.now(),
-  };
+  if (!response.ok) {
+    throw new Error("Failed to create PC");
+  }
 
-  const allPCs = await getPCs(campaignId);
-
-  const newPCs = [...allPCs, pc];
-
-  await updatePCs(newPCs, campaign);
-
-  return pc;
+  const createdPC = await response.json();
+  return createdPC as PC;
 };
 
+
 //
-export const deletePC = async (
-  campaignId: string,
-  pcId: string
-): Promise<Array<PC>> => {
-  const campaign = await getCampaign(campaignId);
-  const pcList = await getPCs(campaignId);
-  const pc = await getPC(campaignId, pcId);
+export const deletePC = async (campaignId: string, pcId: string): Promise<Array<PC>> => {
+  const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/pc/${pcId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
-  const updatedPCs = pcList.filter((datum) => datum.id != pc.id);
+  if (!response.ok) {
+    throw new Error("Failed to delete PC");
+  }
 
-  await updatePCs(updatedPCs, campaign);
-
+  const updatedPCs = await getPCs(campaignId);
   return updatedPCs;
 };
 
-//
-export const getPC = async (
-  campaignId: string,
-  pcId: string
-): Promise<PC> => {
-  const pcList = await getPCs(campaignId);
-  const findPC = pcList.find((datum) => datum.id === pcId);
 
-  return findPC as PC;
+//
+export const getPC = async (campaignId: string, pcId: string): Promise<PC> => {
+  const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/pc/${pcId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch PC");
+  }
+
+  const pc = await response.json();
+  return pc as PC;
 };
 
 //
 export const getPCs = async (campaignId: string): Promise<Array<PC>> => {
-  const campaign = await getCampaign(campaignId);
+  const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/pcs`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
-  const pcs = campaign.playerCharacters;
+  if (!response.ok) {
+    throw new Error("Failed to fetch PCs");
+  }
+
+  const pcs = await response.json();
   return pcs as Array<PC>;
 };
 
 //
 export const updatePC = async (campaignId: string, pc: PC): Promise<PC> => {
-  const campaign = await getCampaign(campaignId);
+  const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/pc/${pc.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(pc),
+  });
 
-  pc = {
-    ...pc,
-    modifiedDate:Date.now(),
+  if (!response.ok) {
+    throw new Error("Failed to update PC");
   }
-  const updatedPC = pc;
 
-  const removedOld = await deletePC(campaign.id, pc.id);
-
-  const addingUpdated = [...removedOld, updatedPC];
-
-  await updatePCs(addingUpdated, campaign);
-
-  return updatedPC;
-};
-
-//
-export const updatePCs = async (
-  newPCs: Array<PC>,
-  campaign: Campaign
-): Promise<Array<PC>> => {
-  campaign.playerCharacters = newPCs;
-
-  await updateCampaign(campaign);
-
-  return campaign.playerCharacters;
+  const updatedPC = await response.json();
+  return updatedPC as PC;
 };
