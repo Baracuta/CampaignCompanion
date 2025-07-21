@@ -105,88 +105,89 @@ export const updateCampaign = async (campaign: Campaign): Promise<Campaign> => {
 
 //Used in the AddNPC component to save a new NPC object to a campaign.
 export const createNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
-  const campaign = await getCampaign(campaignId);
+  const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/npc`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(npc),
+  });
 
-  npc = {
-    ...npc,
-    id: uuid(),
-    type:"NPC",
-    modifiedDate:Date.now(),
-  };
+  if (!response.ok) {
+    throw new Error("Failed to create NPC");
+  }
 
-  const allNPCS = await getNPCs(campaignId);
-
-  const newNPCs = [...allNPCS, npc];
-
-  await updateNPCs(newNPCs, campaign);
-
-  return npc;
+  const createdNPC = await response.json();
+  return createdNPC as NPC;
 };
 
-//Functional, but no way for a user to currently use this. Will rectify in the future.
-export const deleteNPC = async (
-  campaignId: string,
-  npcId: string
-): Promise<Array<NPC>> => {
-  const campaign = await getCampaign(campaignId);
-  const npcList = await getNPCs(campaignId);
-  const npc = await getNPC(campaignId, npcId);
+//
+export const deleteNPC = async (campaignId: string, npcId: string): Promise<Array<NPC>> => {
+  const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/npc/${npcId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
-  const updatedNpcs = npcList.filter((datum) => datum.id != npc.id);
+  if (!response.ok) {
+    throw new Error("Failed to delete NPC");
+  }
 
-  await updateNPCs(updatedNpcs, campaign);
-
-  return updatedNpcs;
+  const allNPCs = await getNPCs(campaignId);
+  return allNPCs;
 };
 
 //Acquires an NPC. Necessary for updating an NPC's props.
-export const getNPC = async (
-  campaignId: string,
-  npcId: string
-): Promise<NPC> => {
-  const npcList = await getNPCs(campaignId);
-  const findNpc = npcList.find((datum) => datum.id === npcId);
+export const getNPC = async (campaignId: string, npcId: string): Promise<NPC> => {
+  const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/npc/${npcId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
-  return findNpc as NPC;
+  if (!response.ok) {
+    throw new Error("Failed to fetch NPC");
+  }
+
+  const npc = await response.json();
+  return npc as NPC;
 };
 
 //Used in getNPC, as well as in the ThingList component.
 export const getNPCs = async (campaignId: string): Promise<Array<NPC>> => {
-  const campaign = await getCampaign(campaignId);
+  const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/npcs`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
-  const npcs = campaign.npcs;
+  if (!response.ok) {
+    throw new Error("Failed to fetch NPCs");
+  }
+
+  const npcs = await response.json();
   return npcs as Array<NPC>;
 };
 
-//Uncertain if this works because I haven't had a way to test it yet, but it will be necessary anytime an NPC's props are updated.
+//
 export const updateNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
-  const campaign = await getCampaign(campaignId);
-  
-  npc={
-    ...npc,
-    modifiedDate:Date.now(),
+  const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/npc/${npc.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(npc),
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to update NPC");
   }
-  const updatedNpc = npc;
 
-  const removedOld = await deleteNPC(campaign.id, npc.id);
-
-  const addingUpdated = [...removedOld, updatedNpc];
-
-  await updateNPCs(addingUpdated, campaign);
-
-  return updatedNpc;
-};
-
-//Used to update the list of NPCs within a campaign.
-export const updateNPCs = async (
-  newNPCs: Array<NPC>,
-  campaign: Campaign
-): Promise<Array<NPC>> => {
-  campaign.npcs = newNPCs;
-
-  await updateCampaign(campaign);
-
-  return campaign.npcs;
+  const updatedNpc = await response.json();
+  return updatedNpc as NPC;
 };
 
 
