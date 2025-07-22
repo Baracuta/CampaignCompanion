@@ -35,8 +35,8 @@ describe("NPC Controller", () => {
     let req = mockRequest({ campaignId: CAMPAIGN_ID }, { name: "Test NPC" });
     let res = mockResponse();
 
-    jest.spyOn(require("../../src/services/CampaignServiceConnect"), "getCampaign").mockResolvedValue({ id: CAMPAIGN_ID });
-    jest.spyOn(require("../../src/services/CampaignServiceConnect"), "createNPC").mockResolvedValue({ id: ENTITY_ID });
+    jest.spyOn(require("../../src/services/CampaignServiceBackend"), "getCampaign").mockResolvedValue({ id: CAMPAIGN_ID });
+    jest.spyOn(require("../../src/services/CampaignServiceBackend"), "createNPC").mockResolvedValue({ id: ENTITY_ID });
 
     await EntityController.createNPC(req, res, () => {});
 
@@ -48,8 +48,8 @@ describe("NPC Controller", () => {
     let req = mockRequest({ campaignId: CAMPAIGN_ID, npcId: ENTITY_ID }, {});
     let res = mockResponse();
 
-    jest.spyOn(require("../../src/services/CampaignServiceConnect"), "getCampaign").mockResolvedValue({ id: CAMPAIGN_ID });
-    jest.spyOn(require("../../src/services/CampaignServiceConnect"), "getNPC").mockResolvedValue({ id: ENTITY_ID });
+    jest.spyOn(require("../../src/services/CampaignServiceBackend"), "getCampaign").mockResolvedValue({ id: CAMPAIGN_ID });
+    jest.spyOn(require("../../src/services/CampaignServiceBackend"), "getNPC").mockResolvedValue({ id: ENTITY_ID });
 
     await EntityController.getNPC(req, res, () => {});
 
@@ -64,9 +64,9 @@ describe("NPC Controller", () => {
     );
     let res = mockResponse();
 
-    jest.spyOn(require("../../src/services/CampaignServiceConnect"), "getCampaign").mockResolvedValue({ id: CAMPAIGN_ID });
-    jest.spyOn(require("../../src/services/CampaignServiceConnect"), "getNPC").mockResolvedValue({ id: ENTITY_ID });
-    jest.spyOn(require("../../src/services/CampaignServiceConnect"), "updateNPC").mockResolvedValue({ id: ENTITY_ID });
+    jest.spyOn(require("../../src/services/CampaignServiceBackend"), "getCampaign").mockResolvedValue({ id: CAMPAIGN_ID });
+    jest.spyOn(require("../../src/services/CampaignServiceBackend"), "getNPC").mockResolvedValue({ id: ENTITY_ID });
+    jest.spyOn(require("../../src/services/CampaignServiceBackend"), "updateNPC").mockResolvedValue({ id: ENTITY_ID });
 
     await EntityController.updateNPC(req, res, () => {});
 
@@ -78,9 +78,9 @@ describe("NPC Controller", () => {
     let req = mockRequest({ campaignId: CAMPAIGN_ID, npcId: ENTITY_ID }, {});
     let res = mockResponse();
 
-    jest.spyOn(require("../../src/services/CampaignServiceConnect"), "getCampaign").mockResolvedValue({ id: CAMPAIGN_ID });
-    jest.spyOn(require("../../src/services/CampaignServiceConnect"), "getNPC").mockResolvedValue({ id: ENTITY_ID });
-    jest.spyOn(require("../../src/services/CampaignServiceConnect"), "deleteNPC").mockResolvedValue({});
+    jest.spyOn(require("../../src/services/CampaignServiceBackend"), "getCampaign").mockResolvedValue({ id: CAMPAIGN_ID });
+    jest.spyOn(require("../../src/services/CampaignServiceBackend"), "getNPC").mockResolvedValue({ id: ENTITY_ID });
+    jest.spyOn(require("../../src/services/CampaignServiceBackend"), "deleteNPC").mockResolvedValue({});
 
     await EntityController.deleteNPC(req, res, () => {});
 
@@ -99,7 +99,7 @@ describe("Location Controller", () => {
     let req = mockRequest({ campaignId: CAMPAIGN_ID }, { name: "Test Location" });
     let res = mockResponse();
 
-    jest.spyOn(require("../../src/services/CampaignServiceConnect"), "createLocation").mockResolvedValue({ id: ENTITY_ID });
+    jest.spyOn(require("../../src/services/CampaignServiceBackend"), "createLocation").mockResolvedValue({ id: ENTITY_ID });
 
     await EntityController.createLocation(req, res, () => {});
 
@@ -111,7 +111,7 @@ describe("Location Controller", () => {
     let req = mockRequest({ campaignId: CAMPAIGN_ID, locationId: ENTITY_ID }, {});
     let res = mockResponse();
 
-    jest.spyOn(require("../../src/services/CampaignServiceConnect"), "getLocation").mockResolvedValue({ id: ENTITY_ID });
+    jest.spyOn(require("../../src/services/CampaignServiceBackend"), "getLocation").mockResolvedValue({ id: ENTITY_ID });
 
     await EntityController.getLocation(req, res, () => {});
 
@@ -126,7 +126,7 @@ describe("Location Controller", () => {
     );
     let res = mockResponse();
 
-    jest.spyOn(require("../../src/services/CampaignServiceConnect"), "updateLocation").mockResolvedValue({ id: ENTITY_ID });
+    jest.spyOn(require("../../src/services/CampaignServiceBackend"), "updateLocation").mockResolvedValue({ id: ENTITY_ID });
 
     await EntityController.updateLocation(req, res, () => {});
 
@@ -138,7 +138,7 @@ describe("Location Controller", () => {
     let req = mockRequest({ campaignId: CAMPAIGN_ID, locationId: ENTITY_ID }, {});
     let res = mockResponse();
 
-    jest.spyOn(require("../../src/services/CampaignServiceConnect"), "deleteLocation").mockResolvedValue({});
+    jest.spyOn(require("../../src/services/CampaignServiceBackend"), "deleteLocation").mockResolvedValue({});
 
     await EntityController.deleteLocation(req, res, () => {});
 
@@ -157,7 +157,7 @@ describe("Item Controller", () => {
     let req = mockRequest({ campaignId: CAMPAIGN_ID }, { name: "Test Item" });
     let res = mockResponse();
 
-    jest.spyOn(require("../../src/services/CampaignServiceConnect"), "createItem").mockResolvedValue({ id: ENTITY_ID });
+    jest.spyOn(require("../../src/services/CampaignServiceBackend"), "createItem").mockResolvedValue({ id: ENTITY_ID });
 
     await EntityController.createItem(req, res, () => {});
 
@@ -169,7 +169,7 @@ describe("Item Controller", () => {
     let req = mockRequest({ campaignId: CAMPAIGN_ID, itemId: ENTITY_ID }, {});
     let res = mockResponse();
 
-    jest.spyOn(require("../../src/services/CampaignServiceConnect"), "getItem").mockResolvedValue({ id: ENTITY_ID });
+    jest.spyOn(require("../../src/services/CampaignServiceBackend"), "getItem").mockResolvedValue({ id: ENTITY_ID });
 
     await EntityController.getItem(req, res, () => {});
 
@@ -184,7 +184,7 @@ describe("Item Controller", () => {
     );
     let res = mockResponse();
 
-    jest.spyOn(require("../../src/services/CampaignServiceConnect"), "updateItem").mockResolvedValue({ id: ENTITY_ID });
+    jest.spyOn(require("../../src/services/CampaignServiceBackend"), "updateItem").mockResolvedValue({ id: ENTITY_ID });
 
     await EntityController.updateItem(req, res, () => {});
 
@@ -196,7 +196,7 @@ describe("Item Controller", () => {
     let req = mockRequest({ campaignId: CAMPAIGN_ID, itemId: ENTITY_ID }, {});
     let res = mockResponse();
 
-    jest.spyOn(require("../../src/services/CampaignServiceConnect"), "deleteItem").mockResolvedValue({});
+    jest.spyOn(require("../../src/services/CampaignServiceBackend"), "deleteItem").mockResolvedValue({});
 
     await EntityController.deleteItem(req, res, () => {});
 
@@ -215,7 +215,7 @@ describe("PC Controller", () => {
     let req = mockRequest({ campaignId: CAMPAIGN_ID }, { name: "Test PC" });
     let res = mockResponse();
 
-    jest.spyOn(require("../../src/services/CampaignServiceConnect"), "createPC").mockResolvedValue({ id: ENTITY_ID });
+    jest.spyOn(require("../../src/services/CampaignServiceBackend"), "createPC").mockResolvedValue({ id: ENTITY_ID });
 
     await EntityController.createPC(req, res, () => {});
 
@@ -227,7 +227,7 @@ describe("PC Controller", () => {
     let req = mockRequest({ campaignId: CAMPAIGN_ID, pcId: ENTITY_ID }, {});
     let res = mockResponse();
 
-    jest.spyOn(require("../../src/services/CampaignServiceConnect"), "getPC").mockResolvedValue({ id: ENTITY_ID });
+    jest.spyOn(require("../../src/services/CampaignServiceBackend"), "getPC").mockResolvedValue({ id: ENTITY_ID });
 
     await EntityController.getPC(req, res, () => {});
 
@@ -239,7 +239,7 @@ describe("PC Controller", () => {
     let req = mockRequest({ campaignId: CAMPAIGN_ID, pcId: ENTITY_ID }, { name: "Updated PC" });
     let res = mockResponse();
 
-    jest.spyOn(require("../../src/services/CampaignServiceConnect"), "updatePC").mockResolvedValue({ id: ENTITY_ID });
+    jest.spyOn(require("../../src/services/CampaignServiceBackend"), "updatePC").mockResolvedValue({ id: ENTITY_ID });
 
     await EntityController.updatePC(req, res, () => {});
 
@@ -251,7 +251,7 @@ describe("PC Controller", () => {
     let req = mockRequest({ campaignId: CAMPAIGN_ID, pcId: ENTITY_ID }, {});
     let res = mockResponse();
 
-    jest.spyOn(require("../../src/services/CampaignServiceConnect"), "deletePC").mockResolvedValue({});
+    jest.spyOn(require("../../src/services/CampaignServiceBackend"), "deletePC").mockResolvedValue({});
 
     await EntityController.deletePC(req, res, () => {});
 
