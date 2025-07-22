@@ -23,8 +23,9 @@ export const createCampaign: RequestHandler = async (req, res): Promise<void> =>
   }
 
   res.status(201).json(newCampaign);
+  return;
 };
-
+//Problem might be that these don't actually do anything, I think
 export const getCampaign: RequestHandler = async (req, res): Promise<void> => {
   const campaign = await CampaignService.getCampaign(req.params.id);
   if (!campaign) {
@@ -32,6 +33,7 @@ export const getCampaign: RequestHandler = async (req, res): Promise<void> => {
     return;
   }
   res.status(200).json(campaign);
+  return;
 };
 
 export const updateCampaign: RequestHandler = async (req, res): Promise<void> => {
@@ -61,6 +63,7 @@ export const updateCampaign: RequestHandler = async (req, res): Promise<void> =>
   }
 
   res.status(201).json(updatedCampaign);
+  return;
 };
 
 export const deleteCampaign: RequestHandler = async (req, res): Promise<void> => {
@@ -80,4 +83,5 @@ export const deleteCampaign: RequestHandler = async (req, res): Promise<void> =>
   await CampaignService.deleteCampaign(req.params.id);
 
   res.status(204).json("Campaign deleted successfully");
+  return;
 };
