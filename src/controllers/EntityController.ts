@@ -25,6 +25,7 @@ export const createNPC: RequestHandler = async (req, res): Promise<void> => {
       res.status(400).json({ error: "Invalid NPC data" });
       return;
   }
+
   const campaign = await CampaignService.getCampaign(req.params.campaignId);
 
   await CampaignService.createNPC(campaign.id, value as NPC);
@@ -109,6 +110,7 @@ export const createLocation: RequestHandler = async (req, res): Promise<void> =>
         res.status(400).json({ error: "Invalid Location data" });
         return;
     }
+    
     const campaign = await CampaignService.getCampaign(req.params.campaignId);
 
     await CampaignService.createLocation(value as Location, campaign.id);
