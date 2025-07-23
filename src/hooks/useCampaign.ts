@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getCampaign } from "../services/CampaignService";
+import { getCampaign } from "../services/CampaignServiceFrontend";
 import { Campaign } from "../types/Campaign";
 
 export const useCampaign = (id: string) => {

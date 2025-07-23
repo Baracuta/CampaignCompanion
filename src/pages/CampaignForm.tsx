@@ -3,7 +3,7 @@ import styles from "../css_modules/form.module.css";
 import { useState } from "react";
 import { Campaign } from "../types/Campaign";
 import { useNavigate } from "react-router-dom";
-import { createCampaign } from "../services/CampaignService";
+import { createCampaign } from "../services/CampaignServiceFrontend";
 import { Autocomplete, TextField } from "@mui/material";
 import { GameOptions } from "../constants/game_options";
 

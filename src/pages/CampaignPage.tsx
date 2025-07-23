@@ -9,7 +9,7 @@ import EntityList from "../utilities/Entities";
 import { Entity } from "../types/Entity";
 import { deleteThing, updateThing } from "../components/ThingUpdater";
 import DeleteCampaign from "../components/DeleteCampaign";
-import { deleteCampaign } from "../services/CampaignService";
+import { deleteCampaign } from "../services/CampaignServiceFrontend";
 
 function CampaignPage() {
   const { id } = useParams();

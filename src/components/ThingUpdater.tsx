@@ -1,4 +1,4 @@
-import { updateNPC, updateLocation, updateItem, updatePC, deleteNPC, deleteLocation, deleteItem, deletePC } from "../services/CampaignService";
+import { updateNPC, updateLocation, updateItem, updatePC, deleteNPC, deleteLocation, deleteItem, deletePC } from "../services/CampaignServiceFrontend";
 import { Entity } from "../types/Entity";
 import { Item } from "../types/Item";
 import { Location } from "../types/Location";

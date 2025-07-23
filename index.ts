@@ -9,6 +9,7 @@ const cors = require('cors')
 const port = 5000
 
 app.use(cors());
+app.use(express.json());
 
 // Serve static files at /CampaignCompanion
 app.use('/CampaignCompanion', express.static(path.join(__dirname, 'dist')))

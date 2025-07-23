@@ -5,11 +5,13 @@ import { Campaign } from "../types/Campaign";
 
 const CampaignSchema = {
   id: Joi.string().uuid().optional(),
-  name: Joi.string().required(),
   players: Joi.number().required(),
+  game: Joi.string().optional(),
+  name: Joi.string().required(),
 };
 
 export const createCampaign: RequestHandler = async (req, res): Promise<void> => {
+  console.log("req.body:", req.body);
   const { error, value } = Joi.object(CampaignSchema).validate(req.body);
   if (error) {
     res.status(400).json({ error: "Invalid campaign data" });
@@ -33,6 +35,12 @@ export const getCampaign: RequestHandler = async (req, res): Promise<void> => {
     return;
   }
   res.status(200).json(campaign);
+  return;
+};
+
+export const getCampaigns: RequestHandler = async (_req, res): Promise<void> => {
+  const campaigns = await CampaignService.getCampaigns();
+  res.status(200).json(campaigns);
   return;
 };
 

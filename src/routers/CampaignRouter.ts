@@ -5,6 +5,7 @@ const router = Router()
 
 router.post('/', CampaignController.createCampaign);
 router.get('/:id', CampaignController.getCampaign);
+router.get('/', CampaignController.getCampaigns);
 router.put('/:id', CampaignController.updateCampaign);
 router.delete('/:id', CampaignController.deleteCampaign);
 
