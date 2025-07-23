@@ -69,7 +69,6 @@ function CampaignPage() {
       <div className={styles.bottom_bar}>
         <DeleteCampaign campaignID={id as string} delete={async (id:string) => {
           await deleteCampaign(id);
-          await refreshCampaign();
           await navigate("/campaign-select");
         }}/>
       </div>
