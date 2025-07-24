@@ -17,12 +17,11 @@ const NPCSchema = {
   id: Joi.string().uuid().optional(),
   name: Joi.string().optional(),
   description: Joi.string().optional(),
-  campaignid: Joi.string().uuid().required(),
 };
 
 export const createNPC: RequestHandler = async (req, res): Promise<void> => {
   console.log("req.body:", req.body);
-  console.log("req.params:", req.params);
+  console.log("req.params:", req.params.campaignId);
   const { error, value } = Joi.object(NPCSchema).validate(req.body);
   if (error) {
       res.status(400).json({ error: "Invalid NPC data" });
@@ -53,6 +52,16 @@ export const getNPC: RequestHandler = async (req, res): Promise<void> => {
   await CampaignService.getNPC(campaign.id, npc.id);
 
   res.status(200).json("NPC retrieved successfully");
+};
+export const getNPCs: RequestHandler = async (req, res): Promise<void> => {
+  const campaign = await CampaignService.getCampaign(req.params.campaignId);
+  if (!campaign) {
+    res.status(404).json({ error: "Campaign not found" });
+    return;
+  }
+
+  const npcs = await CampaignService.getNPCs(campaign.id);
+  res.status(200).json(npcs);
 };
 
 export const updateNPC: RequestHandler = async (req, res): Promise<void> => {
@@ -139,6 +148,17 @@ export const getLocation: RequestHandler = async (req, res): Promise<void> => {
   res.status(200).json("Location retrieved successfully");
 };
 
+export const getLocations: RequestHandler = async (req, res): Promise<void> => {
+  const campaign = await CampaignService.getCampaign(req.params.campaignId);
+  if (!campaign) {
+    res.status(404).json({ error: "Campaign not found" });
+    return;
+  }
+
+  const locations = await CampaignService.getLocations(campaign.id);
+  res.status(200).json(locations);
+};
+
 export const updateLocation: RequestHandler = async (req, res): Promise<void> => {
   const { error, value } = Joi.object(LocationSchema).validate(req.body);
   if (error) {
@@ -223,6 +243,17 @@ export const getItem: RequestHandler = async (req, res): Promise<void> => {
   res.status(200).json("Item retrieved successfully");
 };
 
+export const getItems: RequestHandler = async (req, res): Promise<void> => {
+  const campaign = await CampaignService.getCampaign(req.params.campaignId);
+  if (!campaign) {
+    res.status(404).json({ error: "Campaign not found" });
+    return;
+  }
+
+  const items = await CampaignService.getItems(campaign.id);
+  res.status(200).json(items);
+};
+
 export const updateItem: RequestHandler = async (req, res): Promise<void> => {
   const { error, value } = Joi.object(ItemSchema).validate(req.body);
   if (error) {
@@ -305,6 +336,17 @@ export const getPC: RequestHandler = async (req, res): Promise<void> => {
   await CampaignService.getPC(campaign.id, pc.id);
 
   res.status(200).json("PC retrieved successfully");
+};
+
+export const getPCs: RequestHandler = async (req, res): Promise<void> => {
+  const campaign = await CampaignService.getCampaign(req.params.campaignId);
+  if (!campaign) {
+    res.status(404).json({ error: "Campaign not found" });
+    return;
+  }
+
+  const pcs = await CampaignService.getPCs(campaign.id);
+  res.status(200).json(pcs);
 };
 
 export const updatePC: RequestHandler = async (req, res): Promise<void> => {
