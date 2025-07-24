@@ -21,10 +21,10 @@ app.get(/^\/CampaignCompanion(\/.*)?$/, (_req, res) => {
 
 app.use('/api/campaign', campaignRouter)
 
-app.use('/api/campaign/npc', entityRouter.npcRouter)
-app.use('/api/campaign/location', entityRouter.locationRouter)
-app.use('/api/campaign/item', entityRouter.itemRouter)
-app.use('/api/campaign/pc', entityRouter.pcRouter)
+app.use('/api/campaign/:campaignid/npc', entityRouter.npcRouter)
+app.use('/api/campaign/:campaignid/location', entityRouter.locationRouter)
+app.use('/api/campaign/:campaignid/item', entityRouter.itemRouter)
+app.use('/api/campaign/:campaignid/pc', entityRouter.pcRouter)
 
 app.use('/api/user', userRouter)
 

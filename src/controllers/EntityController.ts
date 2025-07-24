@@ -17,9 +17,12 @@ const NPCSchema = {
   id: Joi.string().uuid().optional(),
   name: Joi.string().optional(),
   description: Joi.string().optional(),
+  campaignid: Joi.string().uuid().required(),
 };
 
 export const createNPC: RequestHandler = async (req, res): Promise<void> => {
+  console.log("req.body:", req.body);
+  console.log("req.params:", req.params);
   const { error, value } = Joi.object(NPCSchema).validate(req.body);
   if (error) {
       res.status(400).json({ error: "Invalid NPC data" });
