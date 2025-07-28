@@ -20,9 +20,9 @@ const NPCSchema = {
   description: Joi.string().optional(),
   notes: Joi.string().optional(),
   image: Joi.string().optional(),
-  isfavourite: Joi.boolean().optional(),
-  modifieddate: Joi.date().optional(),
-  incampaign: Joi.string().uuid().optional(),
+  isFavourite: Joi.boolean().optional()|| null,
+  modifiedDate: Joi.date().optional(),
+  inCampaign: Joi.string().uuid().optional(),
 };
 
 export const createNPC: RequestHandler = async (req, res): Promise<void> => {
@@ -68,6 +68,7 @@ export const getNPCs: RequestHandler = async (req, res): Promise<void> => {
   }
 
   const npcs = await CampaignService.getNPCs(campaign.id);
+  console.log("npcs:", npcs);
   res.status(200).json(npcs);
 };
 
