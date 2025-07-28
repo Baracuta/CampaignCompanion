@@ -17,6 +17,11 @@ const NPCSchema = {
   id: Joi.string().uuid().optional(),
   name: Joi.string().optional(),
   description: Joi.string().optional(),
+  notes: Joi.string().optional(),
+  image: Joi.string().optional(),
+  isfavourite: Joi.boolean().optional(),
+  modifieddate: Joi.date().optional(),
+  incampaign: Joi.string().uuid().optional(),
 };
 
 export const createNPC: RequestHandler = async (req, res): Promise<void> => {
@@ -53,6 +58,7 @@ export const getNPC: RequestHandler = async (req, res): Promise<void> => {
 
   res.status(200).json("NPC retrieved successfully");
 };
+
 export const getNPCs: RequestHandler = async (req, res): Promise<void> => {
   const campaign = await CampaignService.getCampaign(req.params.campaignId);
   if (!campaign) {
@@ -84,8 +90,8 @@ export const updateNPC: RequestHandler = async (req, res): Promise<void> => {
     res.status(404).json({ error: "NPC not found" });
     return;
   }
-
-  await CampaignService.updateNPC(campaign.id, { ...npc, ...value } as NPC);
+  const updatedNPC = {npc, ...value} as NPC;
+  await CampaignService.updateNPC(campaign.id, updatedNPC);
 
   res.status(200).json("NPC updated successfully");
 };
