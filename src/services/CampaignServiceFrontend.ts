@@ -156,7 +156,7 @@ export const getNPC = async (campaignId: string, npcId: string): Promise<NPC> =>
 
 //Used in getNPC, as well as in the ThingList component.
 export const getNPCs = async (campaignId: string): Promise<Array<NPC>> => {
-  const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/npcs`, {
+  const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/npc`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
