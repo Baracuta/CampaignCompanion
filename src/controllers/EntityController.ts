@@ -21,7 +21,7 @@ const NPCSchema = {
 
 export const createNPC: RequestHandler = async (req, res): Promise<void> => {
   console.log("req.body:", req.body);
-  console.log("req.params:", req.params.campaignId);
+  console.log("req.params:", req.params);
   const { error, value } = Joi.object(NPCSchema).validate(req.body);
   if (error) {
       res.status(400).json({ error: "Invalid NPC data" });
@@ -65,6 +65,8 @@ export const getNPCs: RequestHandler = async (req, res): Promise<void> => {
 };
 
 export const updateNPC: RequestHandler = async (req, res): Promise<void> => {
+  console.log("req.body:", req.body);
+  console.log("req.params:", req.params);
   const { error, value } = Joi.object(NPCSchema).validate(req.body);
   if (error) {
     res.status(400).json({ error: "Invalid NPC data" });
@@ -77,7 +79,7 @@ export const updateNPC: RequestHandler = async (req, res): Promise<void> => {
     return;
   }
 
-  const npc = await CampaignService.getNPC(campaign.id, req.params.npcId);
+  const npc = await CampaignService.getNPC(campaign.id, req.params.id);
   if (!npc) {
     res.status(404).json({ error: "NPC not found" });
     return;
