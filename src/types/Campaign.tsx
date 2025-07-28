@@ -6,6 +6,7 @@ import { Entity } from "./Entity";
 
 export type Campaign = {
   id: string;
+  user?: string;
   name?: string;
   game?: string;
   players?: number;

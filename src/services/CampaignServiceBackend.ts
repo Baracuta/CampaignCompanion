@@ -14,12 +14,13 @@ import { pool } from "../db";
 export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
   const id = uuid();
   await pool.query(
-    `INSERT INTO campaigns (id, name, players, game)
-     VALUES ($1, $2, $3, $4)`,
+    `INSERT INTO campaigns (id, name, players, user, game)
+     VALUES ($1, $2, $3, $4, $5)`,
     [
       id,
       campaign.name,
       campaign.players,
+      campaign.user,
       campaign.game
     ]
   );
