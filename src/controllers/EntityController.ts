@@ -15,6 +15,7 @@ import { PC } from "../types/PlayerCharacter";
 
 const NPCSchema = {
   id: Joi.string().uuid().optional(),
+  type: Joi.string().optional(),
   name: Joi.string().optional(),
   description: Joi.string().optional(),
   notes: Joi.string().optional(),
@@ -47,7 +48,7 @@ export const getNPC: RequestHandler = async (req, res): Promise<void> => {
     return;
   }
 
-  const npc = await CampaignService.getNPC(campaign.id, req.params.npcId);
+  const npc = await CampaignService.getNPC(campaign.id, req.params.id);
 
   if (!npc) {
     res.status(404).json({ error: "NPC not found" });
@@ -103,7 +104,7 @@ export const deleteNPC: RequestHandler = async (req, res): Promise<void> => {
     return;
   }
 
-  const npc = await CampaignService.getNPC(campaign.id, req.params.npcId);
+  const npc = await CampaignService.getNPC(campaign.id, req.params.id);
   if (!npc) {
     res.status(404).json({ error: "NPC not found" });
     return;
