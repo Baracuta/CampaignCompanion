@@ -26,7 +26,6 @@ const NPCSchema = {
 };
 
 export const createNPC: RequestHandler = async (req, res): Promise<void> => {
-  console.log("req.body:", req.body);
   const { error, value } = Joi.object(NPCSchema).validate(req.body);
   if (error) {
       res.status(400).json({ error: "Invalid NPC data" });
@@ -119,9 +118,17 @@ export const deleteNPC: RequestHandler = async (req, res): Promise<void> => {
 // Location Section
 
 const LocationSchema = {
-id: Joi.string().uuid().optional(),
-name: Joi.string().required(),
-description: Joi.string().optional(),
+  id: Joi.string().uuid().optional(),
+  type: Joi.string().optional(),
+  name: Joi.string().optional(),
+  description: Joi.string().optional().allow(null),
+  notes: Joi.string().optional().allow(null),
+  image: Joi.string().optional().allow(null),
+  isfavourite: Joi.boolean().optional().allow(null),
+  modifieddate: Joi.date().optional(),
+  incampaign: Joi.string().uuid().optional(),
+  entity: Joi.string().uuid().optional(),
+  maps: Joi.array().items(Joi.string()).optional().allow(null),
 };
 
 export const createLocation: RequestHandler = async (req, res): Promise<void> => {
@@ -145,7 +152,7 @@ export const getLocation: RequestHandler = async (req, res): Promise<void> => {
       return;
   }
 
-  const location = await CampaignService.getLocation(campaign.id, req.params.locationId);
+  const location = await CampaignService.getLocation(campaign.id, req.params.id);
   if (!location) {
       res.status(404).json({ error: "Location not found" });
       return;
@@ -168,6 +175,8 @@ export const getLocations: RequestHandler = async (req, res): Promise<void> => {
 };
 
 export const updateLocation: RequestHandler = async (req, res): Promise<void> => {
+  console.log("req.body:", req.body);
+  console.log("req.params:", req.params);
   const { error, value } = Joi.object(LocationSchema).validate(req.body);
   if (error) {
     res.status(400).json({ error: "Invalid Location data" });
@@ -180,7 +189,7 @@ export const updateLocation: RequestHandler = async (req, res): Promise<void> =>
     return;
   }
 
-  const location = await CampaignService.getLocation(campaign.id, req.params.locationId);
+  const location = await CampaignService.getLocation(campaign.id, req.params.id);
   if (!location) {
     res.status(404).json({ error: "Location not found" });
     return;
@@ -198,7 +207,7 @@ export const deleteLocation: RequestHandler = async (req, res): Promise<void> =>
     return;
   }
 
-  const location = await CampaignService.getLocation(campaign.id, req.params.locationId);
+  const location = await CampaignService.getLocation(campaign.id, req.params.id);
   if (!location) {
     res.status(404).json({ error: "Location not found" });
     return;
@@ -239,7 +248,7 @@ export const getItem: RequestHandler = async (req, res): Promise<void> => {
     return;
   }
 
-  const item = await CampaignService.getItem(campaign.id, req.params.itemId);
+  const item = await CampaignService.getItem(campaign.id, req.params.id);
 
   if (!item) {
     res.status(404).json({ error: "Item not found" });
@@ -275,7 +284,7 @@ export const updateItem: RequestHandler = async (req, res): Promise<void> => {
     return;
   }
 
-  const item = await CampaignService.getItem(campaign.id, req.params.itemId);
+  const item = await CampaignService.getItem(campaign.id, req.params.id);
   if (!item) {
     res.status(404).json({ error: "Item not found" });
     return;
@@ -293,7 +302,7 @@ export const deleteItem: RequestHandler = async (req, res): Promise<void> => {
     return;
   }
 
-  const item = await CampaignService.getItem(campaign.id, req.params.itemId);
+  const item = await CampaignService.getItem(campaign.id, req.params.id);
   if (!item) {
     res.status(404).json({ error: "Item not found" });
     return;
@@ -334,7 +343,7 @@ export const getPC: RequestHandler = async (req, res): Promise<void> => {
     return;
   }
 
-  const pc = await CampaignService.getPC(campaign.id, req.params.pcId);
+  const pc = await CampaignService.getPC(campaign.id, req.params.id);
 
   if (!pc) {
     res.status(404).json({ error: "Player Character not found" });
@@ -370,7 +379,7 @@ export const updatePC: RequestHandler = async (req, res): Promise<void> => {
     return;
   }
 
-  const pc = await CampaignService.getPC(campaign.id, req.params.pcId);
+  const pc = await CampaignService.getPC(campaign.id, req.params.id);
   if (!pc) {
     res.status(404).json({ error: "Player Character not found" });
     return;
@@ -388,7 +397,7 @@ export const deletePC: RequestHandler = async (req, res): Promise<void> => {
     return;
   }
 
-  const pc = await CampaignService.getPC(campaign.id, req.params.pcId);
+  const pc = await CampaignService.getPC(campaign.id, req.params.id);
   if (!pc) {
     res.status(404).json({ error: "Player Character not found" });
     return;

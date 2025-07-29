@@ -248,7 +248,7 @@ export const getLocation = async (campaignId: string, locationId: string): Promi
 
 //
 export const getLocations = async (campaignId: string): Promise<Array<Location>> => {
-  const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/locations`, {
+  const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/location`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -340,7 +340,7 @@ export const getItem = async (campaignId: string, itemId: string): Promise<Item>
 
 //
 export const getItems = async (campaignId: string): Promise<Array<Item>> => {
-  const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/items`, {
+  const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/item`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -434,7 +434,7 @@ export const getPC = async (campaignId: string, pcId: string): Promise<PC> => {
 
 //
 export const getPCs = async (campaignId: string): Promise<Array<PC>> => {
-  const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/pcs`, {
+  const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/pc`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
