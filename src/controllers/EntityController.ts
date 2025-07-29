@@ -66,12 +66,10 @@ export const getNPCs: RequestHandler = async (req, res): Promise<void> => {
   }
 
   const npcs = await CampaignService.getNPCs(campaign.id);
-  console.log("npcs:", npcs);
   res.status(200).json(npcs);
 };
 
 export const updateNPC: RequestHandler = async (req, res): Promise<void> => {
-  console.log("req.body:", req.body);
   const { error, value } = Joi.object(NPCSchema).validate(req.body);
   if (error) {
     res.status(400).json({ error: "Invalid NPC data" });
@@ -175,8 +173,6 @@ export const getLocations: RequestHandler = async (req, res): Promise<void> => {
 };
 
 export const updateLocation: RequestHandler = async (req, res): Promise<void> => {
-  console.log("req.body:", req.body);
-  console.log("req.params:", req.params);
   const { error, value } = Joi.object(LocationSchema).validate(req.body);
   if (error) {
     res.status(400).json({ error: "Invalid Location data" });
