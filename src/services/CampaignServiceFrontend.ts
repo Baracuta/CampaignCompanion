@@ -173,7 +173,6 @@ export const getNPCs = async (campaignId: string): Promise<Array<NPC>> => {
 
 //
 export const updateNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
-  console.log(npc.id);
   const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/npc/${npc.id}`, {
     method: "PUT",
     headers: {

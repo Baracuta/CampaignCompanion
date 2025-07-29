@@ -36,7 +36,7 @@ function AddLocation(props: thingProps) {
   };
 
   const editMode = props.editLocation != null;
-  const favourite = location.isFavourite === true;
+  const favourite = location.isfavourite === true;
   const image = useImage(location.image);
 
   const clearLocation = () => {
@@ -65,8 +65,8 @@ function AddLocation(props: thingProps) {
               <div
                 className={styles.icon}
                 onClick={async () => {
-                  const isFavourite = false;
-                  await setLocation({ ...location, isFavourite });
+                  const isfavourite = false;
+                  await setLocation({ ...location, isfavourite });
                 }}
               >
                 {" "}
@@ -76,8 +76,8 @@ function AddLocation(props: thingProps) {
               <div
                 className={styles.icon}
                 onClick={async () => {
-                  const isFavourite = true;
-                  await setLocation({ ...location, isFavourite });
+                  const isfavourite = true;
+                  await setLocation({ ...location, isfavourite });
                 }}
               >
                 {" "}

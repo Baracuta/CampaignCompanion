@@ -40,7 +40,7 @@ function AddItem(props: thingProps) {
 
 
   const editMode = props.editItem != null;
-  const favourite = item.isFavourite === true;
+  const favourite = item.isfavourite === true;
   const image = useImage(item.image as string);
 
   const clearItem = () => {
@@ -67,8 +67,8 @@ function AddItem(props: thingProps) {
               <div
                 className={styles.icon}
                 onClick={async () => {
-                  const isFavourite = false;
-                  await setItem({ ...item, isFavourite });
+                  const isfavourite = false;
+                  await setItem({ ...item, isfavourite });
                 }}
               >
                 {" "}
@@ -78,8 +78,8 @@ function AddItem(props: thingProps) {
               <div
                 className={styles.icon}
                 onClick={async () => {
-                  const isFavourite = true;
-                  await setItem({ ...item, isFavourite });
+                  const isfavourite = true;
+                  await setItem({ ...item, isfavourite });
                 }}
               >
                 {" "}

@@ -34,7 +34,7 @@ function AddPC(props: thingProps) {
   };
 
   const editMode = props.editPC != null;
-  const favourite = pc.isFavourite === true;
+  const favourite = pc.isfavourite === true;
   const image = useImage(pc.image as string);
 
   const clearPC = () => {
@@ -63,8 +63,8 @@ function AddPC(props: thingProps) {
               <div
                 className={styles.icon}
                 onClick={async () => {
-                  const isFavourite = false;
-                  await setPC({ ...pc, isFavourite });
+                  const isfavourite = false;
+                  await setPC({ ...pc, isfavourite });
                 }}
               >
                 {" "}
@@ -74,8 +74,8 @@ function AddPC(props: thingProps) {
               <div
                 className={styles.icon}
                 onClick={async () => {
-                  const isFavourite = true;
-                  await setPC({ ...pc, isFavourite });
+                  const isfavourite = true;
+                  await setPC({ ...pc, isfavourite });
                 }}
               >
                 {" "}

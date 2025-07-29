@@ -17,17 +17,16 @@ const NPCSchema = {
   id: Joi.string().uuid().optional(),
   type: Joi.string().optional(),
   name: Joi.string().optional(),
-  description: Joi.string().optional(),
-  notes: Joi.string().optional(),
-  image: Joi.string().optional(),
-  isFavourite: Joi.boolean().optional()|| null,
-  modifiedDate: Joi.date().optional(),
-  inCampaign: Joi.string().uuid().optional(),
+  description: Joi.string().optional().allow(null),
+  notes: Joi.string().optional().allow(null),
+  image: Joi.string().optional().allow(null),
+  isfavourite: Joi.boolean().optional().allow(null),
+  modifieddate: Joi.date().optional(),
+  incampaign: Joi.string().uuid().optional(),
 };
 
 export const createNPC: RequestHandler = async (req, res): Promise<void> => {
   console.log("req.body:", req.body);
-  console.log("req.params:", req.params);
   const { error, value } = Joi.object(NPCSchema).validate(req.body);
   if (error) {
       res.status(400).json({ error: "Invalid NPC data" });
@@ -74,7 +73,6 @@ export const getNPCs: RequestHandler = async (req, res): Promise<void> => {
 
 export const updateNPC: RequestHandler = async (req, res): Promise<void> => {
   console.log("req.body:", req.body);
-  console.log("req.params:", req.params);
   const { error, value } = Joi.object(NPCSchema).validate(req.body);
   if (error) {
     res.status(400).json({ error: "Invalid NPC data" });
@@ -92,7 +90,7 @@ export const updateNPC: RequestHandler = async (req, res): Promise<void> => {
     res.status(404).json({ error: "NPC not found" });
     return;
   }
-  const updatedNPC = {npc, ...value} as NPC;
+  const updatedNPC = value as NPC;
   await CampaignService.updateNPC(campaign.id, updatedNPC);
 
   res.status(200).json("NPC updated successfully");

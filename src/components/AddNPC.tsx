@@ -35,7 +35,7 @@ function AddNPC(props: thingProps) {
   };
 
   const editMode = props.editNpc != null;
-  const favourite = npc.isFavourite === true;
+  const favourite = npc.isfavourite === true;
   const image = useImage(npc.image);
 
   const clearNpc = () => {
@@ -62,8 +62,8 @@ function AddNPC(props: thingProps) {
               <div
                 className={styles.icon}
                 onClick={async () => {
-                  const isFavourite = false;
-                  await setNpc({ ...npc, isFavourite });
+                  const isfavourite = false;
+                  await setNpc({ ...npc, isfavourite });
                 }}
               >
                 {" "}
@@ -73,8 +73,8 @@ function AddNPC(props: thingProps) {
               <div
                 className={styles.icon}
                 onClick={async () => {
-                  const isFavourite = true;
-                  await setNpc({ ...npc, isFavourite });
+                  const isfavourite = true;
+                  await setNpc({ ...npc, isfavourite });
                 }}
               >
                 {" "}

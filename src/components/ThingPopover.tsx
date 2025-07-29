@@ -30,7 +30,7 @@ type PopProps = {
 };
 
 export default function ThingPopover(props: PopProps) {
-  const favourite = props.thing.isFavourite === true;
+  const favourite = props.thing.isfavourite === true;
 
   return (
     <Popover
@@ -50,10 +50,10 @@ export default function ThingPopover(props: PopProps) {
         <div
           className={styles.icon}
           onClick={async () => {
-            const isFavourite = !props.thing.isFavourite;
+            const isfavourite = !props.thing.isfavourite;
             await props.edit(props.campaign.id, {
               ...props.thing,
-              isFavourite,
+              isfavourite,
             } as Entity);
           }}
         >

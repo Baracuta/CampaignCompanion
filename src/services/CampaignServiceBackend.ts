@@ -76,7 +76,7 @@ export const createNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
     ...npc,
     id: uuid(),
     type: "NPC",
-    modifiedDate: Date.now(),
+    modifieddate: Date.now(),
   };
 
   await pool.query(
@@ -89,8 +89,8 @@ export const createNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
       npc.description,
       npc.notes,
       npc.image,
-      npc.isFavourite,
-      npc.modifiedDate,
+      npc.isfavourite,
+      npc.modifieddate,
       campaignId
     ]
   );
@@ -138,7 +138,7 @@ export const updateNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
       npc.description,
       npc.notes,
       npc.image,
-      npc.isFavourite,
+      npc.isfavourite,
       Date.now(),
       campaignId
     ]
@@ -156,7 +156,7 @@ export const createLocation = async (location: Location,campaignId: string): Pro
     id: uuid(),
     type: "Location",
     maps: location.maps ?? [],
-    modifiedDate: Date.now(),
+    modifieddate: Date.now(),
   };
 
   await pool.query(
@@ -169,8 +169,8 @@ export const createLocation = async (location: Location,campaignId: string): Pro
       location.description,
       location.notes,
       location.image,
-      location.isFavourite,
-      location.modifiedDate,
+      location.isfavourite,
+      location.modifieddate,
       campaignId
     ]
   );
@@ -232,7 +232,7 @@ export const updateLocation = async (campaignId: string,location: Location): Pro
       location.description,
       location.notes,
       location.image,
-      location.isFavourite,
+      location.isfavourite,
       Date.now(),
       campaignId
     ]
@@ -259,7 +259,7 @@ export const createItem = async (item: Item,campaignId: string): Promise<Item> =
     ...item,
     id: uuid(),
     type: "Item",
-    modifiedDate: Date.now(),
+    modifieddate: Date.now(),
   };
   await pool.query(
     `INSERT INTO entities (id, type, name, description, notes, image, isfavourite, modifieddate, incampaign)
@@ -271,8 +271,8 @@ export const createItem = async (item: Item,campaignId: string): Promise<Item> =
       item.description,
       item.notes,
       item.image,
-      item.isFavourite,
-      item.modifiedDate,
+      item.isfavourite,
+      item.modifieddate,
       campaignId
     ]
   );
@@ -332,7 +332,7 @@ export const updateItem = async (campaignId: string,item: Item): Promise<Item> =
       item.description,
       item.notes,
       item.image,
-      item.isFavourite,
+      item.isfavourite,
       Date.now(),
       campaignId
     ]
@@ -360,7 +360,7 @@ export const createPC = async (pc: PC, campaignId: string): Promise<PC> => {
     ...pc,
     id: uuid(),
     type: "PC",
-    modifiedDate: Date.now(),
+    modifieddate: Date.now(),
   };
 
   await pool.query(
@@ -373,8 +373,8 @@ export const createPC = async (pc: PC, campaignId: string): Promise<PC> => {
       pc.description,
       pc.notes,
       pc.image,
-      pc.isFavourite,
-      pc.modifiedDate,
+      pc.isfavourite,
+      pc.modifieddate,
       campaignId
     ]
   );
@@ -435,7 +435,7 @@ export const updatePC = async (campaignId: string, pc: PC): Promise<PC> => {
       pc.description,
       pc.notes,
       pc.image,
-      pc.isFavourite,
+      pc.isfavourite,
       Date.now(),
       campaignId
     ]
