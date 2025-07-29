@@ -18,8 +18,8 @@ function PlayerCharacterDetails(props: PCProps) {
           <h2>{props.pc.name}</h2>
           <h3>{props.pc.description}</h3>
           <div className={styles.sub_container}>
-            <h5>| Player Name: {props.pc.playerName} |</h5>
-            <h5>| Class: {props.pc.pcClass} |</h5>
+            <h5>| Player Name: {props.pc.player_name} |</h5>
+            <h5>| Class: {props.pc.pc_class} |</h5>
             <h5>| Level: {props.pc.level} |</h5>
           </div>
         </div>

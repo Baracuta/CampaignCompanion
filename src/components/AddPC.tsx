@@ -112,10 +112,10 @@ function AddPC(props: thingProps) {
 
             <input
               type="text"
-              value={pc.playerName ?? ""}
+              value={pc.player_name ?? ""}
               onChange={(e) => {
-                const playerName = e.target.value;
-                setPC({ ...pc, playerName });
+                const player_name = e.target.value;
+                setPC({ ...pc, player_name });
               }}
             />
 
@@ -123,10 +123,10 @@ function AddPC(props: thingProps) {
 
             <input
               type="text"
-              value={pc.pcClass ?? ""}
+              value={pc.pc_class ?? ""}
               onChange={(e) => {
-                const pcClass = e.target.value;
-                setPC({ ...pc, pcClass });
+                const pc_class = e.target.value;
+                setPC({ ...pc, pc_class });
               }}
             />
 

@@ -383,9 +383,9 @@ export const createPC = async (pc: PC, campaignId: string): Promise<PC> => {
      VALUES ($1, $2, $3, $4)`,
     [
       pc.id,
-      pc.pcClass,
+      pc.pc_class,
       pc.level,
-      pc.playerName
+      pc.player_name
     ]
   );
 
@@ -446,9 +446,9 @@ export const updatePC = async (campaignId: string, pc: PC): Promise<PC> => {
      WHERE entity = $1`,
     [
       pc.id,
-      pc.pcClass,
+      pc.pc_class,
       pc.level,
-      pc.playerName
+      pc.player_name
     ]
   );
 
