@@ -224,8 +224,17 @@ export const deleteLocation: RequestHandler = async (req, res): Promise<void> =>
 
 const ItemSchema = {
   id: Joi.string().uuid().optional(),
-  name: Joi.string().required(),
-  description: Joi.string().optional(),
+  type: Joi.string().optional(),
+  name: Joi.string().optional(),
+  description: Joi.string().optional().allow(null),
+  notes: Joi.string().optional().allow(null),
+  image: Joi.string().optional().allow(null),
+  isfavourite: Joi.boolean().optional().allow(null),
+  modifieddate: Joi.date().optional(),
+  incampaign: Joi.string().uuid().optional(),
+  entity: Joi.string().uuid().optional(),
+  effect: Joi.string().optional().allow(null),
+  category: Joi.string().optional().allow(null),
 };
 
 export const createItem: RequestHandler = async (req, res): Promise<void> => {
@@ -319,8 +328,18 @@ export const deleteItem: RequestHandler = async (req, res): Promise<void> => {
 
 const PCSchema = {
   id: Joi.string().uuid().optional(),
-  name: Joi.string().required(),
-  description: Joi.string().optional(),
+  type: Joi.string().optional(),
+  name: Joi.string().optional(),
+  description: Joi.string().optional().allow(null),
+  notes: Joi.string().optional().allow(null),
+  image: Joi.string().optional().allow(null),
+  isfavourite: Joi.boolean().optional().allow(null),
+  modifieddate: Joi.date().optional(),
+  incampaign: Joi.string().uuid().optional(),
+  entity: Joi.string().uuid().optional(),
+  pc_class: Joi.string().optional().allow(null),
+  level: Joi.string().optional().allow(null),
+  player_name: Joi.string().optional().allow(null),
 };
 
 export const createPC: RequestHandler = async (req, res): Promise<void> => {
