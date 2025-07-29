@@ -13,7 +13,7 @@ import { PC } from "../types/PlayerCharacter";
 
 // NPC Section
 
-const NPCSchema = {
+const BaseSchema = {
   id: Joi.string().uuid().optional(),
   type: Joi.string().optional(),
   name: Joi.string().optional(),
@@ -26,7 +26,7 @@ const NPCSchema = {
 };
 
 export const createNPC: RequestHandler = async (req, res): Promise<void> => {
-  const { error, value } = Joi.object(NPCSchema).validate(req.body);
+  const { error, value } = Joi.object(BaseSchema).validate(req.body);
   if (error) {
       res.status(400).json({ error: "Invalid NPC data" });
       return;
@@ -70,7 +70,7 @@ export const getNPCs: RequestHandler = async (req, res): Promise<void> => {
 };
 
 export const updateNPC: RequestHandler = async (req, res): Promise<void> => {
-  const { error, value } = Joi.object(NPCSchema).validate(req.body);
+  const { error, value } = Joi.object(BaseSchema).validate(req.body);
   if (error) {
     res.status(400).json({ error: "Invalid NPC data" });
     return;
@@ -116,15 +116,7 @@ export const deleteNPC: RequestHandler = async (req, res): Promise<void> => {
 // Location Section
 
 const LocationSchema = {
-  id: Joi.string().uuid().optional(),
-  type: Joi.string().optional(),
-  name: Joi.string().optional(),
-  description: Joi.string().optional().allow(null),
-  notes: Joi.string().optional().allow(null),
-  image: Joi.string().optional().allow(null),
-  isfavourite: Joi.boolean().optional().allow(null),
-  modifieddate: Joi.date().optional(),
-  incampaign: Joi.string().uuid().optional(),
+  ...BaseSchema,
   entity: Joi.string().uuid().optional(),
   maps: Joi.array().items(Joi.string()).optional().allow(null),
 };
@@ -219,15 +211,7 @@ export const deleteLocation: RequestHandler = async (req, res): Promise<void> =>
 // Item Section
 
 const ItemSchema = {
-  id: Joi.string().uuid().optional(),
-  type: Joi.string().optional(),
-  name: Joi.string().optional(),
-  description: Joi.string().optional().allow(null),
-  notes: Joi.string().optional().allow(null),
-  image: Joi.string().optional().allow(null),
-  isfavourite: Joi.boolean().optional().allow(null),
-  modifieddate: Joi.date().optional(),
-  incampaign: Joi.string().uuid().optional(),
+  ...BaseSchema,
   entity: Joi.string().uuid().optional(),
   effect: Joi.string().optional().allow(null),
   category: Joi.string().optional().allow(null),
@@ -323,15 +307,7 @@ export const deleteItem: RequestHandler = async (req, res): Promise<void> => {
 // PC Section
 
 const PCSchema = {
-  id: Joi.string().uuid().optional(),
-  type: Joi.string().optional(),
-  name: Joi.string().optional(),
-  description: Joi.string().optional().allow(null),
-  notes: Joi.string().optional().allow(null),
-  image: Joi.string().optional().allow(null),
-  isfavourite: Joi.boolean().optional().allow(null),
-  modifieddate: Joi.date().optional(),
-  incampaign: Joi.string().uuid().optional(),
+  ...BaseSchema,
   entity: Joi.string().uuid().optional(),
   pc_class: Joi.string().optional().allow(null),
   level: Joi.string().optional().allow(null),
