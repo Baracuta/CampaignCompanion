@@ -123,6 +123,9 @@ function AddLocation(props: thingProps) {
               images={LocationImageData}
               imageClick={async (img: string) => {
                 const image = img;
+                if (location.image != null) {
+                  await del(location.image);
+                }
                 const imageId = await uploadImage(img);
                 await setLocation({ ...location, image: imageId });
                 return image;
