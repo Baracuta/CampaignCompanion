@@ -95,7 +95,7 @@ export const createNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
     ...npc,
     id: uuid(),
     type:"NPC",
-    modifiedDate:Date.now(),
+    modifieddate:Date.now(),
   };
 
   const allNPCS = await getNPCs(campaignId);
@@ -148,7 +148,7 @@ export const updateNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
   
   npc={
     ...npc,
-    modifiedDate:Date.now(),
+    modifieddate:Date.now(),
   }
   const updatedNpc = npc;
 
@@ -185,7 +185,7 @@ export const createLocation = async (location: Location, campaignId: string): Pr
     id: uuid(),
     type:"Location",
     maps:(location.maps ?? []),
-    modifiedDate:Date.now(),
+    modifieddate:Date.now(),
   };
 
   const allLocations = await getLocations(campaignId);
@@ -238,7 +238,7 @@ export const updateLocation = async (campaignId: string, location: Location): Pr
 
   location = {
     ...location,
-    modifiedDate:Date.now(),
+    modifieddate:Date.now(),
   }
   const updatedLocation = location;
 
@@ -274,7 +274,7 @@ export const createItem = async (item: Item, campaignId: string): Promise<Item> 
     ...item,
     id: uuid(),
     type:"Item",
-    modifiedDate:Date.now(),
+    modifieddate:Date.now(),
   };
 
   const allItems = await getItems(campaignId);
@@ -327,7 +327,7 @@ export const updateItem = async (campaignId: string, item: Item): Promise<Item> 
 
   item = {
     ...item,
-    modifiedDate:Date.now(),
+    modifieddate:Date.now(),
   }
   const updatedItem = item;
 
@@ -363,7 +363,7 @@ export const createPC = async (pc: PC, campaignId: string): Promise<PC> => {
     ...pc,
     id: uuid(),
     type:"PC",
-    modifiedDate:Date.now(),
+    modifieddate:Date.now(),
   };
 
   const allPCs = await getPCs(campaignId);
@@ -416,7 +416,7 @@ export const updatePC = async (campaignId: string, pc: PC): Promise<PC> => {
 
   pc = {
     ...pc,
-    modifiedDate:Date.now(),
+    modifieddate:Date.now(),
   }
   const updatedPC = pc;
 
