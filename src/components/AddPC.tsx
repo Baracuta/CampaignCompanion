@@ -12,7 +12,7 @@ import { PC } from "../types/PlayerCharacter";
 import { NpcImageData } from "../constants/npc_image_bank";
 import StandardImageList from "./ImageList";
 import { useImage } from "../hooks/useImage";
-import { uploadImage } from "../services/ImageService";
+import { del, uploadImage } from "../services/ImageService";
 
 type thingProps = {
   campaignId: string;
@@ -158,6 +158,9 @@ function AddPC(props: thingProps) {
               images={NpcImageData}
               imageClick={async (img: string) => {
                 const image = img;
+                if (pc.image != null) {
+                  await del(pc.image);
+                }
                 const imageId = await uploadImage(img);
                 await setPC({ ...pc, image: imageId });
                 return image;
