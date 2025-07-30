@@ -203,7 +203,7 @@ export const deleteLocation = async (campaignId: string,locationId: string): Pro
 //
 export const getLocation = async (campaignId: string,locationId: string): Promise<Location> => {
   const foundLocation = await pool.query(
-    "SELECT * FROM entities WHERE id = $1 AND incampaign = $2",
+    "SELECT * FROM entities INNER JOIN locations ON entities.id = locations.entity WHERE id = $1 AND incampaign = $2",
     [locationId, campaignId]
   );
 
@@ -213,7 +213,7 @@ export const getLocation = async (campaignId: string,locationId: string): Promis
 //
 export const getLocations = async (campaignId: string): Promise<Array<Location>> => {
   const campaignLocations = await pool.query(
-    "SELECT * FROM entities WHERE incampaign = $1 AND type = $2",
+    "SELECT * FROM entities INNER JOIN locations ON entities.id = locations.entity WHERE incampaign = $1 AND type = $2",
     [campaignId, "Location"]
   );
 
@@ -303,7 +303,7 @@ export const deleteItem = async (campaignId: string,itemId: string): Promise<Arr
 //
 export const getItem = async (campaignId: string,itemId: string): Promise<Item> => {
   const foundItem = await pool.query(
-    "SELECT * FROM entities WHERE id = $1 AND incampaign = $2",
+    "SELECT * FROM entities INNER JOIN items ON entities.id = items.entity WHERE id = $1 AND incampaign = $2",
     [itemId, campaignId]
   );
 
@@ -313,7 +313,7 @@ export const getItem = async (campaignId: string,itemId: string): Promise<Item> 
 //
 export const getItems = async (campaignId: string): Promise<Array<Item>> => {
   const campaignItems = await pool.query(
-    "SELECT * FROM entities WHERE incampaign = $1 AND type = $2",
+    "SELECT * FROM entities INNER JOIN items ON entities.id = items.entity WHERE incampaign = $1 AND type = $2",
     [campaignId, "Item"]
   );
 
@@ -406,7 +406,7 @@ export const deletePC = async (campaignId: string,pcId: string): Promise<Array<P
 //
 export const getPC = async (campaignId: string, pcId: string): Promise<PC> => {
   const foundPC = await pool.query(
-    "SELECT * FROM entities WHERE id = $1 AND incampaign = $2",
+    "SELECT * FROM entities INNER JOIN player_characters ON entities.id = player_characters.entity WHERE id = $1 AND incampaign = $2",
     [pcId, campaignId]
   );
 
@@ -416,7 +416,7 @@ export const getPC = async (campaignId: string, pcId: string): Promise<PC> => {
 //
 export const getPCs = async (campaignId: string): Promise<Array<PC>> => {
   const campaignPCs = await pool.query(
-    "SELECT * FROM entities WHERE incampaign = $1 AND type = $2",
+    "SELECT * FROM entities INNER JOIN player_characters ON entities.id = player_characters.entity WHERE incampaign = $1 AND type = $2",
     [campaignId, "PC"]
   );
 
