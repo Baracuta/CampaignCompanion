@@ -11,7 +11,7 @@ import { Fragment, useState } from "react";
 import { NPC } from "../types/NPC";
 import StandardImageList from "./ImageList";
 import { NpcImageData } from "../constants/npc_image_bank";
-import { uploadImage } from "../services/ImageService";
+import { del, uploadImage } from "../services/ImageService";
 import { useImage } from "../hooks/useImage";
 
 type thingProps = {
@@ -120,7 +120,9 @@ function AddNPC(props: thingProps) {
               images={NpcImageData}
               imageClick={async (img: string) => {
                 const image = img;
-                // If image != null, getImage => setimage. else, upload as usual
+                if (npc.image != null) {
+                  await del(npc.image);
+                }
                 const imageId = await uploadImage(img);
                 await setNpc({ ...npc, image: imageId });
                 return image;
