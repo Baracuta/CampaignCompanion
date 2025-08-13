@@ -3,16 +3,16 @@ import "../css_modules/app.css"
 import NavButton from "../components/NavButton";
 import { ASSETS_PATH } from "../constants/assets_path";
 import { GoogleLogin } from "@react-oauth/google";
-import { useState } from "react";
+// import { useState } from "react";
 
 
 //This is the Splash Screen when the application starts.
 function SplashScreen() {
-  const [logged, setLogged] = useState(false);
+  // const [logged, setLogged] = useState(false);
 
-  const handleLoginSuccess = () => { 
-    setLogged(true);
-  };
+  // const handleLoginSuccess = () => { 
+  //   setLogged(true);
+  // };
   const handleLoginError = () => {
     console.error("Login failed");
   };
@@ -27,19 +27,20 @@ function SplashScreen() {
           <img className="logo" src={`${ASSETS_PATH}/Emblem 1 3.png`} alt="" />
           <h1>Campaign Companion</h1>
 
-          <div style={{display: logged ? "none" : "flex"}}>
+          <div >
             <GoogleLogin
               onSuccess={(credentialResponse) => {
-                handleLoginSuccess();
+                // handleLoginSuccess();
                 console.log(credentialResponse);
               }}
               onError={handleLoginError}
               theme="filled_black"
               shape="circle"
+              auto_select={true}
             />
           </div>
 
-          <div className="options" style={{display: logged ? "flex" : "none"}}>
+          <div className="options" >
             <NavButton text="Create New Campaign" destination="/campaign-form"/>
             <NavButton text="Load Existing Campaign" destination="/campaign-select"/>
           </div>
