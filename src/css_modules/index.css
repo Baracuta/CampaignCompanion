@@ -28,6 +28,7 @@ body {
 }
 
 .splash_items{
+  color-scheme: light;
   z-index: 2;
   position:absolute;
   left: 0px;
@@ -45,6 +46,7 @@ body {
 
   button{
     width:250px;
+    display:inline-block;
   }
 
   
