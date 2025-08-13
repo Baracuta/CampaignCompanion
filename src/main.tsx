@@ -9,6 +9,7 @@ import CampaignNPCs from "./pages/CampaignNPCs.tsx";
 import CampaignLocations from "./pages/CampaignLocations.tsx";
 import CampaignItems from "./pages/CampaignItems.tsx";
 import CampaignPlayerCharacters from "./pages/CampaignPlayerCharacters.tsx";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 export const router = createBrowserRouter(
   [
@@ -49,5 +50,7 @@ export const router = createBrowserRouter(
 );
 
 createRoot(document.getElementById("root")!).render(
-  <RouterProvider router={router} />
+  <GoogleOAuthProvider clientId="1090280266148-hhbspb3t1g9rontnmbpc0gopeqapo3nq.apps.googleusercontent.com">
+    <RouterProvider router={router} />
+  </GoogleOAuthProvider>
 );
