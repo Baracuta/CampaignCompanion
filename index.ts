@@ -6,9 +6,17 @@ import * as entityRouter from './src/routers/EntityRouter'
 
 // Middlewares
 const app = express();
+app.use((req, res, next) => {
+  console.log(req.headers)
+  res.setHeader("Cross-Origin-Opener-Policy", "unsafe-none");
+  next();
+});
 const cors = require('cors');
 const port = 5000;
 const { OAuth2Client } = require('google-auth-library');
+
+
+
 
 const corsOptions = {
   origin: "http://localhost:5173", // <-- Use your frontend's URL/port
@@ -21,19 +29,25 @@ app.use(express.json());
 const oAuth2Client = new OAuth2Client(
   process.env.GOOGLE_CLIENT_ID,
   process.env.GOOGLE_CLIENT_SECRET,
-  'postmessage',
+
 )
 
 app.post('/api/user/google-login', async (req, res) => {
-  const { code } = req.body.code;
+  const { access_token } = req.body;
 
   try {
-    const { tokens } = await oAuth2Client.getToken(code);
-    oAuth2Client.setCredentials(tokens);
-    res.json(tokens);
+    // Optionally, verify the access token using google-auth-library
+    const ticket = await oAuth2Client.verifyIdToken({
+      idToken: access_token,
+      audience: process.env.GOOGLE_CLIENT_ID,
+    });
+    const payload = ticket.getPayload();
+
+    // You can now use payload info (e.g., user id, email)
+    res.json({ success: true, payload });
   } catch (error) {
-    console.error("Error exchanging code for tokens:", error);
-    res.status(500).json({ error: "Failed to exchange code for tokens" });
+    console.error("Error verifying access token:", error);
+    res.status(500).json({ error: "Failed to verify access token" });
   }
 });
 

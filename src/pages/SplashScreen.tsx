@@ -14,19 +14,20 @@ function SplashScreen() {
   };
 
   const googleLogin = useGoogleLogin({
-    onSuccess: async ({code}) => {
+    onSuccess: async (tokenResponse) => {
+      const { access_token } = tokenResponse;
       const tokens = await fetch("http://localhost:5173/api/user/google-login", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'authorization': `Bearer ${code}`,
-        }, body: JSON.stringify({ code }),
+        }, body: JSON.stringify({ access_token }),
+        credentials: "include",
       });
 
       console.log("Login successful", tokens);
     },
     onError: handleLoginError,
-    flow: 'auth-code',
+    flow: 'implicit'
   });
 
     return (
