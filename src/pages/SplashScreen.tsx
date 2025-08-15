@@ -15,7 +15,7 @@ function SplashScreen() {
 
   const googleLogin = useGoogleLogin({
     onSuccess: async ({code}) => {
-      const tokens = await fetch('/api/user/google-login', {
+      const tokens = await fetch("http://localhost:5173/api/user/google-login", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

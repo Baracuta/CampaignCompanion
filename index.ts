@@ -5,12 +5,16 @@ import userRouter from './src/routers/UserRouter'
 import * as entityRouter from './src/routers/EntityRouter'
 
 // Middlewares
-const app = express()
-const cors = require('cors')
-const port = 5000
-const { OAuth2Client } = require('@react-oauth/google')
+const app = express();
+const cors = require('cors');
+const port = 5000;
+const { OAuth2Client } = require('google-auth-library');
 
-app.use(cors());
+const corsOptions = {
+  origin: "http://localhost:5173", // <-- Use your frontend's URL/port
+  credentials: true,
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 
 
