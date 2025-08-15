@@ -2,24 +2,36 @@ import SplashBackground from "../components/SplashBackground";
 import "../css_modules/app.css"
 import NavButton from "../components/NavButton";
 import { ASSETS_PATH } from "../constants/assets_path";
-import { GoogleLogin } from "@react-oauth/google";
+import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
 // import { useState } from "react";
 
 
 //This is the Splash Screen when the application starts.
 function SplashScreen() {
-  // const [logged, setLogged] = useState(false);
 
-  // const handleLoginSuccess = () => { 
-  //   setLogged(true);
-  // };
   const handleLoginError = () => {
     console.error("Login failed");
   };
 
+  const googleLogin = useGoogleLogin({
+    onSuccess: async ({code}) => {
+      const tokens = await fetch('/api/user/google-login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'authorization': `Bearer ${code}`,
+        }, body: JSON.stringify({ code }),
+      });
+
+      console.log("Login successful", tokens);
+    },
+    onError: handleLoginError,
+    flow: 'auth-code',
+  });
+
     return (
       <>
-  
+        
         <SplashBackground/>
   
         <div className="splash_items" >
@@ -30,14 +42,13 @@ function SplashScreen() {
           <div >
             <GoogleLogin
               onSuccess={(credentialResponse) => {
-                // handleLoginSuccess();
-                console.log(credentialResponse);
+                googleLogin();
               }}
-              onError={handleLoginError}
               theme="filled_black"
               shape="circle"
               auto_select={true}
             />
+            
           </div>
 
           <div className="options" >
