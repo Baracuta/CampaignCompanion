@@ -2,33 +2,33 @@ import SplashBackground from "../components/SplashBackground";
 import "../css_modules/app.css"
 import NavButton from "../components/NavButton";
 import { ASSETS_PATH } from "../constants/assets_path";
-import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
+// import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
 // import { useState } from "react";
 
 
 //This is the Splash Screen when the application starts.
 function SplashScreen() {
 
-  const handleLoginError = () => {
-    console.error("Login failed");
-  };
+  // const handleLoginError = () => {
+  //   console.error("Login failed");
+  // };
 
-  const googleLogin = useGoogleLogin({
-    onSuccess: async (tokenResponse) => {
-      const { access_token } = tokenResponse;
-      const tokens = await fetch("http://localhost:5173/api/user/google-login", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        }, body: JSON.stringify({ access_token }),
-        credentials: "include",
-      });
+  // const googleLogin = useGoogleLogin({
+  //   onSuccess: async (tokenResponse) => {
+  //     const { access_token } = tokenResponse;
+  //     const tokens = await fetch("http://localhost:5173/api/user/google-login", {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       }, body: JSON.stringify({ access_token }),
+  //       credentials: "include",
+  //     });
 
-      console.log("Login successful", tokens);
-    },
-    onError: handleLoginError,
-    flow: 'implicit'
-  });
+  //     console.log("Login successful", tokens);
+  //   },
+  //   onError: handleLoginError,
+  //   flow: 'implicit'
+  // });
 
     return (
       <>
@@ -40,7 +40,7 @@ function SplashScreen() {
           <img className="logo" src={`${ASSETS_PATH}/Emblem 1 3.png`} alt="" />
           <h1>Campaign Companion</h1>
 
-          <div >
+          {/* <div >
             <GoogleLogin
               onSuccess={() => {
                 googleLogin();
@@ -49,8 +49,7 @@ function SplashScreen() {
               shape="circle"
               auto_select={true}
             />
-            
-          </div>
+          </div> */}
 
           <div className="options" >
             <NavButton text="Create New Campaign" destination="/campaign-form"/>
