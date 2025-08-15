@@ -41,7 +41,7 @@ function SplashScreen() {
 
           <div >
             <GoogleLogin
-              onSuccess={(credentialResponse) => {
+              onSuccess={() => {
                 googleLogin();
               }}
               theme="filled_black"
