@@ -6,30 +6,18 @@ import * as entityRouter from './src/routers/EntityRouter'
 
 // Middlewares
 const app = express();
-app.use((req, res, next) => {
-  console.log(req.headers)
-  res.setHeader("Cross-Origin-Opener-Policy", "unsafe-none");
-  next();
-});
 const cors = require('cors');
 const port = 5000;
 const { OAuth2Client } = require('google-auth-library');
 
 
-
-
-const corsOptions = {
-  origin: "http://localhost:5173", // <-- Use your frontend's URL/port
-  credentials: true,
-};
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 
 
 const oAuth2Client = new OAuth2Client(
   process.env.GOOGLE_CLIENT_ID,
-  process.env.GOOGLE_CLIENT_SECRET,
-
+  process.env.GOOGLE_CLIENT_SECRET
 )
 
 app.post('/api/user/google-login', async (req, res) => {
