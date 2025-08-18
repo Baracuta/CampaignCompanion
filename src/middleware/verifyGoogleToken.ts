@@ -22,7 +22,7 @@ export async function verifyGoogleToken(req: Request, res: Response, next: NextF
       res.status(401).json({ error: "Invalid token payload" });
       return;
     }
-    req.body.user = payload.sub;
+    req.body.user = payload;
     next();
   } catch (err) {
     res.status(401).json({ error: "Invalid token" });

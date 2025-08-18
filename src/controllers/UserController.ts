@@ -1,25 +1,20 @@
 import { RequestHandler } from "express";
 import { User } from "../types/User";
+import * as CampaignService from "../services/CampaignServiceBackend";
 import Joi from "joi";
 
-const USERS: User[] = [
-  {
-    id:'123',
-    email: "test@example.com",
-    name: "Test User",
-  },
-];
 
-const UserSchema = Joi.object<User>({
+const UserSchema = {
   id: Joi.string().uuid().optional(),
   email: Joi.string().email().required(),
   name: Joi.string().required(),
-});
+};
 
-export const createUser: RequestHandler = (req, res): void => {
-  const { error, value } = UserSchema.validate(req.body);
+export const createUser: RequestHandler = async (req, res): Promise<void> => {
+  const { error, value } = Joi.object(UserSchema).validate(req.body);
   if (error !== undefined) {
     res.status(400).json("User data is invalid");
+    return;
   }
 
   const user = {
@@ -28,13 +23,19 @@ export const createUser: RequestHandler = (req, res): void => {
     name: value.name,
   };
 
-  USERS.push(user);
-  res.status(200).json(user);
+  await CampaignService.createUser(user)
+    .then((createdUser) => {
+      res.status(201).json(createdUser);
+    })
+    .catch((error) => {
+      console.error("Error creating user:", error);
+      res.status(500).json("Internal server error");
+    });
 };
 
-export const getUser: RequestHandler = (req, res): void => {
+export const getUser: RequestHandler = async (req, res): Promise<void> => {
   const userId = req.params.id;
-  const user = USERS.find((u) => u.id === userId);
+  const user = await CampaignService.getUser(userId);
   if (!user) {
     res.status(404).json("User not found");
     return;
@@ -42,43 +43,19 @@ export const getUser: RequestHandler = (req, res): void => {
   res.status(200).json(user);
 };
 
-export const updateUser: RequestHandler = (req, res): void => {
+export const updateUser: RequestHandler = async (req, res): Promise<void> => {
   const id = req.params.id;
   if (!id) {
     res.status(400).json("Invalid user ID format");
     return;
   }
 
-  const { error, value } = UserSchema.validate(req.body);
+  const { error, value } = Joi.object(UserSchema).validate(req.body);
   if (error !== undefined) {
     res.status(400).json("User data is invalid");
     return;
   }
-
-  const userIndex = USERS.findIndex((u) => u.id === id);
-  if (userIndex === -1) {
-    res.status(404).json("User not found");
-    return;
-  }
-
-  const updatedUser = {
-    ...USERS[userIndex],
-    ...value,
-    id,
-  };
-
-  USERS[userIndex] = updatedUser;
-  res.status(200).json(updatedUser);
-};
-
-export const deleteUser: RequestHandler = (req, res): void => {
-  const userId = req.params.id;
-  const userIndex = USERS.findIndex((u) => u.id === userId);
-  if (userIndex === -1) {
-    res.status(404).json("User not found");
-    return;
-  }
-
-  USERS.splice(userIndex, 1);
-  res.status(200).json("User deleted successfully");
+  const user = await CampaignService.getUser(id);
+  await CampaignService.updateUser(id, value as User)
+  res.status(200).json(user);
 };
