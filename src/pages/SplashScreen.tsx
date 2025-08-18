@@ -21,6 +21,11 @@ function SplashScreen() {
           <div >
             <GoogleLogin
               onSuccess={credentialResponse => {
+                if (credentialResponse.credential) {
+                  localStorage.setItem("google_token", credentialResponse.credential);
+                } else {
+                  console.warn("Google credential is undefined.");
+                }
                 console.log(credentialResponse);
               }}
               theme="filled_black"

@@ -6,14 +6,17 @@ import { PC } from "../types/PlayerCharacter";
 
 //Every single "entity" should have the following: create, delete, get, getPlural(getCampaigns, getNPCs...), update, updatePlural
 
+
+
 //Campaign Section
 
-//Used in CampaignForm to generate a new campaign
 export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
+  const token = localStorage.getItem("google_token");
   const response = await fetch("http://localhost:5000/api/campaign", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
     },
     body: JSON.stringify(campaign),
   });
@@ -27,10 +30,12 @@ export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
 };
 
 export const deleteCampaign = async (id: string): Promise<Array<Campaign>> => {
+  const token = localStorage.getItem("google_token");
   const response = await fetch(`http://localhost:5000/api/campaign/${id}`, {
     method: "DELETE",
-    headers:{
+    headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
     },
   });
 
@@ -43,12 +48,13 @@ export const deleteCampaign = async (id: string): Promise<Array<Campaign>> => {
   return allCampaigns;
 };
 
-//Used in the useCampaign hook, which itself is used anywhere where the campaign needs to be set.
 export const getCampaign = async (id: string): Promise<Campaign> => {
+  const token = localStorage.getItem("google_token");
   const response = await fetch(`http://localhost:5000/api/campaign/${id}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
     },
   });
 
@@ -61,12 +67,13 @@ export const getCampaign = async (id: string): Promise<Campaign> => {
   return campaign as Campaign;
 };
 
-//Used in the getCampaign method, as well as in the useCampaigns hook, which is used in the CampaignList component.
 export const getCampaigns = async (): Promise<Array<Campaign>> => {
+  const token = localStorage.getItem("google_token");
   const response = await fetch("http://localhost:5000/api/campaign", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
     },
   });
 
@@ -79,12 +86,13 @@ export const getCampaigns = async (): Promise<Array<Campaign>> => {
   return allCampaigns as Array<Campaign>;
 };
 
-//Used anytime that something within a Campaign is changed or updated so that the new information can be saved.
 export const updateCampaign = async (campaign: Campaign): Promise<Campaign> => {
+  const token = localStorage.getItem("google_token");
   const response = await fetch(`http://localhost:5000/api/campaign/${campaign.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
     },
     body: JSON.stringify(campaign),
   });
@@ -102,12 +110,13 @@ export const updateCampaign = async (campaign: Campaign): Promise<Campaign> => {
 
 //NPC Section
 
-//Used in the AddNPC component to save a new NPC object to a campaign.
 export const createNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
+  const token = localStorage.getItem("google_token");
   const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/npc`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
     },
     body: JSON.stringify(npc),
   });
@@ -120,12 +129,13 @@ export const createNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
   return createdNPC as NPC;
 };
 
-//
 export const deleteNPC = async (campaignId: string, npcId: string): Promise<Array<NPC>> => {
+  const token = localStorage.getItem("google_token");
   const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/npc/${npcId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
     },
   });
 
@@ -137,12 +147,13 @@ export const deleteNPC = async (campaignId: string, npcId: string): Promise<Arra
   return allNPCs;
 };
 
-//Acquires an NPC. Necessary for updating an NPC's props.
 export const getNPC = async (campaignId: string, npcId: string): Promise<NPC> => {
+  const token = localStorage.getItem("google_token");
   const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/npc/${npcId}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
     },
   });
 
@@ -154,12 +165,13 @@ export const getNPC = async (campaignId: string, npcId: string): Promise<NPC> =>
   return npc as NPC;
 };
 
-//Used in getNPC, as well as in the ThingList component.
 export const getNPCs = async (campaignId: string): Promise<Array<NPC>> => {
+  const token = localStorage.getItem("google_token");
   const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/npc`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
     },
   });
 
@@ -171,12 +183,13 @@ export const getNPCs = async (campaignId: string): Promise<Array<NPC>> => {
   return npcs as Array<NPC>;
 };
 
-//
 export const updateNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
+  const token = localStorage.getItem("google_token");
   const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/npc/${npc.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
     },
     body: JSON.stringify(npc),
   });
@@ -192,12 +205,13 @@ export const updateNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
 
 //Location Section
 
-//
 export const createLocation = async (location: Location, campaignId: string): Promise<Location> => {
+  const token = localStorage.getItem("google_token");
   const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/location`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
     },
     body: JSON.stringify(location),
   });
@@ -210,13 +224,13 @@ export const createLocation = async (location: Location, campaignId: string): Pr
   return createdLocation as Location;
 };
 
-
-//
 export const deleteLocation = async (campaignId: string, locationId: string): Promise<Array<Location>> => {
+  const token = localStorage.getItem("google_token");
   const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/location/${locationId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
     },
   });
 
@@ -228,13 +242,13 @@ export const deleteLocation = async (campaignId: string, locationId: string): Pr
   return updatedLocations;
 };
 
-
-//
 export const getLocation = async (campaignId: string, locationId: string): Promise<Location> => {
+  const token = localStorage.getItem("google_token");
   const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/location/${locationId}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
     },
   });
   
@@ -246,12 +260,13 @@ export const getLocation = async (campaignId: string, locationId: string): Promi
   return location as Location;
 };
 
-//
 export const getLocations = async (campaignId: string): Promise<Array<Location>> => {
+  const token = localStorage.getItem("google_token");
   const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/location`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
     },
   });
 
@@ -263,12 +278,13 @@ export const getLocations = async (campaignId: string): Promise<Array<Location>>
   return locations as Array<Location>;
 };
 
-//
 export const updateLocation = async (campaignId: string, location: Location): Promise<Location> => {
+  const token = localStorage.getItem("google_token");
   const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/location/${location.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
     },
     body: JSON.stringify(location),
   });
@@ -284,12 +300,13 @@ export const updateLocation = async (campaignId: string, location: Location): Pr
 
 //Item Section
 
-//
 export const createItem = async (item: Item, campaignId: string): Promise<Item> => {
+  const token = localStorage.getItem("google_token");
   const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/item`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
     },
     body: JSON.stringify(item),
   });
@@ -302,13 +319,13 @@ export const createItem = async (item: Item, campaignId: string): Promise<Item> 
   return createdItem as Item;
 };
 
-
-//
 export const deleteItem = async (campaignId: string, itemId: string): Promise<Array<Item>> => {
+  const token = localStorage.getItem("google_token");
   const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/item/${itemId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
     },
   });
 
@@ -321,12 +338,13 @@ export const deleteItem = async (campaignId: string, itemId: string): Promise<Ar
   return updatedItems;
 };
 
-//
 export const getItem = async (campaignId: string, itemId: string): Promise<Item> => {
+  const token = localStorage.getItem("google_token");
   const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/item/${itemId}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
     },
   });
 
@@ -338,12 +356,13 @@ export const getItem = async (campaignId: string, itemId: string): Promise<Item>
   return item as Item;
 };
 
-//
 export const getItems = async (campaignId: string): Promise<Array<Item>> => {
+  const token = localStorage.getItem("google_token");
   const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/item`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
     },
   });
 
@@ -355,12 +374,13 @@ export const getItems = async (campaignId: string): Promise<Array<Item>> => {
   return items as Array<Item>;
 };
 
-//
 export const updateItem = async (campaignId: string, item: Item): Promise<Item> => {
+  const token = localStorage.getItem("google_token");
   const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/item/${item.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
     },
     body: JSON.stringify(item),
   });
@@ -375,15 +395,15 @@ export const updateItem = async (campaignId: string, item: Item): Promise<Item> 
 };
 
 
-
 //PC Section
 
-//
 export const createPC = async (pc: PC, campaignId: string): Promise<PC> => {
+  const token = localStorage.getItem("google_token");
   const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/pc`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
     },
     body: JSON.stringify(pc),
   });
@@ -396,13 +416,13 @@ export const createPC = async (pc: PC, campaignId: string): Promise<PC> => {
   return createdPC as PC;
 };
 
-
-//
 export const deletePC = async (campaignId: string, pcId: string): Promise<Array<PC>> => {
+  const token = localStorage.getItem("google_token");
   const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/pc/${pcId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
     },
   });
 
@@ -414,13 +434,13 @@ export const deletePC = async (campaignId: string, pcId: string): Promise<Array<
   return updatedPCs;
 };
 
-
-//
 export const getPC = async (campaignId: string, pcId: string): Promise<PC> => {
+  const token = localStorage.getItem("google_token");
   const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/pc/${pcId}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
     },
   });
 
@@ -432,12 +452,13 @@ export const getPC = async (campaignId: string, pcId: string): Promise<PC> => {
   return pc as PC;
 };
 
-//
 export const getPCs = async (campaignId: string): Promise<Array<PC>> => {
+  const token = localStorage.getItem("google_token");
   const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/pc`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
     },
   });
 
@@ -449,12 +470,13 @@ export const getPCs = async (campaignId: string): Promise<Array<PC>> => {
   return pcs as Array<PC>;
 };
 
-//
 export const updatePC = async (campaignId: string, pc: PC): Promise<PC> => {
+  const token = localStorage.getItem("google_token");
   const response = await fetch(`http://localhost:5000/api/campaign/${campaignId}/pc/${pc.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
     },
     body: JSON.stringify(pc),
   });
