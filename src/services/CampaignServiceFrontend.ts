@@ -3,10 +3,65 @@ import { NPC } from "../types/NPC";
 import { Location } from "../types/Location";
 import { Item } from "../types/Item";
 import { PC } from "../types/PlayerCharacter";
+import { User } from "../types/User";
 
 //Every single "entity" should have the following: create, delete, get, getPlural(getCampaigns, getNPCs...), update, updatePlural
 
+export const createUser = async (user: User): Promise<User> => {
+  const token = localStorage.getItem("google_token");
+  const response = await fetch("http://localhost:5000/api/user", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    },
+    body: JSON.stringify(user),
+  });
 
+  if (!response.ok) {
+    throw new Error("Failed to create user");
+  }
+
+  const createdUser = await response.json();
+  return createdUser as User;
+};
+
+export const getUser = async (id: string): Promise<User> => {
+  const token = localStorage.getItem("google_token");
+  const response = await fetch(`http://localhost:5000/api/user/${id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch user");
+  }
+
+  const user = await response.json();
+  return user as User;
+};
+
+export const updateUser = async (user: User): Promise<User> => {
+  const token = localStorage.getItem("google_token");
+  const response = await fetch(`http://localhost:5000/api/user/${user.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    },
+    body: JSON.stringify(user),
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to update user");
+  }
+
+  const updatedUser = await response.json();
+  return updatedUser as User;
+};
 
 //Campaign Section
 

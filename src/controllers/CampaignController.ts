@@ -19,6 +19,7 @@ export const createCampaign: RequestHandler = async (req, res): Promise<void> =>
   }
   console.log("Create Campaign Headers", req.headers);
   console.log("Create Campaign Body", req.body);
+  
   const newCampaign = await CampaignService.createCampaign(value as Campaign);
   if (!newCampaign) {
     res.status(500).json({ error: "Failed to create campaign" });
