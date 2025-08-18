@@ -7,7 +7,7 @@ import { User } from "../types/User";
 
 //Every single "entity" should have the following: create, delete, get, getPlural(getCampaigns, getNPCs...), update, updatePlural
 
-export const createUser = async (user: User): Promise<User> => {
+export const createUser = async (user: any): Promise<User> => {
   const token = localStorage.getItem("google_token");
   const response = await fetch("http://localhost:5000/api/user", {
     method: "POST",

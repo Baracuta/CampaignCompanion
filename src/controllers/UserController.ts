@@ -17,13 +17,22 @@ export const createUser: RequestHandler = async (req, res): Promise<void> => {
     return;
   }
 
-  const user = {
-    id: value.sub,
+  const userId = value.sub;
+  const user = await CampaignService.getUser(userId);
+
+  if (user) {
+    await CampaignService.getUser(userId);
+    res.status(200).json(user);
+    return;
+  }
+
+  const newUser = {
+    id: userId,
     email: value.email,
     name: value.name,
   };
 
-  await CampaignService.createUser(user)
+  await CampaignService.createUser(newUser)
     .then((createdUser) => {
       res.status(201).json(createdUser);
     })
