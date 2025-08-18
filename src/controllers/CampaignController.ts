@@ -14,6 +14,8 @@ export const createCampaign: RequestHandler = async (req, res): Promise<void> =>
   const { error, value } = Joi.object(CampaignSchema).validate(req.body);
   if (error) {
     res.status(400).json({ error: "Invalid campaign data" });
+    console.log("Create Campaign Headers", req.headers);
+    console.log("Create Campaign Body", req.body);
     return;
   }
 

@@ -30,7 +30,6 @@ function SplashScreen() {
               }}
               theme="filled_black"
               shape="circle"
-              auto_select={true}
             />
           </div>
 
