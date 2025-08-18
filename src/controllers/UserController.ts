@@ -1,5 +1,4 @@
 import { RequestHandler } from "express";
-import { Campaign } from "../types/Campaign";
 import { User } from "../types/User";
 import Joi from "joi";
 import { v4 as uuid } from "uuid";
@@ -7,16 +6,15 @@ import { v4 as uuid } from "uuid";
 const USERS: User[] = [
   {
     id:'123',
-    username: "Test User",
-    password: "password",
+    email: "test@example.com",
+    name: "Test User",
   },
 ];
 
 const UserSchema = Joi.object<User>({
   id: Joi.string().uuid().optional(),
-  username: Joi.string().required(),
-  password: Joi.string().required(),
-  campaigns: Joi.array<Campaign>().optional(),
+  email: Joi.string().email().required(),
+  name: Joi.string().required(),
 });
 
 export const createUser: RequestHandler = (req, res): void => {

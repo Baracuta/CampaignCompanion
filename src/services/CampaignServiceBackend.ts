@@ -5,8 +5,38 @@ import { Location } from "../types/Location";
 import { Item } from "../types/Item";
 import { PC } from "../types/PlayerCharacter";
 import { pool } from "../db";
+import { User } from "../types/User";
 
 //Every single "entity" should have the following: create, delete, get, getPlural(getCampaigns, getNPCs...), update, updatePlural
+
+//Users Section
+
+export const createUser = async (user: User): Promise<User> => {
+  const id = uuid();
+  await pool.query(
+    `INSERT INTO users (id, email, name)
+     VALUES ($1, $2, $3)`,
+    [
+      id,
+      user.email,
+      user.name,
+    ]
+  );
+  return { ...user, id };
+};
+
+export const getUser = async (id: string): Promise<User | null> => {
+  const result = await pool.query("SELECT * FROM users WHERE id = $1", [id]);
+  return result.rows[0] as User;
+};
+
+export const updateUser = async (id: string, user: User): Promise<User | null> => {
+  await pool.query(
+    `UPDATE users SET email = $1, name = $2 WHERE id = $3`,
+    [user.email, user.name, id]
+  );
+  return getUser(id);
+};
 
 //Campaign Section
 
