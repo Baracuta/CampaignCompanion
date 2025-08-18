@@ -8,7 +8,6 @@ import * as entityRouter from './src/routers/EntityRouter'
 const app = express();
 const cors = require('cors');
 const port = 5000;
-// const { OAuth2Client } = require('google-auth-library');
 
 
 app.use(cors());
@@ -36,36 +35,3 @@ app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}/CampaignCompanion`)
 })
 
-
-
-// app.post('/api/user/google-login', async (req, res) => {
-//   const { access_token } = req.body;
-
-//   try {
-//     // Optionally, verify the access token using google-auth-library
-//     const ticket = await oAuth2Client.verifyIdToken({
-//       idToken: access_token,
-//       audience: process.env.GOOGLE_CLIENT_ID,
-//     });
-//     const payload = ticket.getPayload();
-
-//     // You can now use payload info (e.g., user id, email)
-//     res.json({ success: true, payload });
-//   } catch (error) {
-//     console.error("Error verifying access token:", error);
-//     res.status(500).json({ error: "Failed to verify access token" });
-//   }
-// });
-
-// app.post('/api/user/google-login/refresh-token', async (req, res) => {
-//   const { refreshToken } = req.body;
-
-//   try {
-//     oAuth2Client.setCredentials({ refresh_token: refreshToken });
-//     const { credentials } = await oAuth2Client.refreshAccessToken();
-//     res.json(credentials);
-//   } catch (error) {
-//     console.error("Error refreshing access token:", error);
-//     res.status(500).json({ error: "Failed to refresh access token" });
-//   }
-// });
