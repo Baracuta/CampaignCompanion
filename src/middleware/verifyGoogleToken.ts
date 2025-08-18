@@ -17,7 +17,12 @@ export async function verifyGoogleToken(req: Request, res: Response, next: NextF
       idToken: token,
       audience: "1090280266148-hhbspb3t1g9rontnmbpc0gopeqapo3nq.apps.googleusercontent.com",
     });
-    req.body.user = ticket.getPayload();
+    const payload = ticket.getPayload();
+    if (!payload) {
+      res.status(401).json({ error: "Invalid token payload" });
+      return;
+    }
+    req.body.user = payload.sub;
     next();
   } catch (err) {
     res.status(401).json({ error: "Invalid token" });

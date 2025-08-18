@@ -12,7 +12,8 @@ import { User } from "../types/User";
 //Users Section
 
 export const createUser = async (user: User): Promise<User> => {
-  const id = uuid();
+  const id = user.id;
+
   await pool.query(
     `INSERT INTO users (id, email, name)
      VALUES ($1, $2, $3)`,

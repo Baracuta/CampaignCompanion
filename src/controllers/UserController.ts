@@ -1,7 +1,6 @@
 import { RequestHandler } from "express";
 import { User } from "../types/User";
 import Joi from "joi";
-import { v4 as uuid } from "uuid";
 
 const USERS: User[] = [
   {
@@ -23,20 +22,14 @@ export const createUser: RequestHandler = (req, res): void => {
     res.status(400).json("User data is invalid");
   }
 
-  const user = value;
-  if ("id" in user) {
-    res.status(400).json("User ID will be generated automatically");
-  }
-
-  const id = uuid();
-
-  const createdUser = {
-    ...user,
-    id,
+  const user = {
+    id: value.sub,
+    email: value.email,
+    name: value.name,
   };
 
-  USERS.push(createdUser);
-  res.status(200).json(createdUser);
+  USERS.push(user);
+  res.status(200).json(user);
 };
 
 export const getUser: RequestHandler = (req, res): void => {

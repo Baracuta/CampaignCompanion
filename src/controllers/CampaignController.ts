@@ -5,20 +5,20 @@ import { Campaign } from "../types/Campaign";
 
 const CampaignSchema = {
   id: Joi.string().uuid().optional(),
-  players: Joi.number().required(),
-  game: Joi.string().optional(),
   name: Joi.string().required(),
+  players: Joi.number().required(),
+  user: Joi.string().optional(),
+  game: Joi.string().optional(),
 };
 
 export const createCampaign: RequestHandler = async (req, res): Promise<void> => {
   const { error, value } = Joi.object(CampaignSchema).validate(req.body);
   if (error) {
     res.status(400).json({ error: "Invalid campaign data" });
-    console.log("Create Campaign Headers", req.headers);
-    console.log("Create Campaign Body", req.body);
     return;
   }
-
+  console.log("Create Campaign Headers", req.headers);
+  console.log("Create Campaign Body", req.body);
   const newCampaign = await CampaignService.createCampaign(value as Campaign);
   if (!newCampaign) {
     res.status(500).json({ error: "Failed to create campaign" });
@@ -28,7 +28,7 @@ export const createCampaign: RequestHandler = async (req, res): Promise<void> =>
   res.status(201).json(newCampaign);
   return;
 };
-//Problem might be that these don't actually do anything, I think
+
 export const getCampaign: RequestHandler = async (req, res): Promise<void> => {
   const campaign = await CampaignService.getCampaign(req.params.id);
   if (!campaign) {
