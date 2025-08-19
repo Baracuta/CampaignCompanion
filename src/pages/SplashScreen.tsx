@@ -3,7 +3,6 @@ import "../css_modules/app.css"
 import NavButton from "../components/NavButton";
 import { ASSETS_PATH } from "../constants/assets_path";
 import { GoogleLogin } from "@react-oauth/google";
-import { createUser } from "../services/CampaignServiceFrontend";
 
 
 //This is the Splash Screen when the application starts.
@@ -23,8 +22,7 @@ function SplashScreen() {
           <GoogleLogin
             onSuccess={async credentialResponse => {
               if (credentialResponse.credential) {
-                localStorage.setItem("google_token", credentialResponse.credential);
-                await createUser(credentialResponse.credential);
+                await localStorage.setItem("google_token", credentialResponse.credential);
               } else {
                 console.warn("Google credential is undefined.");
               }
