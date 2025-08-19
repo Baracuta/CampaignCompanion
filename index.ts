@@ -25,7 +25,7 @@ app.get(/^\/CampaignCompanion(\/.*)?$/, (_req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'))
 })
 
-app.use('/api/campaign', verify, campaignRouter)
+app.use('/api/campaign', campaignRouter)
 
 app.use('/api/campaign/:campaignId/npc', entityRouter.npcRouter)
 app.use('/api/campaign/:campaignId/location', entityRouter.locationRouter)

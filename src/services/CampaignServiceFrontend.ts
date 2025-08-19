@@ -7,7 +7,7 @@ import { User } from "../types/User";
 
 //Every single "entity" should have the following: create, delete, get, getPlural(getCampaigns, getNPCs...), update, updatePlural
 
-export const createUser = async (user: string): Promise<Response> => {
+export const createUser = async (): Promise<Response> => {
   const token = await localStorage.getItem("google_token");
   const response = await fetch("http://localhost:5000/api/user", {
     method: "POST",
@@ -15,10 +15,11 @@ export const createUser = async (user: string): Promise<Response> => {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${token}`
     },
-    body: user,
+    body: null,
   });
 
   if (!response.ok) {
+    console.log(response)
     console.log("Headers:", response.headers);
     console.log("Body:", response.body);
     throw new Error("Failed to create user: Frontend");
@@ -28,9 +29,9 @@ export const createUser = async (user: string): Promise<Response> => {
   return createdUser;
 };
 
-export const getUser = async (id: string): Promise<User> => {
+export const getUser = async (): Promise<User> => {
   const token = localStorage.getItem("google_token");
-  const response = await fetch(`http://localhost:5000/api/user/${id}`, {
+  const response = await fetch(`http://localhost:5000/api/user`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

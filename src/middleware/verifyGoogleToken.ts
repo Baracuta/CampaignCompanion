@@ -4,9 +4,10 @@ const client = new OAuth2Client(); // No clientId needed for verification
 
 import { Request, Response, NextFunction } from "express";
 
-export async function verifyGoogleToken(req: Request, res: Response, next: NextFunction) {
+export const verifyGoogleToken = async (req: Request, res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization;
   if (!authHeader) {
+    console.log("Verify Error")
     res.status(401).json({ error: "No token provided" });
     return;
   }
@@ -22,7 +23,7 @@ export async function verifyGoogleToken(req: Request, res: Response, next: NextF
       res.status(401).json({ error: "Invalid token payload" });
       return;
     }
-    req.body.user = payload;
+    req.body = payload;
     next();
   } catch (err) {
     res.status(401).json({ error: "Invalid token" });

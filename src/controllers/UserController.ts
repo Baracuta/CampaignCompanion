@@ -10,7 +10,7 @@ const UserSchema = {
 };
 
 export const createUser: RequestHandler = async (req, res): Promise<void> => {
-  const { error, value } = Joi.object(UserSchema).validate(req.body.user);
+  const { error, value } = Joi.object(UserSchema).validate(req.body);
   if (error) {
     res.status(400).json("User data is invalid");
     return;
