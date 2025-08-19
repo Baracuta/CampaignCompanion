@@ -26,7 +26,7 @@ function SplashScreen() {
               } else {
                 console.warn("Google credential is undefined.");
               }
-              console.log(credentialResponse);
+              console.log("Login Successful", credentialResponse);
             }}
             theme="filled_black"
             shape="circle"

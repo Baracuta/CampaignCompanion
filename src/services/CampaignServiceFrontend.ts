@@ -47,25 +47,6 @@ export const getUser = async (id: string): Promise<User> => {
   return user as User;
 };
 
-export const updateUser = async (user: User): Promise<User> => {
-  const token = localStorage.getItem("google_token");
-  const response = await fetch(`http://localhost:5000/api/user/${user.id}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
-    },
-    body: JSON.stringify(user),
-  });
-
-  if (!response.ok) {
-    throw new Error("Failed to update user");
-  }
-
-  const updatedUser = await response.json();
-  return updatedUser as User;
-};
-
 //Campaign Section
 
 export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {

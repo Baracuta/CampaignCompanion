@@ -11,8 +11,8 @@ const UserSchema = {
 };
 
 export const createUser: RequestHandler = async (req, res): Promise<void> => {
-  const { error, value } = Joi.object(UserSchema).validate(req.body);
-  if (error !== undefined) {
+  const { error, value } = Joi.object(UserSchema).validate(req.body.user);
+  if (error) {
     res.status(400).json("User data is invalid");
     return;
   }
@@ -49,22 +49,5 @@ export const getUser: RequestHandler = async (req, res): Promise<void> => {
     res.status(404).json("User not found");
     return;
   }
-  res.status(200).json(user);
-};
-
-export const updateUser: RequestHandler = async (req, res): Promise<void> => {
-  const id = req.params.id;
-  if (!id) {
-    res.status(400).json("Invalid user ID format");
-    return;
-  }
-
-  const { error, value } = Joi.object(UserSchema).validate(req.body);
-  if (error !== undefined) {
-    res.status(400).json("User data is invalid");
-    return;
-  }
-  const user = await CampaignService.getUser(id);
-  await CampaignService.updateUser(id, value as User)
   res.status(200).json(user);
 };
