@@ -16,17 +16,8 @@ export const createUser: RequestHandler = async (req, res): Promise<void> => {
     return;
   }
 
-  const userId = value.sub;
-  const user = await CampaignService.getUser(userId);
-
-  if (user) {
-    await CampaignService.getUser(userId);
-    res.status(200).json(user);
-    return;
-  }
-
   const newUser = {
-    id: userId,
+    id: value.id,
     email: value.email,
     name: value.name,
   };
@@ -42,11 +33,24 @@ export const createUser: RequestHandler = async (req, res): Promise<void> => {
 };
 
 export const getUser: RequestHandler = async (req, res): Promise<void> => {
-  const userId = req.params.id;
+  const {error, value} = Joi.object(UserSchema).validate(req.body);
+  if (error) {
+    res.status(400).json("User data is invalid");
+    return;
+  }
+
+  const userId = req.body.user.id;
   const user = await CampaignService.getUser(userId);
   if (!user) {
-    res.status(404).json("User not found");
+    const newUser = {
+      id:userId,
+      email: value.email,
+      name: value.name,
+    }
+    await CampaignService.createUser(newUser);
+    res.status(201).json(newUser);
     return;
   }
   res.status(200).json(user);
+  return;
 };

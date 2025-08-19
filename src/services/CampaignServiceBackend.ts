@@ -18,7 +18,7 @@ export const createUser = async (user: User): Promise<User> => {
     `INSERT INTO users (id, email, name)
      VALUES ($1, $2, $3)`,
     [
-      id,
+      user.id,
       user.email,
       user.name,
     ]
