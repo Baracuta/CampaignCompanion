@@ -14,6 +14,7 @@ const verify = verifyGoogleToken;
 
 app.use(cors());
 app.use(express.json());
+app.use(verify)
 
 
 // Serve static files at /CampaignCompanion

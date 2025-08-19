@@ -31,14 +31,6 @@ export const getUser = async (id: string): Promise<User | null> => {
   return result.rows[0] as User;
 };
 
-export const updateUser = async (id: string, user: User): Promise<User | null> => {
-  await pool.query(
-    `UPDATE users SET email = $1, name = $2 WHERE id = $3`,
-    [user.email, user.name, id]
-  );
-  return getUser(id);
-};
-
 //Campaign Section
 
 //Used in CampaignForm to generate a new campaign

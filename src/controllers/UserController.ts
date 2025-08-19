@@ -1,5 +1,4 @@
 import { RequestHandler } from "express";
-import { User } from "../types/User";
 import * as CampaignService from "../services/CampaignServiceBackend";
 import Joi from "joi";
 

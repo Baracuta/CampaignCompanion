@@ -9,20 +9,19 @@ import { User } from "../types/User";
 
 export const createUser = async (user: string): Promise<Response> => {
   const token = await localStorage.getItem("google_token");
-  console.log(token)
   const response = await fetch("http://localhost:5000/api/user", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${token}`
     },
-    body: JSON.stringify(user),
+    body: user,
   });
-  console.log(response.headers)
-  console.log(response.body)
 
   if (!response.ok) {
-    throw new Error("Failed to create user");
+    console.log("Headers:", response.headers);
+    console.log("Body:", response.body);
+    throw new Error("Failed to create user: Frontend");
   }
 
   const createdUser = await response;
