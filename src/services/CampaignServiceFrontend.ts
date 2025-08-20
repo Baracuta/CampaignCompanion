@@ -11,11 +11,11 @@ export const handleUser = async (): Promise<User> => {
     const user = await getUser();
     return user;
   } catch (error: any) {
-    if (error === 404) {
-      const user = await createUser();
-      return user;
-    }
-    throw error;
+    console.log(error)
+  
+    const user = await createUser();
+    return user;
+  
   }
 }
 export const createUser = async (): Promise<User> => {
