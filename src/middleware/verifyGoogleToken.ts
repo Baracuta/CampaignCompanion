@@ -27,11 +27,6 @@ export const verifyGoogleToken = async (req: Request, res: Response, next: NextF
       res.status(401).json({ error: "Invalid token payload" });
       return;
     }
-    req.body.user = {
-      id: payload.sub,
-      email: payload.email,
-      name: payload.name,
-    };
     next();
   } catch (err) {
     // Error is happening here
