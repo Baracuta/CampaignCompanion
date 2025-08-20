@@ -6,8 +6,6 @@ import { Request, Response, NextFunction } from "express";
 
 export const verifyGoogleToken = async (req: Request, res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization;
-  console.log(req.headers);
-  console.log(req.body)
   if (!authHeader) {
     console.log("Verify Error")
     res.status(401).json({ error: "No token provided" });
@@ -15,7 +13,8 @@ export const verifyGoogleToken = async (req: Request, res: Response, next: NextF
   }
 
   const token = authHeader.split(" ")[1];
-  console.log("post-token check", token)
+  console.log("post-token check")
+  
   try {
     const ticket = await client.verifyIdToken({
       idToken: token,
@@ -27,10 +26,11 @@ export const verifyGoogleToken = async (req: Request, res: Response, next: NextF
       res.status(401).json({ error: "Invalid token payload" });
       return;
     }
+    console.log("Token verified for user:", payload.sub);
     next();
   } catch (err) {
     // Error is happening here
     console.error("Token verification error:", err);
-    res.status(401).json({ error: "Invalid token" });
+    res.status(401).json({ error: "Invalid agafdh token" });
   }
 }

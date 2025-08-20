@@ -10,9 +10,12 @@ export const handleUser = async (): Promise<User> => {
   try {
     const user = await getUser();
     return user;
-  } catch (error) {
-    const user = await createUser();
-    return user;
+  } catch (error: any) {
+    if (error === 404) {
+      const user = await createUser();
+      return user;
+    }
+    throw error;
   }
 }
 export const createUser = async (): Promise<User> => {
@@ -27,9 +30,6 @@ export const createUser = async (): Promise<User> => {
   });
 
   if (!response.ok) {
-    console.log(response)
-    console.log("Headers:", response.headers);
-    console.log("Body:", response.body);
     throw new Error("Failed to create user: Frontend");
   }
 

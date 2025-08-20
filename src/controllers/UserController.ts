@@ -6,11 +6,13 @@ const client = new OAuth2Client();
 
 
 export const createUser: RequestHandler = async (req, res): Promise<void> => {
-  const token = req.headers.authorization;
-  if (!token) {
+  const authheader = req.headers.authorization;
+  if (!authheader) {
     res.status(401).json("No token provided");
     return;
   }
+
+  const token = authheader.split(" ")[1];
   const tokeninfo = await client.getTokenInfo(token);
   const newUser = {
     id: tokeninfo.sub,
@@ -27,11 +29,12 @@ export const createUser: RequestHandler = async (req, res): Promise<void> => {
 };
 
 export const getUser: RequestHandler = async (req, res): Promise<void> => {
-  const token = req.headers.authorization;
-  if (!token) {
+  const authheader = req.headers.authorization;
+  if (!authheader) {
     res.status(401).json("No token provided");
     return;
   }
+  const token = authheader.split(" ")[1];
   const tokeninfo = await client.getTokenInfo(token);
 
   const userId = tokeninfo.sub;
