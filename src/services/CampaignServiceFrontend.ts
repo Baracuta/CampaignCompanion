@@ -6,7 +6,15 @@ import { PC } from "../types/PlayerCharacter";
 import { User } from "../types/User";
 
 //Every single "entity" should have the following: create, delete, get, getPlural(getCampaigns, getNPCs...), update, updatePlural
-
+export const handleUser = async (): Promise<User> => {
+  try {
+    const user = await getUser();
+    return user;
+  } catch (error) {
+    const user = await createUser();
+    return user;
+  }
+}
 export const createUser = async (): Promise<User> => {
   const token = await localStorage.getItem("google_token");
   const response = await fetch("http://localhost:5000/api/user", {

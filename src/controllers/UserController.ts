@@ -18,14 +18,12 @@ export const createUser: RequestHandler = async (req, res): Promise<void> => {
     name: tokeninfo.user_id,
   };
 
-  await CampaignService.createUser(newUser)
-    .then((createdUser) => {
-      res.status(201).json(createdUser);
-    })
-    .catch((error) => {
-      console.error("Error creating user:", error);
-      res.status(500).json("Internal server error");
-    });
+  const newestUser = await CampaignService.createUser(newUser)
+  if (!newestUser) {
+    res.status(500).json("Failed to create user");
+    return;
+  }
+  res.status(201).json(newestUser);
 };
 
 export const getUser: RequestHandler = async (req, res): Promise<void> => {
@@ -47,7 +45,7 @@ export const getUser: RequestHandler = async (req, res): Promise<void> => {
     res.status(404).json("User not found");
     return;
   }
-  
+
   res.status(200).json(user);
   return;
 };

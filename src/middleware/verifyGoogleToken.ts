@@ -14,7 +14,7 @@ export const verifyGoogleToken = async (req: Request, res: Response, next: NextF
     return;
   }
 
-  const token = authHeader;
+  const token = authHeader.split(" ")[1];
   console.log("post-token check", token)
   try {
     const ticket = await client.verifyIdToken({
