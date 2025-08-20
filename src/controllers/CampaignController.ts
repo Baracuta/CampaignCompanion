@@ -19,7 +19,6 @@ export const createCampaign: RequestHandler = async (req, res): Promise<void> =>
     res.status(400).json({ error: "Invalid campaign data" });
     return;
   }
-
   
   const newCampaign = await CampaignService.createCampaign(value as Campaign);
   if (!newCampaign) {
