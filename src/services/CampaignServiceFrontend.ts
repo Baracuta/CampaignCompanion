@@ -24,7 +24,7 @@ export const createUser = async (): Promise<User> => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      "Authorization": `${token}`
     },
   });
 
@@ -42,7 +42,7 @@ export const getUser = async (): Promise<User> => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      "Authorization": `${token}`
     },
   });
 
@@ -62,7 +62,7 @@ export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      "Authorization": `${token}`
     },
     body: JSON.stringify(campaign),
   });
@@ -81,7 +81,7 @@ export const deleteCampaign = async (id: string): Promise<Array<Campaign>> => {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      "Authorization": `${token}`
     },
   });
 
@@ -100,7 +100,7 @@ export const getCampaign = async (id: string): Promise<Campaign> => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      "Authorization": `${token}`
     },
   });
 
@@ -119,7 +119,7 @@ export const getCampaigns = async (): Promise<Array<Campaign>> => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      "Authorization": `${token}`
     },
   });
 
@@ -138,7 +138,7 @@ export const updateCampaign = async (campaign: Campaign): Promise<Campaign> => {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      "Authorization": `${token}`
     },
     body: JSON.stringify(campaign),
   });
@@ -162,7 +162,7 @@ export const createNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      "Authorization": `${token}`
     },
     body: JSON.stringify(npc),
   });
@@ -181,7 +181,7 @@ export const deleteNPC = async (campaignId: string, npcId: string): Promise<Arra
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      "Authorization": `${token}`
     },
   });
 
@@ -199,7 +199,7 @@ export const getNPC = async (campaignId: string, npcId: string): Promise<NPC> =>
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      "Authorization": `${token}`
     },
   });
 
@@ -217,7 +217,7 @@ export const getNPCs = async (campaignId: string): Promise<Array<NPC>> => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      "Authorization": `${token}`
     },
   });
 
@@ -235,7 +235,7 @@ export const updateNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      "Authorization": `${token}`
     },
     body: JSON.stringify(npc),
   });
@@ -257,7 +257,7 @@ export const createLocation = async (location: Location, campaignId: string): Pr
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      "Authorization": `${token}`
     },
     body: JSON.stringify(location),
   });
@@ -276,7 +276,7 @@ export const deleteLocation = async (campaignId: string, locationId: string): Pr
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      "Authorization": `${token}`
     },
   });
 
@@ -294,7 +294,7 @@ export const getLocation = async (campaignId: string, locationId: string): Promi
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      "Authorization": `${token}`
     },
   });
   
@@ -312,7 +312,7 @@ export const getLocations = async (campaignId: string): Promise<Array<Location>>
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      "Authorization": `${token}`
     },
   });
 
@@ -330,7 +330,7 @@ export const updateLocation = async (campaignId: string, location: Location): Pr
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      "Authorization": `${token}`
     },
     body: JSON.stringify(location),
   });
@@ -352,7 +352,7 @@ export const createItem = async (item: Item, campaignId: string): Promise<Item> 
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      "Authorization": `${token}`
     },
     body: JSON.stringify(item),
   });
@@ -371,7 +371,7 @@ export const deleteItem = async (campaignId: string, itemId: string): Promise<Ar
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      "Authorization": `${token}`
     },
   });
 
@@ -390,7 +390,7 @@ export const getItem = async (campaignId: string, itemId: string): Promise<Item>
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      "Authorization": `${token}`
     },
   });
 
@@ -408,7 +408,7 @@ export const getItems = async (campaignId: string): Promise<Array<Item>> => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      "Authorization": `${token}`
     },
   });
 
@@ -426,7 +426,7 @@ export const updateItem = async (campaignId: string, item: Item): Promise<Item> 
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      "Authorization": `${token}`
     },
     body: JSON.stringify(item),
   });
@@ -449,7 +449,7 @@ export const createPC = async (pc: PC, campaignId: string): Promise<PC> => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      "Authorization": `${token}`
     },
     body: JSON.stringify(pc),
   });
@@ -468,7 +468,7 @@ export const deletePC = async (campaignId: string, pcId: string): Promise<Array<
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      "Authorization": `${token}`
     },
   });
 
@@ -486,7 +486,7 @@ export const getPC = async (campaignId: string, pcId: string): Promise<PC> => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      "Authorization": `${token}`
     },
   });
 
@@ -504,7 +504,7 @@ export const getPCs = async (campaignId: string): Promise<Array<PC>> => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      "Authorization": `${token}`
     },
   });
 
@@ -522,7 +522,7 @@ export const updatePC = async (campaignId: string, pc: PC): Promise<PC> => {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
+      "Authorization": `${token}`
     },
     body: JSON.stringify(pc),
   });

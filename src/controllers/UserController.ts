@@ -12,28 +12,23 @@ export const createUser: RequestHandler = async (req, res): Promise<void> => {
     return;
   }
 
-  const token = authheader.split(" ")[1];
-  const r = await client.getToken(token);
-  if (!r.tokens) {
-    res.status(401).json("Missing tokens");
-    return;
-  }
-  await client.setCredentials(r.tokens);
-  
-  if (!client.credentials.access_token) {
-    res.status(401).json("No access token found");
-    return;
-  }
-  const tokeninfo = await client.getTokenInfo(client.credentials.access_token);
-  if (!tokeninfo) {
-    res.status(401).json("Invalid token");
+  const token = authheader;
+
+  const ticket = await client.verifyIdToken({
+    idToken: token,
+    audience: "1090280266148-hhbspb3t1g9rontnmbpc0gopeqapo3nq.apps.googleusercontent.com",
+  });
+  const payload = ticket.getPayload();
+  if (!payload) {
+    console.log("Verify Payload Error");
+    res.status(401).json({ error: "Invalid token payload" });
     return;
   }
 
   const newUser = {
-    id: tokeninfo.sub,
-    email: tokeninfo.email,
-    name: tokeninfo.user_id,
+    id: payload.sub,
+    email: payload.email,
+    name: payload.name,
   };
 
   const newestUser = await CampaignService.createUser(newUser)
@@ -51,25 +46,20 @@ export const getUser: RequestHandler = async (req, res): Promise<void> => {
     return;
   }
   
-  const token = authheader.split(" ")[1];
-  const r = await client.getToken(token);
-  if (!r.tokens) {
-    res.status(401).json("Missing tokens");
-    return;
-  }
-  await client.setCredentials(r.tokens);
-  
-  if (!client.credentials.access_token) {
-    res.status(401).json("No access token found");
-    return;
-  }
-  const tokeninfo = await client.getTokenInfo(client.credentials.access_token);
-  if (!tokeninfo) {
-    res.status(401).json("Invalid token");
+  const token = authheader;
+
+  const ticket = await client.verifyIdToken({
+    idToken: token,
+    audience: "1090280266148-hhbspb3t1g9rontnmbpc0gopeqapo3nq.apps.googleusercontent.com",
+  });
+  const payload = ticket.getPayload();
+  if (!payload) {
+    console.log("Verify Payload Error");
+    res.status(401).json({ error: "Invalid token payload" });
     return;
   }
 
-  const userId = tokeninfo.sub;
+  const userId = payload.sub;
   if (!userId) {
     res.status(400).json("Invalid user ID format");
     return;

@@ -12,7 +12,7 @@ export const verifyGoogleToken = async (req: Request, res: Response, next: NextF
     return;
   }
 
-  const token = authHeader.split(" ")[1];
+  const token = authHeader;
   console.log("post-token check")
   
   try {
