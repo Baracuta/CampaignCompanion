@@ -13,8 +13,18 @@ export const createUser: RequestHandler = async (req, res): Promise<void> => {
   }
 
   const token = authheader.split(" ")[1];
-  const tokeninfo = await client.getTokenInfo(token);
-  console.log("Token Info:", tokeninfo);
+  const r = await client.getToken(token);
+  if (!r.tokens) {
+    res.status(401).json("Missing tokens");
+    return;
+  }
+  await client.setCredentials(r.tokens);
+  
+  if (!client.credentials.access_token) {
+    res.status(401).json("No access token found");
+    return;
+  }
+  const tokeninfo = await client.getTokenInfo(client.credentials.access_token);
   if (!tokeninfo) {
     res.status(401).json("Invalid token");
     return;
@@ -40,8 +50,24 @@ export const getUser: RequestHandler = async (req, res): Promise<void> => {
     res.status(401).json("No token provided");
     return;
   }
+  
   const token = authheader.split(" ")[1];
-  const tokeninfo = await client.getTokenInfo(token);
+  const r = await client.getToken(token);
+  if (!r.tokens) {
+    res.status(401).json("Missing tokens");
+    return;
+  }
+  await client.setCredentials(r.tokens);
+  
+  if (!client.credentials.access_token) {
+    res.status(401).json("No access token found");
+    return;
+  }
+  const tokeninfo = await client.getTokenInfo(client.credentials.access_token);
+  if (!tokeninfo) {
+    res.status(401).json("Invalid token");
+    return;
+  }
 
   const userId = tokeninfo.sub;
   if (!userId) {

@@ -26,7 +26,7 @@ export const createUser = async (user: User): Promise<User> => {
   return { ...user, id };
 };
 
-export const getUser = async (id: string): Promise<User | null> => {
+export const getUser = async (id: string): Promise<User> => {
   const result = await pool.query("SELECT * FROM users WHERE id = $1", [id]);
   return result.rows[0] as User;
 };
