@@ -26,14 +26,13 @@ export const createUser = async (): Promise<User> => {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${token}`
     },
-    body: null,
   });
 
   if (!response.ok) {
     throw new Error("Failed to create user: Frontend");
   }
 
-  const createdUser = await response;
+  const createdUser = await response.json();
   return createdUser as User;
 };
 

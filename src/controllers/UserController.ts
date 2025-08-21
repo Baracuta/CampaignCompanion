@@ -12,12 +12,14 @@ export const createUser: RequestHandler = async (req, res): Promise<void> => {
     return;
   }
 
-  const tokens = await client.getToken(authheader)
-  if (!tokens || !tokens.tokens || !tokens.tokens.access_token) {
+  const token = authheader.split(" ")[1];
+  const tokeninfo = await client.getTokenInfo(token);
+  console.log("Token Info:", tokeninfo);
+  if (!tokeninfo) {
     res.status(401).json("Invalid token");
     return;
   }
-  const tokeninfo = await client.getTokenInfo(tokens.tokens.access_token);
+
   const newUser = {
     id: tokeninfo.sub,
     email: tokeninfo.email,
