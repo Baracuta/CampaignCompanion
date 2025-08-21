@@ -36,8 +36,9 @@ export const getUser = async (id: string): Promise<User> => {
 //Used in CampaignForm to generate a new campaign
 export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
   const id = uuid();
-  await pool.query(
-    `INSERT INTO campaigns (id, name, players, game, user) VALUES ($1, $2, $3, $4, $5)`,
+  try {
+    await pool.query(
+      `INSERT INTO campaigns (id, name, players, game, "user") VALUES ($1, $2, $3, $4, $5)`,
     [
       id,
       campaign.name,
@@ -45,7 +46,10 @@ export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
       campaign.game,
       campaign.user
     ]
-  );
+  )} catch (error) {
+    console.error("Error creating campaign:", error);
+    throw new Error("Failed to create campaign");
+  }
   return { ...campaign, id };
 };
 

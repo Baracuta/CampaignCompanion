@@ -12,14 +12,14 @@ const CampaignSchema = {
 };
 
 export const createCampaign: RequestHandler = async (req, res): Promise<void> => {
-  const { error, value } = Joi.object(CampaignSchema).validate(req.body);
+  const { error, value } = Joi.object<Campaign>(CampaignSchema).validate(req.body);
   if (error) {
     res.status(400).json({ error: "Invalid campaign data" });
     return;
   }
   console.log(req.body);
   console.log(value);
-  const newCampaign = await CampaignService.createCampaign(value as Campaign);
+  const newCampaign = await CampaignService.createCampaign(value);
   if (!newCampaign) {
     res.status(500).json({ error: "Failed to create campaign" });
     return;
