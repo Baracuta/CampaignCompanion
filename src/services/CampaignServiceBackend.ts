@@ -20,7 +20,7 @@ export const createUser = async (user: User): Promise<User> => {
     [
       user.id,
       user.email,
-      user.name,
+      user.name
     ]
   );
   return { ...user, id };
@@ -37,8 +37,7 @@ export const getUser = async (id: string): Promise<User> => {
 export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
   const id = uuid();
   await pool.query(
-    `INSERT INTO campaigns (id, name, players, game, user)
-     VALUES ($1, $2, $3, $4, $5)`,
+    `INSERT INTO campaigns (id, name, players, game, user) VALUES ($1, $2, $3, $4, $5)`,
     [
       id,
       campaign.name,
