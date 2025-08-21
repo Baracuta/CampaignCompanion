@@ -3,15 +3,13 @@ import styles from "../css_modules/form.module.css";
 import { useState } from "react";
 import { Campaign } from "../types/Campaign";
 import { useNavigate } from "react-router-dom";
-import { createCampaign } from "../services/CampaignServiceFrontend";
+import { createCampaign, getUser } from "../services/CampaignServiceFrontend";
 import { Autocomplete, TextField } from "@mui/material";
 import { GameOptions } from "../constants/game_options";
-import { useUser } from "../hooks/useUser";
 
 //This page is for the campaign creation form
 function CampaignForm() {
-  const user =  useUser();
-  const [campaign, setCampaign] = useState<Partial<Campaign>>({players:1, user: user.id});
+  const [campaign, setCampaign] = useState<Partial<Campaign>>({players:1});
   //This will just let me control things when the page is in the process of saving information. For progress wheels, etc
   // const [saving, setSaving] = useState(false);
   const navigate = useNavigate();
@@ -84,6 +82,8 @@ function CampaignForm() {
           disabled={validate()}
           onClick={async () => {
             // setSaving(true);
+            const user = await getUser();
+            setCampaign({...campaign, user: (user.id)});
             const savedCampaign = await createCampaign(campaign as Campaign);
             navigate(`/campaign/${savedCampaign.id}`);
           }}
