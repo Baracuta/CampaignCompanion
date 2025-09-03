@@ -38,7 +38,7 @@ export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
   const id = uuid();
   try {
     await pool.query(
-      `INSERT INTO campaigns (id, name, players, game, "user") VALUES ($1, $2, $3, $4, $5)`,
+      `INSERT INTO campaigns (id, name, players, game, userid) VALUES ($1, $2, $3, $4, $5)`,
     [
       id,
       campaign.name,
@@ -69,7 +69,8 @@ export const getCampaign = async (id: string): Promise<Campaign> => {
 
 //Used in the getCampaign method, as well as in the useCampaigns hook, which is used in the CampaignList component.
 export const getCampaigns = async (userId:string): Promise<Campaign[]> => {
-  const result = await pool.query("SELECT * FROM campaigns WHERE user = $1", [userId]);
+  const result = await pool.query("SELECT * FROM campaigns WHERE userid = $1", [userId]);
+  
   return result.rows as Campaign[];
 };
 
