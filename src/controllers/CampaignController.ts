@@ -40,9 +40,9 @@ export const getCampaign: RequestHandler = async (req, res): Promise<void> => {
 };
 
 export const getCampaigns: RequestHandler = async (req, res): Promise<void> => {
-  const campaigns = await CampaignService.getCampaigns(req.body.userId);
+  const campaigns = await CampaignService.getCampaigns(req.params.userId);
+  console.log("UserId", req.params.userId);
   res.status(200).json(campaigns);
-  return;
 };
 
 export const updateCampaign: RequestHandler = async (req, res): Promise<void> => {

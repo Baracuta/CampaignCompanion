@@ -83,8 +83,7 @@ function CampaignForm() {
           onClick={async () => {
             // setSaving(true);
             const user = await getUser();
-            setCampaign({...campaign, user: (user.id)});
-            const savedCampaign = await createCampaign(campaign as Campaign);
+            const savedCampaign = await createCampaign({...campaign as Campaign, user: (user.id)});
             navigate(`/campaign/${savedCampaign.id}`);
           }}
         >

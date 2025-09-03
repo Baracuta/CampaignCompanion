@@ -114,12 +114,12 @@ export const getCampaign = async (id: string): Promise<Campaign> => {
 export const getCampaigns = async (): Promise<Array<Campaign>> => {
   const token = localStorage.getItem("google_token");
   const user = await getUser();
-  const response = await fetch("http://localhost:5000/api/campaign", {
+  const response = await fetch(`http://localhost:5000/api/campaign/user/${user.id}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
       "Authorization": `${token}`
-    }, body: JSON.stringify({ userId: user.id })
+    }
   });
 
   if (!response.ok) {
