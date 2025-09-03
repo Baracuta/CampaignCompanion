@@ -39,8 +39,8 @@ export const getCampaign: RequestHandler = async (req, res): Promise<void> => {
   return;
 };
 
-export const getCampaigns: RequestHandler = async (_req, res): Promise<void> => {
-  const campaigns = await CampaignService.getCampaigns();
+export const getCampaigns: RequestHandler = async (req, res): Promise<void> => {
+  const campaigns = await CampaignService.getCampaigns(req.body.userId);
   res.status(200).json(campaigns);
   return;
 };
