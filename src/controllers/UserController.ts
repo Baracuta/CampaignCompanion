@@ -20,7 +20,7 @@ export const createUser: RequestHandler = async (req, res): Promise<void> => {
   });
   const payload = ticket.getPayload();
   if (!payload) {
-    console.log("Verify Payload Error");
+    
     res.status(401).json({ error: "Invalid token payload" });
     return;
   }
@@ -54,7 +54,7 @@ export const getUser: RequestHandler = async (req, res): Promise<void> => {
   });
   const payload = ticket.getPayload();
   if (!payload) {
-    console.log("Verify Payload Error");
+    
     res.status(401).json({ error: "Invalid token payload" });
     return;
   }

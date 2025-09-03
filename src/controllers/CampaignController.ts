@@ -17,8 +17,7 @@ export const createCampaign: RequestHandler = async (req, res): Promise<void> =>
     res.status(400).json({ error: "Invalid campaign data" });
     return;
   }
-  console.log(req.body);
-  console.log(value);
+  
   const newCampaign = await CampaignService.createCampaign(value);
   if (!newCampaign) {
     res.status(500).json({ error: "Failed to create campaign" });
@@ -41,7 +40,6 @@ export const getCampaign: RequestHandler = async (req, res): Promise<void> => {
 
 export const getCampaigns: RequestHandler = async (req, res): Promise<void> => {
   const campaigns = await CampaignService.getCampaigns(req.params.userId);
-  console.log("UserId", req.params.userId);
   res.status(200).json(campaigns);
 };
 

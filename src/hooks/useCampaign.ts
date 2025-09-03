@@ -42,7 +42,7 @@ export const useCampaign = (id: string) => {
         items,
         playerCharacters: pcs,
       });
-      console.log("Campaign refreshed:", { npcs, locations, items, pcs });
+      console.log("Campaign refreshed");
     },
   };
 };
