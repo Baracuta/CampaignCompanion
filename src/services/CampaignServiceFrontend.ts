@@ -75,7 +75,7 @@ export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
   return createdCampaign as Campaign;
 };
 
-export const deleteCampaign = async (id: string): Promise<Array<Campaign>> => {
+export const deleteCampaign = async (id: string): Promise<void> => {
   const token = localStorage.getItem("google_token");
   const response = await fetch(`http://localhost:5000/api/campaign/${id}`, {
     method: "DELETE",
@@ -89,9 +89,7 @@ export const deleteCampaign = async (id: string): Promise<Array<Campaign>> => {
     throw new Error("Failed to delete campaign");
   }
 
-  const allCampaigns = await getCampaigns();
-
-  return allCampaigns;
+  return;
 };
 
 export const getCampaign = async (id: string): Promise<Campaign> => {
