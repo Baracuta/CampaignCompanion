@@ -1,44 +1,57 @@
 import { v4 as uuid } from "uuid";
 import { createClient } from "@supabase/supabase-js";
-import { openDB } from "idb";
+import { getUser } from "./CampaignServiceFrontend";
 
 
-const REACT_APP_SUPABASE_URL='https://udttspdqobiflnklluuf.supabase.co'
-const REACT_APP_SUPABASE_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkdHRzcGRxb2JpZmxua2xsdXVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY5MDUxMTQsImV4cCI6MjA3MjQ4MTExNH0.-olNmzIS5uIn7rhHmR6S26sTejJ9HhUK3lO7re6Gn6E'
+const SUPABASE_URL='https://udttspdqobiflnklluuf.supabase.co'
+const SUPABASE_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkdHRzcGRxb2JpZmxua2xsdXVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY5MDUxMTQsImV4cCI6MjA3MjQ4MTExNH0.-olNmzIS5uIn7rhHmR6S26sTejJ9HhUK3lO7re6Gn6E'
 
-const supabase = createClient(REACT_APP_SUPABASE_URL, REACT_APP_SUPABASE_ANON_KEY)
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+const BUCKET='images';
 
+const user = await getUser();
+if (user == null) throw new Error("User not logged in");
 
-const dbPromise = openDB("Saved Images", 1, {
-  upgrade(db) {
-    db.createObjectStore("keyval");
-  },
-});
-
-export async function get(key:string) {
-  return (await dbPromise).get("keyval", key);
-}
-export async function set(key:string, val:string) {
-  return (await dbPromise).put("keyval", val, key);
-}
-export async function del(key:string) {
-  return (await dbPromise).delete("keyval", key);
-}
-export async function clear() {
-  return (await dbPromise).clear("keyval");
-}
-export async function keys() {
-  return (await dbPromise).getAllKeys("keyval");
+function base64ToBlob(base64: string): Blob {
+  const byteString = atob(base64.split(',')[1]);
+  const mimeString = base64.split(',')[0].split(':')[1].split(';')[0];
+  const ab = new ArrayBuffer(byteString.length);
+  const ia = new Uint8Array(ab);
+  for (let i = 0; i < byteString.length; i++) {
+    ia[i] = byteString.charCodeAt(i);
+  }
+  return new Blob([ab], { type: mimeString });
 }
 
+
+
+export const del = async (imageId:string) => {
+  const path = `${user.id}/${imageId}.jpeg`;
+  const { error } = await supabase.storage.from(BUCKET).remove([path]);
+  if (error) throw error;
+};
 
 export const uploadImage = async (img: string): Promise<string> => {
   const id = uuid();
-  await set(id,img);
-  return id
+  const blob = base64ToBlob(img);
+  const path = `${user.id}/${id}.jpeg`;
+
+  const { error } = await supabase.storage.from(BUCKET).upload(path, blob, {
+    cacheControl: "3600",
+    upsert: false,
+    contentType: blob.type,
+  });
+
+  if (error) throw error;
+
+  return id;
 };
-// Use this to make the above happen.
+
 export const getImage = async (imageId: string): Promise<string> => {
-  const image = await get(imageId)
-  return image
+  const path = `${user.id}/${imageId}.jpeg`;
+  const image = supabase.storage.from(BUCKET).getPublicUrl(path);
+
+  if (image.data.publicUrl == null) throw new Error("Image not found");
+
+  return image.data.publicUrl;
 };
