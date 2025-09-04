@@ -1,5 +1,13 @@
 import { v4 as uuid } from "uuid";
+import { createClient } from "@supabase/supabase-js";
 import { openDB } from "idb";
+
+
+const REACT_APP_SUPABASE_URL='https://udttspdqobiflnklluuf.supabase.co'
+const REACT_APP_SUPABASE_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkdHRzcGRxb2JpZmxua2xsdXVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY5MDUxMTQsImV4cCI6MjA3MjQ4MTExNH0.-olNmzIS5uIn7rhHmR6S26sTejJ9HhUK3lO7re6Gn6E'
+
+const supabase = createClient(REACT_APP_SUPABASE_URL, REACT_APP_SUPABASE_ANON_KEY)
+
 
 const dbPromise = openDB("Saved Images", 1, {
   upgrade(db) {

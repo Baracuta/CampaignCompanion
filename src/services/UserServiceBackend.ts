@@ -1,1 +1,0 @@
-// Might be obsolete considering that campaigns-related backend calls are in CampaignServiceBackend.ts, but I'll keep this for now just help me organize my thoughts.
