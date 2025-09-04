@@ -9,9 +9,6 @@ const SUPABASE_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYm
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 const BUCKET='images';
 
-const user = await getUser();
-if (user == null) throw new Error("User not logged in");
-
 function base64ToBlob(base64: string): Blob {
   const byteString = atob(base64.split(',')[1]);
   const mimeString = base64.split(',')[0].split(':')[1].split(';')[0];
@@ -26,30 +23,45 @@ function base64ToBlob(base64: string): Blob {
 
 
 export const del = async (imageId:string) => {
+  const user = await getUser();
+  if (user == null) throw new Error("User not logged in");
   const path = `${user.id}/${imageId}.jpeg`;
   const { error } = await supabase.storage.from(BUCKET).remove([path]);
   if (error) throw error;
 };
 
 export const uploadImage = async (img: string): Promise<string> => {
+  const user = await getUser();
+  if (user == null) throw new Error("User not logged in");
   const id = uuid();
-  const blob = base64ToBlob(img);
   const path = `${user.id}/${id}.jpeg`;
 
-  const { error } = await supabase.storage.from(BUCKET).upload(path, blob, {
-    cacheControl: "3600",
-    upsert: false,
-    contentType: blob.type,
-  });
-
-  if (error) throw error;
+  try {
+    const blob = base64ToBlob(img);
+    const { error } = await supabase.storage.from(BUCKET).upload(path, blob, {
+      cacheControl: "3600",
+      upsert: false,
+      contentType: blob.type,
+    });
+    if (error) throw error;
+  } catch {
+    const { error } = await supabase.storage.from(BUCKET).upload(path, img, {
+      cacheControl: "3600",
+      upsert: false,
+      contentType: "image/jpeg",
+    });
+    if (error) throw error;
+  }
 
   return id;
 };
 
 export const getImage = async (imageId: string): Promise<string> => {
+  const user = await getUser();
+  if (user == null) throw new Error("User not logged in");
+
   const path = `${user.id}/${imageId}.jpeg`;
-  const image = supabase.storage.from(BUCKET).getPublicUrl(path);
+  const image = await supabase.storage.from(BUCKET).getPublicUrl(path);
 
   if (image.data.publicUrl == null) throw new Error("Image not found");
 
