@@ -7,9 +7,9 @@ const SUPABASE_URL='https://udttspdqobiflnklluuf.supabase.co'
 const SUPABASE_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkdHRzcGRxb2JpZmxua2xsdXVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY5MDUxMTQsImV4cCI6MjA3MjQ4MTExNH0.-olNmzIS5uIn7rhHmR6S26sTejJ9HhUK3lO7re6Gn6E'
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
-const BUCKET='images';
+const BUCKET = ('images');
 
-function base64ToBlob(base64: string): Blob {
+async function base64ToBlob(base64: string): Promise<Blob> {
   const byteString = atob(base64.split(',')[1]);
   const mimeString = base64.split(',')[0].split(':')[1].split(';')[0];
   const ab = new ArrayBuffer(byteString.length);
@@ -20,13 +20,30 @@ function base64ToBlob(base64: string): Blob {
   return new Blob([ab], { type: mimeString });
 }
 
+async function authenticate () {
+  const { data, error } = await supabase.auth.signInWithIdToken({
+    provider: 'google',
+    token: localStorage.getItem("google_token") as string
+  });
+
+  if (error) {
+    throw error;
+  }
+  console.log(data);
+}
 
 
 export const del = async (imageId:string) => {
   const user = await getUser();
   if (user == null) throw new Error("User not logged in");
   const path = `${user.id}/${imageId}.jpeg`;
-  const { error } = await supabase.storage.from(BUCKET).remove([path]);
+
+  await authenticate();
+
+  const { error } = await supabase
+  .storage
+  .from(BUCKET)
+  .remove([path]);
   if (error) throw error;
 };
 
@@ -34,22 +51,22 @@ export const uploadImage = async (img: string): Promise<string> => {
   const user = await getUser();
   if (user == null) throw new Error("User not logged in");
   const id = uuid();
-  const path = `${user.id}/${id}.jpeg`;
+  const path = `${user.id}/${id}`;
+
+  await authenticate();
 
   try {
-    const blob = base64ToBlob(img);
-    const { error } = await supabase.storage.from(BUCKET).upload(path, blob, {
-      cacheControl: "3600",
-      upsert: false,
-      contentType: blob.type,
-    });
+    const blob = await base64ToBlob(img);
+    const { error } = await supabase
+    .storage
+    .from(BUCKET)
+    .upload(path, blob);
+
     if (error) throw error;
+
   } catch {
-    const { error } = await supabase.storage.from(BUCKET).upload(path, img, {
-      cacheControl: "3600",
-      upsert: false,
-      contentType: "image/jpeg",
-    });
+    const { error } = await supabase.storage.from(BUCKET).upload(path, img);
+
     if (error) throw error;
   }
 
@@ -61,6 +78,9 @@ export const getImage = async (imageId: string): Promise<string> => {
   if (user == null) throw new Error("User not logged in");
 
   const path = `${user.id}/${imageId}.jpeg`;
+
+  await authenticate();
+
   const image = await supabase.storage.from(BUCKET).getPublicUrl(path);
 
   if (image.data.publicUrl == null) throw new Error("Image not found");
