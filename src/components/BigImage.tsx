@@ -23,6 +23,7 @@ export default function BigImage(props:ModalProps) {
       <Modal
         open={open}
         onClose={handleClose}
+        closeAfterTransition={false}
       >
         <Box className={styles.box}>
             <img className={styles.big_image}

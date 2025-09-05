@@ -51,7 +51,7 @@ function AddLocation(props: thingProps) {
       >
         {editMode ? "Edit" : <p>Add Location</p>}
       </button>
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={open} onClose={handleClose} closeAfterTransition={false}>
         <DialogTitle>
           {editMode
             ? "Edit this Location"

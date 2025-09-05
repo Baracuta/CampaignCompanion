@@ -49,7 +49,7 @@ function AddPC(props: thingProps) {
       >
         {editMode ? "Edit" : <p>Add Player Character</p>}
       </button>
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={open} onClose={handleClose} closeAfterTransition={false}>
         <DialogTitle>
           {editMode
             ? "Edit this Player Character"

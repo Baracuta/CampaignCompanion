@@ -55,7 +55,7 @@ function AddItem(props: thingProps) {
       >
         {editMode ? "Edit" : <p>Add item</p>}
       </button>
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={open} onClose={handleClose} closeAfterTransition={false}>
         <DialogTitle>
           {editMode ? "Edit this Item" : "Add a New Item to this Campaign"}
         </DialogTitle>

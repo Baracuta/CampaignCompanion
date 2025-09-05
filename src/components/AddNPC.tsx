@@ -50,7 +50,7 @@ function AddNPC(props: thingProps) {
       >
         {editMode ? "Edit" : <p>Add NPC</p>}
       </button>
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={open} onClose={handleClose} closeAfterTransition={false}>
         <DialogTitle>
           {editMode ? "Edit this NPC" : "Add a New NPC to this Campaign"}
         </DialogTitle>

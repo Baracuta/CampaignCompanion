@@ -35,12 +35,14 @@ export default function ThingPopover(props: PopProps) {
   return (
     <Popover
       className={styles.popover}
+      closeAfterTransition={false}
       anchorReference="anchorPosition"
       anchorPosition={{ top: 0, left: 0 }}
       id={props.id}
       open={props.open}
       anchorEl={props.anchorEl}
       onClose={props.handleClose}
+      aria-hidden={props.open ? "false" : "true"}
       anchorOrigin={{
         vertical: "top",
         horizontal: "left",
