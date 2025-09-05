@@ -40,12 +40,11 @@ export const del = async (imageId:string) => {
   const path = `${user.id}/${imageId}`;
 
   await authenticate();
-
-  const { error } = await supabase
-  .storage
-  .from(BUCKET)
-  .remove([path]);
-  if (error) throw error;
+  if (imageId.startsWith("/CampaignCompanion")) {
+    return;
+  } else if (await supabase.storage.from(BUCKET).exists(path)) {
+    await supabase.storage.from(BUCKET).remove([path, `${path}`]);
+  }
 };
 
 export const uploadImage = async (img: string): Promise<string> => {
