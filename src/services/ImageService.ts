@@ -21,7 +21,7 @@ async function base64ToBlob(base64: string): Promise<Blob> {
   return new Blob([ab], { type: mimeString });
 }
 
-async function authenticate () {
+export async function imageAuth () {
   const { data, error } = await supabase.auth.signInWithIdToken({
     provider: 'google',
     token: localStorage.getItem("google_token") as string
@@ -39,7 +39,6 @@ export const del = async (imageId:string) => {
   if (user == null) throw new Error("User not logged in");
   const path = `${user.id}/${imageId}`;
 
-  await authenticate();
   if (imageId.startsWith("/CampaignCompanion")) {
     return;
   } else if (await supabase.storage.from(BUCKET).exists(path)) {
@@ -52,7 +51,6 @@ export const uploadImage = async (img: string): Promise<string> => {
   if (user == null) throw new Error("User not logged in");
   
 
-  await authenticate();
 
   if (img.startsWith("/CampaignCompanion")) {
     const id = img;
@@ -79,7 +77,6 @@ export const getImage = async (imageId: string): Promise<string> => {
   if (user == null) throw new Error("User not logged in");
   const path = `${user.id}/${imageId}`;
 
-  await authenticate();
   if (imageId.startsWith("/CampaignCompanion")) {
     return imageId;
   } else if (await supabase.storage.from(BUCKET).exists(path)) {

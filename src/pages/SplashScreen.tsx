@@ -4,6 +4,7 @@ import NavButton from "../components/NavButton";
 import { ASSETS_PATH } from "../constants/assets_path";
 import { GoogleLogin } from "@react-oauth/google";
 import { handleUser } from "../services/CampaignServiceFrontend";
+import { imageAuth } from "../services/ImageService";
 
 
 //This is the Splash Screen when the application starts.
@@ -25,6 +26,7 @@ function SplashScreen() {
               if (credentialResponse.credential) {
                 await localStorage.setItem("google_token", credentialResponse.credential);
                 await handleUser();
+                await imageAuth();
               } else {
                 console.warn("Google credential is undefined.");
               }

@@ -13,7 +13,6 @@ export const verifyGoogleToken = async (req: Request, res: Response, next: NextF
   }
 
   const token = authHeader;
-  console.log("post-token check")
   
   try {
     const ticket = await client.verifyIdToken({
@@ -26,11 +25,10 @@ export const verifyGoogleToken = async (req: Request, res: Response, next: NextF
       res.status(401).json({ error: "Invalid token payload" });
       return;
     }
-    console.log("Token verified for user:", payload.sub);
     next();
   } catch (err) {
     // Error is happening here
     console.error("Token verification error:", err);
-    res.status(401).json({ error: "Invalid agafdh token" });
+    res.status(401).json({ error: "Invalid google token" });
   }
 }
