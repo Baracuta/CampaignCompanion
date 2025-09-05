@@ -1,7 +1,6 @@
 import { v4 as uuid } from "uuid";
 import { createClient } from "@supabase/supabase-js";
 import { getUser } from "./CampaignServiceFrontend";
-import { ASSETS_PATH } from "../constants/assets_path";
 
 
 
@@ -52,14 +51,18 @@ export const del = async (imageId:string) => {
 export const uploadImage = async (img: string): Promise<string> => {
   const user = await getUser();
   if (user == null) throw new Error("User not logged in");
-  const id = uuid();
-  const path = `${user.id}/${id}`;
+  
 
   await authenticate();
 
-  try {
+  if (img.startsWith("/CampaignCompanion")) {
+    const id = img;
+    return id;
+  } else {
+    const id = uuid();
+    const path = `${user.id}/${id}`;
     const blob = await base64ToBlob(img);
-    const { error } = await supabase
+    await supabase
     .storage
     .from(BUCKET)
     .upload(path, blob, {
@@ -68,34 +71,22 @@ export const uploadImage = async (img: string): Promise<string> => {
       contentType: 'image/*',
     });
 
-    if (error) throw error;
-
-  } catch {
-    const { error } = await supabase
-    .storage
-    .from(BUCKET)
-    .upload(path, (ASSETS_PATH + img),{
-      cacheControl: '3600',
-      upsert: false,
-    });
-
-    if (error) throw error;
+    return id;
   }
-
-  return id;
 };
 
 export const getImage = async (imageId: string): Promise<string> => {
   const user = await getUser();
   if (user == null) throw new Error("User not logged in");
-
   const path = `${user.id}/${imageId}`;
 
   await authenticate();
-
-  const image = await supabase.storage.from(BUCKET).getPublicUrl(path);
-
-  if (image.data.publicUrl == null) throw new Error("Image not found");
-
-  return image.data.publicUrl;
+  if (imageId.startsWith("/CampaignCompanion")) {
+    return imageId;
+  } else if (await supabase.storage.from(BUCKET).exists(path)) {
+    const image = await supabase.storage.from(BUCKET).getPublicUrl(path);
+    return image.data.publicUrl;
+  } else {
+    throw new Error("No Image Found");
+  }
 };
