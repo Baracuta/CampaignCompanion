@@ -1,6 +1,8 @@
 import { v4 as uuid } from "uuid";
 import { createClient } from "@supabase/supabase-js";
 import { getUser } from "./CampaignServiceFrontend";
+import { ASSETS_PATH } from "../constants/assets_path";
+
 
 
 const SUPABASE_URL='https://udttspdqobiflnklluuf.supabase.co'
@@ -29,14 +31,14 @@ async function authenticate () {
   if (error) {
     throw error;
   }
-  console.log(data);
+  return data;
 }
 
 
 export const del = async (imageId:string) => {
   const user = await getUser();
   if (user == null) throw new Error("User not logged in");
-  const path = `${user.id}/${imageId}.jpeg`;
+  const path = `${user.id}/${imageId}`;
 
   await authenticate();
 
@@ -60,12 +62,22 @@ export const uploadImage = async (img: string): Promise<string> => {
     const { error } = await supabase
     .storage
     .from(BUCKET)
-    .upload(path, blob);
+    .upload(path, blob, {
+      cacheControl: '3600',
+      upsert: false,
+      contentType: 'image/*',
+    });
 
     if (error) throw error;
 
   } catch {
-    const { error } = await supabase.storage.from(BUCKET).upload(path, img);
+    const { error } = await supabase
+    .storage
+    .from(BUCKET)
+    .upload(path, (ASSETS_PATH + img),{
+      cacheControl: '3600',
+      upsert: false,
+    });
 
     if (error) throw error;
   }
@@ -77,7 +89,7 @@ export const getImage = async (imageId: string): Promise<string> => {
   const user = await getUser();
   if (user == null) throw new Error("User not logged in");
 
-  const path = `${user.id}/${imageId}.jpeg`;
+  const path = `${user.id}/${imageId}`;
 
   await authenticate();
 
