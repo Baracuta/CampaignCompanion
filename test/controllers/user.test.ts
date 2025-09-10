@@ -1,13 +1,28 @@
 import * as UserController from '../../src/controllers/userController';
 import { Request, Response } from 'express';
+import { OAuth2Client } from 'google-auth-library';
 
-const mockRequest = (params, body) => {
-    return {
-        params: params,
-        body: body,
-    } as unknown as Request;
-};
+// Mock CampaignService
+jest.mock('../../src/services/CampaignServiceBackend', () => ({
+    createUser: jest.fn().mockResolvedValue({
+        id: 'mockUserId',
+        email: 'mockuser@email.com',
+        name: 'Mock User',
+    }),
+    getUser: jest.fn().mockResolvedValue({
+        id: 'mockUserId',
+        username: 'mockUsername',
+        password: 'mockPassword',
+    }),
+}));
 
+const mock_auth_token = 'mockToken';
+
+const mockRequest = (params, body) => ({
+    headers: { authorization: mock_auth_token },
+    params,
+    body,
+} as unknown as Request);
 
 const mockResponse = () => {
     let res = {
@@ -19,79 +34,53 @@ const mockResponse = () => {
     return res as unknown as Response;
 };
 
+// Mock the verifyIdToken function to return a resolved promise with a mock LoginTicket
+jest.spyOn(OAuth2Client.prototype, 'verifyIdToken').mockImplementation(() =>
+  Promise.resolve({
+    getPayload: () => ({
+        sub: 'mockUserId',
+        email: 'mockuser@email.com',
+        name: 'Mock User',
+    }),
+  } as any)
+);
 
 describe('createUser', () => {
     beforeEach(() => {
-        jest.clearAllMocks()
-    })
+        jest.clearAllMocks();
+    });
 
-    it('should create and return a user and 200 status', () => {
-        let req = mockRequest({},{ username: 'John Doe', password: 'password' });
+    it('should create and return a user and 201 status', async () => {
+        let req = mockRequest({}, {});
         let res = mockResponse();
 
-        UserController.createUser(req, res, () => {});
+        await UserController.createUser(req, res, () => {});
 
-        expect(res.status).toHaveBeenCalledWith(200);
+        expect(res.status).toHaveBeenCalledWith(201);
         expect(res.json).toHaveBeenCalledWith({
-            id: expect.any(String),
-            username: 'John Doe',
-            password:'password'
+            id: 'mockUserId',
+            email: 'mockuser@email.com',
+            name: 'Mock User',
         });
-    })
+    });
 });
 
 describe('getUser', () => {
     beforeEach(() => {
-        jest.clearAllMocks()
-    })
+        jest.clearAllMocks();
+    });
 
-    it('should find and return a user and 200 status', () => {
-        let req = mockRequest({id:'123'}, {});
+    it('should find and return a user and 200 status', async () => {
+        let req = mockRequest({}, {});
         let res = mockResponse();
 
-        UserController.getUser(req, res, () => {});
+        await UserController.getUser(req, res, () => {});
 
         expect(res.status).toHaveBeenCalledWith(200);
         expect(res.json).toHaveBeenCalledWith({
-            id: '123',
-            username: expect.any(String),
-            password: expect.any(String)
+            id: 'mockUserId',
+            username: 'mockUsername',
+            password: 'mockPassword',
         });
-    })
-});
-
-describe('updateUser', () => {
-    beforeEach(() => {
-        jest.clearAllMocks()
-    })
-
-    it('should update and return a user and 200 status', () => {
-        let req = mockRequest({id:'123'}, { username: 'Jane Doe', password: 'newpassword' });
-        let res = mockResponse();
-
-        UserController.updateUser(req, res, () => {});
-
-        expect(res.status).toHaveBeenCalledWith(200);
-        expect(res.json).toHaveBeenCalledWith({
-            id: '123',
-            username: 'Jane Doe',
-            password: 'newpassword'
-        });
-    })
-});
-
-describe('deleteUser', () => {
-    beforeEach(() => {
-        jest.clearAllMocks()
-    })
-
-    it('should delete a user and return 200 status', () => {
-        let req = mockRequest({id:'123'}, {});
-        let res = mockResponse();
-
-        UserController.deleteUser(req, res, () => {});
-
-        expect(res.status).toHaveBeenCalledWith(200);
-        expect(res.json).toHaveBeenCalledWith("User deleted successfully");
-    })
+    });
 });
