@@ -11,8 +11,8 @@ jest.mock('../../src/services/CampaignServiceBackend', () => ({
     }),
     getUser: jest.fn().mockResolvedValue({
         id: 'mockUserId',
-        username: 'mockUsername',
-        password: 'mockPassword',
+        email: 'mockuser@email.com',
+        name: 'Mock User',
     }),
 }));
 

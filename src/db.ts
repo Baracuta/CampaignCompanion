@@ -1,5 +1,6 @@
 import { Pool } from 'pg';
 
+require("dotenv").config({path: ".env"});
 export const pool = new Pool({
-    connectionString: process.env.DATABASE_URL || 'postgres://postgres:Baradar90@localhost:5432/master',
+    connectionString: process.env.DATABASE_URL
 });

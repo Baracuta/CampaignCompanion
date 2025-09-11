@@ -5,6 +5,8 @@ import userRouter from './src/routers/UserRouter'
 import * as entityRouter from './src/routers/EntityRouter'
 import { verifyGoogleToken } from './src/middleware/verifyGoogleToken'
 
+require('dotenv').config({path: ".env"});
+
 // Middlewares
 const app = express();
 const cors = require('cors');
@@ -34,6 +36,6 @@ app.use('/api/campaign/:campaignId/pc', entityRouter.pcRouter)
 app.use('/api/user', verify, userRouter)
 
 app.listen(port, () => {
-  console.log(`App listening at http://localhost:${port}/CampaignCompanion`)
+  console.log(`App listening at http://${process.env.HOSTNAME}:${port}/CampaignCompanion`)
 })
 
