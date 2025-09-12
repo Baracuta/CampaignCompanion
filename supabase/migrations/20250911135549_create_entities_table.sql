@@ -7,5 +7,5 @@ create table if not exists entities (
     image text,
     isfavourite boolean default false,
     modifieddate bigint,
-    campaignid uuid not null references campaigns(id) on delete cascade
+    incampaign uuid not null references campaigns(id) on delete cascade
 )

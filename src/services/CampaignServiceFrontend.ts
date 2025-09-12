@@ -5,6 +5,7 @@ import { Item } from "../types/Item";
 import { PC } from "../types/PlayerCharacter";
 import { User } from "../types/User";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 //Every single "entity" should have the following: create, delete, get, getPlural(getCampaigns, getNPCs...), update, updatePlural
 export const handleUser = async (): Promise<User> => {
@@ -21,7 +22,7 @@ export const handleUser = async (): Promise<User> => {
 }
 export const createUser = async (): Promise<User> => {
   const token = await localStorage.getItem("google_token");
-  const response = await fetch(`http://${process.env.HOSTNAME}:${process.env.PORT}/api/user`, {
+  const response = await fetch(`${API_BASE_URL}/api/user`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -39,7 +40,7 @@ export const createUser = async (): Promise<User> => {
 
 export const getUser = async (): Promise<User> => {
   const token = localStorage.getItem("google_token");
-  const response = await fetch(`http://${process.env.HOSTNAME}:${process.env.PORT}/api/user`, {
+  const response = await fetch(`${API_BASE_URL}/api/user`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -59,7 +60,7 @@ export const getUser = async (): Promise<User> => {
 
 export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
   const token = localStorage.getItem("google_token");
-  const response = await fetch(`http://${process.env.HOSTNAME}:${process.env.PORT}/api/campaign`, {
+  const response = await fetch(`${API_BASE_URL}/api/campaign`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -78,7 +79,7 @@ export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
 
 export const deleteCampaign = async (id: string): Promise<void> => {
   const token = localStorage.getItem("google_token");
-  const response = await fetch(`http://${process.env.HOSTNAME}:${process.env.PORT}/api/campaign/${id}`, {
+  const response = await fetch(`${API_BASE_URL}/api/campaign/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -95,7 +96,7 @@ export const deleteCampaign = async (id: string): Promise<void> => {
 
 export const getCampaign = async (id: string): Promise<Campaign> => {
   const token = localStorage.getItem("google_token");
-  const response = await fetch(`http://${process.env.HOSTNAME}:${process.env.PORT}/api/campaign/${id}`, {
+  const response = await fetch(`${API_BASE_URL}/api/campaign/${id}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -115,7 +116,7 @@ export const getCampaign = async (id: string): Promise<Campaign> => {
 export const getCampaigns = async (): Promise<Array<Campaign>> => {
   const token = localStorage.getItem("google_token");
   const user = await getUser();
-  const response = await fetch(`http://${process.env.HOSTNAME}:${process.env.PORT}/api/campaign/user/${user.id}`, {
+  const response = await fetch(`${API_BASE_URL}/api/campaign/user/${user.id}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -134,7 +135,7 @@ export const getCampaigns = async (): Promise<Array<Campaign>> => {
 
 export const updateCampaign = async (campaign: Campaign): Promise<Campaign> => {
   const token = localStorage.getItem("google_token");
-  const response = await fetch(`http://${process.env.HOSTNAME}:${process.env.PORT}/api/campaign/${campaign.id}`, {
+  const response = await fetch(`${API_BASE_URL}/api/campaign/${campaign.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -158,7 +159,7 @@ export const updateCampaign = async (campaign: Campaign): Promise<Campaign> => {
 
 export const createNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
   const token = localStorage.getItem("google_token");
-  const response = await fetch(`http://${process.env.HOSTNAME}:${process.env.PORT}/api/campaign/${campaignId}/npc`, {
+  const response = await fetch(`${API_BASE_URL}/api/campaign/${campaignId}/npc`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -177,7 +178,7 @@ export const createNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
 
 export const deleteNPC = async (campaignId: string, npcId: string): Promise<Array<NPC>> => {
   const token = localStorage.getItem("google_token");
-  const response = await fetch(`http://${process.env.HOSTNAME}:${process.env.PORT}/api/campaign/${campaignId}/npc/${npcId}`, {
+  const response = await fetch(`${API_BASE_URL}/api/campaign/${campaignId}/npc/${npcId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -195,7 +196,7 @@ export const deleteNPC = async (campaignId: string, npcId: string): Promise<Arra
 
 export const getNPC = async (campaignId: string, npcId: string): Promise<NPC> => {
   const token = localStorage.getItem("google_token");
-  const response = await fetch(`http://${process.env.HOSTNAME}:${process.env.PORT}/api/campaign/${campaignId}/npc/${npcId}`, {
+  const response = await fetch(`${API_BASE_URL}/api/campaign/${campaignId}/npc/${npcId}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -213,7 +214,7 @@ export const getNPC = async (campaignId: string, npcId: string): Promise<NPC> =>
 
 export const getNPCs = async (campaignId: string): Promise<Array<NPC>> => {
   const token = localStorage.getItem("google_token");
-  const response = await fetch(`http://${process.env.HOSTNAME}:${process.env.PORT}/api/campaign/${campaignId}/npc`, {
+  const response = await fetch(`${API_BASE_URL}/api/campaign/${campaignId}/npc`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -231,7 +232,7 @@ export const getNPCs = async (campaignId: string): Promise<Array<NPC>> => {
 
 export const updateNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
   const token = localStorage.getItem("google_token");
-  const response = await fetch(`http://${process.env.HOSTNAME}:${process.env.PORT}/api/campaign/${campaignId}/npc/${npc.id}`, {
+  const response = await fetch(`${API_BASE_URL}/api/campaign/${campaignId}/npc/${npc.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -253,7 +254,7 @@ export const updateNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
 
 export const createLocation = async (location: Location, campaignId: string): Promise<Location> => {
   const token = localStorage.getItem("google_token");
-  const response = await fetch(`http://${process.env.HOSTNAME}:${process.env.PORT}/api/campaign/${campaignId}/location`, {
+  const response = await fetch(`${API_BASE_URL}/api/campaign/${campaignId}/location`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -272,7 +273,7 @@ export const createLocation = async (location: Location, campaignId: string): Pr
 
 export const deleteLocation = async (campaignId: string, locationId: string): Promise<Array<Location>> => {
   const token = localStorage.getItem("google_token");
-  const response = await fetch(`http://${process.env.HOSTNAME}:${process.env.PORT}/api/campaign/${campaignId}/location/${locationId}`, {
+  const response = await fetch(`${API_BASE_URL}/api/campaign/${campaignId}/location/${locationId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -290,7 +291,7 @@ export const deleteLocation = async (campaignId: string, locationId: string): Pr
 
 export const getLocation = async (campaignId: string, locationId: string): Promise<Location> => {
   const token = localStorage.getItem("google_token");
-  const response = await fetch(`http://${process.env.HOSTNAME}:${process.env.PORT}/api/campaign/${campaignId}/location/${locationId}`, {
+  const response = await fetch(`${API_BASE_URL}/api/campaign/${campaignId}/location/${locationId}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -308,7 +309,7 @@ export const getLocation = async (campaignId: string, locationId: string): Promi
 
 export const getLocations = async (campaignId: string): Promise<Array<Location>> => {
   const token = localStorage.getItem("google_token");
-  const response = await fetch(`http://${process.env.HOSTNAME}:${process.env.PORT}/api/campaign/${campaignId}/location`, {
+  const response = await fetch(`${API_BASE_URL}/api/campaign/${campaignId}/location`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -326,7 +327,7 @@ export const getLocations = async (campaignId: string): Promise<Array<Location>>
 
 export const updateLocation = async (campaignId: string, location: Location): Promise<Location> => {
   const token = localStorage.getItem("google_token");
-  const response = await fetch(`http://${process.env.HOSTNAME}:${process.env.PORT}/api/campaign/${campaignId}/location/${location.id}`, {
+  const response = await fetch(`${API_BASE_URL}/api/campaign/${campaignId}/location/${location.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -348,7 +349,7 @@ export const updateLocation = async (campaignId: string, location: Location): Pr
 
 export const createItem = async (item: Item, campaignId: string): Promise<Item> => {
   const token = localStorage.getItem("google_token");
-  const response = await fetch(`http://${process.env.HOSTNAME}:${process.env.PORT}/api/campaign/${campaignId}/item`, {
+  const response = await fetch(`${API_BASE_URL}/api/campaign/${campaignId}/item`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -367,7 +368,7 @@ export const createItem = async (item: Item, campaignId: string): Promise<Item> 
 
 export const deleteItem = async (campaignId: string, itemId: string): Promise<Array<Item>> => {
   const token = localStorage.getItem("google_token");
-  const response = await fetch(`http://${process.env.HOSTNAME}:${process.env.PORT}/api/campaign/${campaignId}/item/${itemId}`, {
+  const response = await fetch(`${API_BASE_URL}/api/campaign/${campaignId}/item/${itemId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -386,7 +387,7 @@ export const deleteItem = async (campaignId: string, itemId: string): Promise<Ar
 
 export const getItem = async (campaignId: string, itemId: string): Promise<Item> => {
   const token = localStorage.getItem("google_token");
-  const response = await fetch(`http://${process.env.HOSTNAME}:${process.env.PORT}/api/campaign/${campaignId}/item/${itemId}`, {
+  const response = await fetch(`${API_BASE_URL}/api/campaign/${campaignId}/item/${itemId}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -404,7 +405,7 @@ export const getItem = async (campaignId: string, itemId: string): Promise<Item>
 
 export const getItems = async (campaignId: string): Promise<Array<Item>> => {
   const token = localStorage.getItem("google_token");
-  const response = await fetch(`http://${process.env.HOSTNAME}:${process.env.PORT}/api/campaign/${campaignId}/item`, {
+  const response = await fetch(`${API_BASE_URL}/api/campaign/${campaignId}/item`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -422,7 +423,7 @@ export const getItems = async (campaignId: string): Promise<Array<Item>> => {
 
 export const updateItem = async (campaignId: string, item: Item): Promise<Item> => {
   const token = localStorage.getItem("google_token");
-  const response = await fetch(`http://${process.env.HOSTNAME}:${process.env.PORT}/api/campaign/${campaignId}/item/${item.id}`, {
+  const response = await fetch(`${API_BASE_URL}/api/campaign/${campaignId}/item/${item.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -445,7 +446,7 @@ export const updateItem = async (campaignId: string, item: Item): Promise<Item> 
 
 export const createPC = async (pc: PC, campaignId: string): Promise<PC> => {
   const token = localStorage.getItem("google_token");
-  const response = await fetch(`http://${process.env.HOSTNAME}:${process.env.PORT}/api/campaign/${campaignId}/pc`, {
+  const response = await fetch(`${API_BASE_URL}/api/campaign/${campaignId}/pc`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -464,7 +465,7 @@ export const createPC = async (pc: PC, campaignId: string): Promise<PC> => {
 
 export const deletePC = async (campaignId: string, pcId: string): Promise<Array<PC>> => {
   const token = localStorage.getItem("google_token");
-  const response = await fetch(`http://${process.env.HOSTNAME}:${process.env.PORT}/api/campaign/${campaignId}/pc/${pcId}`, {
+  const response = await fetch(`${API_BASE_URL}/api/campaign/${campaignId}/pc/${pcId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -482,7 +483,7 @@ export const deletePC = async (campaignId: string, pcId: string): Promise<Array<
 
 export const getPC = async (campaignId: string, pcId: string): Promise<PC> => {
   const token = localStorage.getItem("google_token");
-  const response = await fetch(`http://${process.env.HOSTNAME}:${process.env.PORT}/api/campaign/${campaignId}/pc/${pcId}`, {
+  const response = await fetch(`${API_BASE_URL}/api/campaign/${campaignId}/pc/${pcId}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -500,7 +501,7 @@ export const getPC = async (campaignId: string, pcId: string): Promise<PC> => {
 
 export const getPCs = async (campaignId: string): Promise<Array<PC>> => {
   const token = localStorage.getItem("google_token");
-  const response = await fetch(`http://${process.env.HOSTNAME}:${process.env.PORT}/api/campaign/${campaignId}/pc`, {
+  const response = await fetch(`${API_BASE_URL}/api/campaign/${campaignId}/pc`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -518,7 +519,7 @@ export const getPCs = async (campaignId: string): Promise<Array<PC>> => {
 
 export const updatePC = async (campaignId: string, pc: PC): Promise<PC> => {
   const token = localStorage.getItem("google_token");
-  const response = await fetch(`http://${process.env.HOSTNAME}:${process.env.PORT}/api/campaign/${campaignId}/pc/${pc.id}`, {
+  const response = await fetch(`${API_BASE_URL}/api/campaign/${campaignId}/pc/${pc.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
