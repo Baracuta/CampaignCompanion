@@ -3,7 +3,7 @@ import * as CampaignService from "../services/CampaignServiceBackend";
 import { OAuth2Client } from "google-auth-library";
 
 const client = new OAuth2Client();
-
+const GOOGLE_CLIENT_ID = process.env.VITE_GOOGLE_CLIENT_ID as string;
 
 export const createUser: RequestHandler = async (req, res): Promise<void> => {
   const authheader = req.headers.authorization;
@@ -16,7 +16,7 @@ export const createUser: RequestHandler = async (req, res): Promise<void> => {
 
   const ticket = await client.verifyIdToken({
     idToken: token,
-    audience: "1090280266148-hhbspb3t1g9rontnmbpc0gopeqapo3nq.apps.googleusercontent.com",
+    audience: GOOGLE_CLIENT_ID,
   });
   const payload = ticket.getPayload();
   if (!payload) {
@@ -50,7 +50,7 @@ export const getUser: RequestHandler = async (req, res): Promise<void> => {
 
   const ticket = await client.verifyIdToken({
     idToken: token,
-    audience: "1090280266148-hhbspb3t1g9rontnmbpc0gopeqapo3nq.apps.googleusercontent.com",
+    audience: GOOGLE_CLIENT_ID,
   });
   const payload = ticket.getPayload();
   if (!payload) {

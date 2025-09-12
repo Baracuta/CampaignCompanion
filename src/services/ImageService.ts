@@ -4,8 +4,8 @@ import { getUser } from "./CampaignServiceFrontend";
 
 
 
-const SUPABASE_URL='https://udttspdqobiflnklluuf.supabase.co'
-const SUPABASE_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkdHRzcGRxb2JpZmxua2xsdXVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY5MDUxMTQsImV4cCI6MjA3MjQ4MTExNH0.-olNmzIS5uIn7rhHmR6S26sTejJ9HhUK3lO7re6Gn6E'
+const SUPABASE_URL=import.meta.env.VITE_SUPABASE_URL
+const SUPABASE_ANON_KEY=import.meta.env.VITE_SUPABASE_ANON_KEY
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 const BUCKET = ('images');

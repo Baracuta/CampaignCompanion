@@ -1,7 +1,7 @@
 import { OAuth2Client } from "google-auth-library";
 
 const client = new OAuth2Client(); // No clientId needed for verification
-
+const GOOGLE_CLIENT_ID = process.env.VITE_GOOGLE_CLIENT_ID as string;
 import { Request, Response, NextFunction } from "express";
 
 export const verifyGoogleToken = async (req: Request, res: Response, next: NextFunction) => {
@@ -17,7 +17,7 @@ export const verifyGoogleToken = async (req: Request, res: Response, next: NextF
   try {
     const ticket = await client.verifyIdToken({
       idToken: token,
-      audience: "1090280266148-hhbspb3t1g9rontnmbpc0gopeqapo3nq.apps.googleusercontent.com",
+      audience: GOOGLE_CLIENT_ID,
     });
     const payload = ticket.getPayload();
     if (!payload) {
