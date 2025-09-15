@@ -6,7 +6,7 @@ const TEST_ID = "eb579531-abbe-49b5-9ea8-033e865e713b";
 const CAMPAIGN_ID = "11111111-2222-3333-4444-555555555555";
 const ENTITY_ID = "99999999-8888-7777-6666-555555555555";
 
-const mockRequest = (params, body) => {
+const mockRequest = (params:any, body:any) => {
   return {
     params: params,
     body: body,
