@@ -18,7 +18,7 @@ jest.mock('../../src/services/CampaignServiceBackend', () => ({
 
 const mock_auth_token = 'mockToken';
 
-const mockRequest = (params, body) => ({
+const mockRequest = (params:any, body:any) => ({
     headers: { authorization: mock_auth_token },
     params,
     body,
@@ -79,8 +79,8 @@ describe('getUser', () => {
         expect(res.status).toHaveBeenCalledWith(200);
         expect(res.json).toHaveBeenCalledWith({
             id: 'mockUserId',
-            username: 'mockUsername',
-            password: 'mockPassword',
+            email: 'mockuser@email.com',
+            name: 'Mock User',
         });
     });
 });
