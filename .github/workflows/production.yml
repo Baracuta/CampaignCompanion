@@ -43,4 +43,11 @@ jobs:
 
       - name: Deploy to Production
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: sevalla-hosting/sevalla-deploy@v1.0.0
+        with:
+          action: deploy-app
+          sevalla-token: ${{ secrets.SEVALLA_TOKEN }}
+          app-id: 7ac26e03-17b2-4761-98d4-3cc607812f57
+          branch: main
+          is-restart: false
+          wait-for-finish: true
