@@ -1,9 +1,9 @@
-import * as UserController from '../../src/controllers/userController';
+import * as UserController from "../../src/controllers/userController";
 import { Request, Response } from 'express';
 import { OAuth2Client } from 'google-auth-library';
 
 // Mock CampaignService
-jest.mock('../../src/services/CampaignServiceBackend', () => ({
+jest.mock("../../src/services/CampaignServiceBackend", () => ({
     createUser: jest.fn().mockResolvedValue({
         id: 'mockUserId',
         email: 'mockuser@email.com',
