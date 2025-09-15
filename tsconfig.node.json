@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES2022",
     "lib": ["ES2023"],
-    "module": "CommonJS",
+    "module": "es2022",
     "skipLibCheck": true,
     "esModuleInterop": true,
     "sourceMap": true,
