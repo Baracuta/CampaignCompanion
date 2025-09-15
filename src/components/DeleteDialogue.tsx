@@ -3,6 +3,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 import React from 'react';
 import { Entity } from '../types/Entity';
+import { del } from '../services/ImageService';
 
 
 type DeleteProps = {
@@ -23,6 +24,9 @@ export default function AlertDialog(props: DeleteProps) {
 
   const handleDelete = () => {
     props.delete(props.campaignID, props.thing);
+    if (props.thing.image != null) {
+      del(props.thing.image)
+    }
   };
 
   return (

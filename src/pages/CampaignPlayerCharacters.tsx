@@ -8,7 +8,7 @@ import { useCampaign } from "../hooks/useCampaign";
 import ThingList from "../components/ThingList";
 import AddPC from "../components/AddPC";
 import { PC } from "../types/PlayerCharacter";
-import { createPC, getPC } from "../services/CampaignService";
+import { createPC, getPC } from "../services/CampaignServiceFrontend";
 import { Item } from "../types/Item";
 import { NPC } from "../types/NPC";
 import { Location } from "../types/Location";

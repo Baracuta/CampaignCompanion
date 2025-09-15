@@ -11,7 +11,7 @@ import { Fragment, useState } from "react";
 import { NPC } from "../types/NPC";
 import StandardImageList from "./ImageList";
 import { NpcImageData } from "../constants/npc_image_bank";
-import { uploadImage } from "../services/ImageService";
+import { del, uploadImage } from "../services/ImageService";
 import { useImage } from "../hooks/useImage";
 
 type thingProps = {
@@ -35,7 +35,7 @@ function AddNPC(props: thingProps) {
   };
 
   const editMode = props.editNpc != null;
-  const favourite = npc.isFavourite === true;
+  const favourite = npc.isfavourite === true;
   const image = useImage(npc.image);
 
   const clearNpc = () => {
@@ -50,7 +50,7 @@ function AddNPC(props: thingProps) {
       >
         {editMode ? "Edit" : <p>Add NPC</p>}
       </button>
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={open} onClose={handleClose} closeAfterTransition={false}>
         <DialogTitle>
           {editMode ? "Edit this NPC" : "Add a New NPC to this Campaign"}
         </DialogTitle>
@@ -62,8 +62,8 @@ function AddNPC(props: thingProps) {
               <div
                 className={styles.icon}
                 onClick={async () => {
-                  const isFavourite = false;
-                  await setNpc({ ...npc, isFavourite });
+                  const isfavourite = false;
+                  await setNpc({ ...npc, isfavourite });
                 }}
               >
                 {" "}
@@ -73,8 +73,8 @@ function AddNPC(props: thingProps) {
               <div
                 className={styles.icon}
                 onClick={async () => {
-                  const isFavourite = true;
-                  await setNpc({ ...npc, isFavourite });
+                  const isfavourite = true;
+                  await setNpc({ ...npc, isfavourite });
                 }}
               >
                 {" "}
@@ -120,7 +120,9 @@ function AddNPC(props: thingProps) {
               images={NpcImageData}
               imageClick={async (img: string) => {
                 const image = img;
-                // If image != null, getImage => setimage. else, upload as usual
+                if (npc.image != null) {
+                  await del(npc.image);
+                }
                 const imageId = await uploadImage(img);
                 await setNpc({ ...npc, image: imageId });
                 return image;

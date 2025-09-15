@@ -12,7 +12,7 @@ import { PC } from "../types/PlayerCharacter";
 import { NpcImageData } from "../constants/npc_image_bank";
 import StandardImageList from "./ImageList";
 import { useImage } from "../hooks/useImage";
-import { uploadImage } from "../services/ImageService";
+import { del, uploadImage } from "../services/ImageService";
 
 type thingProps = {
   campaignId: string;
@@ -34,7 +34,7 @@ function AddPC(props: thingProps) {
   };
 
   const editMode = props.editPC != null;
-  const favourite = pc.isFavourite === true;
+  const favourite = pc.isfavourite === true;
   const image = useImage(pc.image as string);
 
   const clearPC = () => {
@@ -49,7 +49,7 @@ function AddPC(props: thingProps) {
       >
         {editMode ? "Edit" : <p>Add Player Character</p>}
       </button>
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={open} onClose={handleClose} closeAfterTransition={false}>
         <DialogTitle>
           {editMode
             ? "Edit this Player Character"
@@ -63,8 +63,8 @@ function AddPC(props: thingProps) {
               <div
                 className={styles.icon}
                 onClick={async () => {
-                  const isFavourite = false;
-                  await setPC({ ...pc, isFavourite });
+                  const isfavourite = false;
+                  await setPC({ ...pc, isfavourite });
                 }}
               >
                 {" "}
@@ -74,8 +74,8 @@ function AddPC(props: thingProps) {
               <div
                 className={styles.icon}
                 onClick={async () => {
-                  const isFavourite = true;
-                  await setPC({ ...pc, isFavourite });
+                  const isfavourite = true;
+                  await setPC({ ...pc, isfavourite });
                 }}
               >
                 {" "}
@@ -112,10 +112,10 @@ function AddPC(props: thingProps) {
 
             <input
               type="text"
-              value={pc.playerName ?? ""}
+              value={pc.player_name ?? ""}
               onChange={(e) => {
-                const playerName = e.target.value;
-                setPC({ ...pc, playerName });
+                const player_name = e.target.value;
+                setPC({ ...pc, player_name });
               }}
             />
 
@@ -123,10 +123,10 @@ function AddPC(props: thingProps) {
 
             <input
               type="text"
-              value={pc.pcClass ?? ""}
+              value={pc.pc_class ?? ""}
               onChange={(e) => {
-                const pcClass = e.target.value;
-                setPC({ ...pc, pcClass });
+                const pc_class = e.target.value;
+                setPC({ ...pc, pc_class });
               }}
             />
 
@@ -158,6 +158,9 @@ function AddPC(props: thingProps) {
               images={NpcImageData}
               imageClick={async (img: string) => {
                 const image = img;
+                if (pc.image != null) {
+                  await del(pc.image);
+                }
                 const imageId = await uploadImage(img);
                 await setPC({ ...pc, image: imageId });
                 return image;

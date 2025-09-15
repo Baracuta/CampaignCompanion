@@ -7,16 +7,18 @@ const CampaignSchema = {
   id: Joi.string().uuid().optional(),
   name: Joi.string().required(),
   players: Joi.number().required(),
+  user: Joi.string().optional(),
+  game: Joi.string().optional(),
 };
 
 export const createCampaign: RequestHandler = async (req, res): Promise<void> => {
-  const { error, value } = Joi.object(CampaignSchema).validate(req.body);
+  const { error, value } = Joi.object<Campaign>(CampaignSchema).validate(req.body);
   if (error) {
     res.status(400).json({ error: "Invalid campaign data" });
     return;
   }
-
-  const newCampaign = await CampaignService.createCampaign(value as Campaign);
+  
+  const newCampaign = await CampaignService.createCampaign(value);
   if (!newCampaign) {
     res.status(500).json({ error: "Failed to create campaign" });
     return;
@@ -25,7 +27,7 @@ export const createCampaign: RequestHandler = async (req, res): Promise<void> =>
   res.status(201).json(newCampaign);
   return;
 };
-//Problem might be that these don't actually do anything, I think
+
 export const getCampaign: RequestHandler = async (req, res): Promise<void> => {
   const campaign = await CampaignService.getCampaign(req.params.id);
   if (!campaign) {
@@ -34,6 +36,11 @@ export const getCampaign: RequestHandler = async (req, res): Promise<void> => {
   }
   res.status(200).json(campaign);
   return;
+};
+
+export const getCampaigns: RequestHandler = async (req, res): Promise<void> => {
+  const campaigns = await CampaignService.getCampaigns(req.params.userId);
+  res.status(200).json(campaigns);
 };
 
 export const updateCampaign: RequestHandler = async (req, res): Promise<void> => {

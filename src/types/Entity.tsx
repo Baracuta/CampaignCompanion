@@ -5,6 +5,6 @@ export interface Entity {
   description?: string;
   notes?: string;
   image?: string;
-  isFavourite?: boolean;
-  modifiedDate: number;
+  isfavourite?: boolean;
+  modifieddate: number;
 }

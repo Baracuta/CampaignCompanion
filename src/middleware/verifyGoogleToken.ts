@@ -1,0 +1,34 @@
+import { OAuth2Client } from "google-auth-library";
+
+const client = new OAuth2Client(); // No clientId needed for verification
+const GOOGLE_CLIENT_ID = process.env.VITE_GOOGLE_CLIENT_ID as string;
+import { Request, Response, NextFunction } from "express";
+
+export const verifyGoogleToken = async (req: Request, res: Response, next: NextFunction) => {
+  const authHeader = req.headers.authorization;
+  if (!authHeader) {
+    console.log("Verify Error")
+    res.status(401).json({ error: "No token provided" });
+    return;
+  }
+
+  const token = authHeader;
+  
+  try {
+    const ticket = await client.verifyIdToken({
+      idToken: token,
+      audience: GOOGLE_CLIENT_ID,
+    });
+    const payload = ticket.getPayload();
+    if (!payload) {
+      console.log("Verify Payload Error");
+      res.status(401).json({ error: "Invalid token payload" });
+      return;
+    }
+    next();
+  } catch (err) {
+    // Error is happening here
+    console.error("Token verification error:", err);
+    res.status(401).json({ error: "Invalid google token" });
+  }
+}

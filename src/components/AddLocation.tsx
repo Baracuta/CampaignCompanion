@@ -36,7 +36,7 @@ function AddLocation(props: thingProps) {
   };
 
   const editMode = props.editLocation != null;
-  const favourite = location.isFavourite === true;
+  const favourite = location.isfavourite === true;
   const image = useImage(location.image);
 
   const clearLocation = () => {
@@ -51,7 +51,7 @@ function AddLocation(props: thingProps) {
       >
         {editMode ? "Edit" : <p>Add Location</p>}
       </button>
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={open} onClose={handleClose} closeAfterTransition={false}>
         <DialogTitle>
           {editMode
             ? "Edit this Location"
@@ -65,8 +65,8 @@ function AddLocation(props: thingProps) {
               <div
                 className={styles.icon}
                 onClick={async () => {
-                  const isFavourite = false;
-                  await setLocation({ ...location, isFavourite });
+                  const isfavourite = false;
+                  await setLocation({ ...location, isfavourite });
                 }}
               >
                 {" "}
@@ -76,8 +76,8 @@ function AddLocation(props: thingProps) {
               <div
                 className={styles.icon}
                 onClick={async () => {
-                  const isFavourite = true;
-                  await setLocation({ ...location, isFavourite });
+                  const isfavourite = true;
+                  await setLocation({ ...location, isfavourite });
                 }}
               >
                 {" "}
@@ -123,6 +123,9 @@ function AddLocation(props: thingProps) {
               images={LocationImageData}
               imageClick={async (img: string) => {
                 const image = img;
+                if (location.image != null) {
+                  await del(location.image);
+                }
                 const imageId = await uploadImage(img);
                 await setLocation({ ...location, image: imageId });
                 return image;

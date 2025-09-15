@@ -22,7 +22,7 @@ function ToolBar(props: BarProps) {
         <h4>Favourites:</h4>
         <AvatarList
           things={props.campaignEntities?.filter(
-            (item) => item.isFavourite == true
+            (item) => item.isfavourite == true
           )}
           campaign={props.campaign}
           delete={props.delete}
@@ -34,7 +34,7 @@ function ToolBar(props: BarProps) {
         <h4>Recent Edits:</h4>
         <AvatarList
           things={props.campaignEntities?.sort(
-            (a: Entity, b: Entity) => b.modifiedDate - a.modifiedDate
+            (a: Entity, b: Entity) => b.modifieddate - a.modifieddate
           )}
           campaign={props.campaign}
           delete={props.delete}

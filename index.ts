@@ -3,12 +3,20 @@ import path from 'path'
 import campaignRouter from './src/routers/CampaignRouter'
 import userRouter from './src/routers/UserRouter'
 import * as entityRouter from './src/routers/EntityRouter'
+import { verifyGoogleToken } from './src/middleware/verifyGoogleToken'
 
-const app = express()
-const cors = require('cors')
-const port = 5000
+require('dotenv').config({path: ".env"});
+
+// Middlewares
+const app = express();
+const cors = require('cors');
+const port = 5000;
+const verify = verifyGoogleToken;
+
 
 app.use(cors());
+app.use(express.json());
+
 
 // Serve static files at /CampaignCompanion
 app.use('/CampaignCompanion', express.static(path.join(__dirname, 'dist')))
@@ -20,13 +28,14 @@ app.get(/^\/CampaignCompanion(\/.*)?$/, (_req, res) => {
 
 app.use('/api/campaign', campaignRouter)
 
-app.use('/api/campaign/npc', entityRouter.npcRouter)
-app.use('/api/campaign/location', entityRouter.locationRouter)
-app.use('/api/campaign/item', entityRouter.itemRouter)
-app.use('/api/campaign/pc', entityRouter.pcRouter)
+app.use('/api/campaign/:campaignId/npc', entityRouter.npcRouter)
+app.use('/api/campaign/:campaignId/location', entityRouter.locationRouter)
+app.use('/api/campaign/:campaignId/item', entityRouter.itemRouter)
+app.use('/api/campaign/:campaignId/pc', entityRouter.pcRouter)
 
-app.use('/api/user', userRouter)
+app.use('/api/user', verify, userRouter)
 
 app.listen(port, () => {
-  console.log(`App listening at http://localhost:${port}/CampaignCompanion`)
+  console.log(`App listening at http://${process.env.HOSTNAME}:${port}/CampaignCompanion`)
 })
+

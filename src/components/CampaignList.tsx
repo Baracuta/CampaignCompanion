@@ -17,7 +17,6 @@ function CampaignList() {
     ></Card>
   ));
 
-  console.log(divs);
   return (
     <>
       <NavButton text="Create New Campaign" destination="/campaign-form" />

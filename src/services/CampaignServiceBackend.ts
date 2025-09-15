@@ -5,33 +5,58 @@ import { Location } from "../types/Location";
 import { Item } from "../types/Item";
 import { PC } from "../types/PlayerCharacter";
 import { pool } from "../db";
+import { User } from "../types/User";
 
 //Every single "entity" should have the following: create, delete, get, getPlural(getCampaigns, getNPCs...), update, updatePlural
+
+//Users Section
+
+export const createUser = async (user: User): Promise<User> => {
+  const id = user.id;
+
+  await pool.query(
+    `INSERT INTO users (id, email, name)
+     VALUES ($1, $2, $3)`,
+    [
+      user.id,
+      user.email,
+      user.name
+    ]
+  );
+  return { ...user, id };
+};
+
+export const getUser = async (id: string): Promise<User> => {
+  const result = await pool.query("SELECT * FROM users WHERE id = $1", [id]);
+  return result.rows[0] as User;
+};
 
 //Campaign Section
 
 //Used in CampaignForm to generate a new campaign
 export const createCampaign = async (campaign: Campaign): Promise<Campaign> => {
   const id = uuid();
-  await pool.query(
-    `INSERT INTO campaigns (id, name, players)
-     VALUES ($1, $2, $3)`,
+  try {
+    await pool.query(
+      `INSERT INTO campaigns (id, name, players, game, userid) VALUES ($1, $2, $3, $4, $5)`,
     [
       id,
       campaign.name,
       campaign.players,
+      campaign.game,
+      campaign.user
     ]
-  );
+  )} catch (error) {
+    console.error("Error creating campaign:", error);
+    throw new Error("Failed to create campaign");
+  }
   return { ...campaign, id };
 };
 
-export const deleteCampaign = async (id: string): Promise<Array<Campaign>> => {
+export const deleteCampaign = async (id: string): Promise<void> => {
   await pool.query("DELETE FROM campaigns WHERE id = $1", [id]);
-
-  const allCampaigns = await getCampaigns();
-
-  return allCampaigns;
 };
+
 
 //Used in the useCampaign hook, which itself is used anywhere where the campaign needs to be set.
 export const getCampaign = async (id: string): Promise<Campaign> => {
@@ -43,8 +68,9 @@ export const getCampaign = async (id: string): Promise<Campaign> => {
 };
 
 //Used in the getCampaign method, as well as in the useCampaigns hook, which is used in the CampaignList component.
-export const getCampaigns = async (): Promise<Campaign[]> => {
-  const result = await pool.query("SELECT * FROM campaigns");
+export const getCampaigns = async (userId:string): Promise<Campaign[]> => {
+  const result = await pool.query("SELECT * FROM campaigns WHERE userid = $1", [userId]);
+  
   return result.rows as Campaign[];
 };
 
@@ -74,7 +100,7 @@ export const createNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
     ...npc,
     id: uuid(),
     type: "NPC",
-    modifiedDate: Date.now(),
+    modifieddate: Date.now(),
   };
 
   await pool.query(
@@ -87,8 +113,8 @@ export const createNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
       npc.description,
       npc.notes,
       npc.image,
-      npc.isFavourite,
-      npc.modifiedDate,
+      npc.isfavourite,
+      npc.modifieddate,
       campaignId
     ]
   );
@@ -136,7 +162,7 @@ export const updateNPC = async (campaignId: string, npc: NPC): Promise<NPC> => {
       npc.description,
       npc.notes,
       npc.image,
-      npc.isFavourite,
+      npc.isfavourite,
       Date.now(),
       campaignId
     ]
@@ -154,7 +180,7 @@ export const createLocation = async (location: Location,campaignId: string): Pro
     id: uuid(),
     type: "Location",
     maps: location.maps ?? [],
-    modifiedDate: Date.now(),
+    modifieddate: Date.now(),
   };
 
   await pool.query(
@@ -167,8 +193,8 @@ export const createLocation = async (location: Location,campaignId: string): Pro
       location.description,
       location.notes,
       location.image,
-      location.isFavourite,
-      location.modifiedDate,
+      location.isfavourite,
+      location.modifieddate,
       campaignId
     ]
   );
@@ -201,7 +227,7 @@ export const deleteLocation = async (campaignId: string,locationId: string): Pro
 //
 export const getLocation = async (campaignId: string,locationId: string): Promise<Location> => {
   const foundLocation = await pool.query(
-    "SELECT * FROM entities WHERE id = $1 AND incampaign = $2",
+    "SELECT * FROM entities INNER JOIN locations ON entities.id = locations.entity WHERE id = $1 AND incampaign = $2",
     [locationId, campaignId]
   );
 
@@ -211,7 +237,7 @@ export const getLocation = async (campaignId: string,locationId: string): Promis
 //
 export const getLocations = async (campaignId: string): Promise<Array<Location>> => {
   const campaignLocations = await pool.query(
-    "SELECT * FROM entities WHERE incampaign = $1 AND type = $2",
+    "SELECT * FROM entities INNER JOIN locations ON entities.id = locations.entity WHERE incampaign = $1 AND type = $2",
     [campaignId, "Location"]
   );
 
@@ -230,7 +256,7 @@ export const updateLocation = async (campaignId: string,location: Location): Pro
       location.description,
       location.notes,
       location.image,
-      location.isFavourite,
+      location.isfavourite,
       Date.now(),
       campaignId
     ]
@@ -257,7 +283,7 @@ export const createItem = async (item: Item,campaignId: string): Promise<Item> =
     ...item,
     id: uuid(),
     type: "Item",
-    modifiedDate: Date.now(),
+    modifieddate: Date.now(),
   };
   await pool.query(
     `INSERT INTO entities (id, type, name, description, notes, image, isfavourite, modifieddate, incampaign)
@@ -269,8 +295,8 @@ export const createItem = async (item: Item,campaignId: string): Promise<Item> =
       item.description,
       item.notes,
       item.image,
-      item.isFavourite,
-      item.modifiedDate,
+      item.isfavourite,
+      item.modifieddate,
       campaignId
     ]
   );
@@ -301,7 +327,7 @@ export const deleteItem = async (campaignId: string,itemId: string): Promise<Arr
 //
 export const getItem = async (campaignId: string,itemId: string): Promise<Item> => {
   const foundItem = await pool.query(
-    "SELECT * FROM entities WHERE id = $1 AND incampaign = $2",
+    "SELECT * FROM entities INNER JOIN items ON entities.id = items.entity WHERE id = $1 AND incampaign = $2",
     [itemId, campaignId]
   );
 
@@ -311,7 +337,7 @@ export const getItem = async (campaignId: string,itemId: string): Promise<Item> 
 //
 export const getItems = async (campaignId: string): Promise<Array<Item>> => {
   const campaignItems = await pool.query(
-    "SELECT * FROM entities WHERE incampaign = $1 AND type = $2",
+    "SELECT * FROM entities INNER JOIN items ON entities.id = items.entity WHERE incampaign = $1 AND type = $2",
     [campaignId, "Item"]
   );
 
@@ -330,7 +356,7 @@ export const updateItem = async (campaignId: string,item: Item): Promise<Item> =
       item.description,
       item.notes,
       item.image,
-      item.isFavourite,
+      item.isfavourite,
       Date.now(),
       campaignId
     ]
@@ -358,7 +384,7 @@ export const createPC = async (pc: PC, campaignId: string): Promise<PC> => {
     ...pc,
     id: uuid(),
     type: "PC",
-    modifiedDate: Date.now(),
+    modifieddate: Date.now(),
   };
 
   await pool.query(
@@ -371,8 +397,8 @@ export const createPC = async (pc: PC, campaignId: string): Promise<PC> => {
       pc.description,
       pc.notes,
       pc.image,
-      pc.isFavourite,
-      pc.modifiedDate,
+      pc.isfavourite,
+      pc.modifieddate,
       campaignId
     ]
   );
@@ -381,9 +407,9 @@ export const createPC = async (pc: PC, campaignId: string): Promise<PC> => {
      VALUES ($1, $2, $3, $4)`,
     [
       pc.id,
-      pc.pcClass,
+      pc.pc_class,
       pc.level,
-      pc.playerName
+      pc.player_name
     ]
   );
 
@@ -404,7 +430,7 @@ export const deletePC = async (campaignId: string,pcId: string): Promise<Array<P
 //
 export const getPC = async (campaignId: string, pcId: string): Promise<PC> => {
   const foundPC = await pool.query(
-    "SELECT * FROM entities WHERE id = $1 AND incampaign = $2",
+    "SELECT * FROM entities INNER JOIN player_characters ON entities.id = player_characters.entity WHERE id = $1 AND incampaign = $2",
     [pcId, campaignId]
   );
 
@@ -414,7 +440,7 @@ export const getPC = async (campaignId: string, pcId: string): Promise<PC> => {
 //
 export const getPCs = async (campaignId: string): Promise<Array<PC>> => {
   const campaignPCs = await pool.query(
-    "SELECT * FROM entities WHERE incampaign = $1 AND type = $2",
+    "SELECT * FROM entities INNER JOIN player_characters ON entities.id = player_characters.entity WHERE incampaign = $1 AND type = $2",
     [campaignId, "PC"]
   );
 
@@ -433,7 +459,7 @@ export const updatePC = async (campaignId: string, pc: PC): Promise<PC> => {
       pc.description,
       pc.notes,
       pc.image,
-      pc.isFavourite,
+      pc.isfavourite,
       Date.now(),
       campaignId
     ]
@@ -444,9 +470,9 @@ export const updatePC = async (campaignId: string, pc: PC): Promise<PC> => {
      WHERE entity = $1`,
     [
       pc.id,
-      pc.pcClass,
+      pc.pc_class,
       pc.level,
-      pc.playerName
+      pc.player_name
     ]
   );
 

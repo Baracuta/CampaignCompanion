@@ -8,7 +8,7 @@ import AddNPC from "../components/AddNPC";
 import { NPC } from "../types/NPC";
 import { useCampaign } from "../hooks/useCampaign";
 import ThingList from "../components/ThingList";
-import { createNPC, getNPC } from "../services/CampaignService";
+import { createNPC, getNPC } from "../services/CampaignServiceFrontend";
 import { Location } from "../types/Location";
 import { Item } from "../types/Item";
 import { PC } from "../types/PlayerCharacter";

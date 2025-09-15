@@ -7,7 +7,7 @@ import ToolBar from "../components/ToolBar";
 import { useCampaign } from "../hooks/useCampaign";
 import AddLocation from "../components/AddLocation";
 import ThingList from "../components/ThingList";
-import { createLocation, getLocation } from "../services/CampaignService";
+import { createLocation, getLocation } from "../services/CampaignServiceFrontend";
 import { Location } from "../types/Location";
 import { Item } from "../types/Item";
 import { NPC } from "../types/NPC";

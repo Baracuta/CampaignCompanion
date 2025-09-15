@@ -16,7 +16,7 @@ import { EffectOptions } from "../constants/effect_options";
 import { ItemImageData } from "../constants/item_image_bank";
 import StandardImageList from "./ImageList";
 import { useImage } from "../hooks/useImage";
-import { uploadImage } from "../services/ImageService";
+import { del, uploadImage } from "../services/ImageService";
 
 type thingProps = {
   campaignId: string;
@@ -40,7 +40,7 @@ function AddItem(props: thingProps) {
 
 
   const editMode = props.editItem != null;
-  const favourite = item.isFavourite === true;
+  const favourite = item.isfavourite === true;
   const image = useImage(item.image as string);
 
   const clearItem = () => {
@@ -55,7 +55,7 @@ function AddItem(props: thingProps) {
       >
         {editMode ? "Edit" : <p>Add item</p>}
       </button>
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={open} onClose={handleClose} closeAfterTransition={false}>
         <DialogTitle>
           {editMode ? "Edit this Item" : "Add a New Item to this Campaign"}
         </DialogTitle>
@@ -67,8 +67,8 @@ function AddItem(props: thingProps) {
               <div
                 className={styles.icon}
                 onClick={async () => {
-                  const isFavourite = false;
-                  await setItem({ ...item, isFavourite });
+                  const isfavourite = false;
+                  await setItem({ ...item, isfavourite });
                 }}
               >
                 {" "}
@@ -78,8 +78,8 @@ function AddItem(props: thingProps) {
               <div
                 className={styles.icon}
                 onClick={async () => {
-                  const isFavourite = true;
-                  await setItem({ ...item, isFavourite });
+                  const isfavourite = true;
+                  await setItem({ ...item, isfavourite });
                 }}
               >
                 {" "}
@@ -165,6 +165,9 @@ function AddItem(props: thingProps) {
               images={ItemImageData}
               imageClick={async (img: string) => {
                 const image = img;
+                if (item.image != null) {
+                  await del(item.image);
+                }
                 const imageId = await uploadImage(img);
                 await setItem({ ...item, image: imageId });
                 return image;

@@ -3,7 +3,7 @@ import styles from "../css_modules/form.module.css";
 import { useState } from "react";
 import { Campaign } from "../types/Campaign";
 import { useNavigate } from "react-router-dom";
-import { createCampaign } from "../services/CampaignService";
+import { createCampaign, getUser } from "../services/CampaignServiceFrontend";
 import { Autocomplete, TextField } from "@mui/material";
 import { GameOptions } from "../constants/game_options";
 
@@ -82,7 +82,8 @@ function CampaignForm() {
           disabled={validate()}
           onClick={async () => {
             // setSaving(true);
-            const savedCampaign = await createCampaign(campaign as Campaign);
+            const user = await getUser();
+            const savedCampaign = await createCampaign({...campaign as Campaign, user: (user.id)});
             navigate(`/campaign/${savedCampaign.id}`);
           }}
         >

@@ -64,7 +64,8 @@ describe("getCampaign", () => {
       id: TEST_ID,
       name: "Test Campaign",
       players: 4,
-      user: null
+      game: null,
+      userid: null
     });
   });
 });
@@ -88,7 +89,8 @@ describe("updateCampaign", () => {
       id: TEST_ID,
       name: "Updated Campaign",
       players: 5,
-      user: null
+      game: null,
+      userid: null
     });
   });
 });

@@ -30,17 +30,19 @@ type PopProps = {
 };
 
 export default function ThingPopover(props: PopProps) {
-  const favourite = props.thing.isFavourite === true;
+  const favourite = props.thing.isfavourite === true;
 
   return (
     <Popover
       className={styles.popover}
+      closeAfterTransition={false}
       anchorReference="anchorPosition"
       anchorPosition={{ top: 0, left: 0 }}
       id={props.id}
       open={props.open}
       anchorEl={props.anchorEl}
       onClose={props.handleClose}
+      aria-hidden={props.open ? "false" : "true"}
       anchorOrigin={{
         vertical: "top",
         horizontal: "left",
@@ -50,10 +52,10 @@ export default function ThingPopover(props: PopProps) {
         <div
           className={styles.icon}
           onClick={async () => {
-            const isFavourite = !props.thing.isFavourite;
+            const isfavourite = !props.thing.isfavourite;
             await props.edit(props.campaign.id, {
               ...props.thing,
-              isFavourite,
+              isfavourite,
             } as Entity);
           }}
         >

@@ -9,7 +9,7 @@ import EntityList from "../utilities/Entities";
 import { Entity } from "../types/Entity";
 import { deleteThing, updateThing } from "../components/ThingUpdater";
 import DeleteCampaign from "../components/DeleteCampaign";
-import { deleteCampaign } from "../services/CampaignService";
+import { deleteCampaign } from "../services/CampaignServiceFrontend";
 
 function CampaignPage() {
   const { id } = useParams();
@@ -69,7 +69,6 @@ function CampaignPage() {
       <div className={styles.bottom_bar}>
         <DeleteCampaign campaignID={id as string} delete={async (id:string) => {
           await deleteCampaign(id);
-          await refreshCampaign();
           await navigate("/campaign-select");
         }}/>
       </div>

@@ -1,39 +1,88 @@
 import { v4 as uuid } from "uuid";
-import { openDB } from "idb";
+import { createClient } from "@supabase/supabase-js";
+import { getUser } from "./CampaignServiceFrontend";
 
-const dbPromise = openDB("Saved Images", 1, {
-  upgrade(db) {
-    db.createObjectStore("keyval");
-  },
-});
 
-export async function get(key:string) {
-  return (await dbPromise).get("keyval", key);
+
+const SUPABASE_URL=import.meta.env.VITE_SUPABASE_URL
+const SUPABASE_ANON_KEY=import.meta.env.VITE_SUPABASE_ANON_KEY
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+const BUCKET = ('images');
+
+async function base64ToBlob(base64: string): Promise<Blob> {
+  const byteString = atob(base64.split(',')[1]);
+  const mimeString = base64.split(',')[0].split(':')[1].split(';')[0];
+  const ab = new ArrayBuffer(byteString.length);
+  const ia = new Uint8Array(ab);
+  for (let i = 0; i < byteString.length; i++) {
+    ia[i] = byteString.charCodeAt(i);
+  }
+  return new Blob([ab], { type: mimeString });
 }
-export async function set(key:string, val:string) {
-  return (await dbPromise).put("keyval", val, key);
+
+export async function imageAuth () {
+  const { data, error } = await supabase.auth.signInWithIdToken({
+    provider: 'google',
+    token: localStorage.getItem("google_token") as string
+  });
+
+  if (error) {
+    throw error;
+  }
+  return data;
 }
-export async function del(key:string) {
-  return (await dbPromise).delete("keyval", key);
-}
-export async function clear() {
-  return (await dbPromise).clear("keyval");
-}
-export async function keys() {
-  return (await dbPromise).getAllKeys("keyval");
-}
-// Need to make it so uploadImage checks to see if there is already a keyval pair for the thing.
-// OR, it needs to just delete the previous one if there is already one.
-export const uploadImage = async (img: string): Promise<string> => {
-  const id = uuid();
-  await set(id,img);
-  return id
+
+
+export const del = async (imageId:string) => {
+  const user = await getUser();
+  if (user == null) throw new Error("User not logged in");
+  const path = `${user.id}/${imageId}`;
+
+  if (imageId.startsWith("/CampaignCompanion")) {
+    return;
+  } else if (await supabase.storage.from(BUCKET).exists(path)) {
+    await supabase.storage.from(BUCKET).remove([path, `${path}`]);
+  }
 };
-// Use this to make the above happen.
-// Prioritize making this work before next meeting
-// Look into refining the whole image upload process
-// Also have to get the favourite star clickable on the main thingdisplay
+
+export const uploadImage = async (img: string): Promise<string> => {
+  const user = await getUser();
+  if (user == null) throw new Error("User not logged in");
+  
+
+
+  if (img.startsWith("/CampaignCompanion")) {
+    const id = img;
+    return id;
+  } else {
+    const id = uuid();
+    const path = `${user.id}/${id}`;
+    const blob = await base64ToBlob(img);
+    await supabase
+    .storage
+    .from(BUCKET)
+    .upload(path, blob, {
+      cacheControl: '3600',
+      upsert: false,
+      contentType: 'image/*',
+    });
+
+    return id;
+  }
+};
+
 export const getImage = async (imageId: string): Promise<string> => {
-  const image = await get(imageId)
-  return image
+  const user = await getUser();
+  if (user == null) throw new Error("User not logged in");
+  const path = `${user.id}/${imageId}`;
+
+  if (imageId.startsWith("/CampaignCompanion")) {
+    return imageId;
+  } else if (await supabase.storage.from(BUCKET).exists(path)) {
+    const image = await supabase.storage.from(BUCKET).getPublicUrl(path);
+    return image.data.publicUrl;
+  } else {
+    throw new Error("No Image Found");
+  }
 };
