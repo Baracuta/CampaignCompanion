@@ -1,33 +1,40 @@
-# name: Deploy to Production
+name: Deploy to Production
 
-# on:
-#   push:
-#     branches:
-#       - master
+on:
+  push:
+    branches:
+      - master
 
-# jobs:
-#   deploy:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v4
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-#       - name: Set up Node
-#         uses: actions/setup-node@v4
-#         with:
-#           node-version: 20
-#           cache: 'npm'
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
 
-#       - name: Install dependencies
-#         run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-#       - name: Run Tests
-#         id: jest_tests
-#         run: npm test
+      - name: Run Tests
+        id: jest_tests
+        run: npm test
 
-#       - name: Build
-#         run: npm run build
+      - name: Build
+        run: npm run build
 
-#       - name: Deploy to Production
-#         id: deployment
-#         uses: actions/deploy-pages@v4
+      - name: Deploy to Production
+        id: deployment
+        uses: sevalla-hosting/sevalla-deploy@v1.0.0
+        with:
+            action: deploy-app
+            sevalla-token: ${{ secrets.SEVALLA_TOKEN }}
+            app-id: app_123
+            branch: main
+            is-restart: false
+            wait-for-finish: true
