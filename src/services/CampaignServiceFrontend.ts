@@ -5,7 +5,7 @@ import { Item } from "../types/Item";
 import { PC } from "../types/PlayerCharacter";
 import { User } from "../types/User";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const API_BASE_URL = process.env.VITE_API_BASE_URL;
 
 //Every single "entity" should have the following: create, delete, get, getPlural(getCampaigns, getNPCs...), update, updatePlural
 export const handleUser = async (): Promise<User> => {
