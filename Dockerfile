@@ -15,6 +15,9 @@ RUN chmod +x ./node_modules/.bin/tsc
 # Build the TypeScript project
 RUN ./node_modules/.bin/tsc
 
+RUN ls -la
+RUN ls -la /app
+RUN ls -la /app/backend_dist
 # Stage 2: Production image
 FROM node:22.14.0-alpine AS production
 
