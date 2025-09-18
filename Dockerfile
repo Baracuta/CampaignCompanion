@@ -13,7 +13,8 @@ RUN npm install
 RUN chmod +x ./node_modules/.bin/tsc
 
 # Build the TypeScript project
-RUN ./node_modules/.bin/tsc
+RUN ./node_modules/.bin/tsc -p ./tsconfig.node.json
+
 
 RUN ls -la
 RUN ls -la /app
