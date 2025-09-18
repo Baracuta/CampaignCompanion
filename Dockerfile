@@ -13,6 +13,7 @@ RUN npm install
 RUN chmod +x ./node_modules/.bin/tsc 
 
 # Build the TypeScript project
+RUN rm -f vite.config.ts
 RUN ./node_modules/.bin/tsc -p ./tsconfig.node.json --extendedDiagnostics --traceResolution
 
 
