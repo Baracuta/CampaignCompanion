@@ -10,10 +10,10 @@ COPY . .
 ENV TS_NODE_PROJECT="./tsconfig.node.json"
 
 RUN npm install
-RUN chmod +x ./node_modules/.bin/tsc
+RUN chmod +x ./node_modules/.bin/tsc 
 
 # Build the TypeScript project
-RUN ./node_modules/.bin/tsc -p ./tsconfig.node.json
+RUN ./node_modules/.bin/tsc -p ./tsconfig.node.json --extendedDiagnostics --traceResolution
 
 
 RUN ls -la
