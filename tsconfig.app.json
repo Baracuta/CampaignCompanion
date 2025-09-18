@@ -6,6 +6,7 @@
     "module": "ESNext",
     "skipLibCheck": true,
     "sourceMap": true,
+    "outDir": "backend_dist",
 
     /* Bundler mode */
     "moduleResolution": "bundler",
