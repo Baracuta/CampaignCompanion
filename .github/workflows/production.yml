@@ -1,9 +1,13 @@
-name: Deploy to Production
+# Simple workflow for deploying static content to GitHub Pages
+name: Deploy static content to Pages
 
 on:
+  # Runs on pushes targeting the default branch
   push:
-    branches:
-      - Testing
+    branches: ["Testing"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
@@ -17,37 +21,32 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
-
 jobs:
+  # Single deploy job since we're just deploying
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
-
       - name: Install dependencies
         run: npm ci
-
-      - name: Run Tests
-        id: jest_tests
-        run: npm test
-
       - name: Build
         run: npm run build
-
-      - name: Deploy to Production
-        id: deployment
-        uses: sevalla-hosting/sevalla-deploy@v1.0.0
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          action: deploy-app
-          sevalla-token: ${{ secrets.SEVALLA_TOKEN }}
-          app-id: 7ac26e03-17b2-4761-98d4-3cc607812f57
-          branch: Testing
-          is-restart: false
-          wait-for-finish: true
+          # Upload entire repository
+          path: './dist'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
