@@ -1,4 +1,4 @@
-import * as UserController from '../../src/controllers/userController';
+import * as UserController from "../../src/controllers/UserController";
 import { Request, Response } from 'express';
 import { OAuth2Client } from 'google-auth-library';
 
