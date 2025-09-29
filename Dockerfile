@@ -7,19 +7,22 @@ WORKDIR /app
 COPY . .
 
 # Install all dependencies (including dev dependencies)
-ENV TS_NODE_PROJECT="./tsconfig.node.json"
 
 RUN npm install
 RUN chmod +x ./node_modules/.bin/tsc 
 
 # Build the TypeScript project
 RUN rm -f vite.config.ts
-RUN ./node_modules/.bin/tsc -p ./tsconfig.node.json --extendedDiagnostics --traceResolution
+RUN rm -f tsconfig.node.json
+RUN rm -f tsconfig.json
+RUN rm -f tsconfig.app.json
+RUN mv ./tsconfigalt.json ./tsconfig.json
+RUN ./node_modules/.bin/tsc
 
 
 RUN ls -la
 RUN ls -la /app
-RUN ls -la /app/backend_dist
+RUN ls -la /app/dist
 # Stage 2: Production image
 FROM node:22.14.0-alpine AS production
 
@@ -32,10 +35,11 @@ COPY package*.json ./
 RUN npm ci --only=production
 
 # Copy built application from builder stage
-COPY --from=builder /app/backend_dist ./backend_dist
+COPY --from=builder /app/dist ./dist
 
 # Set environment variables
 ENV NODE_ENV=production
 
 # Command to run your application
-CMD ["node", "backend_dist/index.js"]
+CMD ["node", "dist/index.js"]
+# CMD /bin/sh
