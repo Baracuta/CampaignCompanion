@@ -10,7 +10,7 @@ require('dotenv').config({path: ".env"});
 // Middlewares
 const app = express();
 const cors = require('cors');
-const port = import.meta.env.VITE_PORT;
+const port = process.env.VITE_PORT;
 const verify = verifyGoogleToken;
 
 
@@ -36,6 +36,6 @@ app.use('/api/campaign/:campaignId/pc', entityRouter.pcRouter)
 app.use('/api/user', verify, UserRouter)
 
 app.listen(port, () => {
-  console.log(`App listening at http://${import.meta.env.VITE_HOSTNAME}:${port}/CampaignCompanion`)
+  console.log(`App listening at http://${process.env.VITE_HOSTNAME}:${port}/CampaignCompanion`)
 })
 
