@@ -49,7 +49,7 @@ export const router = createBrowserRouter(
   { basename: "/CampaignCompanion/" }
 );
 
-// const googleClientId=process.env.VITE_GOOGLE_CLIENT_ID as string;
+// const googleClientId=import.meta.env.VITE_GOOGLE_CLIENT_ID as string;
 createRoot(document.getElementById("root")!).render(
   <GoogleOAuthProvider clientId={'1090280266148-hhbspb3t1g9rontnmbpc0gopeqapo3nq.apps.googleusercontent.com'}>
     <RouterProvider router={router} />
