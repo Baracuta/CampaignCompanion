@@ -23,7 +23,7 @@ app.use('/CampaignCompanion', express.static(path.join(__dirname, 'dist')))
 
 // Use this catch-all route for Express 5
 app.get(/^\/CampaignCompanion(\/.*)?$/, (_req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'))
+  res.sendFile(path.join(__dirname, 'dist', 'index.ts'))
 })
 
 app.use('/api/campaign', CampaignRouter)
