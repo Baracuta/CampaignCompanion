@@ -1,7 +1,7 @@
 import express from 'express'
 import path from 'path'
-import campaignRouter from './src/routers/CampaignRouter'
-import userRouter from './src/routers/UserRouter'
+import CampaignRouter from './src/routers/CampaignRouter'
+import UserRouter from './src/routers/UserRouter'
 import * as entityRouter from './src/routers/EntityRouter'
 import { verifyGoogleToken } from './src/middleware/verifyGoogleToken'
 
@@ -26,14 +26,14 @@ app.get(/^\/CampaignCompanion(\/.*)?$/, (_req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'))
 })
 
-app.use('/api/campaign', campaignRouter)
+app.use('/api/campaign', CampaignRouter)
 
 app.use('/api/campaign/:campaignId/npc', entityRouter.npcRouter)
 app.use('/api/campaign/:campaignId/location', entityRouter.locationRouter)
 app.use('/api/campaign/:campaignId/item', entityRouter.itemRouter)
 app.use('/api/campaign/:campaignId/pc', entityRouter.pcRouter)
 
-app.use('/api/user', verify, userRouter)
+app.use('/api/user', verify, UserRouter)
 
 app.listen(port, () => {
   console.log(`App listening at http://${process.env.VITE_HOSTNAME}:${port}/CampaignCompanion`)
