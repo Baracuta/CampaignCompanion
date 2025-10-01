@@ -12,11 +12,7 @@ RUN npm install
 RUN chmod +x ./node_modules/.bin/tsc 
 
 # Build the TypeScript project
-RUN rm -f vite.config.ts
-RUN rm -f tsconfig.node.json
-RUN rm -f tsconfig.json
-RUN rm -f tsconfig.app.json
-RUN mv ./tsconfigalt.json ./tsconfig.json
+RUN ./node_modules/.bin/tsc -p ./tsconfig.json
 RUN ./node_modules/.bin/tsc
 
 
