@@ -29,6 +29,9 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      - name: Install Composer Dependencies
+        working-directory: ./app
+        run: composer install --prefer-dist
       - name: Checkout
         uses: actions/checkout@v4
       - name: Create .env file from secrets
@@ -44,9 +47,9 @@ jobs:
           node-version: 20
           cache: 'npm'
       - name: Install dependencies
-        working-directory: ./frontend
         run: npm ci
       - name: Build
+        working-directory: ./frontend
         run: npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v5
