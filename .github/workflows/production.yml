@@ -53,7 +53,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
-          path: './dist'
+          path: './frontend/dist'
       - name: Debug .env
         run: cat .env
       - name: Deploy to GitHub Pages
