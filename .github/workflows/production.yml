@@ -29,11 +29,13 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Install Composer Dependencies
-        working-directory: ./app
-        run: composer install --prefer-dist
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Install Composer Dependencies
+        working-directory: ./frontend
+        run: composer install --prefer-dist
+
       - name: Create .env file from secrets
         run: |
           echo "VITE_GOOGLE_CLIENT_ID=${{ secrets.VITE_GOOGLE_CLIENT_ID }}" >> .env
@@ -41,26 +43,34 @@ jobs:
           echo "VITE_DATABASE_URL=${{ secrets.VITE_DATABASE_URL }}" >> .env
           echo "VITE_SUPABASE_URL=${{ secrets.VITE_SUPABASE_URL }}" >> .env
           echo "VITE_SUPABASE_ANON_KEY=${{ secrets.VITE_SUPABASE_ANON_KEY }}" >> .env
+
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
+
       - name: Install dependencies
         working-directory: ./frontend
         run: npm ci
+
       - name: Build
         working-directory: ./frontend
         run: npm run build
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
-          path: './dist'
+          path: './frontend/dist'
+
       - name: Debug .env
+        working-directory: ./frontend
         run: cat .env
+        
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
