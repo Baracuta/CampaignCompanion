@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Composer Dependencies
-        working-directory: ./app
+        working-directory: ./frontend
         run: composer install --prefer-dist
       - name: Checkout
         uses: actions/checkout@v4
