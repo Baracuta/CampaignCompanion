@@ -26,14 +26,14 @@ app.get(/^\/CampaignCompanion(\/.*)?$/, (_req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'))
 })
 
-app.use('/api/campaign', CampaignRouter)
+app.use('/api/campaign', cors(), CampaignRouter)
 
-app.use('/api/campaign/:campaignId/npc', entityRouter.npcRouter)
-app.use('/api/campaign/:campaignId/location', entityRouter.locationRouter)
-app.use('/api/campaign/:campaignId/item', entityRouter.itemRouter)
-app.use('/api/campaign/:campaignId/pc', entityRouter.pcRouter)
+app.use('/api/campaign/:campaignId/npc', cors(), entityRouter.npcRouter)
+app.use('/api/campaign/:campaignId/location', cors(), entityRouter.locationRouter)
+app.use('/api/campaign/:campaignId/item', cors(), entityRouter.itemRouter)
+app.use('/api/campaign/:campaignId/pc', cors(), entityRouter.pcRouter)
 
-app.use('/api/user', verify, UserRouter)
+app.use('/api/user', verify, cors(), UserRouter)
 
 app.listen(port, () => {
   console.log(`App listening at http://${process.env.VITE_HOSTNAME}:${port}/CampaignCompanion`)
