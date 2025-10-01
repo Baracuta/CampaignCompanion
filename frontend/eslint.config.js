@@ -25,4 +25,12 @@ export default tseslint.config(
       ],
     },
   },
+  {
+    files: ['**/*.js', '**/*.ts'],
+    ignores: ['frontend/**/*'],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.node,
+    },
+  },
 )
