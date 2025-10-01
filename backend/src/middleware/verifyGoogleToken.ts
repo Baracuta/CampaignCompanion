@@ -1,7 +1,7 @@
 import { OAuth2Client } from "google-auth-library";
 
 const client = new OAuth2Client(); // No clientId needed for verification
-const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID as string;
+const GOOGLE_CLIENT_ID = process.env.VITE_GOOGLE_CLIENT_ID as string;
 import { Request, Response, NextFunction } from "express";
 
 export const verifyGoogleToken = async (req: Request, res: Response, next: NextFunction) => {

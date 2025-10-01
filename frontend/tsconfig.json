@@ -12,6 +12,6 @@
     "moduleDetection": "force"
 
   },
-  "include": ["src/**/*.ts", "index.ts"],
+  "include": ["src/**/*.ts", "index.html"],
   "exclude": ["node_modules"]
 }

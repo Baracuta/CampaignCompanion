@@ -3,7 +3,7 @@ import * as CampaignService from "../services/CampaignServiceBackend";
 import { OAuth2Client } from "google-auth-library";
 
 const client = new OAuth2Client();
-const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID as string;
+const GOOGLE_CLIENT_ID = process.env.VITE_GOOGLE_CLIENT_ID as string;
 
 export const createUser: RequestHandler = async (req, res): Promise<void> => {
   const authheader = req.headers.authorization;
