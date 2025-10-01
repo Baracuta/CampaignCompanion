@@ -44,6 +44,7 @@ jobs:
           node-version: 20
           cache: 'npm'
       - name: Install dependencies
+        working-directory: ./frontend
         run: npm ci
       - name: Build
         run: npm run build
@@ -53,7 +54,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
-          path: './frontend/dist'
+          path: './dist'
       - name: Debug .env
         run: cat .env
       - name: Deploy to GitHub Pages
