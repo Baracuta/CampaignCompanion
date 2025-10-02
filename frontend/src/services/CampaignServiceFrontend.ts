@@ -27,7 +27,8 @@ export const createUser = async (): Promise<User> => {
     mode: "cors",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `${token}`
+      "Authorization": `${token}`,
+      "Access-Control-Allow-Origin": "https://baracuta.github.io"
     },
   });
 
@@ -46,7 +47,8 @@ export const getUser = async (): Promise<User> => {
     mode: "cors",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `${token}`
+      "Authorization": `${token}`,
+      "Access-Control-Allow-Origin": "https://baracuta.github.io"
     },
   });
 
