@@ -14,7 +14,11 @@ const port = process.env.VITE_PORT;
 const verify = verifyGoogleToken;
 
 
-app.use(cors());
+app.use(cors({
+  origin: "https://baracuta.github.io/CampaignCompanion/", // Only allow this origin
+  methods: ["GET", "POST", "PUT", "DELETE"],     // Allowed HTTP methods
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
 app.use(express.json());
 
 
