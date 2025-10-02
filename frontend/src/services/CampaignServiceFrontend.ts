@@ -24,6 +24,7 @@ export const createUser = async (): Promise<User> => {
   const token = await localStorage.getItem("google_token");
   const response = await fetch(`${API_BASE_URL}/api/user`, {
     method: "POST",
+    mode: "cors",
     headers: {
       "Content-Type": "application/json",
       "Authorization": `${token}`
@@ -42,6 +43,7 @@ export const getUser = async (): Promise<User> => {
   const token = localStorage.getItem("google_token");
   const response = await fetch(`${API_BASE_URL}/api/user`, {
     method: "GET",
+    mode: "cors",
     headers: {
       "Content-Type": "application/json",
       "Authorization": `${token}`
