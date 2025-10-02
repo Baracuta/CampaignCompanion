@@ -40,6 +40,6 @@ app.use('/api/campaign/:campaignId/pc', cors(), entityRouter.pcRouter)
 app.use('/api/user', verify, cors(), UserRouter)
 
 app.listen(port, () => {
-  console.log(`App listening at http://${process.env.VITE_HOSTNAME}:${port}/CampaignCompanion`)
+  console.log(`App listening at http://${process.env.VITE_API_BASE_URL}:${port}/CampaignCompanion`)
 })
 
