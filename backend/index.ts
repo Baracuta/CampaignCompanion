@@ -16,7 +16,7 @@ const verify = verifyGoogleToken;
 
 app.use(cors({
   origin: "https://baracuta.github.io", // Only allow this origin
-  methods: ["GET", "POST", "PUT", "DELETE"],     // Allowed HTTP methods
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],     // Allowed HTTP methods
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
 app.use(express.json());
