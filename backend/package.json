@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "jest",
-    "start": "dist/index.js"
+    "start": "ts-node src/index.ts"
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
