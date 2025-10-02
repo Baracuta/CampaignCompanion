@@ -2,14 +2,14 @@
   "name": "vite-project",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "jest",
-    "start": "ts-node src/index.ts"
+    "start": "node ./dist/index.js"
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
