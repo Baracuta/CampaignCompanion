@@ -60,11 +60,24 @@ export const deleteCampaign = async (id: string): Promise<void> => {
 
 //Used in the useCampaign hook, which itself is used anywhere where the campaign needs to be set.
 export const getCampaign = async (id: string): Promise<Campaign> => {
-  const result = await pool.query("SELECT * FROM campaigns WHERE id = $1",
+  // Get campaign data
+  const result = await pool.query("SELECT * FROM campaigns WHERE id = $1", [id]);
+  const campaign = result.rows[0] as Campaign;
+
+  // Get all entities for this campaign
+  const entitiesResult = await pool.query(
+    "SELECT * FROM entities WHERE incampaign = $1",
     [id]
   );
+  const entities = entitiesResult.rows;
 
-  return result.rows[0] as Campaign;
+  // Separate entities by type
+  campaign.npcs = entities.filter((e: any) => e.type === "NPC");
+  campaign.locations = entities.filter((e: any) => e.type === "Location");
+  campaign.items = entities.filter((e: any) => e.type === "Item");
+  campaign.playerCharacters = entities.filter((e: any) => e.type === "PC");
+
+  return campaign;
 };
 
 //Used in the getCampaign method, as well as in the useCampaigns hook, which is used in the CampaignList component.

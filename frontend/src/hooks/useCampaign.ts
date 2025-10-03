@@ -9,17 +9,8 @@ export const useCampaign = (id: string) => {
   useEffect(() => {
     const fetchAll = async () => {
       const campaignData = await getCampaign(id as string);
-      const npcs = await getNPCs(id as string);
-      const locations = await getLocations(id as string);
-      const items = await getItems(id as string);
-      const pcs = await getPCs(id as string);
-
       setCampaign({
         ...campaignData,
-        npcs,
-        locations,
-        items,
-        playerCharacters: pcs,
       });
     };
     fetchAll();
@@ -30,17 +21,8 @@ export const useCampaign = (id: string) => {
 
     refreshCampaign: async () => {
       const campaignData = await getCampaign(id as string);
-      const npcs = await getNPCs(id as string);
-      const locations = await getLocations(id as string);
-      const items = await getItems(id as string);
-      const pcs = await getPCs(id as string);
-
       setCampaign({
         ...campaignData,
-        npcs,
-        locations,
-        items,
-        playerCharacters: pcs,
       });
       console.log("Campaign refreshed");
     },
